@@ -8,7 +8,11 @@
 </head>
 <body>
 dfdd
+<<<<<<< HEAD
 ㅁㄴㅇ
+=======
+ㅇㄹㅇㄱㅇㄹ
+>>>>>>> branch 'master' of https://github.com/taiskae169/team4_web
 DFSF
 </body>
 </html>
