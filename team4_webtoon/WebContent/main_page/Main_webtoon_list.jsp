@@ -26,7 +26,7 @@
                	 	<small class="text-muted">&#9733;</small>
                	 	System.out.println(i);
                 <%}
-              	if(;i<5;i++){ %>
+              	if(;i<5;i++){t %>
                 	<small class="text-muted">&#9734;</small>
                 <%} %>
               </div>
