@@ -1,6 +1,19 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="webtoon.list.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<%
+	String week = request.getParameter("week");
+	WebToonListDAO dao = WebToonListDAO.getInstance();
+	WebToonListVO vo = new WebToonListVO();
+	
+	ArrayList<WebToonListVO> list = dao.getWeeklyWebtoon(Integer.parseInt(week));
+	
+
+	
+%>
  <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,13 +37,15 @@
           </ol>
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-              <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="First slide">
+              <img class="d-block img-fluid" src="/team4_webtoon/resources/image/webtoon/webtoon1/webtoon1_main.jpg" alt="First slide">
+         									     <%//team4_webtoon/resources/image/webtoon/<웹툰명>/<웹툰명>_main.jpg 으로 변경할 예정 %>
+         									     <%//A태그로 리스트로 가도록 할 예정 %>
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Second slide">
+              <img class="d-block img-fluid" src="/team4_webtoon/resources/image/webtoon/webtoon2/webtoon2_main.jpg" alt="Second slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Third slide">
+              <img class="d-block img-fluid" src="/team4_webtoon/resources/image/webtoon/webtoon3/webtoon3_main.jpg" alt="Third slide">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -45,101 +60,18 @@
 
         <div class="row">
 
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item One</a>
-                </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div>
+		<%for(int i =0; i<list.size(); i++){ 
+			vo = list.get(i);
+			int star_point = vo.getStar()/vo.getStart_p();
+		%>
 
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item test</a>
-                </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div>
+          <jsp:include page="Main_webtoon_list.jsp">
+          		<jsp:param value="" name="title"/>
+          		<jsp:param value="" name="subtitle"/>
+          		<jsp:param value="" name=""/>
+          </jsp:include>
 
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item Threㅇe</a>
-                </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div>
 
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item Four</a>
-                </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item Five</a>
-                </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item Six</a>
-                </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div>
 
         </div>
         <!-- /.row -->
@@ -151,3 +83,9 @@
     <!-- /.row -->
 
   </div>
+  
+  
+    <!-- Bootstrap core JavaScript -->
+  <script src="/team4_webtoon/resources/Main_page/vendor/jquery/jquery.min.js"></script>
+  <script src="/team4_webtoon/resources/Main_page/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  

@@ -12,7 +12,7 @@ public class WebToonListVO {
 	private String sub_title; //웹툰 소제목
 	private Timestamp reg;	//웹툰 등록 날짜
 	private String writer; 	//작가
-	private int gen;		//장르
+	private String gen;		//장르
 	private int week;		//업데이트 요일
 	private int like;		//좋아요 숫자
 	private int mag;		//특집여부
@@ -53,10 +53,10 @@ public class WebToonListVO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public int getGen() {
+	public String getGen() {
 		return gen;
 	}
-	public void setGen(int gen) {
+	public void setGen(String gen) {
 		this.gen = gen;
 	}
 	public int getWeek() {

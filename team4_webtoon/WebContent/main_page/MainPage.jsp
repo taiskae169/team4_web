@@ -1,8 +1,19 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
+	<%
+		String week = request.getParameter("week");
+		// 요일 선택시 숫자를 받아옴, 0 = 일요일, 1=월요일~
+		if(week==null){
+			Date dt = new Date();
+			week = Integer.toString(dt.getDay());
+		}
+		//선택한 요일이 없었을 때 오늘 날자를 받아온다. 0 = 일요일, 1=월요일~
+
+	%>
 <head>
 
   <meta charset="utf-8">
@@ -44,12 +55,13 @@
           <a href="MainPage.jsp?week=6" class="list-group-item">일요일</a>
           <a href="#" class="list-group-item">도전만화</a>
         </div>
-        <%// %>
+        
 
       </div>
       <!-- /.col-lg-3 -->
-
-	<jsp:include page="Main_content.jsp"></jsp:include>
+	<jsp:include page="Main_content.jsp">
+		<jsp:param value="<%=week %>" name="week"/>
+	</jsp:include>
 
   <!-- Footer -->
   <footer class="py-5 bg-dark">
@@ -60,8 +72,8 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="/team4_webtoon/resource/Main_page/vendor/jquery/jquery.min.js"></script>
-  <script src="/team4_webtoon/resource/Main_page/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/team4_webtoon/resources/Main_page/vendor/jquery/jquery.min.js"></script>
+  <script src="/team4_webtoon/resources/Main_page/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
