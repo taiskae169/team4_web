@@ -62,15 +62,20 @@
 
 		<%for(int i =0; i<list.size(); i++){ 
 			vo = list.get(i);
-			int star_point = vo.getStar()/vo.getStart_p();
+			int star = vo.getStar(), star_p = vo.getStart_p();
+			int star_point=0;
+			if(star!=0 && star!=0){
+				star_point = (star/star_p);
+			}
 		%>
 
           <jsp:include page="Main_webtoon_list.jsp">
-          		<jsp:param value="" name="title"/>
-          		<jsp:param value="" name="subtitle"/>
-          		<jsp:param value="" name=""/>
+          		<jsp:param value="<%=vo.getTitle() %>" name="title"/>
+          		<jsp:param value="<%=vo.getSub_title() %>" name="subtitle"/>
+          		<jsp:param value="<%=vo.getWriter() %>" name="writer"/>
+          		<jsp:param value="<%=star_point %>" name="star_point"/>
           </jsp:include>
-
+		<%} %>
 
 
         </div>

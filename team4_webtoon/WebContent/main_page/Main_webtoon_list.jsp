@@ -4,7 +4,11 @@
 <!DOCTYPE html>
 
 <%
-
+		String title = request.getParameter("title");
+		String sub_title = request.getParameter("sub_title");
+		String writer = request.getParameter("writer");
+		int star_point = Integer.parseInt(request.getParameter("star_point"));
+		int i=0;
 %>
 
           <div class="col-lg-4 col-md-6 mb-4">
@@ -12,13 +16,19 @@
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#">테스트 진행중</a>
+                  <a href="#"><%=title %></a>
                 </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
+                <h5><%=sub_title %></h5>
+                <p class="card-text"><%=writer %></p>
               </div>
               <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+              	<%for(; i<star_point/20; i++){ %>
+               	 	<small class="text-muted">&#9733;</small>
+               	 	System.out.println(i);
+                <%}
+              	if(;i<5;i++){ %>
+                	<small class="text-muted">&#9734;</small>
+                <%} %>
               </div>
             </div>
           </div>
