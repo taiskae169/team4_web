@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="Apache Tomcat v8.5 for Team4-config">
-        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="Apache_Tomcat_v8.5_for_Team4-config"/>
-        <property name="java-output-path" value="/Apache Tomcat v8.5 for Team4-config/build/classes"/>
-    </wb-module>
-</project-modules>
