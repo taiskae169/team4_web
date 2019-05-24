@@ -25,4 +25,18 @@
     <!--
     <Manager pathname="" />
     -->
+    <Resource
+    	name="jdbc/xe"
+    	auth="Container"
+    	driverClassName="oracle.jdbc.driver.OracleDriver"
+    	url="jdbc:oracle:thin:@nullmaster.iptime.org:1521:xe"
+    	type="javax.sql.DataSource"
+    	username="TEAM04"
+    	password="TEAM04"
+    	maxActive="50"
+    	maxIdle="20"
+    	testOnBorrow="true"
+    	testOnReturn="true"
+    	/>
+    	
 </Context>
