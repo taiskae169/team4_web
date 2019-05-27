@@ -10,6 +10,7 @@
 
 <LINK REL=StyleSheet HREF="resources/login/css/login.css" TYPE="text/css" 	TITLE="login.css" MEDIA="screen,print">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
 </head>
 <body>
   <div class="container">
@@ -18,7 +19,7 @@
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">로그인</h5>
-            <form class="form-signin">
+            <form class="form-signin" name="loginInfo" method = "post" action="loginPro.jsp" onsubmit="return checkValue()">
               <div class="form-label-group">
                 <input type="text" id="id" class="form-control" placeholder="ID" required autofocus>
                 <label for="id">ID</label>
@@ -39,10 +40,27 @@
               <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
               <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
             </form>
+                  	                <%
+            String msg=request.getParameter("msg");
+            
+            if(msg!= null && msg.equals("0")){
+            	out.println("<br>");
+            	out.println("<font color = 'red' size = '5'>비밀번호를 확인해주세요.</font>");
+            }
+            else if(msg!=null && msg.equals("-1")){
+            	out.println("<br>");
+            	out.println("<font color = 'red' size = '5'>아이디를 확인해주세요.</font>");
+            }
+            %>
           </div>
+
         </div>
+
       </div>
+      
     </div>
+
   </div>
+  
 </body>
 </html>

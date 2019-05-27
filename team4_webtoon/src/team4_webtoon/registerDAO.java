@@ -21,7 +21,7 @@ public class registerDAO {
         DataSource ds = (DataSource)envCtx.lookup("jdbc/xe");
         return ds.getConnection();
     }
-	public void insertMember(registerBean member) throws SQLException
+	public void insertMember(registerBean user_info) throws SQLException
 	{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -30,15 +30,14 @@ public class registerDAO {
 			conn =  getConnection();
 
 			pstmt = conn.prepareStatement(
-					"insert into user_info values(user_info_seq,?,?,?,?,?,?,?)");
+					"insert into user_info values(user_info_seq.nextval,?,?,?,?,?,?,sysdate)");
+			pstmt.setString(1, user_info.getId());
+			pstmt.setString(2, user_info.getPassword());
+			pstmt.setString(3, user_info.getEmail());
+			pstmt.setString(4, user_info.getAge());
+			pstmt.setString(5, user_info.getName());
+			pstmt.setInt(6, user_info.getState());
 
-			pstmt.setString(1, member.getId());
-			pstmt.setString(2, member.getPassword());
-			pstmt.setString(3, member.getEmail());
-			pstmt.setString(4, member.getAge());
-			pstmt.setString(5, member.getName());
-			pstmt.setInt(6, member.getState());
-			pstmt.setTimestamp(7, member.getReg());
 			
 			pstmt.executeUpdate();
 
@@ -51,4 +50,42 @@ public class registerDAO {
 			
 		}
 	}
-}
+	
+	public int loginCheck(String id, String pw) throws Exception
+	{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String dbPW = "";
+		int x = -1;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select pw from user_info where id = ?");
+			pstmt.setString(1,id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				dbPW = rs.getString("pw");
+				if(dbPW.equals(pw))
+					x = 1;
+				else
+					x = 0;
+			}
+			else 
+				x = -1;
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			} finally {
+
+					if( rs != null) try {rs.close();} catch(SQLException ex) {}
+					if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+					if (conn != null) try {conn.close();} catch(SQLException ex) {}
+				} 
+				return x;
+				}
+		}
+

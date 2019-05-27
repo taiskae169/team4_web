@@ -9,9 +9,8 @@ public class registerBean {
 	private String email;		//이메일
 	private String age;			//나이
 	private String name;		//이름	
-	private Timestamp reg;		//가입일자
+	private Timestamp user_reg;		//가입일자
 	private int state;
-	
 	public int getUser_no() {
 		return user_no;
 	}
@@ -48,11 +47,11 @@ public class registerBean {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Timestamp getReg() {
-		return reg;
+	public Timestamp getUser_reg() {
+		return user_reg;
 	}
-	public void setReg(Timestamp reg) {
-		this.reg = reg;
+	public void setUser_reg(Timestamp user_reg) {
+		this.user_reg = user_reg;
 	}
 	public int getState() {
 		return state;
@@ -60,6 +59,9 @@ public class registerBean {
 	public void setState(int state) {
 		this.state = state;
 	}
+	
+	
+	
 
 	
 

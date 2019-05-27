@@ -44,10 +44,15 @@
                 <input type="text" id="name" class="form-control" name = "name" placeholder="name" required autofocus>
                 <label for="name">NAME</label>
               </div>
-
+                <div class="form-label-group">
+                <input type="number" id="state" class="form-control" name = "state" placeholder="state" autofocus>
+                <label for="state">state</label>
+              </div>
 
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
-              <a class="d-block text-center mt-2 small" href="#">Sign In</a>
+              <button class="btn btn-default btn-warning btn-block text-uppercase" type="button" onclick = "location.href = '#'">돌아가기</button>
+              
+              <a class="d-block text-center mt-2 small" href="login.jsp">Sign In</a>
               <hr class="my-4">
               <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
               <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign up with Facebook</button>
