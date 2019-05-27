@@ -24,7 +24,7 @@
     
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="/team4_webtoon/Main_page/MainPage">사이트 명</a>
+      <a class="navbar-brand" href="/team4_webtoon/main_page/MainPage.jsp">사이트 명</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -32,15 +32,15 @@
         <ul class="navbar-nav ml-auto">
         <%if(id ==null){ %>
           <li class="nav-item active">
-            <a class="nav-link" href="login/login.jsp">LOGIN
+            <a class="nav-link" href="/team4_webtoon/login/login.jsp">LOGIN
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login/register.jsp">SIGN</a>
+            <a class="nav-link" href="/team4_webtoon/login/register.jsp">SIGN</a>
           </li>
           <%}else{ %>
           <li class="nav-item">
-            <a class="nav-link" href="login/logoutPro.jsp">LOGOUT</a>
+            <a class="nav-link" href="/team4_webtoon/login/logoutPro.jsp">LOGOUT</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">회원정보</a>
