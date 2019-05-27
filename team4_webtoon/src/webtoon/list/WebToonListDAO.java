@@ -22,6 +22,7 @@ public class WebToonListDAO {
 	private PreparedStatement pstmt = null;
 	SimpleDateFormat dt = new SimpleDateFormat("yyyy-mm-dd HH:mm");
 	
+	
 	private Connection getConnection() {
 		try {
 			Context ctx = new InitialContext();
@@ -33,7 +34,7 @@ public class WebToonListDAO {
 			e.printStackTrace();
 		}
 		return conn;
-	}
+	}//connection 풀을 제공하는 메소드
 	
 	public int getCount(int week) {
 		conn = getConnection(); 
@@ -90,7 +91,8 @@ public class WebToonListDAO {
 		try {
 			String sql = "select rownum r, mw_num, mw_title, mw_sub_title, mw_reg, mw_writer, value gen, mw_week, mw_like, "
 					+ "mw_mag,mw_tag, mw_star, mw_star_p from (select rownum r, mw_num, mw_title, mw_sub_title, mw_reg, mw_writer, mw_gen, mw_week, mw_like, "
-					+ "mw_mag,mw_tag, mw_star, mw_star_p from (select * from main_webtoon where MW_WEEK=? order by MW_LIKE desc)), WEB_GER where web_st = mw_gen";
+					+ "mw_mag,mw_tag, mw_star, mw_star_p from (select * from main_webtoon where MW_WEEK=? order by MW_LIKE asc)), WEB_GER where web_st = mw_gen";
+			// 별점을 기준으로 내림차순, 요일별 웹툰을 찾는 sql문
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, week);
 			rs = pstmt.executeQuery();
@@ -120,7 +122,7 @@ public class WebToonListDAO {
 		}
 		
 		return list;
-	}
+	}//요일별 웹툰 리스트를 리턴하는 메소드
 	
 	
 	

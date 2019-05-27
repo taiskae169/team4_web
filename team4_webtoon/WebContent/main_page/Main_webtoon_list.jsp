@@ -5,7 +5,7 @@
 
 <%
 		String title = request.getParameter("title");
-		String sub_title = request.getParameter("sub_title");
+		String sub_title = request.getParameter("subtitle");
 		String writer = request.getParameter("writer");
 		int star_point = Integer.parseInt(request.getParameter("star_point"));
 		int i=0;
@@ -24,9 +24,8 @@
               <div class="card-footer">
               	<%for(; i<star_point/20; i++){ %>
                	 	<small class="text-muted">&#9733;</small>
-               	 	System.out.println(i);
                 <%}
-              	if(;i<5;i++){t %>
+              	for(;i<5;i++){ %>
                 	<small class="text-muted">&#9734;</small>
                 <%} %>
               </div>

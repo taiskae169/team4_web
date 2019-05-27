@@ -23,6 +23,9 @@
 
   <title>사이트명</title>
 
+
+
+
   <!-- Bootstrap core CSS -->
   <link href="/team4_webtoon/resources/Main_page/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 

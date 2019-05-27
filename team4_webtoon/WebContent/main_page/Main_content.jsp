@@ -37,15 +37,15 @@
           </ol>
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-              <img class="d-block img-fluid" src="/team4_webtoon/resources/image/webtoon/webtoon1/webtoon1_main.jpg" alt="First slide">
+              <img class="d-block img-fluid" src="/team4_webtoon/resources/image/main_image/webtoon1_main.jpg" alt="First slide">
          									     <%//team4_webtoon/resources/image/webtoon/<웹툰명>/<웹툰명>_main.jpg 으로 변경할 예정 %>
          									     <%//A태그로 리스트로 가도록 할 예정 %>
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="/team4_webtoon/resources/image/webtoon/webtoon2/webtoon2_main.jpg" alt="Second slide">
+              <img class="d-block img-fluid" src="/team4_webtoon/resources/image/main_image/webtoon2_main.jpg" alt="Second slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="/team4_webtoon/resources/image/webtoon/webtoon3/webtoon3_main.jpg" alt="Third slide">
+              <img class="d-block img-fluid" src="/team4_webtoon/resources/image/main_image/webtoon3_main.jpg" alt="Third slide">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -67,6 +67,7 @@
 			if(star!=0 && star!=0){
 				star_point = (star/star_p);
 			}
+			
 		%>
 
           <jsp:include page="Main_webtoon_list.jsp">
