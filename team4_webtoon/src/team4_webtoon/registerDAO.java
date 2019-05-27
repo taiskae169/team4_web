@@ -37,8 +37,6 @@ public class registerDAO {
 			pstmt.setString(4, user_info.getAge());
 			pstmt.setString(5, user_info.getName());
 			pstmt.setInt(6, user_info.getState());
-
-			
 			pstmt.executeUpdate();
 
 		} catch (Exception ex) {
@@ -57,19 +55,20 @@ public class registerDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String dbPW = "";
+		String dbpasswd = "";
 		int x = -1;
 		
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("select pw from user_info where id = ?");
+			pstmt = conn.prepareStatement(
+					"select pw from user_info where id = ?");
 			pstmt.setString(1,id);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next())
 			{
-				dbPW = rs.getString("pw");
-				if(dbPW.equals(pw))
+				dbpasswd = rs.getString("pw");
+				if(dbpasswd.equals(pw))
 					x = 1;
 				else
 					x = 0;
@@ -86,6 +85,7 @@ public class registerDAO {
 					if (conn != null) try {conn.close();} catch(SQLException ex) {}
 				} 
 				return x;
-				}
+			}
+	
 		}
 
