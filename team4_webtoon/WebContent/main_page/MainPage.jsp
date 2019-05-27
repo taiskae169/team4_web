@@ -37,7 +37,7 @@
 <body>
 
   <!-- Navigation -->
-  	<jsp:include page="../menu.jsp"></jsp:include>
+  	<%@include file="/menu.jsp" %>
 
 
   <!-- Page Content -->
