@@ -12,7 +12,10 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 <body>
-
+	<%
+		request.setCharacterEncoding("euc-kr");
+		
+	%>
   <div class="container">
     <div class="row">
       <div class="col-lg-10 col-xl-9 mx-auto">
@@ -45,9 +48,11 @@
                 <label for="name">NAME</label>
               </div>
                 <div class="form-label-group">
-                <input type="number" id="state" class="form-control" name = "state" placeholder="state" autofocus>
-                <label for="state">state</label>
-              </div>
+                <input type="radio" value = "3" id="state" name = "state" placeholder="state" autofocus> 독자
+                <br>
+                <input type="radio" value = "4" id="state" name = "state" placeholder="state" autofocus> 작가
+
+   				</div>
 
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
               <button class="btn btn-default btn-warning btn-block text-uppercase" type="button" onclick = "location.href = '#'">돌아가기</button>

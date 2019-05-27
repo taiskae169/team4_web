@@ -121,8 +121,5 @@ public class WebToonListDAO {
 		
 		return list;
 	}
-	
-	
-	
 
 }

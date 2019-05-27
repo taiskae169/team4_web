@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <meta charset="utf-8">
+    <%@ page import ="team4_webtoon.registerDAO" %>
     <%
-    	String id = (String)session.getAttribute("test");
+    	String id = (String)session.getAttribute("sessionID");
     %>
     
   <head>
@@ -31,15 +32,15 @@
         <ul class="navbar-nav ml-auto">
         <%if(id ==null){ %>
           <li class="nav-item active">
-            <a class="nav-link" href="#">LOGIN
+            <a class="nav-link" href="login/login.jsp">LOGIN
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">SIGN</a>
+            <a class="nav-link" href="login/register.jsp">SIGN</a>
           </li>
           <%}else{ %>
           <li class="nav-item">
-            <a class="nav-link" href="#">LOGOUT</a>
+            <a class="nav-link" href="login/logoutPro.jsp">LOGOUT</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">회원정보</a>

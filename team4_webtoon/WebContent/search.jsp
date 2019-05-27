@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page import="webtoon.list.*"%>
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +13,7 @@
 
 </head>
 <body>
+	<%@ include file="menu.jsp"%>
 	<!-- Page Content -->
 <div class="container">
 
@@ -17,7 +21,23 @@
   <h1 class="my-4">검색 결과
     <small>작가 이름</small>
   </h1>
+  
 
+<DIV class='aside_menu'>
+  <FORM name='frm' method='GET' action="<%=request.getContextPath()%>/search.jsp">
+    <ASIDE style='float: right;'>
+      <SELECT name='col'> <!-- 검색 컬럼 -->
+        <OPTION value='none'>전체 목록</OPTION>
+        <OPTION value='name'>이름</OPTION>
+        <OPTION value='title'>제목</OPTION>
+      </SELECT>
+      <input type='text' name='word' value='word' placeholder="내용을 입력하세요">
+      <button type='submit'>검색</button>    
+    </ASIDE> 
+  </FORM>
+
+  <DIV class='menu_line' style='clear: both;'></DIV>
+</DIV>
   <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
       <div class="card h-100">
@@ -26,7 +46,7 @@
           <h4 class="card-title">
             <a href="#">Project One</a>
           </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+          <p class="card-text"></p>
         </div>
       </div>
     </div>

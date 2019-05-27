@@ -2,20 +2,19 @@
 <%@ page import = "team4_webtoon.registerBean" %>
 <%@ page import = "team4_webtoon.registerDAO" %>
 
-
 	<%
 		request.setCharacterEncoding("euc-kr");
 		
 	%>
-	<jsp:useBean id="registerBean" class="team4_webtoon.registerBean"/>
-	<jsp:setProperty property="*" name="registerBean"/>
+	<jsp:useBean id="member" class="team4_webtoon.registerBean"/>
+	<jsp:setProperty property="*" name="member"/>
 	
 
 	
 	<%
 		registerDAO dao = registerDAO.getInstance();
-		dao.insertMember(registerBean);
+		dao.insertMember(member);
+		response.sendRedirect("login.jsp");
 	%>
 	
-		<%=registerBean.getId() %>님 가입을 축하합니다.
 	<br>

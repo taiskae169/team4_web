@@ -21,7 +21,7 @@
 	if(check == 1)
 	{
 		session.setAttribute("sessionID",id);
-		response.sendRedirect("../main_page/MainPage.jsp");
+		response.sendRedirect("../search.jsp");
 		
 	}else if(check==0){%>
 	<script> 
