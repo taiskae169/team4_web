@@ -56,7 +56,7 @@
           <a href="MainPage.jsp?week=5" class="list-group-item">금요일</a>
           <a href="MainPage.jsp?week=5" class="list-group-item">토요일</a>
           <a href="MainPage.jsp?week=6" class="list-group-item">일요일</a>
-          <a href="#" class="list-group-item">도전만화</a>
+          <a href="MainPage.jsp?week=0" class="list-group-item">도전만화</a>
         </div>
         
 
@@ -67,12 +67,7 @@
 	</jsp:include>
 
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-    </div>
-    <!-- /.container -->
-  </footer>
+	<%@include file="/footer.jsp" %>
 
   <!-- Bootstrap core JavaScript -->
   <script src="/team4_webtoon/resources/Main_page/vendor/jquery/jquery.min.js"></script>

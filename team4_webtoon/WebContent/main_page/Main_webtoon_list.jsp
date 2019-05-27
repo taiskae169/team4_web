@@ -13,10 +13,12 @@
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <a href="#"><img class="card-img-top" src="/team4_webtoon/resources/image/webtoon/<%=title %>/<%=title%>_som.jpg" alt=""></a>
+              <%//리스트 페이지 완성시 링크 변경 필요 %>
               <div class="card-body">
                 <h4 class="card-title">
                   <a href="#"><%=title %></a>
+                  <%//리스트 페이지 완성시 링크 변경 필요 %>
                 </h4>
                 <h5><%=sub_title %></h5>
                 <p class="card-text"><%=writer %></p>
