@@ -41,7 +41,7 @@
             <a class="nav-link" href="/team4_webtoon/login/register.jsp">SIGN</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/team4_webtoon/search.jsp">검색</a>
+            <a class="nav-link" href="/team4_webtoon/search.jsp">SEARCH</a>
           </li>
           <%}else{ %>
           <li class="nav-item">
