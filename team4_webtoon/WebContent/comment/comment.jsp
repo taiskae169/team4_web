@@ -15,15 +15,40 @@
 	String cl_num = request.getParameter("cl_num"); 
 	//만화 회차 번호
 	
+	
+	int cmtNum;
+	//코멘트 페이지 번호
+	if(request.getParameter("cmtNum")==null){
+		cmtNum=1;
+	}else{
+		cmtNum = Integer.parseInt(request.getParameter("cmtNum"));
+	}
+	
+	// 코멘트 페이지 정보 초기값을 1로 설정
+	
+	int cmtSize = 2;
+	//한페이지에 나올 코멘트 숫자 체크
+	int startRow = (cmtNum -1) * cmtSize+1;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+	//시작 번호
+	int endRow = cmtNum *cmtSize;
+	//끝번호 체크
+	
+	
+	
+	
 	//시험용
+		id = "admin";
 		mw_num = "100";
 		cl_num = "1";
 	//시험용
 	
+	
 	cmtVO vo = new cmtVO();
 	cmtDAO dao = cmtDAO.getinstance();
-	ArrayList<cmtVO>  list = dao.getList(mw_num, cl_num);
+	ArrayList<cmtVO>  list = dao.getList(mw_num, cl_num, startRow, endRow);
 	SimpleDateFormat sdt = new SimpleDateFormat("yyyy-mm-dd HH:ss");
+	
+	int count = dao.getCount(mw_num, cl_num);
 %>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -60,7 +85,7 @@
 
         <!-- Comments Form -->
         <div class="card my-4">
-          <h5 class="card-header">댓글 리스트 (<%=dao.getCount(mw_num, cl_num)%>)</h5>
+          <h5 class="card-header">댓글 리스트 (<%= count%>)</h5>
           <div class="card-body">
             <form action="commentPro.jsp">
               <div class="form-group">
@@ -77,23 +102,51 @@
 		<%
 			for(int i = 0; i<list.size(); i++){
 				vo = list.get(i);
-				if(vo.getState()==1){
-					vo.setContent("<신고된 댓글입니다.>");
-				}
+
 		%>
 			<jsp:include page="commentList.jsp">
+				<jsp:param value="<%=vo.getNum() %>" name="num"/>
 				<jsp:param value="<%=vo.getId() %>" name="id"/>
 				<jsp:param value="<%=vo.getContent() %>" name="content"/>
 				<jsp:param value="<%=vo.getLike() %>" name="like"/>
 				<jsp:param value="<%=vo.getHate() %>" name="hate"/>
 				<jsp:param value="<%=sdt.format(vo.getReg()) %>" name="reg"/>
+				<jsp:param value="<%=cmtNum %>" name="cmtNum"/>
+				<jsp:param value="<%=vo.getState() %>" name="state"/>
+				<jsp:param value="<%=mw_num %>" name="mw_num"/>
+				<jsp:param value="<%=cl_num %>" name="cl_num"/>
 			</jsp:include>
 		<%} %>
 
-
-
-
-
+		<div style="text-align:center;">
+		<%
+			if(count>0){
+				int pageCount = count /cmtSize + (count%cmtSize ==0 ? 0: 1);
+				//전체 댓글/출력 댓글 갯수 + (나머지가 있는 경우에 +1)
+				int pageBlock = 5;
+				//한번에 5페이지씩 출력
+				int startPage = (cmtNum/pageBlock)*10+1;
+				//페이지가 5개가 넘어 갈 시 시작 페이지를 정해준다.
+				int endPage = startPage+pageBlock-1;
+				// 페이지 끝부분을 뜻함
+				if(endPage>pageCount){ endPage = pageCount;}
+				
+				if(startPage>pageBlock){
+		%>
+				<a href="comment.jsp?cmtNum=<%= startPage - 10 %>">[이전]</a>
+		<%		} 
+				for(int i = startPage; i <= endPage; i++){%>
+					<a href="comment.jsp?cmtNum=<%=i%>">[<%=i %>] </a>
+				<%}
+				if(endPage<pageCount){ %>
+					<a href="comment.jsp?cmtNum=<%= startPage + 10 %>">[다음]</a>
+		<%}
+		
+		}%>
+		</div>
+				
+				
+				
 
   </div>
   <!-- /.container -->
