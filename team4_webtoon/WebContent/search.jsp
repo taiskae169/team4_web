@@ -11,7 +11,8 @@
 
 	SearchDAO dao = new SearchDAO();
 	ArrayList<SearchVO> list = dao.getAddrs(search);
-
+	
+	
 %>
 <%@include file="/menu.jsp" %>
 <html>
@@ -28,10 +29,15 @@
 <div class="container">
 
   <!-- Page Heading -->
+  <%if (search == "null") {%>
+  	<br>
+  	<h1 class="my-4">검색어를 입력해주세요</h1>
+
+  <%} else{%>
   <h1 class="my-4"><%=request.getParameter("addr") %>
     <small>의 검색 결과입니다.</small>
   </h1>
-
+<%} %>
   <FORM name='frm' method='GET' action="search.jsp">
     <ASIDE style='float: right;'>
 
