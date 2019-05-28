@@ -156,6 +156,7 @@
   </ul>
 
 </div>
+<%@ include file="footer.jsp"%>
 <!-- /.container -->
 </body>
 </html>
