@@ -24,15 +24,15 @@
   
 
 <DIV class='aside_menu'>
-  <FORM name='frm' method='GET' action="<%=request.getContextPath()%>/search.jsp">
+  <FORM>
     <ASIDE style='float: right;'>
-      <SELECT name='col'> <!-- 검색 컬럼 -->
-        <OPTION value='none'>전체 목록</OPTION>
+      <SELECT name='opt'> <!-- 검색 컬럼 -->
+        <OPTION value='0'>제목</OPTION>
         <OPTION value='name'>이름</OPTION>
         <OPTION value='title'>제목</OPTION>
       </SELECT>
-      <input type='text' name='word' value='word' placeholder="내용을 입력하세요">
-      <button type='submit'>검색</button>    
+      <input type='text' name="condition" value='word' placeholder="내용을 입력하세요">
+      <button type='submit'>검색</button>
     </ASIDE> 
   </FORM>
 
