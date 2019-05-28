@@ -1,3 +1,8 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="webtoon.comment.cmtDAO"%>
+<%@page import="webtoon.comment.cmtVO"%>
+<%request.setCharacterEncoding("UTF-8"); %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,17 +14,40 @@
 	//만화 번호
 	String cl_num = request.getParameter("cl_num"); 
 	//만화 회차 번호
-
+	
+	//시험용
+		mw_num = "100";
+		cl_num = "1";
+	//시험용
+	
+	cmtVO vo = new cmtVO();
+	cmtDAO dao = cmtDAO.getinstance();
+	ArrayList<cmtVO>  list = dao.getList(mw_num, cl_num);
+	SimpleDateFormat sdt = new SimpleDateFormat("yyyy-mm-dd HH:ss");
 %>
 <head>
-
-  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
+<%//아이콘 용 추가 %>
+<!-- Bootstrap CDN -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
+<!-- Bootstrap-Iconpicker -->
+<link rel="stylesheet" href="dist/css/bootstrap-iconpicker.min.css"/>
+
+<!-- jQuery CDN -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!-- Bootstrap CDN -->
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap-Iconpicker Bundle -->
+<script type="text/javascript" src="dist/js/bootstrap-iconpicker.bundle.min.js"></script>
 
 
+
+<%//아이콘 용 추가 %>
   <!-- Bootstrap core CSS -->
   <link href="/team4_webtoon/resources/comment/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -32,7 +60,7 @@
 
         <!-- Comments Form -->
         <div class="card my-4">
-          <h5 class="card-header">댓글 리스트</h5>
+          <h5 class="card-header">댓글 리스트 (<%=dao.getCount(mw_num, cl_num)%>)</h5>
           <div class="card-body">
             <form action="commentPro.jsp">
               <div class="form-group">
@@ -46,40 +74,21 @@
         </div>
 
         <!-- Single Comment -->
-        <div class="media mb-4">
-          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-          <div class="media-body">
-            <h5 class="mt-0">Commenter Name</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-          </div>
-        </div>
-
-        <!-- Comment with nested comments -->
-        <div class="media mb-4">
-          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-          <div class="media-body">
-            <h5 class="mt-0">Commenter Name</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-
-            <div class="media mt-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-              <div class="media-body">
-                <h5 class="mt-0">Commenter Name</h5>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-              </div>
-            </div>
-
-            <div class="media mt-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-              <div class="media-body">
-                <h5 class="mt-0">Commenter Name</h5>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-              </div>
-            </div>
-
-          </div>
-        </div>
-
+		<%
+			for(int i = 0; i<list.size(); i++){
+				vo = list.get(i);
+				if(vo.getState()==1){
+					vo.setContent("<신고된 댓글입니다.>");
+				}
+		%>
+			<jsp:include page="commentList.jsp">
+				<jsp:param value="<%=vo.getId() %>" name="id"/>
+				<jsp:param value="<%=vo.getContent() %>" name="content"/>
+				<jsp:param value="<%=vo.getLike() %>" name="like"/>
+				<jsp:param value="<%=vo.getHate() %>" name="hate"/>
+				<jsp:param value="<%=sdt.format(vo.getReg()) %>" name="reg"/>
+			</jsp:include>
+		<%} %>
 
 
 
