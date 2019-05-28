@@ -20,13 +20,11 @@ public class SearchDAO {
 	
 	public ArrayList<SearchVO> getAddrs(String search) throws SQLException{
 		ArrayList<SearchVO> list = new ArrayList<SearchVO>();
-		
+
 		StringBuffer sql = new StringBuffer();
 		sql.append("select mw_title, mw_writer, mw_gen, mw_tag from main_webtoon where mw_writer like '%' || :search || '%' ");
-		
 		PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 		pstmt.setString(1,search);
-
 		ResultSet rs = pstmt.executeQuery();
 		while(rs.next()) {
 			SearchVO vo = new SearchVO();
@@ -35,6 +33,7 @@ public class SearchDAO {
 			vo.setGen(rs.getString("mw_gen"));
 			vo.setTag(rs.getString("mw_tag"));
 			list.add(vo);
+			
 		}
 		if(rs != null) rs.close();
 		if (pstmt != null) pstmt.close();
@@ -42,5 +41,5 @@ public class SearchDAO {
 		
 		return list;
 	}
-	
+
 }

@@ -8,10 +8,9 @@
 <!DOCTYPE html>
 <%
 	String search = request.getParameter("addr") == null ? "null" : request.getParameter("addr");
-
 	SearchDAO dao = new SearchDAO();
 	ArrayList<SearchVO> list = dao.getAddrs(search);
-	
+
 	
 %>
 <%@include file="/menu.jsp" %>
@@ -31,14 +30,25 @@
   <!-- Page Heading -->
   <%if (search == "null") {%>
   	<br>
-  	<h1 class="my-4">검색어를 입력해주세요</h1>
+  	<h1 class="my-4" style="text-align: center">검색어를 입력해주세요</h1>
+  	<br><br><br>
+	<form name = "out" method = "get" action="search.jsp">
+	<ASIDE style="text-align: center">
+	<select name = "select">
+		<option value = "title">제목 </option>
+		<option value = "writer">작가 </option>
+	</select>
+	<input type='text' name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색">
+       </ASIDE>
+       <br><br><br>
+	</form>
 
   <%} else{%>
   <h1 class="my-4"><%=request.getParameter("addr") %>
     <small>의 검색 결과입니다.</small>
   </h1>
-<%} %>
-  <FORM name='frm' method='GET' action="search.jsp">
+  
+   <FORM name='frm' method='GET' action="search.jsp">
     <ASIDE style='float: right;'>
 
       작가 검색 : <input type='text' name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색">
@@ -69,6 +79,9 @@
 
 
   </FORM>
+  
+<%} %>
+ 
 
   <DIV class='menu_line' style='clear: both;'></DIV>
 </DIV>
