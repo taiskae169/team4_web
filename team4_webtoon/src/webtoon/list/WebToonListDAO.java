@@ -122,13 +122,8 @@ public class WebToonListDAO {
 		}
 		
 		return list;
-<<<<<<< HEAD
-	}
-=======
+
 	}//요일별 웹툰 리스트를 리턴하는 메소드
-	
-	
-	
->>>>>>> branch 'master' of https://github.com/taiskae169/team4_web
+
 
 }

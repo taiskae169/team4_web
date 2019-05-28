@@ -13,7 +13,7 @@
 
 </head>
 <body>
-	<%@ include file="menu.jsp"%>
+
 	<!-- Page Content -->
 <div class="container">
 

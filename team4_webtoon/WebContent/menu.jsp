@@ -3,12 +3,9 @@
     <meta charset="utf-8">
     <%@ page import ="team4_webtoon.registerDAO" %>
     <%
-<<<<<<< HEAD
     	String id = (String)session.getAttribute("sessionID");
-=======
-    	String id = (String)session.getAttribute("test");
-    	
->>>>>>> branch 'master' of https://github.com/taiskae169/team4_web
+
+
     %>
     
   <head>
