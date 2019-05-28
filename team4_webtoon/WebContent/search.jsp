@@ -1,9 +1,19 @@
+    <%@ page import = "search.SearchDAO"%>
+    <%@ page import = "search.SearchVO" %>
+    <%@ page import = "java.util.ArrayList" %>
+    
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@page import="webtoon.list.*"%>
-    
-    
+
 <!DOCTYPE html>
+<%
+	String search = request.getParameter("addr") == null ? "null" : request.getParameter("addr");
+
+	SearchDAO dao = new SearchDAO();
+	ArrayList<SearchVO> list = dao.getAddrs(search);
+
+%>
+<%@include file="/menu.jsp" %>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -18,119 +28,49 @@
 <div class="container">
 
   <!-- Page Heading -->
-  <h1 class="my-4">검색 결과
-    <small>작가 이름</small>
+  <h1 class="my-4"><%=request.getParameter("addr") %>
+    <small>의 검색 결과입니다.</small>
   </h1>
-  
 
-<DIV class='aside_menu'>
-  <FORM>
+  <FORM name='frm' method='GET' action="search.jsp">
     <ASIDE style='float: right;'>
-      <SELECT name='opt'> <!-- 검색 컬럼 -->
-        <OPTION value='0'>제목</OPTION>
-        <OPTION value='name'>이름</OPTION>
-        <OPTION value='title'>제목</OPTION>
-      </SELECT>
-      <input type='text' name="condition" value='word' placeholder="내용을 입력하세요">
-      <button type='submit'>검색</button>
-    </ASIDE> 
+
+      작가 검색 : <input type='text' name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색">
+       </ASIDE>
+       <br>
+       <br>
+           	<div class = "row">
+    	<%for(int i = 0; i < list.size(); i++){%>
+
+
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+			 <a href="#"><%=list.get(i).getTitle() %></a>
+          </h4>
+          <p class="card-text"><%=list.get(i).getWriter() %></p>
+          <p class="card-text"><%=list.get(i).getGen() %></p>
+          <p class="card-text"><%=list.get(i).getTag() %></p>
+        </div>
+      </div>
+    </div>
+
+    <%}%>   
+
+    </div>
+
+
   </FORM>
 
   <DIV class='menu_line' style='clear: both;'></DIV>
 </DIV>
-  <div class="row">
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project One</a>
-          </h4>
-          <p class="card-text"></p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Two</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Three</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Four</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Five</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Six</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Seven</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Eight</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius adipisci dicta dignissimos neque animi ea, veritatis, provident hic consequatur ut esse! Commodi ea consequatur accusantium, beatae qui deserunt tenetur ipsa.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+
   <!-- /.row -->
 
   <!-- Pagination -->
+  <!-- 
   <ul class="pagination justify-content-center">
     <li class="page-item">
       <a class="page-link" href="#" aria-label="Previous">
@@ -154,8 +94,8 @@
           </a>
     </li>
   </ul>
+ -->
 
-</div>
 <%@ include file="footer.jsp"%>
 <!-- /.container -->
 </body>

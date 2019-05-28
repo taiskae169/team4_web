@@ -129,47 +129,8 @@ public class WebToonListDAO {
 
 	//검색하는 메서드
 	
-	public ArrayList<WebToonListVO> getWebToonList(String keyField, String keyWord)
-	{
-		ArrayList<WebToonListVO> list = new ArrayList<WebToonListVO>();
-		
-		
-		try {
 
-			String sql = "select * from main_webtoon";
-			
-			if (keyWord != null && !keyWord.contentEquals("")) {
-				sql +="where"+keyField.trim()+"like '%"+keyWord.trim()+"%' order by id";
-			}else {
-				sql +="order by id";
-				
-			}
-			System.out.println("sql = " + sql);
-			st = conn.createStatement();
-			rs = st.executeQuery(sql);
-			while(rs.next()) {
-				WebToonListVO vo = new WebToonListVO();
-				vo.setNum(rs.getInt("mw_num"));
-				vo.setTitle(rs.getString("mw_title"));
-				vo.setSub_title(rs.getString("mw_sub_title"));
-				vo.setReg(rs.getTimestamp("mw_reg"));
-				vo.setWriter(rs.getString("mw_writer"));
-				vo.setGen(rs.getString("gen"));
-				vo.setWeek(rs.getInt("mw_week"));
-				vo.setLike(rs.getInt("mw_like"));
-				vo.setMag(rs.getInt("mw_mag"));
-				vo.setTag(rs.getString("mw_tag"));
-				vo.setStar(rs.getInt("mw_star"));
-				vo.setStart_p(rs.getInt("mw_star_p"));
-				list.add(vo);
-			}
-		}catch (Exception e) {
-			System.out.println(e+"=> getWebToonList fail");
-		} finally {
-			
-		}
-		return list;
-	}
+	}//요일별 웹툰 리스트를 리턴하는 메소드
 	
 	
-}
+
