@@ -17,7 +17,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>SEARCH</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
@@ -42,6 +42,75 @@
        </ASIDE>
        <br><br><br>
 	</form>
+	<h3>추천 키워드</h3><br>
+	<div class = "row">
+		<div class = "col-md-6">
+			<table class = "table table-bordered">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>first</th>
+						<th>second</th>
+						<th>second</th>
+						<th>second</th>
+						</tr>
+						</thead>
+				<tbody>
+					<tr>
+						<td>mark</td>
+						<td>asd</td>
+						<td>a</td>
+						<td>a</td>
+						<td>a</td>
+				</tbody>
+								<tbody>
+					<tr>
+						<td>mark</td>
+						<td>asd</td>
+						<td>a</td>
+						<td>a</td>
+						<td>a</td>
+				</tbody>
+						
+			</table>
+		</div>
+	</div>
+	<br>
+	
+	<h3>추천 장르</h3><br>
+	<div class = "row">
+		<div class = "col-md-6">
+			<table class = "table table-bordered">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>first</th>
+						<th>second</th>
+						<th>second</th>
+						<th>second</th>
+						<th>second</th>
+						<th>second</th>
+						<th>second</th>
+						
+						</tr>
+						</thead>
+				<tbody>
+					<tr>
+						<td>mark</td>
+						<td>asd</td>
+						<td>a</td>
+				</tbody>
+										<tbody>
+					<tr>
+						<td>mark</td>
+						<td>asd</td>
+						<td>a</td>
+						<td>a</td>
+						<td>a</td>
+				</tbody>
+			</table>
+		</div>
+	</div>
 
   <%} else{%>
   <h1 class="my-4"><%=request.getParameter("addr") %>

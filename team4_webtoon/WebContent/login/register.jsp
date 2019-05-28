@@ -55,7 +55,7 @@
    				</div>
 
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
-              <button class="btn btn-default btn-warning btn-block text-uppercase" type="button" onclick = "location.href = '#'">돌아가기</button>
+              <button class="btn btn-default btn-warning btn-block text-uppercase" type="button" onclick = "location.href = '../main_page/MainPage.jsp'">돌아가기</button>
               
               <a class="d-block text-center mt-2 small" href="login.jsp">Sign In</a>
               <hr class="my-4">
