@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+         
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,13 +32,12 @@
 	#box {float:left; padding:30px;margin-left:550px;margin-top:200px; margin-bottom:500px;}
 	#box {float:left; }
 </style>
-
-
 </head>
 
 <body id="page-top">
 
  <!-- Navigation -->
+<%@include file="/menu.jsp" %>
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-shrink" id="mainNav">
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="#page-top">WebToon</a>
@@ -56,9 +57,41 @@
             <a class="nav-link js-scroll-trigger" href="#about"><b>리그</b></a>
           </li>
         </ul>
+		<ul class="navbar-nav ml-auto">  
+        <%if(id ==null){ %>
+          <li class="nav-item active">
+        	<a class="nav-link js-scroll-trigger" href="#">LOGIN
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#">SIGN</a>
+          </li>
+          <%}else{ %>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#">LOGOUT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#">회원정보</a>
+          </li>
+          <%} %>
+			<li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#">검색</a>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
 
 
   <!-- Header -->
@@ -82,8 +115,7 @@
 	<br />
 	</div>
   </header>
-	
-	
+
 	 <!-- Services -->
   <section class="page-section" id="services">
     <div class="container">

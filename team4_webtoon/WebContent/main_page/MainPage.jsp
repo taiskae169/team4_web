@@ -38,7 +38,7 @@
 
   <!-- Navigation -->
   	<%@include file="/menu.jsp" %>
-
+	<%@include file="/navigationBar.jsp" %>
 
   <!-- Page Content -->
   <div class="container">
