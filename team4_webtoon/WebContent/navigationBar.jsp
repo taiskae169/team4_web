@@ -58,7 +58,7 @@
       </div>
     </div>
   </nav>
-  
+  <br><br><br><br><br>
   
  <!-- Bootstrap core JavaScript -->
   <script src="/team4_webtoon/resources/kgb/agencyvendor/jquery/jquery.min.js"></script>

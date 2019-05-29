@@ -38,9 +38,10 @@
 </style>
 </head>
 <body>
+
 <%@include file="/menu.jsp" %>
 <%@include file="/navigationBar.jsp" %>
-<%@include file="/menu2.jsp" %>
+
 	<!-- Page Content -->
 <div class="container">
 
