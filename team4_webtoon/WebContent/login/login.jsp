@@ -33,9 +33,9 @@
 	request.setCharacterEncoding("euc-kr");
 	%>
   <div class="container">
-    <div class="row">
-      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-        <div class="card card-signin my-5">
+    <div class="row"><br><br><br><br><br><br>
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto"><br><br><br>
+        <div class="card card-signin my-5"><br>
           <div class="card-body">
             <h5 class="card-title text-center">로그인</h5>
             <form class="form-signin" name="loginInfo" method = "post" action="loginPro.jsp" onsubmit="return checkIt()">
@@ -48,11 +48,7 @@
                 <input type="password" id="password" name = "pw" class="form-control" placeholder="Password" required>
                 <label for="password">Password</label>
               </div>
-
-              <div class="custom-control custom-checkbox mb-3">
-                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                <label class="custom-control-label" for="customCheck1">Remember password</label>
-              </div>
+              <hr class="my-4">
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Login</button>
               <button class="btn btn-lg btn-warning btn-block text-uppercase" onclick="location='register.jsp'">Register</button>
               <button class="btn btn-lg btn-warning btn-block text-uppercase" onclick="location='../main_page/MainPage.jsp'">돌아가기</button>
