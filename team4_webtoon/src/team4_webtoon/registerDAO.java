@@ -1,6 +1,9 @@
-package team4_webtoon;
+	package team4_webtoon;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Vector;
+
 import javax.naming.*;
 import javax.sql.*;
 
@@ -70,6 +73,48 @@ public class registerDAO {
 				dbpasswd = rs.getString("pw");
 				if(dbpasswd.equals(pw))
 					x = 1;
+				else
+					x = 0;
+			}
+			else 
+				x = -1;
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			} finally {
+
+					if( rs != null) try {rs.close();} catch(SQLException ex) {}
+					if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+					if (conn != null) try {conn.close();} catch(SQLException ex) {}
+				} 
+				return x;
+			}
+	
+	public int idCheck(String name, String email) throws Exception
+	{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		
+		
+		String dbpasswd = "";
+		int x = -1;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"select email from user_info where name = ?");
+			pstmt.setString(1,name);
+			rs = pstmt.executeQuery();
+
+			
+			if(rs.next())
+			{
+				dbpasswd = rs.getString("email");
+				if(dbpasswd.equals(email)) {
+					x = 1;
+				}
 				else
 					x = 0;
 			}

@@ -27,7 +27,15 @@
 <title>SEARCH</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+<style>
+	table, th, td{
+		border : 1px solid #bcbcbc;
+	}
+	table{
+		width : 100%;
+		height : 150px;
+	}
+</style>
 </head>
 <body>
 
@@ -47,77 +55,68 @@
 	</select>
 	<input type='text' name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색">
        </ASIDE>
-       <br><br><br>
+       <br><br><hr style = "border : outset 1px black;"><br>
 	</form>
+
+
 	<h3>추천 키워드</h3><br>
-	<div class = "row">
-		<div class = "col-md-6">
-			<table class = "table table-bordered">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>first</th>
-						<th>second</th>
-						<th>second</th>
-						<th>second</th>
-						</tr>
-						</thead>
+	<div>
+		<div>
+			<table>
+
 				<tbody>
 					<tr>
-						<td>mark</td>
-						<td>asd</td>
-						<td>a</td>
-						<td>a</td>
-						<td>a</td>
-				</tbody>
-								<tbody>
+						<td>#결혼생활</td>
+						<td>#대학생활</td>
+						<td>#반려동물</td>
+						<td>#배틀</td>
 					<tr>
-						<td>mark</td>
-						<td>asd</td>
-						<td>a</td>
-						<td>a</td>
-						<td>a</td>
+						<td>#복수</td>
+						<td>#일진</td>
+						<td>#솔로</td>
+						<td>#연예인 </td>
+
+					<tr>
+						<td>#음식</td>
+						<td>#외계인</td>
+						<td>#격투</td>
+						<td>#직장생활</td>
 				</tbody>
-						
 			</table>
 		</div>
 	</div>
 	<br>
 	
 	<h3>추천 장르</h3><br>
-	<div class = "row">
-		<div class = "col-md-6">
-			<table class = "table table-bordered">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>first</th>
-						<th>second</th>
-						<th>second</th>
-						<th>second</th>
-						<th>second</th>
-						<th>second</th>
-						<th>second</th>
-						
-						</tr>
-						</thead>
+	<div>
+		<div>
+			<table>
 				<tbody>
 					<tr>
-						<td>mark</td>
-						<td>asd</td>
-						<td>a</td>
-				</tbody>
-										<tbody>
+						<td>에피소드</td>
+						<td>스토리</td>
+						<td>공포</td>
+						<td>드라마</td>
 					<tr>
-						<td>mark</td>
-						<td>asd</td>
-						<td>a</td>
-						<td>a</td>
-						<td>a</td>
+						<td>무협</td>
+						<td>미스터리</td>
+						<td>순정만화</td>
+						<td>스릴러물</td>
+					<tr>
+						<td>스포츠다</td>
+						<td>액션</td>
+						<td>일상</td>
+						<td>지식</td>
+					<tr>
+						<td>코믹</td>
+						<td>판타지</td>
+						<td>학원</td>
+						<td>성인</td>
 				</tbody>
 			</table>
 		</div>
 	</div>
+	<br><br>
 
   <%} else if (search != "null"){%>
   <h1 class="my-4"><%=request.getParameter("addr") %>
@@ -194,7 +193,6 @@
     </li>
   </ul>
  -->
-
 <%@ include file="footer.jsp"%>
 <!-- /.container -->
 </body>
