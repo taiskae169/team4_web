@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +16,11 @@
 
   <!-- Custom styles for this template -->
   <link href="/team4_webtoon/resources/wb_detail_page/css/business-frontpage.css" rel="stylesheet">
-
+	<style>
+		#thumnail{float:left; padding:30px; margin-right:300px;}
+		#thumnail{float:right; padding:30px; margin-right:300px;}
+		.wb_day{color:red;"}
+	</style>
 </head>
 
 <body>
@@ -50,14 +55,20 @@
 
   <!-- Header -->
   <header class="bg-primary py-5 mb-5">
+           <div id="thumnail">
+          <img src="http://t1.daumcdn.net/webtoon/op/d4db19bad16beffc26b6e8c091b092da5d8b2a39" width="664" height="390" class="img_thumb" alt="키몽의 호구로운 생활">
+        </div>
     <div class="container h-100">
       <div class="row h-100 align-items-center">
-        <div class="col-lg-12">
-          <h1 class="display-4 text-white mt-5 mb-2">Business Name or Tagline</h1>
-          <p class="lead mb-5 text-white-50">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non possimus ab labore provident mollitia. Id assumenda voluptate earum corporis facere quibusdam quisquam iste ipsa cumque unde nisi, totam quas ipsam.</p>
+        <div id="wb_d" class="col-lg-12">
+          <h1 class="display-4 text-white mt-5 mb-2">키몽의 호구로운 생활</h1>
+          <p class="lead mb-5 text-white-50"><a>코믹</a>,<a>일상</a>,<a>유머</a></p>
+          <p class="lead mb-5 text-white-50">예쁜 나이 서른 살, 어딘가 모자란 청년들의 호구 같은 나날들</p>
+          <a class="btn btn-primary btn-lg" href="#">첫화보기 </a>
         </div>
-      </div>
+      </div>      
     </div>
+   
   </header>
 
   <!-- Page Content -->
@@ -69,7 +80,7 @@
         <hr>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde debitis aliquam laboriosam. Repellat explicabo, maiores!</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum, alias, adipisci nesciunt voluptate. Voluptatum.</p>
-        <a class="btn btn-primary btn-lg" href="#">Call to Action &raquo;</a>
+        
       </div>
       <div class="col-md-4 mb-5">
         <h2>Contact Us</h2>
