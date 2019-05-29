@@ -120,7 +120,7 @@
 
   <%} else if (search != "null"){%>
   <h1 class="my-4"><%=request.getParameter("addr") %>
-    <small>의 검색 결과입니다.</small>
+    <small> 검색 결과 </small>
   </h1>
 
    <FORM name='frm' method='GET' action="search.jsp">
