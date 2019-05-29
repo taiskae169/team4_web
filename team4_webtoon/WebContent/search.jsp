@@ -1,6 +1,7 @@
     <%@ page import = "search.SearchDAO"%>
     <%@ page import = "search.SearchVO" %>
     <%@ page import = "java.util.ArrayList" %>
+    <%@ page import = "webtoon.list.*" %>
     
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -8,8 +9,14 @@
 <!DOCTYPE html>
 <%
 	String search = request.getParameter("addr") == null ? "null" : request.getParameter("addr");
+	String select = request.getParameter("select") == null ? "" : request.getParameter("select"); 
 	SearchDAO dao = new SearchDAO();
-	ArrayList<SearchVO> list = dao.getAddrs(search);
+	ArrayList<SearchVO> list = dao.getAddrs(search,select);
+	
+	//이미지 가져오기
+	String title = request.getParameter("title");
+	//select box 가져오기
+
 
 	
 %>
@@ -35,8 +42,8 @@
 	<form name = "out" method = "get" action="search.jsp">
 	<ASIDE style="text-align: center">
 	<select name = "select">
-		<option value = "title">제목 </option>
-		<option value = "writer">작가 </option>
+		<option value = "0">제목 </option>
+		<option value = "1">작가 </option>
 	</select>
 	<input type='text' name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색">
        </ASIDE>
@@ -112,15 +119,18 @@
 		</div>
 	</div>
 
-  <%} else{%>
+  <%} else if (search != "null"){%>
   <h1 class="my-4"><%=request.getParameter("addr") %>
     <small>의 검색 결과입니다.</small>
   </h1>
   
    <FORM name='frm' method='GET' action="search.jsp">
     <ASIDE style='float: right;'>
-
-      작가 검색 : <input type='text' name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색">
+	<select name = "select">
+		<option value = "0">제목 </option>
+		<option value = "1">작가 </option>
+	</select>
+       <input type='text' name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색">
        </ASIDE>
        <br>
        <br>
@@ -130,7 +140,7 @@
 
     <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
       <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <a href="#"><img class="card-img-top" src="/team4_webtoon/resources/image/webtoon/<%=list.get(i).getTitle() %>/<%=list.get(i).getTitle() %>_som.jpg" alt=""></a>
         <div class="card-body">
           <h4 class="card-title">
 			 <a href="#"><%=list.get(i).getTitle() %></a>
@@ -139,6 +149,7 @@
           <p class="card-text"><%=list.get(i).getGen() %></p>
           <p class="card-text"><%=list.get(i).getTag() %></p>
         </div>
+
       </div>
     </div>
 
