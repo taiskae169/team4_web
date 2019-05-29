@@ -3,6 +3,7 @@ package webtoon.list;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -20,6 +21,7 @@ public class WebToonListDAO {
 	private Connection conn = null;
 	private ResultSet rs = null;
 	private PreparedStatement pstmt = null;
+	Statement st;
 	SimpleDateFormat dt = new SimpleDateFormat("yyyy-mm-dd HH:mm");
 	
 	
@@ -122,9 +124,13 @@ public class WebToonListDAO {
 		}
 		
 		return list;
+
+	}//요일별 웹툰 리스트를 리턴하는 메소드
+
+	//검색하는 메서드
+	
+
 	}//요일별 웹툰 리스트를 리턴하는 메소드
 	
 	
-	
 
-}
