@@ -85,7 +85,7 @@
 			</table>
 		</div>
 	</div>
-	<br>
+	<br><br>
 	
 	<h3>추천 장르</h3><br>
 	<div>
@@ -116,13 +116,13 @@
 			</table>
 		</div>
 	</div>
-	<br><br>
+	<br><br><br>
 
   <%} else if (search != "null"){%>
   <h1 class="my-4"><%=request.getParameter("addr") %>
     <small>의 검색 결과입니다.</small>
   </h1>
-  
+
    <FORM name='frm' method='GET' action="search.jsp">
     <ASIDE style='float: right;'>
 	<select name = "select">
@@ -133,6 +133,7 @@
        </ASIDE>
        <br>
        <br>
+       
            	<div class = "row">
     	<%for(int i = 0; i < list.size(); i++){%>
 
@@ -158,7 +159,65 @@
 
 
   </FORM>
-  
+  <br>
+  <h3>추천 키워드</h3><br>
+	<div>
+		<div>
+			<table>
+
+				<tbody>
+					<tr>
+						<td>#결혼생활</td>
+						<td>#대학생활</td>
+						<td>#반려동물</td>
+						<td>#배틀</td>
+					<tr>
+						<td>#복수</td>
+						<td>#일진</td>
+						<td>#솔로</td>
+						<td>#연예인 </td>
+
+					<tr>
+						<td>#음식</td>
+						<td>#외계인</td>
+						<td>#격투</td>
+						<td>#직장생활</td>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<br><br>
+	
+	<h3>추천 장르</h3><br>
+	<div>
+		<div>
+			<table>
+				<tbody>
+					<tr>
+						<td>에피소드</td>
+						<td>스토리</td>
+						<td>공포</td>
+						<td>드라마</td>
+					<tr>
+						<td>무협</td>
+						<td>미스터리</td>
+						<td>순정만화</td>
+						<td>스릴러물</td>
+					<tr>
+						<td>스포츠다</td>
+						<td>액션</td>
+						<td>일상</td>
+						<td>지식</td>
+					<tr>
+						<td>코믹</td>
+						<td>판타지</td>
+						<td>학원</td>
+						<td>성인</td>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<br><br><br>
 <%} %>
  
 
