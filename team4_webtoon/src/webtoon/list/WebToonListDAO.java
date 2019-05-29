@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 public class WebToonListDAO {
 	private WebToonListDAO() {}
 	
-	static WebToonListDAO instance = new WebToonListDAO();
+	static private WebToonListDAO instance = new WebToonListDAO();
 	
 	public static WebToonListDAO getInstance() {
 		return instance;
