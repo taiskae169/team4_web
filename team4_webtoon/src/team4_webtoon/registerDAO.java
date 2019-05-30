@@ -344,7 +344,7 @@ public class registerDAO {
 			} 
 			
 			return result;
-		}//회원 등급을 확인하는 메소드ㅇㄹ
+		}//회원 등급을 확인하는 메소드
 	
 	}
 
