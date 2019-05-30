@@ -90,11 +90,12 @@ public class registerDAO {
 				return x;
 			}
 	
-	public int idCheck(String name, String email) throws Exception
+	public registerBean idCheck(String name, String email) throws Exception
 	{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		registerBean member = null;
 		
 		
 		
@@ -104,14 +105,16 @@ public class registerDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"select email from user_info where name = ?");
+					"select * from user_info where name = ?");
 			pstmt.setString(1,name);
 			rs = pstmt.executeQuery();
 
 			
 			if(rs.next())
 			{
+				member = new registerBean();
 				dbpasswd = rs.getString("email");
+				member.setId(rs.getString("id"));
 				if(dbpasswd.equals(email)) {
 					x = 1;
 				}
@@ -129,8 +132,141 @@ public class registerDAO {
 					if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 					if (conn != null) try {conn.close();} catch(SQLException ex) {}
 				} 
+				return member;
+				
+			}
+	
+	
+	public registerBean pwCheck(String id, String email) throws Exception
+	{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		registerBean member = null;
+		
+		
+		
+		String dbpasswd = "";
+		int x = -1;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"select * from user_info where id = ?");
+			pstmt.setString(1,id);
+			rs = pstmt.executeQuery();
+
+			
+			if(rs.next())
+			{
+				member = new registerBean();
+				dbpasswd = rs.getString("email");
+				member.setPassword(rs.getString("pw"));
+				if(dbpasswd.equals(email)) {
+					x = 1;
+				}
+				else
+					x = 0;
+			}
+			else 
+				x = -1;
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			} finally {
+
+					if( rs != null) try {rs.close();} catch(SQLException ex) {}
+					if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+					if (conn != null) try {conn.close();} catch(SQLException ex) {}
+				} 
+				return member;
+				
+			}
+	
+	public int idCheck1(String name, String email) throws Exception
+	{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String dbpasswd = "";
+		int x = -1;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"select * from user_info where name = ?");
+			pstmt.setString(1,name);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				dbpasswd = rs.getString("email");
+				if(dbpasswd.equals(email))
+					x = 1;
+				else
+					x = 0;
+			}
+			else 
+				x = -1;
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			} finally {
+
+					if( rs != null) try {rs.close();} catch(SQLException ex) {}
+					if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+					if (conn != null) try {conn.close();} catch(SQLException ex) {}
+				} 
 				return x;
 			}
+	
+	public int pwCheck1(String id, String email) throws Exception
+	{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String dbpasswd = "";
+		int x = -1;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"select * from user_info where id = ?");
+			pstmt.setString(1,id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				dbpasswd = rs.getString("email");
+				if(dbpasswd.equals(email))
+					x = 1;
+				else
+					x = 0;
+			}
+			else 
+				x = -1;
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			} finally {
+
+					if( rs != null) try {rs.close();} catch(SQLException ex) {}
+					if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+					if (conn != null) try {conn.close();} catch(SQLException ex) {}
+				} 
+				return x;
+			}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 		}
 

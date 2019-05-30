@@ -59,9 +59,13 @@ public class registerBean {
 	public void setState(int state) {
 		this.state = state;
 	}
+	public String idCheck() {
+		return id;
+	}
 	
-	
-	
+	public String pwCheck() {
+		return password;
+	}
 
 	
 
