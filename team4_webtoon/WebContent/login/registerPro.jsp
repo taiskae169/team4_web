@@ -6,9 +6,9 @@
 		request.setCharacterEncoding("euc-kr");
 		
 	%>
-	<jsp:useBean id="member" class="team4_webtoon.registerBean"/>
+	<jsp:useBean id="member" class="team4_webtoon.registerBean">
 	<jsp:setProperty property="*" name="member"/>
-	
+	</jsp:useBean>
 
 	
 	<%
