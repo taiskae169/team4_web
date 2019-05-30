@@ -50,10 +50,9 @@
             <form class="form-signin" method="post" action="registerPro.jsp" name="userinput" onsubmit="return checkIt()" >
               <div class="form-label-group">
                 <input type="text" id = "id" class="form-control" placeholder="ID" name = "id" size = "10" maxlength="12">                
-                <input type = "button" value = "중복확인" onclick="openConfirmid(this.form)">
-                <input type = "hidden" name ="idDuplication" value = "idUncheck">    
-				<label for="id">ID</label>
 
+				<label for="id">ID</label>
+                <input type = "button" value = "중복확인" onclick="openConfirmid(this.form)">
               </div>
 
               <div class="form-label-group">
@@ -63,9 +62,10 @@
                 <hr>
                 <div class="form-label-group">
                 <input type="email" id="email" class="form-control" name = "email" placeholder="Email address" required>
-                <input type = "button" value = "중복확인" onclick="openConfirmemail(this.form)">
                 <label for="email">Email address</label>
+                <input type = "button" value = "중복확인" onclick="openConfirmemail(this.form)">
               </div>
+
                 <div class="form-label-group">
                 <input type="text" id="age" class="form-control" name = "age" placeholder="age" required autofocus>
                 <label for="age">AGE</label>
