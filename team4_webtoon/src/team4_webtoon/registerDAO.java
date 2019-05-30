@@ -346,5 +346,54 @@ public class registerDAO {
 			return result;
 		}//회원 등급을 확인하는 메소드
 	
+		
+		public void updateMember(registerBean member) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			
+			try {
+				conn = getConnection();
+				
+				pstmt = conn.prepareStatement(
+						"update user_info set state = ?"+
+						"where id=?");
+				pstmt.setInt(1, member.getState());
+				pstmt.setString(2, member.getId());
+				
+				pstmt.executeUpdate();
+			}catch(Exception ex) {
+				ex.printStackTrace();
+			}finally {
+				if(pstmt != null) try {pstmt.close();} catch(SQLException ex) {}
+				if(conn != null) try { conn.close();} catch(SQLException ex) {}
+			}
+		}
+		
+		public registerBean getMember(String id) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			registerBean member = null;
+			try {
+				conn = getConnection();
+				
+				pstmt = conn.prepareStatement(
+						"select * from user_info where id = ?");
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					member = new registerBean();
+					member.setState(rs.getInt("state"));
+				}
+			}catch(Exception ex) {
+				ex.printStackTrace();
+			}finally {
+	            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}				
+			}
+			return member;
+		}
 	}
 
