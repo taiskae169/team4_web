@@ -148,7 +148,7 @@
           <h4 class="card-title">
 			 <a href="#"><%=list.get(i).getTitle() %></a>
           </h4>
-          <p class="card-text"><%=list.get(i).getWriter() %></p>
+          <p class="card-text"><a href = "#"><%=list.get(i).getWriter() %></a></p>
           <p class="card-text"><%=list.get(i).getGen() %></p>
           <p class="card-text"><%=list.get(i).getTag() %></p>
         </div>

@@ -259,14 +259,65 @@ public class registerDAO {
 				return x;
 			}	
 	
+	public int confirmId(String id) 
+			throws Exception {
+				Connection conn = null;
+		        PreparedStatement pstmt = null;
+				ResultSet rs= null;
+		        String dbpasswd="";
+				int x=-1;
+		        
+				try {
+		            conn = getConnection();
+		            
+		            pstmt = conn.prepareStatement(
+		            	"select id from user_info where id = ?");
+		            pstmt.setString(1, id);
+		            rs= pstmt.executeQuery();
+
+					if(rs.next())
+						x= 1; //해당 아이디 있음
+					else
+						x= -1;//해당 아이디 없음		
+		        } catch(Exception ex) {
+		            ex.printStackTrace();
+		        } finally {
+					if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+		            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+		            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		        }
+				return x;
+			}
 	
-	
-	
-	
-	
-	
-	
-	
+	public int confirmEmail(String email) 
+			throws Exception {
+				Connection conn = null;
+		        PreparedStatement pstmt = null;
+				ResultSet rs= null;
+		        String dbpasswd="";
+				int x=-1;
+		        
+				try {
+		            conn = getConnection();
+		            
+		            pstmt = conn.prepareStatement(
+		            	"select email from user_info where email = ?");
+		            pstmt.setString(1, email);
+		            rs= pstmt.executeQuery();
+
+					if(rs.next())
+						x= 1; //해당 아이디 있음
+					else
+						x= -1;//해당 아이디 없음		
+		        } catch(Exception ex) {
+		            ex.printStackTrace();
+		        } finally {
+					if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+		            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+		            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		        }
+				return x;
+			}
 	
 		}
 
