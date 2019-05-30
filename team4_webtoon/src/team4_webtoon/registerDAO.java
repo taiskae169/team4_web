@@ -131,6 +131,33 @@ public class registerDAO {
 				} 
 				return x;
 			}
+		
+		public int level_check(String id) {
+			
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			int result = 0;
+			try {
+				
+				conn = getConnection();
+				String sql = "select * from user_info where id=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					result = rs.getInt("state");
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				if( rs != null) try {rs.close();} catch(SQLException ex) {}
+				if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+				if (conn != null) try {conn.close();} catch(SQLException ex) {}
+			} 
+			
+			return result;
+		}//회원 등급을 확인하는 메소드
 	
-		}
+	}
 

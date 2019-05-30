@@ -10,8 +10,7 @@
 		int star_point = Integer.parseInt(request.getParameter("star_point"));
 		int i=0;
 %>
-
-          <div class="col-lg-4 col-md-6 mb-4">
+          <div class="col-lg-4 col-md-6 mb-5">
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="/team4_webtoon/resources/image/webtoon/<%=title %>/<%=title%>_som.jpg" alt=""></a>
               <%//리스트 페이지 완성시 링크 변경 필요 %>
