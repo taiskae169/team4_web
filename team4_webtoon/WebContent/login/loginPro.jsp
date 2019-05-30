@@ -19,12 +19,7 @@
 	
 	
 	request.setCharacterEncoding("euc-kr");
-	
-	registerBean c = dao.getMember(id);
-	
-	dao.updateMember(member);
-	
-	
+
 	
 	String msg = "";
 	%>	
@@ -39,10 +34,10 @@
 		else if(level == 1){%>
 		<script>
 			alert("휴면회원입니다. 해제하시겠습니까?");
-			<%=c.getState() == 3%>
+
 			location.href="levelPro.jsp";
 		</script>
-		
+		<%session.setAttribute("sessionID",id); %>
 		<%} else{
 		session.setAttribute("sessionID",id);
 		response.sendRedirect("../main_page/MainPage.jsp");

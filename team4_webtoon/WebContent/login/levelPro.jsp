@@ -7,12 +7,18 @@
 	<%
 		request.setCharacterEncoding("euc-kr");
 		String id = (String)session.getAttribute("sessionID");
-		
+		member.setId(id);
+		member.setState(3);
+
 		registerDAO dao = registerDAO.getInstance();
-		registerBean c = dao.getMember(id);
-		
+
 		dao.updateMember(member);
 		
 	%>
-바뀜!!!
+	
+	
+	
+바뀜!!
+      5초후에 메인으로 이동합니다.<meta http-equiv="Refresh" content="3;url=../main_page/MainPage.jsp" >
+	
 	

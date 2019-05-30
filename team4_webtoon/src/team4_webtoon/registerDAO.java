@@ -355,10 +355,9 @@ public class registerDAO {
 				conn = getConnection();
 				
 				pstmt = conn.prepareStatement(
-						"update user_info set state = ?"+
+						"update user_info set state = 3"+
 						"where id=?");
-				pstmt.setInt(1, member.getState());
-				pstmt.setString(2, member.getId());
+				pstmt.setString(1, member.getId());
 				
 				pstmt.executeUpdate();
 			}catch(Exception ex) {
@@ -369,31 +368,5 @@ public class registerDAO {
 			}
 		}
 		
-		public registerBean getMember(String id) throws Exception{
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			registerBean member = null;
-			try {
-				conn = getConnection();
-				
-				pstmt = conn.prepareStatement(
-						"select * from user_info where id = ?");
-				pstmt.setString(1, id);
-				rs = pstmt.executeQuery();
-				
-				if(rs.next()) {
-					member = new registerBean();
-					member.setState(rs.getInt("state"));
-				}
-			}catch(Exception ex) {
-				ex.printStackTrace();
-			}finally {
-	            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
-	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}				
-			}
-			return member;
-		}
 	}
 
