@@ -67,10 +67,18 @@
             <a class="nav-link js-scroll-trigger" href="#services"><b>랭킹</b></a>
           </li>
           <li class="nav-item">
+<<<<<<< HEAD
             <a class="nav-link js-scroll-trigger" href="#portfolio"><b>웹툰리그</b></a>
+=======
+            <a class="nav-link js-scroll-trigger" href="/team4_webtoon/main_page/MainPage.jsp"><b>웹툰</b></a>
+>>>>>>> branch 'master' of https://github.com/taiskae169/team4_web.git
           </li>
           <li class="nav-item">
+<<<<<<< HEAD
             <a class="nav-link js-scroll-trigger" href="#about"><b>My</b></a>
+=======
+            <a class="nav-link js-scroll-trigger" href="MainPage.jsp?week=0"><b>리그</b></a>
+>>>>>>> branch 'master' of https://github.com/taiskae169/team4_web.git
           </li>
         </ul>
 		<ul class="navbar-nav ml-auto">  

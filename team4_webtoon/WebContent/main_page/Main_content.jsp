@@ -5,10 +5,9 @@
 <!DOCTYPE html>
 
 <%
-	String week = request.getParameter("week");
+	//String week = request.getParameter("week");
 	WebToonListDAO dao = WebToonListDAO.getInstance();
 	WebToonListVO vo = new WebToonListVO();
-	
 	ArrayList<WebToonListVO> list = dao.getWeeklyWebtoon(Integer.parseInt(week));
 	
 
@@ -57,9 +56,26 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-
-        <div class="row">
-
+        <div>
+	        <%if(week.equals("0")) {%>
+	        	<h1 class="my-4">도전만화</h1>
+	        <%}else if(week.equals("1")){ %>
+	        	<h1>월요일</h1>
+			<%}else if(week.equals("2")){ %>
+	        	<h1 class="my-4">화요일</h1>
+	        <%}else if(week.equals("3")){ %>
+	        	<h1 class="my-4">수요일</h1>
+	        <%}else if(week.equals("4")){ %>
+	        	<h1>목요일</h1>
+	        <%}else if(week.equals("5")){ %>
+	        	<h1 class="my-4">금요일</h1>
+	        <%}else if(week.equals("6")){ %>
+	        	<h1 class="my-4">토요일</h1>
+	        <%}else if(week.equals("7")){ %>
+	        	<h1 class="my-4">일요일</h1>
+			<%} %>
+		</div>
+		<div class="row">
 		<%for(int i =0; i<list.size(); i++){ 
 			vo = list.get(i);
 			int star = vo.getStar(), star_p = vo.getStart_p();
@@ -69,24 +85,20 @@
 			}
 			
 		%>
-
+        
+          
           <jsp:include page="Main_webtoon_list.jsp">
           		<jsp:param value="<%=vo.getTitle() %>" name="title"/>
           		<jsp:param value="<%=vo.getSub_title() %>" name="subtitle"/>
           		<jsp:param value="<%=vo.getWriter() %>" name="writer"/>
           		<jsp:param value="<%=star_point %>" name="star_point"/>
           </jsp:include>
+         
+         
 		<%} %>
 
 
-        </div>
-        <!-- /.row -->
-
-      </div>
-      <!-- /.col-lg-9 -->
-
-    </div>
-    <!-- /.row -->
+		</div>
 
   </div>
   

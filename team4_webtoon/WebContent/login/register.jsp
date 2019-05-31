@@ -6,7 +6,29 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script language = "JavaScript">
+
+	function openConfirmid(userinput){
+		if(userinput.id.value == ""){
+			alert("아이디를 입력하세요");
+			return;
+		}
+		url = "confirmId.jsp?id="+userinput.id.value;
+		
+		open(url, "confirm",  "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300, height=200");
+	}
+	
+	function openConfirmemail(userinput){
+		if(userinput.email.value == ""){
+			alert("이메일을 입력하세요");
+			return;
+		}
+		url = "confirmEmail.jsp?email="+userinput.email.value;
+		
+		open(url, "confirm",  "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300, height=200");
+	}
+	
+</script>
 
 <LINK REL=StyleSheet HREF="../resources/register/css/register.css" TYPE="text/css" 	TITLE="register.css" MEDIA="screen,print">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -25,11 +47,14 @@
           </div>
           <div class="card-body">
             <h5 class="card-title text-center">회원가입</h5>
-            <form class="form-signin" method="post" action="registerPro.jsp" name="user_info" onsubmit="return checkValue()">
+            <form class="form-signin" method="post" action="registerPro.jsp" name="userinput" onsubmit="return checkIt()" >
               <div class="form-label-group">
-                <input type="text" id="id" class="form-control" placeholder="ID" name = "id"required autofocus>
-                <label for="id">ID</label>
+                <input type="text" id = "id" class="form-control" placeholder="ID" name = "id" size = "10" maxlength="12">                
+
+				<label for="id">ID</label>
+                <input type = "button" value = "중복확인" onclick="openConfirmid(this.form)">
               </div>
+
               <div class="form-label-group">
                 <input type="password" id="password" class="form-control" name = "password" placeholder="Password" required>
                 <label for="password">Password</label>
@@ -38,7 +63,9 @@
                 <div class="form-label-group">
                 <input type="email" id="email" class="form-control" name = "email" placeholder="Email address" required>
                 <label for="email">Email address</label>
+                <input type = "button" value = "중복확인" onclick="openConfirmemail(this.form)">
               </div>
+
                 <div class="form-label-group">
                 <input type="text" id="age" class="form-control" name = "age" placeholder="age" required autofocus>
                 <label for="age">AGE</label>

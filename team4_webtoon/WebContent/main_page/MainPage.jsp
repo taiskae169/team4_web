@@ -54,18 +54,22 @@
           <a href="MainPage.jsp?week=3" class="list-group-item">수요일</a>
           <a href="MainPage.jsp?week=4" class="list-group-item">목요일</a>
           <a href="MainPage.jsp?week=5" class="list-group-item">금요일</a>
-          <a href="MainPage.jsp?week=5" class="list-group-item">토요일</a>
-          <a href="MainPage.jsp?week=6" class="list-group-item">일요일</a>
+          <a href="MainPage.jsp?week=6" class="list-group-item">토요일</a>
+          <a href="MainPage.jsp?week=7" class="list-group-item">일요일</a>
           <a href="MainPage.jsp?week=0" class="list-group-item">도전만화</a>
         </div>
         
 
       </div>
       <!-- /.col-lg-3 -->
-	<jsp:include page="Main_content.jsp">
-		<jsp:param value="<%=week %>" name="week"/>
-	</jsp:include>
+      <%@include file="Main_content.jsp" %>
 
+
+   </div>
+   
+  </div>
+  
+  
   <!-- Footer -->
 	<%@include file="/footer.jsp" %>
 
