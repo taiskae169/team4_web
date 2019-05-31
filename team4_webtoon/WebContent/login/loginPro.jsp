@@ -40,6 +40,7 @@
 		<%session.setAttribute("sessionID",id); %>
 		<%} else{
 		session.setAttribute("sessionID",id);
+		session.setAttribute("sessionSTATE",level);
 		response.sendRedirect("../main_page/MainPage.jsp");
 		}
 		

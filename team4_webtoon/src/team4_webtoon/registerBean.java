@@ -66,6 +66,9 @@ public class registerBean {
 	public String pwCheck() {
 		return password;
 	}
+	public int level_check() {
+		return state;
+	}
 
 	
 
