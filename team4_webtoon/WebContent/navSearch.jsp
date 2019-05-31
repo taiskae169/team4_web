@@ -68,15 +68,17 @@
             <a class="nav-link js-scroll-trigger" href="#about"><b>My</b></a>
           </li>
         </ul>
-        <div class="sb">
+
+       	</div>
+       	              <div class="sb">
         	<div class="searchBar">
         		<input type="text" class="searchTxt" placeholder="#키워드 #장르도 검색해 보세요">
 			</div>
 			<button type="button" class="btn btn-default btn-lg">
          		<span class="glyphicon glyphicon-search"></span> Search 
        		 </button>
-       	</div>
       </div>
+
     </div>
   </nav>
 
