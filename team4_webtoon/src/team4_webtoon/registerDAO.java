@@ -346,5 +346,27 @@ public class registerDAO {
 			return result;
 		}//회원 등급을 확인하는 메소드
 	
+		
+		public void updateMember(registerBean member) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			
+			try {
+				conn = getConnection();
+				
+				pstmt = conn.prepareStatement(
+						"update user_info set state = 3"+
+						"where id=?");
+				pstmt.setString(1, member.getId());
+				
+				pstmt.executeUpdate();
+			}catch(Exception ex) {
+				ex.printStackTrace();
+			}finally {
+				if(pstmt != null) try {pstmt.close();} catch(SQLException ex) {}
+				if(conn != null) try { conn.close();} catch(SQLException ex) {}
+			}
+		}
+		
 	}
 
