@@ -129,6 +129,33 @@ public class WebToonListDAO {
 
 	}//요일별 웹툰 리스트를 리턴하는 메소드
 	
+	public void insertWebtoon(WebToonListVO main_webtoon) throws SQLException{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = getConnection();
+			
+			pstmt = conn.prepareStatement(
+					"insert into main_webtoon values(main_webtoon_seq.nextval,?,?,sysdate,?,?,?,0,0,?,0,0)");
+			pstmt.setString(1, main_webtoon.getTitle());
+			pstmt.setString(2, main_webtoon.getSub_title());
+			pstmt.setString(3, main_webtoon.getWriter());
+			pstmt.setString(4, main_webtoon.getGen());
+			pstmt.setInt(5, main_webtoon.getWeek());
+			pstmt.setString(6, main_webtoon.getTag());
+			pstmt.executeUpdate();
+			
+			
+		}catch (Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(pstmt != null)try {pstmt.close();}catch(SQLException ex) {}
+			if(conn != null) try {conn.close();}catch(SQLException ex) {}
+		}
+	}
+	
+
 	public void setTodayrecom(String today) {
 		int count = 0; //메인웹툰 갯수
 		HashMap<Integer, Integer> mp = new HashMap<Integer, Integer>();
@@ -232,6 +259,7 @@ public class WebToonListDAO {
 	}
 	
 }
+
 	
 	
 
