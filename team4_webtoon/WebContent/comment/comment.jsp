@@ -37,7 +37,7 @@
 	
 	
 	//시험용
-		id = "admin";
+		id = "user1";
 		mw_num = "100";
 		cl_num = "1";
 	//시험용

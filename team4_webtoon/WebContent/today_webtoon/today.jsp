@@ -17,7 +17,7 @@
 	
 	WebToonListDAO dao = WebToonListDAO.getInstance();
 	//테스트용
-		today = "05월09일";
+		today = "05월40일";
 	//테스트용
 	ArrayList<WebToonListVO> list = dao.getTodayrecom(today);
 	System.out.println("리스트 사이즈 : "+list.size());
@@ -59,7 +59,7 @@
       <h1 class="my-4">오늘의 추천 웹툰
         <small><%=today %></small>
       </h1>
-
+		
       <!-- Project One -->
       <%for(int i =0; i< list.size(); i++){
 		WebToonListVO vo = list.get(i);
@@ -68,7 +68,8 @@
 	      <div class="row">
 	        <div class="col-md-7">
 	          <a href="#">
-	            <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
+	            <img  class="img-fluid rounded mb-3 mb-md-0" src="/team4_webtoon/resources/image/webtoon/<%=vo.getTitle()%>/<%=vo.getTitle()%>_recom.jpg" alt="">
+	            <%//700X300 %>
 	          </a>
 	        </div>
 	        <div class="col-md-5">

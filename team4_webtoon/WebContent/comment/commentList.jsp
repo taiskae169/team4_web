@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <%
-	String seID = "admin";//session.getAttribute("");
+	String seID = "user1";//session.getAttribute("");
 	
 	String num = request.getParameter("num");	  		//코멘트 번호
 	String id = request.getParameter("id");				//아이디
