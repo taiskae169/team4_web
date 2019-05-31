@@ -41,7 +41,7 @@
   	<br>
   	<h1 class="my-4" style="text-align: center">작품을 등록하세요</h1>
   	<br><br><br>
-  	<form action = "wb_registerPro.jsp" method="post">
+  	<form action = "wb_registerPro.jsp" method="post" enctype = "multipart/form-data">
 		<div>
 	<b>작품제목</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="text" size="100" maxlength="30" name="title" placeholder="  제목을 입력해주세요"> 
