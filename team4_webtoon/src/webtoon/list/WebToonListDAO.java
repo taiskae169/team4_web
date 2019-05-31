@@ -154,8 +154,10 @@ public class WebToonListDAO {
 		
 		
 		for(;hs.size()<5;) {
-			int recom = (int)(Math.random()*count);
+			int recom = (int)(Math.random()*count)+1;
+			System.out.println("랜던숫자 :" + recom);
 			hs.add(mp.get(recom));
+			System.out.println("랜덤 웹툰번호 : " + mp.get(recom));
 			
 		}
 		
@@ -180,6 +182,53 @@ public class WebToonListDAO {
 			if(conn !=null) {try{conn.close();}catch(SQLException e) {e.printStackTrace();}}
 		}
 			
+	}
+	
+	public ArrayList<WebToonListVO> getTodayrecom(String today) {
+		ArrayList<WebToonListVO> list = new ArrayList<WebToonListVO>();
+		try {
+		conn = getConnection();
+		String sql = "select * from today_recom where today=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, today);
+		rs = pstmt.executeQuery();
+		if(rs.next()) {
+			for(int i =1; i<6; i++) {
+				sql = "select  mw_num, mw_title, mw_sub_title, mw_reg, mw_writer, value gen, mw_week, mw_like, mw_mag,mw_tag, mw_star, mw_star_p from "
+						+ "(select * from main_webtoon where mw_num=?), WEB_GER where web_st = mw_gen";
+				pstmt = conn.prepareStatement(sql);
+				int mw_num = rs.getInt("wb"+1);
+				System.out.println(mw_num);
+				pstmt.setInt(1, mw_num);
+				ResultSet rs2 = pstmt.executeQuery();
+				
+				if(rs2.next()) {
+					System.out.println(rs2.getInt("mw_num"));
+					WebToonListVO vo = new WebToonListVO();
+					vo.setNum(rs2.getInt("mw_num"));
+					vo.setTitle(rs2.getString("mw_title"));
+					vo.setSub_title(rs2.getString("mw_sub_title"));
+					vo.setReg(rs2.getTimestamp("mw_reg")); 
+					vo.setWriter(rs2.getString("mw_writer"));
+					vo.setGen(rs2.getString("gen"));
+					vo.setWeek(rs2.getInt("mw_week"));
+					vo.setLike(rs2.getInt("mw_like"));
+					vo.setMag(rs2.getInt("mw_mag"));
+					vo.setTag(rs2.getString("mw_tag"));
+					vo.setStar(rs2.getInt("mw_star"));
+					vo.setStart_p(rs2.getInt("mw_star_p"));
+					list.add(vo);
+				}//if문 종료
+			}//for문 종료
+		}//if문 종료
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			if(rs !=null) { try {rs.close();}catch(SQLException e) {e.printStackTrace();}}
+			if(pstmt != null) {try{pstmt.close();}catch(SQLException e) {e.printStackTrace();}}
+			if(conn !=null) {try{conn.close();}catch(SQLException e) {e.printStackTrace();}}
+		}
+			return list;
 	}
 	
 }

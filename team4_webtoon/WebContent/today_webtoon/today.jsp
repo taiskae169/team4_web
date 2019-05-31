@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="webtoon.list.WebToonListVO"%>
 <%@page import="webtoon.list.WebToonListDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
@@ -8,15 +10,25 @@
 
 
 <%
+	System.out.println("시작-------------");
 	SimpleDateFormat sdt = new SimpleDateFormat("MM월dd일");
 	Date currentTime = new Date();
 	String today = sdt.format(currentTime);
 	
 	WebToonListDAO dao = WebToonListDAO.getInstance();
 	//테스트용
-		today = "05월40일";
+		today = "05월01일";
 	//테스트용
-	dao.setTodayrecom(today);
+	ArrayList<WebToonListVO> list = dao.getTodayrecom(today);
+	System.out.println("리스트 사이즈 : "+list.size());
+	if(list.size()==0){
+		dao.setTodayrecom(today);%>
+		<script type="text/javascript">
+			location.href = document.reload();
+		
+		
+		<%
+	}
 %>
 <head>
 
