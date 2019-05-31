@@ -224,8 +224,8 @@ public class WebToonListDAO {
 				sql = "select  mw_num, mw_title, mw_sub_title, mw_reg, mw_writer, value gen, mw_week, mw_like, mw_mag,mw_tag, mw_star, mw_star_p from "
 						+ "(select * from main_webtoon where mw_num=?), WEB_GER where web_st = mw_gen";
 				pstmt = conn.prepareStatement(sql);
-				int mw_num = rs.getInt("wb"+1);
-				System.out.println(mw_num);
+				int mw_num = rs.getInt("wb"+i);
+				//System.out.println(mw_num);
 				pstmt.setInt(1, mw_num);
 				ResultSet rs2 = pstmt.executeQuery();
 				
