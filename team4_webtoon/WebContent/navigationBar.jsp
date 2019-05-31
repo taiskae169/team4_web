@@ -49,10 +49,10 @@
             <a class="nav-link js-scroll-trigger" href="#services"><b>랭킹</b></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#portfolio"><b>웹툰</b></a>
+            <a class="nav-link js-scroll-trigger" href="#portfolio"><b>웹툰리그</b></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about"><b>리그</b></a>
+            <a class="nav-link js-scroll-trigger" href="#about"><b>My</b></a>
           </li>
         </ul>
       </div>
