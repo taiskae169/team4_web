@@ -1,23 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="webtoon.list.*"%>    
-    
-    
-    
-    <%
-    		String title=request.getParameter("title");
-    		String sub_title=request.getParameter("sub_title");
-    		String writer=request.getParameter("writer");
-    		String gen=request.getParameter("gen");
-    		int star_point=Integer.parseInt(request.getParameter("star_point"));
-    		int week=Integer.parseInt(request.getParameter("week"));
-    		
-    				
-    
-    %>
-    
-    
-    
     
          
 <!DOCTYPE html>
@@ -47,7 +29,20 @@
 
 <style>
 	.ml-center {margin-left:350px; }
+	#box {float:left; padding:30px;margin-left:550px;margin-top:200px; margin-bottom:500px;}
+	#box {float:left; }
+.searchBar{height:40px; width:232px; border:1px solid #1b5ac2; background:#ffffff;}
+.searchTxt{font-size:16px; width:325px; height:30.67px;  padding:0px;outline:none; float:left;}
+
+.btnSearch{width:50px; height:100px; border:0px; background:#1b5ac2;;outline:none; float:right; color:#ffffff;}
 </style>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 </head>
 
 <body id="page-top">
@@ -73,95 +68,51 @@
             <a class="nav-link js-scroll-trigger" href="#about"><b>My</b></a>
           </li>
         </ul>
-		<ul class="navbar-nav ml-auto">  
-        <%if(id ==null){ %>
-          <li class="nav-item active">
-        	<a class="nav-link js-scroll-trigger" href="#">LOGIN
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">SIGN</a>
-          </li>
-          <%}else{ %>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">LOGOUT</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">회원정보</a>
-          </li>
-          <%} %>
-			<li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">검색</a>
-          </li>
-        </ul>
+        <div class="sb">
+        	<div class="searchBar">
+        		<input type="text" class="searchTxt" placeholder="#키워드 #장르도 검색해 보세요">
+			</div>
+			<button type="button" class="btn btn-default btn-lg">
+         		<span class="glyphicon glyphicon-search"></span> Search 
+       		 </button>
+       	</div>
       </div>
     </div>
   </nav>
 
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+
   <!-- Header -->
-  <header class="masthead">  
-  	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-     <div class="row text-center">
-        <div class="col-md-4">
-          <h1 class="service-heading"><%=title %></h1>       
+  <header class="masthead">
+	<div id="box">
+
+		<h1>키몽의 호구로운 생활</h1>
 		 <a>코믹</a>,<a>일상</a>,<a>유머</a>
 		 <p >예쁜 나이 서른 살, 어딘가 모자란 청년들의 호구 같은 나날들</p>
-          <a class="btn btn-primary btn-lg" href="#">첫화보기 </a>               
-        </div>
-        <div class="col-md-4">
-			 <img class="tn" src="/team4_webtoon/resources/image/webtoon/webtoon_DP/komong.png" width="390" height="390" alt="키몽의 호구로운 생활">
-        </div>
-        <div class="col-md-4">
-          <span class="fa-stack fa-4x">
-            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-            <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
-          </span>
-          <h4 class="service-heading">Web Security</h4>
-          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-        </div>
-      </div>      
+          <a class="btn btn-primary btn-lg" href="#">첫화보기 </a>         
+
+	</div>
+	<div id="box2">
+	<img class="tn" src="http://t1.daumcdn.net/webtoon/op/d4db19bad16beffc26b6e8c091b092da5d8b2a39" width="664" height="390" class="img_thumb" alt="키몽의 호구로운 생활">
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	</div>
   </header>
-  
-        <div class="row text-center">
-        <div class="col-md-4">
-          <span class="fa-stack fa-4x">
-            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-            <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
-          </span>
-          <h4 class="service-heading">E-Commerce</h4>
-          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-        <h1>키몽의 호구로운 생활</h1>
-		 <a>코믹</a>,<a>일상</a>,<a>유머</a>
-		 <p class="text-muted" >예쁜 나이 서른 살, 어딘가 모자란 청년들의 호구 같은 나날들</p>
-          <a class="btn btn-primary btn-lg" href="#">첫화보기 </a>        
-        </div>
-        <div class="col-md-4">
-          <span class="fa-stack fa-4x">
-            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-            <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
-          </span>
-          <h4 class="service-heading">Responsive Design</h4>
-          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-        </div>
-        <div class="col-md-4">
-          <span class="fa-stack fa-4x">
-            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-            <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
-          </span>
-          <h4 class="service-heading">Web Security</h4>
-          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-        </div>
-      </div>
-  
-  
-  
-  
 
 	 <!-- Services -->
   <section class="page-section" id="services">
