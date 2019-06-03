@@ -8,8 +8,7 @@
 
 <!DOCTYPE html>
 <%
-
-
+	String name1 = "";
 %>
 
 <html>
@@ -41,6 +40,7 @@
   	<br>
   	<h1 class="my-4" style="text-align: center">작품을 등록하세요</h1>
   	<br><br><br>
+
   	<form action = "wb_registerPro.jsp" method="post" enctype = "multipart/form-data">
 		<div>
 	<b>작품제목</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -74,7 +74,10 @@
 				<input type = "radio" name = "week" value = "6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;토요일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type = "radio" name = "week" value = "0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일요일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<br><br><br>
-	<b>썸네일 이미지</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;크기 (700 x 400)에 맞게 올려주세요 (jpg 파일)<br>
+	<b>작품제목</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="text" size="100" maxlength="30" name="mw_sum" placeholder="줄거리를 입력하세요"> 
+				<br><br><br>
+	<b>썸네일 이미지</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;크기 (700 x 400)에 맞게 올려주세요 (jpg 파일) 또한 작품 제목_som.jpg 형식을 지켜주세요<br>
 	<input type = "file" name = "file">
 	<br><br>
 	<b>원고 등록</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  원고를 등록해주세요 <br><br><br>
@@ -90,7 +93,6 @@
 <br><br><br>
 </div>
 </form>
-
 </div>
 
 

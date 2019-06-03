@@ -9,9 +9,7 @@
 <%
 	request.setCharacterEncoding("euc-kr");
 
-	String path = request.getServletContext().getRealPath("save");
-	
-	System.out.println("path : " + path);
+
 	int size = 10*1024*1024;
 	String title = "";
 	String sub_title = "";
@@ -19,21 +17,25 @@
 	String tag = "";
 	String week = "";
 	String writer = "";
+	String mw_sum = "";
 	
+	String path = request.getRealPath("resources/image/webtoon/");
+	String path2 = request.getRealPath("resources/image/webtoon/thumbnail");
+
 	
 	try{
-		
-		MultipartRequest multi=new MultipartRequest(request,path,size,"UTF-8",new DefaultFileRenamePolicy());
-		
-		String filename = multi.getFilesystemName("file");
-		String m_fileFullPath = path + "/" + filename;
-		
-		title = multi.getParameter("title");
+
+		MultipartRequest multi=new MultipartRequest(request,path2,size,"UTF-8",new DefaultFileRenamePolicy());
+		title = multi.getParameter("title");	
 		sub_title = multi.getParameter("sub_title");
 		gen = multi.getParameter("gen");
 		tag = multi.getParameter("tag");
 		week = multi.getParameter("week");
 		writer = multi.getParameter("writer");
+		
+		path += title;
+		File Folder = new File(path);
+		Folder.mkdir();
 		
 	}catch (Exception e){
 		e.printStackTrace();

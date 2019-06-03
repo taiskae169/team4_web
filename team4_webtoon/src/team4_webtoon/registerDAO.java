@@ -334,6 +334,7 @@ public class registerDAO {
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
 					result = rs.getInt("state");
+					
 				}
 			} catch (Exception ex) {
 				ex.printStackTrace();
@@ -346,6 +347,37 @@ public class registerDAO {
 			return result;
 		}//회원 등급을 확인하는 메소드
 	
+		public registerBean email_check(String id) {
+			
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			registerBean member = null;
+			
+			String dbemail = "";
+			try {
+				
+				conn = getConnection();
+				String sql = "select * from user_info where id=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					member = new registerBean();
+					dbemail = rs.getString("email");
+					
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				if( rs != null) try {rs.close();} catch(SQLException ex) {}
+				if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+				if (conn != null) try {conn.close();} catch(SQLException ex) {}
+			} 
+			
+			return member;
+		}//회원 등급을 확인하는 메소드
+		
 		
 		public void updateMember(registerBean member) throws Exception{
 			Connection conn = null;
@@ -355,7 +387,7 @@ public class registerDAO {
 				conn = getConnection();
 				
 				pstmt = conn.prepareStatement(
-						"update user_info set state = 3"+
+						"update user_info set state = 2"+
 						"where id=?");
 				pstmt.setString(1, member.getId());
 				

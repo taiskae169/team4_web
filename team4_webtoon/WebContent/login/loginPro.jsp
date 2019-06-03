@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import ="team4_webtoon.*" %>
+<%@ page import = "java.util.ArrayList" %>
 <!DOCTYPE html>
 
 
@@ -13,11 +14,12 @@
 	String id = request.getParameter("id");
 	String pw = request.getParameter("pw");
 	
+	
 	registerDAO dao = registerDAO.getInstance();
 	int check = dao.loginCheck(id,pw);
 	int level = dao.level_check(id);
-	
-	
+
+
 	request.setCharacterEncoding("euc-kr");
 
 	
@@ -41,6 +43,7 @@
 		<%} else{
 		session.setAttribute("sessionID",id);
 		session.setAttribute("sessionSTATE",level);
+		
 		response.sendRedirect("../main_page/MainPage.jsp");
 		}
 		

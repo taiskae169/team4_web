@@ -8,7 +8,7 @@
 		request.setCharacterEncoding("euc-kr");
 		String id = (String)session.getAttribute("sessionID");
 		member.setId(id);
-		member.setState(3);
+		member.setState(2);
 
 		registerDAO dao = registerDAO.getInstance();
 
