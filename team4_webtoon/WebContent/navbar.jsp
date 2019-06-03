@@ -1,18 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="webtoon.list.*"%>    
-    
+<%@page import="webtoon.list.WebToonListVO"%>
+  <%@ page import = "webtoon.episode.WTepDAO" %>  
+<%@ page import = "java.text.SimpleDateFormat" %>
+ <%@ page import = "java.util.List" %>   
     
     
     <%
+    		int mw_num=Integer.parseInt(request.getParameter("mw_num"));
     		String title=request.getParameter("title");
-    		String sub_title=request.getParameter("sub_title");
-    		String writer=request.getParameter("writer");
-    		String gen=request.getParameter("gen");
-    		int star_point=Integer.parseInt(request.getParameter("star_point"));
-    		int week=Integer.parseInt(request.getParameter("week"));
-    		
-    				
+    	  	    
+    	    int pageSize = 10; 
+    	    String pageNum = request.getParameter("pageNum");
+    	    if (pageNum == null) {  
+    	        pageNum = "1";       
+    	    }
+    	    int currentPage = Integer.parseInt(pageNum);     
+    	    int startRow = (currentPage - 1) * pageSize + 1;   
+    	    int endRow = currentPage * pageSize;            
+    	    int countEP = 0;   
+    	    int numberEP = 0; 
+ 
+    	    List webtoonEP = null;
+    	    
+    	    WTepDAO epdao = WTepDAO.getInstance();   
+    	    countEP = epdao.getEPCount(mw_num);   //웹툰의 에피소드 갯수
+    	    if (countEP > 0) {
+    	        webtoonEP = epdao.getEpisodes(mw_num);
+    	    }
+
+    	   numberEP = countEP-(currentPage-1)*pageSize;
+    	    
     
     %>
     
