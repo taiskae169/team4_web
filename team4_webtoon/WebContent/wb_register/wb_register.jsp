@@ -60,7 +60,7 @@
 				<input type = "radio" name = "gen" id = "0" value = "6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;감성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type = "radio" name = "gen" id = "0" value = "7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;스릴러&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type = "radio" name = "gen" id = "0" value = "8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;시대극&nbsp;&nbsp;&nbsp;
-				<input type = "radio" name = "gen" id = "0" value = "9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;스포츠&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+				<input type = "radio" name = "gen" id = "0" value = "9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;스포츠&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br>
 	<b>태그</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			
 				<input type="text" size="30" maxlength="30" name="tag" placeholder="  태그를 입력해주세요"> 
 				<br><br><br>
@@ -74,13 +74,12 @@
 				<input type = "radio" name = "week" value = "6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;토요일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type = "radio" name = "week" value = "0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일요일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<br><br><br>
-	<b>작품제목</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<b>줄거리</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="text" size="100" maxlength="30" name="mw_sum" placeholder="줄거리를 입력하세요"> 
 				<br><br><br>
-	<b>썸네일 이미지</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;크기 (700 x 400)에 맞게 올려주세요 (jpg 파일) 또한 작품 제목_som.jpg 형식을 지켜주세요<br>
+	<b>썸네일 이미지</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;크기 (700 x 400)에 맞게 올려주세요 (jpg 파일) 또한 작품 제목_som.jpg 형식을 지켜주세요<br><br><br>
 	<input type = "file" name = "file">
-	<br><br>
-	<b>원고 등록</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  원고를 등록해주세요 <br><br><br>
+	<br><br><br>
 	<b>내용을 확인하셨습니까?</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<input type = "radio" name = "writer" value = "<%=session.getAttribute("sessionID") %>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;확인
 	<br><br><br>
