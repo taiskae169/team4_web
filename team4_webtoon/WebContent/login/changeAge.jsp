@@ -10,7 +10,7 @@
 		member.setId(id);
 		
 		registerDAO manager = registerDAO.getInstance();
-		manager.changePW(member);
+		manager.changeAge(member);
 	%>
 	
 바뀜!!

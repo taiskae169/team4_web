@@ -7,6 +7,7 @@
     	String id = (String)session.getAttribute("sessionID");
     
 		registerDAO manager = registerDAO.getInstance();
+		
 		int check = manager.level_check(id);
     %>
     

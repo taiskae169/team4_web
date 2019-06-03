@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        <%request.setCharacterEncoding("UTF-8"); %>
 <%@ page import ="team4_webtoon.*" %>
 <%@ page import = "java.util.ArrayList" %>
 <!DOCTYPE html>
@@ -9,7 +10,6 @@
 	<jsp:setProperty property="*" name="member"/>
 
 	<%
-	request.setCharacterEncoding("euc-kr");
 	
 	String id = request.getParameter("id");
 	String pw = request.getParameter("pw");

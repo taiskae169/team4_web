@@ -400,5 +400,81 @@ public class registerDAO {
 			}
 		}
 		
+		public void changePW(registerBean member) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			
+			try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement("update user_info set pw=? where id = ?");
+				pstmt.setString(1, member.getPassword());
+				pstmt.setString(2, member.getId());
+				
+				pstmt.executeUpdate();
+			} catch(Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				if(pstmt != null) try {pstmt.close();} catch(SQLException ex) {}
+				if(conn != null) try {conn.close();} catch(SQLException ex) {}
+			}
+		}
+		public void changeEmail(registerBean member) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			
+			try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement("update user_info set email=? where id = ?");
+				pstmt.setString(1, member.getEmail());
+				pstmt.setString(2, member.getId());
+				
+				pstmt.executeUpdate();
+			} catch(Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				if(pstmt != null) try {pstmt.close();} catch(SQLException ex) {}
+				if(conn != null) try {conn.close();} catch(SQLException ex) {}
+			}
+		}
+		public void changeName(registerBean member) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			
+			try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement("update user_info set name=? where id = ?");
+				pstmt.setString(1, member.getName());
+				pstmt.setString(2, member.getId());
+				
+				pstmt.executeUpdate();
+			} catch(Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				if(pstmt != null) try {pstmt.close();} catch(SQLException ex) {}
+				if(conn != null) try {conn.close();} catch(SQLException ex) {}
+			}
+		}
+		
+
+		public void changeAge(registerBean member) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			
+			try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement("update user_info set age=? where id = ?");
+				pstmt.setString(1, member.getAge());
+				pstmt.setString(2, member.getId());
+				
+				pstmt.executeUpdate();
+			} catch(Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				if(pstmt != null) try {pstmt.close();} catch(SQLException ex) {}
+				if(conn != null) try {conn.close();} catch(SQLException ex) {}
+			}
+		}
+		
+		
 	}
 

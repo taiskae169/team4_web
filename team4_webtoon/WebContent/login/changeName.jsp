@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%request.setCharacterEncoding("UTF-8"); %>
 <%@ page import = "team4_webtoon.*"%>
 
 	<jsp:useBean id="member" class="team4_webtoon.registerBean"/>
@@ -10,7 +11,7 @@
 		member.setId(id);
 		
 		registerDAO manager = registerDAO.getInstance();
-		manager.changePW(member);
+		manager.changeName(member);
 	%>
 	
 바뀜!!
