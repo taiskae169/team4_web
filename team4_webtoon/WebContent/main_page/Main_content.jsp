@@ -76,6 +76,10 @@
 			<%} %>
 		</div>
 		<div class="row">
+		<% if(list.size()==0){ %>
+			<h1 style="margin:auto;">검색 결과가 없습니다.</h1>
+			
+		<%} %>
 		<%for(int i =0; i<list.size(); i++){ 
 			vo = list.get(i);
 			int star = vo.getStar(), star_p = vo.getStart_p();

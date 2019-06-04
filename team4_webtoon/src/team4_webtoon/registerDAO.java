@@ -401,7 +401,7 @@ public class registerDAO {
 			}
 		}
 		
-<<<<<<< HEAD
+
 		public int getUserCount() {
 			Connection conn = null;
 			PreparedStatement pstmt = null;
@@ -426,7 +426,7 @@ public class registerDAO {
 			
 			return result;
 		}
-=======
+
 		public void changePW(registerBean member) throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
@@ -501,8 +501,57 @@ public class registerDAO {
 				if(conn != null) try {conn.close();} catch(SQLException ex) {}
 			}
 		}
+		public ArrayList<registerBean> get_user_list(){
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			ArrayList<registerBean> list = new ArrayList<registerBean>();
+			try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement("select * from user_info");
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					registerBean vo = new registerBean();
+					vo.setUser_no(rs.getInt("user_no"));
+					vo.setId(rs.getString("id"));
+					vo.setEmail(rs.getString("email"));
+					vo.setAge(rs.getString("age"));
+					vo.setName(rs.getString("name"));
+					vo.setState(rs.getInt("state"));
+					vo.setUser_reg(rs.getTimestamp("user_reg"));
+					list.add(vo);
+					
+				}
+				
+			} catch(Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				if( rs != null) try {rs.close();} catch(SQLException ex) {}
+				if(pstmt != null) try {pstmt.close();} catch(SQLException ex) {}
+				if(conn != null) try {conn.close();} catch(SQLException ex) {}
+			}
+			return list;
+		}
 		
->>>>>>> branch 'master' of https://github.com/taiskae169/team4_web.git
+		public void updateMemberState(int state, int num) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			
+			try {
+				conn = getConnection();
+				String sql = "update user_info set state =? where user_no=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, state);
+				pstmt.setInt(2, num);
+				
+				pstmt.executeUpdate();
+			}catch(Exception ex) {
+				ex.printStackTrace();
+			}finally {
+				if(pstmt != null) try {pstmt.close();} catch(SQLException ex) {}
+				if(conn != null) try { conn.close();} catch(SQLException ex) {}
+			}
+		}
 		
 	}
 
