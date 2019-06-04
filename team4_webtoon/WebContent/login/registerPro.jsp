@@ -10,7 +10,7 @@
 	<%
 		registerDAO dao = registerDAO.getInstance();
 		dao.insertMember(member);
-		response.sendRedirect("login.jsp");
+		response.sendRedirect("loginFinal.jsp");
 	%>
 	
 	<br>

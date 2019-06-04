@@ -126,7 +126,6 @@
   <h1 class="my-4"><%=request.getParameter("addr") %>
     <small> 검색 결과 </small>
   </h1>
-
    <FORM name='frm' method='GET' action="search.jsp">
     <ASIDE style='float: right;'>
 	<select name = "select">
@@ -140,8 +139,8 @@
        <br>
        
            	<div class = "row">
-    	<%for(int i = 0; i < list.size(); i++){%>
 
+    	<%for(int i = 0; i < list.size(); i++){%>
 
     <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
       <div class="card h-100">
@@ -158,7 +157,8 @@
       </div>
     </div>
 
-    <%}%>   
+
+    <%} %>   
 
     </div>
 
