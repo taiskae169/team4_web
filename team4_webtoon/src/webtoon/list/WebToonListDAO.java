@@ -137,13 +137,20 @@ public class WebToonListDAO {
 			conn = getConnection();
 			
 			pstmt = conn.prepareStatement(
-					"insert into main_webtoon values(main_webtoon_seq.nextval,?,?,sysdate,?,?,?,0,0,?,0,0)");
+					"insert into main_webtoon values(main_webtoon_seq.nextval,?,?,sysdate,?,?,?,?,?,?,?,?,?,?)");
 			pstmt.setString(1, main_webtoon.getTitle());
 			pstmt.setString(2, main_webtoon.getSub_title());
 			pstmt.setString(3, main_webtoon.getWriter());
 			pstmt.setString(4, main_webtoon.getGen());
 			pstmt.setInt(5, main_webtoon.getWeek());
-			pstmt.setString(6, main_webtoon.getTag());
+			pstmt.setInt(6, main_webtoon.getLike());
+			pstmt.setInt(7, main_webtoon.getMag());
+			pstmt.setString(8, main_webtoon.getTag());
+			pstmt.setInt(9, main_webtoon.getStar());
+			pstmt.setInt(10, main_webtoon.getStart_p());
+			pstmt.setString(11, main_webtoon.getMw_sum());
+			pstmt.setInt(12, main_webtoon.getWt_view());
+
 			pstmt.executeUpdate();
 			
 			

@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page import = "team4_webtoon.registerBean" %>
 <%@ page import = "team4_webtoon.registerDAO" %>
-
+    <%request.setCharacterEncoding("UTF-8"); %>
 	<%
-		request.setCharacterEncoding("euc-kr");
 		
 	%>
 	<jsp:useBean id="member" class="team4_webtoon.registerBean">

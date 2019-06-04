@@ -1,27 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@page import="webtoon.list.*"%>    
-    
-    
-    
-    <%
-    		String title=request.getParameter("title");
-    		String sub_title=request.getParameter("sub_title");
-    		String writer=request.getParameter("writer");
-    		String gen=request.getParameter("gen");
-    		int star_point=Integer.parseInt(request.getParameter("star_point"));
-    		int week=Integer.parseInt(request.getParameter("week"));
-    		
-    				
-    
-    %>
-    
-    
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
     
          
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
 
@@ -47,7 +28,91 @@
 
 <style>
 	.ml-center {margin-left:350px; }
+	#box {float:left; padding:30px;margin-left:550px;margin-top:200px; margin-bottom:500px;}
+	#box {float:left; }
+	
+	@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+/* fontawesome */
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+body {
+  background: #9265DC;
+  margin-top: 70px;
+}
+
+form {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+   transition: width 0.5s;
+  margin: auto;
+   -webkit-backface-visibility: hidden;
+  background: rgba(0, 0, 0, 0);
+}
+
+form.opened {
+  width: 330px;
+}
+form.opened:before {
+  position: fixed;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+input[type="search"] {
+  position: absolute;
+  top: 0; 
+  right: 28px;
+  height: 60px;
+  width: 0;
+  float:left;
+  font-size: 1.5em;
+  border-radius: 30px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  outline: none;
+  border: none;
+  padding-left: 20px;
+  color: #28d7d7;
+   transition: width 0.5s;
+}
+
+form.opened input[type="search"] {
+  width: 300px;
+   transition: width 0.5s;
+}
+
+button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background: #28d7d7;
+  border: none;
+  border-radius: 30px;
+  color: #FFF;
+  font-size: 1.3em;
+  outline: none;
+  cursor: pointer;
+}
+
+form.opened button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
 </style>
+
+
+
 </head>
 
 <body id="page-top">
@@ -67,109 +132,57 @@
             <a class="nav-link js-scroll-trigger" href="#services"><b>랭킹</b></a>
           </li>
           <li class="nav-item">
-<<<<<<< HEAD
             <a class="nav-link js-scroll-trigger" href="#portfolio"><b>웹툰리그</b></a>
-=======
-            <a class="nav-link js-scroll-trigger" href="/team4_webtoon/main_page/MainPage.jsp"><b>웹툰</b></a>
->>>>>>> branch 'master' of https://github.com/taiskae169/team4_web.git
           </li>
           <li class="nav-item">
-<<<<<<< HEAD
             <a class="nav-link js-scroll-trigger" href="#about"><b>My</b></a>
-=======
-            <a class="nav-link js-scroll-trigger" href="MainPage.jsp?week=0"><b>리그</b></a>
->>>>>>> branch 'master' of https://github.com/taiskae169/team4_web.git
           </li>
         </ul>
-		<ul class="navbar-nav ml-auto">  
-        <%if(id ==null){ %>
-          <li class="nav-item active">
-        	<a class="nav-link js-scroll-trigger" href="#">LOGIN
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">SIGN</a>
-          </li>
-          <%}else{ %>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">LOGOUT</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">회원정보</a>
-          </li>
-          <%} %>
-			<li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">검색</a>
-          </li>
-        </ul>
-      </div>
+
+       	</div>
+<form>
+  <input type="search" placeholder="Search">
+  <button>
+    <span class="fa fa-search"></span>
+  </button>
+</form>
+
     </div>
   </nav>
 
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+
   <!-- Header -->
-  <header class="masthead">  
-  	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-     <div class="row text-center">
-        <div class="col-md-4">
-          <h1 class="service-heading"><%=title %></h1>       
+  <header class="masthead">
+	<div id="box">
+
+		<h1>키몽의 호구로운 생활</h1>
 		 <a>코믹</a>,<a>일상</a>,<a>유머</a>
 		 <p >예쁜 나이 서른 살, 어딘가 모자란 청년들의 호구 같은 나날들</p>
-          <a class="btn btn-primary btn-lg" href="#">첫화보기 </a>               
-        </div>
-        <div class="col-md-4">
-			 <img class="tn" src="/team4_webtoon/resources/image/webtoon/webtoon_DP/komong.png" width="390" height="390" alt="키몽의 호구로운 생활">
-        </div>
-        <div class="col-md-4">
-          <span class="fa-stack fa-4x">
-            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-            <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
-          </span>
-          <h4 class="service-heading">Web Security</h4>
-          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-        </div>
-      </div>      
+          <a class="btn btn-primary btn-lg" href="#">첫화보기 </a>         
+
+	</div>
+	<div id="box2">
+	<img class="tn" src="http://t1.daumcdn.net/webtoon/op/d4db19bad16beffc26b6e8c091b092da5d8b2a39" width="664" height="390" class="img_thumb" alt="키몽의 호구로운 생활">
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	</div>
   </header>
-  
-        <div class="row text-center">
-        <div class="col-md-4">
-          <span class="fa-stack fa-4x">
-            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-            <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
-          </span>
-          <h4 class="service-heading">E-Commerce</h4>
-          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-        <h1>키몽의 호구로운 생활</h1>
-		 <a>코믹</a>,<a>일상</a>,<a>유머</a>
-		 <p class="text-muted" >예쁜 나이 서른 살, 어딘가 모자란 청년들의 호구 같은 나날들</p>
-          <a class="btn btn-primary btn-lg" href="#">첫화보기 </a>        
-        </div>
-        <div class="col-md-4">
-          <span class="fa-stack fa-4x">
-            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-            <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
-          </span>
-          <h4 class="service-heading">Responsive Design</h4>
-          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-        </div>
-        <div class="col-md-4">
-          <span class="fa-stack fa-4x">
-            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-            <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
-          </span>
-          <h4 class="service-heading">Web Security</h4>
-          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-        </div>
-      </div>
-  
-  
-  
-  
 
 	 <!-- Services -->
   <section class="page-section" id="services">
@@ -413,7 +426,17 @@
 
   <!-- Custom scripts for this template -->
   <script src="/team4_webtoon/resources/kgb/agencyjs/agency.min.js"></script>
+  <script>
+    $('button').on('click', function(e) {
+        e.preventDefault();
+        $('form').addClass('opened');
+        $('input[type="search"]').focus();
+    });
 
+    $('input[type="search"]').on('focusout', function(e) {
+        $('form').removeClass('opened');
+    });
+  </script>
 </body>
 
 </html>

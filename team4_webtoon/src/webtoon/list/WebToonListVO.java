@@ -18,11 +18,30 @@ public class WebToonListVO {
 	private int mag;		//특집여부
 	private String tag;		//태그
 	private int star;		//총 별점
-	private int start_p;	//별점 참여 인원
+	private int start_p;	//별점 참여 인원\
+	private String mw_sum;
+	private int wt_view;
+	private String wt_ep_img;
 	
 
-	
-	
+	public int getWt_view() {
+		return wt_view;
+	}
+	public void setWt_view(int wt_view) {
+		this.wt_view = wt_view;
+	}
+	public String getWt_ep_img() {
+		return wt_ep_img;
+	}
+	public void setWt_ep_img(String wt_ep_img) {
+		this.wt_ep_img = wt_ep_img;
+	}
+	public String getMw_sum() {
+		return mw_sum;
+	}
+	public void setMw_sum(String mw_sum) {
+		this.mw_sum = mw_sum;
+	}
 	public int getNum() {
 		return num;
 	}

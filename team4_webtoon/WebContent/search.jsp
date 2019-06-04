@@ -55,6 +55,7 @@
 	<select name = "select">
 		<option value = "0">제목 </option>
 		<option value = "1">작가 </option>
+		<option value = "2">태그 </option>
 	</select>
 	<input type='text' name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색">
        </ASIDE>
@@ -131,6 +132,7 @@
 	<select name = "select">
 		<option value = "0">제목 </option>
 		<option value = "1">작가 </option>
+		<option value = "2">태그 </option>
 	</select>
        <input type='text' name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색">
        </ASIDE>
@@ -143,7 +145,7 @@
 
     <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
       <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="/team4_webtoon/resources/image/webtoon/<%=list.get(i).getTitle() %>/<%=list.get(i).getTitle() %>_som.jpg" alt=""></a>
+        <a href="#"><img class="card-img-top" src="/team4_webtoon/resources/image/webtoon/thumbnail/<%=list.get(i).getTitle() %>_som.jpg" alt=""></a>
         <div class="card-body">
           <h4 class="card-title">
 			 <a href="#"><%=list.get(i).getTitle() %></a>
