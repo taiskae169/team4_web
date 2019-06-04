@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%request.setCharacterEncoding("UTF-8"); %>
     <%@ page import = "team4_webtoon.*" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>id 중복 확인</title>
-<% request.setCharacterEncoding("euc-kr"); %>
-
 <%
 	String id = request.getParameter("id");
 	

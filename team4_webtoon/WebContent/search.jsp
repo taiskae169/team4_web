@@ -1,8 +1,8 @@
-    <%@ page import = "search.SearchDAO"%>
-    <%@ page import = "search.SearchVO" %>
-    <%@ page import = "java.util.ArrayList" %>
-    <%@ page import = "webtoon.list.*" %>
-    
+<%@ page import = "search.SearchDAO"%>
+<%@ page import = "search.SearchVO" %>
+<%@ page import = "java.util.ArrayList" %>
+<%@ page import = "webtoon.list.*" %>
+<%request.setCharacterEncoding("UTF-8"); %>    
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 

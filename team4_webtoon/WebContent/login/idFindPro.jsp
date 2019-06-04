@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%request.setCharacterEncoding("UTF-8"); %>
 <%@ page import ="team4_webtoon.*" %>
 <!DOCTYPE html>
 <html>
@@ -14,8 +15,6 @@
 </head>
 <body>
 	<%
-	request.setCharacterEncoding("euc-kr");
-
 	String name = request.getParameter("name");
 	String email = request.getParameter("email");
 	
