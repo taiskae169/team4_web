@@ -13,17 +13,17 @@
   <title>Agency - Start Bootstrap Theme</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="/team4_webtoon/resources/kgb/agency/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/team4_webtoon/resources/main_webtoon/agency/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
-  <link href="/team4_webtoon/resources/kgb/agency/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="/team4_webtoon/resources/main_webtoon/agency/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
   <!-- Custom styles for this template -->
-  <link href="/team4_webtoon/resources/kgb/agency/css/agency.min.css" rel="stylesheet">
+  <link href="/team4_webtoon/resources/main_webtoon/agency/css/agency.min.css" rel="stylesheet">
 
 <style>
 	.ml-center {margin-left:350px; }
@@ -61,18 +61,18 @@
   <br><br><br><br><br>
   
  <!-- Bootstrap core JavaScript -->
-  <script src="/team4_webtoon/resources/kgb/agencyvendor/jquery/jquery.min.js"></script>
-  <script src="/team4_webtoon/resources/kgb/agencyvendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/team4_webtoon/resources/main_webtoonagency/vendor/jquery/jquery.min.js"></script>
+  <script src="/team4_webtoon/resources/main_webtoon/agency/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Plugin JavaScript -->
-  <script src="/team4_webtoon/resources/kgb/agencyvendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="/team4_webtoon/resources/main_webtoon/agency/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Contact form JavaScript -->
-  <script src="/team4_webtoon/resources/kgb/agencyjs/jqBootstrapValidation.js"></script>
-  <script src="/team4_webtoon/resources/kgb/agencyjs/contact_me.js"></script>
+  <script src="/team4_webtoon/resources/main_webtoon/agency/js/jqBootstrapValidation.js"></script>
+  <script src="/team4_webtoon/resources/main_webtoon/agency/js/contact_me.js"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="/team4_webtoon/resources/kgb/agencyjs/agency.min.js"></script>
+  <script src="/team4_webtoon/resources/main_webtoon/agency/js/agency.min.js"></script>
 
 </body>
 
