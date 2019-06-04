@@ -401,7 +401,7 @@ public class registerDAO {
 			}
 		}
 		
-<<<<<<< HEAD
+
 		public int getUserCount() {
 			Connection conn = null;
 			PreparedStatement pstmt = null;
@@ -426,7 +426,7 @@ public class registerDAO {
 			
 			return result;
 		}
-=======
+
 		public void changePW(registerBean member) throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
@@ -501,8 +501,6 @@ public class registerDAO {
 				if(conn != null) try {conn.close();} catch(SQLException ex) {}
 			}
 		}
-		
->>>>>>> branch 'master' of https://github.com/taiskae169/team4_web.git
 		
 	}
 

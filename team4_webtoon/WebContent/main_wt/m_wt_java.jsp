@@ -6,7 +6,7 @@
  <%@ page import = "java.util.List" %>   
     
     
-    <%
+    <%--
     		int mw_num=Integer.parseInt(request.getParameter("mw_num"));
     		String title=request.getParameter("title");
     	  	    
@@ -32,7 +32,7 @@
     	   numberEP = countEP-(currentPage-1)*pageSize;
     	    
     
-    %>
+    --%>
     
     
     
@@ -71,58 +71,9 @@
 <body id="page-top">
 
  <!-- Navigation -->
-<%@include file="/menu.jsp" %>
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-shrink" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">WebToon</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav text-uppercase ml-center">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#services"><b>랭킹</b></a>
-          </li>
-          <li class="nav-item">
-<<<<<<< HEAD
-            <a class="nav-link js-scroll-trigger" href="#portfolio"><b>웹툰리그</b></a>
-=======
-            <a class="nav-link js-scroll-trigger" href="/team4_webtoon/main_page/MainPage.jsp"><b>웹툰</b></a>
->>>>>>> branch 'master' of https://github.com/taiskae169/team4_web.git
-          </li>
-          <li class="nav-item">
-<<<<<<< HEAD
-            <a class="nav-link js-scroll-trigger" href="#about"><b>My</b></a>
-=======
-            <a class="nav-link js-scroll-trigger" href="MainPage.jsp?week=0"><b>리그</b></a>
->>>>>>> branch 'master' of https://github.com/taiskae169/team4_web.git
-          </li>
-        </ul>
-		<ul class="navbar-nav ml-auto">  
-        <%if(id ==null){ %>
-          <li class="nav-item active">
-        	<a class="nav-link js-scroll-trigger" href="#">LOGIN
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">SIGN</a>
-          </li>
-          <%}else{ %>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">LOGOUT</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">회원정보</a>
-          </li>
-          <%} %>
-			<li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">검색</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+<%@include file="/bar/menu.jsp" %>
+<%@include file="/bar/navigationBar.jsp" %>
+
 
   <!-- Header -->
   <header class="masthead">  
@@ -135,7 +86,7 @@
 	<br />
      <div class="row text-center">
         <div class="col-md-4">
-          <h1 class="service-heading"><%=title %></h1>       
+          <h1 class="service-heading"><%--=title --%></h1>       
 		 <a>코믹</a>,<a>일상</a>,<a>유머</a>
 		 <p >예쁜 나이 서른 살, 어딘가 모자란 청년들의 호구 같은 나날들</p>
           <a class="btn btn-primary btn-lg" href="#">첫화보기 </a>               
