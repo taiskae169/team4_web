@@ -8,6 +8,6 @@
 <%
 	WebToonListDAO dao = WebToonListDAO.getInstance();
 	dao.insertWebtoon(member);
-	response.sendRedirect("../main_page/MainPage.jsp");
+	response.sendRedirect("final.jsp");
 
 %>

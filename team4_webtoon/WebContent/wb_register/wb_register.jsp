@@ -8,7 +8,7 @@
 
 <!DOCTYPE html>
 <%
-	String name1 = "";
+
 %>
 
 <html>
