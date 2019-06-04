@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
     
          
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
 
@@ -31,16 +30,87 @@
 	.ml-center {margin-left:350px; }
 	#box {float:left; padding:30px;margin-left:550px;margin-top:200px; margin-bottom:500px;}
 	#box {float:left; }
-.searchBar{height:40px; width:232px; border:1px solid #1b5ac2; background:#ffffff;}
-.searchTxt{font-size:16px; width:325px; height:30.67px;  padding:0px;outline:none; float:left;}
+	
+	@import url(http://weloveiconfonts.com/api/?family=fontawesome);
 
-.btnSearch{width:50px; height:100px; border:0px; background:#1b5ac2;;outline:none; float:right; color:#ffffff;}
+/* fontawesome */
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+body {
+  background: #9265DC;
+  margin-top: 70px;
+}
+
+form {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+   transition: width 0.5s;
+  margin: auto;
+   -webkit-backface-visibility: hidden;
+  background: rgba(0, 0, 0, 0);
+}
+
+form.opened {
+  width: 330px;
+}
+form.opened:before {
+  position: fixed;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+input[type="search"] {
+  position: absolute;
+  top: 0; 
+  right: 28px;
+  height: 60px;
+  width: 0;
+  float:left;
+  font-size: 1.5em;
+  border-radius: 30px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  outline: none;
+  border: none;
+  padding-left: 20px;
+  color: #28d7d7;
+   transition: width 0.5s;
+}
+
+form.opened input[type="search"] {
+  width: 300px;
+   transition: width 0.5s;
+}
+
+button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background: #28d7d7;
+  border: none;
+  border-radius: 30px;
+  color: #FFF;
+  font-size: 1.3em;
+  outline: none;
+  cursor: pointer;
+}
+
+form.opened button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
 </style>
 
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
 </head>
@@ -68,15 +138,15 @@
             <a class="nav-link js-scroll-trigger" href="#about"><b>My</b></a>
           </li>
         </ul>
-        <div class="sb">
-        	<div class="searchBar">
-        		<input type="text" class="searchTxt" placeholder="#키워드 #장르도 검색해 보세요">
-			</div>
-			<button type="button" class="btn btn-default btn-lg">
-         		<span class="glyphicon glyphicon-search"></span> Search 
-       		 </button>
+
        	</div>
-      </div>
+<form>
+  <input type="search" placeholder="Search">
+  <button>
+    <span class="fa fa-search"></span>
+  </button>
+</form>
+
     </div>
   </nav>
 
@@ -356,7 +426,17 @@
 
   <!-- Custom scripts for this template -->
   <script src="/team4_webtoon/resources/kgb/agencyjs/agency.min.js"></script>
+  <script>
+    $('button').on('click', function(e) {
+        e.preventDefault();
+        $('form').addClass('opened');
+        $('input[type="search"]').focus();
+    });
 
+    $('input[type="search"]').on('focusout', function(e) {
+        $('form').removeClass('opened');
+    });
+  </script>
 </body>
 
 </html>

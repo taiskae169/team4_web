@@ -7,6 +7,7 @@
     	String id = (String)session.getAttribute("sessionID");
     
 		registerDAO manager = registerDAO.getInstance();
+		
 		int check = manager.level_check(id);
     %>
     
@@ -59,6 +60,9 @@
           <li class="nav-item">
             <a class="nav-link" href="#">회원정보</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/team4_webtoon/login/adjust.jsp"> 수정</a>
+          </li>
           <%} else { %>
            <li class="nav-item">
             <a class="nav-link" href="/team4_webtoon/login/logoutPro.jsp">LOGOUT</a>
@@ -68,6 +72,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">회원정보</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/team4_webtoon/login/adjust.jsp"> 수정</a>
           </li>
           <%} %>
 		

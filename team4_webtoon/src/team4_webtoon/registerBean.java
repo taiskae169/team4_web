@@ -70,6 +70,4 @@ public class registerBean {
 		return state;
 	}
 
-	
-
 }
