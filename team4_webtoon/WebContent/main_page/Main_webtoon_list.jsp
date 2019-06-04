@@ -16,7 +16,7 @@
               <%//리스트 페이지 완성시 링크 변경 필요 %>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#"><%=title %></a>
+                  <a href="/main_wt/main_wt.jsp"><%=title %></a>
                   <%//리스트 페이지 완성시 링크 변경 필요 %>
                 </h4>
                 <h5><%=sub_title %></h5>

@@ -39,8 +39,8 @@
 </head>
 <body>
 
-<%@include file="/menu.jsp" %>
-<%@include file="/navigationBar.jsp" %>
+<%@include file="bar/menu.jsp" %>
+<%@include file="bar/navigationBar.jsp" %>
 
 	<!-- Page Content -->
 <div class="container">
@@ -257,7 +257,7 @@
     </li>
   </ul>
  -->
-<%@ include file="footer.jsp"%>
+<%@ include file="bar/footer.jsp"%>
 <!-- /.container -->
 </body>
 </html>

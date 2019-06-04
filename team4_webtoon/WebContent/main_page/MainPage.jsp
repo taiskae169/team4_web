@@ -12,7 +12,7 @@
 			week = Integer.toString(dt.getDay());
 		}
 		//선택한 요일이 없었을 때 오늘 날자를 받아온다. 0 = 일요일, 1=월요일~
-
+		
 	%>
 <head>
 
