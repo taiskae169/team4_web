@@ -2,6 +2,7 @@
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Vector;
 
 import javax.naming.*;
@@ -366,6 +367,31 @@ public class registerDAO {
 				if(pstmt != null) try {pstmt.close();} catch(SQLException ex) {}
 				if(conn != null) try { conn.close();} catch(SQLException ex) {}
 			}
+		}
+		
+		public int getUserCount() {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			int result = 0;
+			try {
+				
+				conn = getConnection();
+				String sql = "select count(*) from user_info";
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					result = rs.getInt(1);
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				if( rs != null) try {rs.close();} catch(SQLException ex) {}
+				if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+				if (conn != null) try {conn.close();} catch(SQLException ex) {}
+			} 
+			
+			return result;
 		}
 		
 	}

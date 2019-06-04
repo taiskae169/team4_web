@@ -258,6 +258,30 @@ public class WebToonListDAO {
 			return list;
 	}
 	
+	public int getGenView(int gen) {
+		conn = getConnection(); 
+		int result=0;
+		try {
+			String sql = "select * from main_webtoon where mw_gen = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, gen);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				result += rs.getInt("mw_view");
+				
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			if(rs !=null) { try {rs.close();}catch(SQLException e) {e.printStackTrace();}}
+			if(pstmt != null) {try{pstmt.close();}catch(SQLException e) {e.printStackTrace();}}
+			if(conn !=null) {try{conn.close();}catch(SQLException e) {e.printStackTrace();}}
+		}
+		
+		return result;
+	}
+	
 }
 
 	
