@@ -18,18 +18,10 @@ public class WebToonListVO {
 	private int mag;		//특집여부
 	private String tag;		//태그
 	private int star;		//총 별점
-<<<<<<< HEAD
 	private int start_p;	//별점 참여 인원
 	private String sum; //웹툰 줄거리
 	private int view;	//조회수	
 	private String ep_img; //회차별 썸네일
-	
-=======
-	private int start_p;	//별점 참여 인원\
-	private String mw_sum;
-	private int wt_view;
-	private String wt_ep_img;
-	
 
 	public int getWt_view() {
 		return wt_view;
@@ -49,7 +41,6 @@ public class WebToonListVO {
 	public void setMw_sum(String mw_sum) {
 		this.mw_sum = mw_sum;
 	}
->>>>>>> branch 'master' of https://github.com/taiskae169/team4_web.git
 	public int getNum() {
 		return num;
 	}

@@ -76,12 +76,6 @@
           <li class="nav-item">
             <a class="nav-link" href="/team4_webtoon/login/adjust.jsp"> 수정</a>
           </li>
-          <%} 
-          if(check==4){
-          %>
-          <li class="nav-item">
-            <a class="nav-link" href="/team4_webtoon/admin/admin.jsp"> 관리자 페이지</a>
-          </li>
           <%} %>
 		
         </ul>
