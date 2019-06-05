@@ -500,7 +500,7 @@ public class registerDAO {
 				if(pstmt != null) try {pstmt.close();} catch(SQLException ex) {}
 				if(conn != null) try {conn.close();} catch(SQLException ex) {}
 			}
-<<<<<<< HEAD
+
 		}
 		public ArrayList<registerBean> get_user_list(){
 			Connection conn = null;
@@ -552,8 +552,7 @@ public class registerDAO {
 				if(pstmt != null) try {pstmt.close();} catch(SQLException ex) {}
 				if(conn != null) try { conn.close();} catch(SQLException ex) {}
 			}
-=======
->>>>>>> branch 'master' of https://github.com/taiskae169/team4_web.git
+
 		}
 		
 	}
