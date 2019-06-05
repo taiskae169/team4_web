@@ -11,6 +11,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import webtoon.list.WebToonListVO;
+import webtoon.content.contentVO;
 
 public class WTepDAO {
 	private static WTepDAO instance=new WTepDAO();
@@ -57,7 +58,7 @@ public class WTepDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"select mw.mw_num, mw.mw_title, mw.mw_sum, mw.mw_tag,mw.mw_star,mw.mw_star_p, ww.value, wg.value , c.cl_title, c.cl_num, c.cl_reg, c.mw_view, c.cl_like, c.cl_writer, c.wt_ep_img"
+					"select mw.mw_num, mw.mw_title, mw.mw_sum, mw.mw_tag,mw.mw_star,mw.mw_star_p, ww.value, wg.value , c.cl_title, c.cl_num, c.cl_reg, c.cl_view, c.cl_like, c.cl_writer, c.wt_ep_img"
 					+ "from main_webtoon mw, web_week ww, web_ger wg, content c where mw.mw_num=c.cl_title_id and mw.mw_week=ww.num and wg.web_st=mw.mw_gen and mw_num=1000");
 					pstmt.setInt(1, mw_num);
 

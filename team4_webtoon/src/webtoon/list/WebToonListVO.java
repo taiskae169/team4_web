@@ -7,9 +7,9 @@ public class WebToonListVO {
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH-mm");
 	
-	private int num;	//메인 웹툰 번호(웹툰 아이디)
+	private int num;	//웹툰 고유번호(웹툰 아이디)
 	private String title;	// 웹툰 제목
-	private String sub_title; //웹툰 소제목
+	private String sub_title; //웹툰 소제목.....아마도 삭제!
 	private Timestamp reg;	//웹툰 등록 날짜
 	private String writer; 	//작가
 	private String gen;		//장르
@@ -20,27 +20,8 @@ public class WebToonListVO {
 	private int star;		//총 별점
 	private int start_p;	//별점 참여 인원
 	private String sum; //웹툰 줄거리
-	private int view;	//조회수	
-	private String ep_img; //회차별 썸네일
+	private int view;	//웹툰 평균 조회수	
 
-	public int getWt_view() {
-		return wt_view;
-	}
-	public void setWt_view(int wt_view) {
-		this.wt_view = wt_view;
-	}
-	public String getWt_ep_img() {
-		return wt_ep_img;
-	}
-	public void setWt_ep_img(String wt_ep_img) {
-		this.wt_ep_img = wt_ep_img;
-	}
-	public String getMw_sum() {
-		return mw_sum;
-	}
-	public void setMw_sum(String mw_sum) {
-		this.mw_sum = mw_sum;
-	}
 	public int getNum() {
 		return num;
 	}
@@ -125,14 +106,4 @@ public class WebToonListVO {
 	public void setView(int view) {
 		this.view = view;
 	}
-	public String getEp_img() {
-		return ep_img;
-	}
-	public void setEp_img(String ep_img) {
-		this.ep_img = ep_img;
-	}
-	
-	
-	
-
 }

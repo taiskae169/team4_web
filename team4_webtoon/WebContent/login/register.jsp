@@ -75,9 +75,9 @@
                 <label for="name">NAME</label>
               </div>
                 <div class="form-label-group">
-                <input type="radio" value = "3" id="state" name = "state" placeholder="state" autofocus> 독자
+                <input type="radio" value = "2" id="state" name = "state" placeholder="state" autofocus> 독자
                 <br>
-                <input type="radio" value = "4" id="state" name = "state" placeholder="state" autofocus> 작가
+                <input type="radio" value = "3" id="state" name = "state" placeholder="state" autofocus> 작가
 
    				</div>
 

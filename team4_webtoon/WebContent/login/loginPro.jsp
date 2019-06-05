@@ -19,10 +19,6 @@
 	int check = dao.loginCheck(id,pw);
 	int level = dao.level_check(id);
 
-
-	request.setCharacterEncoding("euc-kr");
-
-	
 	String msg = "";
 	%>	
 	<%if(check == 1)

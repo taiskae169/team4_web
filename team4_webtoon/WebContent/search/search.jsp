@@ -1,8 +1,8 @@
-    <%@ page import = "search.SearchDAO"%>
-    <%@ page import = "search.SearchVO" %>
-    <%@ page import = "java.util.ArrayList" %>
-    <%@ page import = "webtoon.list.*" %>
-    
+<%@ page import = "search.SearchDAO"%>
+<%@ page import = "search.SearchVO" %>
+<%@ page import = "java.util.ArrayList" %>
+<%@ page import = "webtoon.list.*" %>
+<%request.setCharacterEncoding("UTF-8"); %>    
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -11,16 +11,12 @@
 	String search = request.getParameter("addr") == null ? "null" : request.getParameter("addr");
 	String select = request.getParameter("select") == null ? "" : request.getParameter("select"); 
 	SearchDAO dao = new SearchDAO();
-	ArrayList<SearchVO> list = dao.getAddrs(search,select);
-	
+	ArrayList<SearchVO> list = dao.getAddrs(search,select);	
 	//이미지 가져오기
 	String title = request.getParameter("title");
 	//select box 가져오기
 
-
-	
 %>
-
 <html>
 <head>
 <meta charset="UTF-8">
@@ -39,16 +35,16 @@
 </head>
 <body>
 
-<%@include file="/menu.jsp" %>
-<%@include file="/navigationBar.jsp" %>
+<%@include file="../bar/menu.jsp" %>
+<%@include file="../bar/navigationBar.jsp" %>
 
 	<!-- Page Content -->
 <div class="container">
 
   <!-- Page Heading -->
-  <%if (search == "null") {%>
+  <%if (search == "null"){%>
   	<br>
-  	<h1 class="my-4" style="text-align: center">검색어를 입력해주세요</h1>
+  	<h1 class="my-4" style="text-align: center">검색어를 입력하세요</h1>
   	<br><br><br>
 	<form name = "out" method = "get" action="search.jsp">
 	<ASIDE style="text-align: center">
@@ -59,10 +55,65 @@
 	</select>
 	<input type='text' name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색">
        </ASIDE>
-       <br><br><hr style = "border : outset 1px black;"><br>
+
 	</form>
 
+  <%} else if (search != "null" && list.size() != 0){%>
+  <h1 class="my-4"><%=request.getParameter("addr") %>
+    <small> 검색 결과 </small>
+  </h1>
+   <FORM name='frm' method='GET' action="search.jsp">
+    <ASIDE style='float: right;'>
+	<select name = "select">
+		<option value = "0">제목 </option>
+		<option value = "1">작가 </option>
+		<option value = "2">태그 </option>
+	</select>
+       <input type='text' name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색">
+       </ASIDE>
+       <br>
+       <br>
+           	<div class = "row">
 
+    	<%for(int i = 0; i < list.size(); i++){%>
+
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="/team4_webtoon/resources/image/webtoon/thumbnail/<%=list.get(i).getTitle() %>_som.jpg" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+			 <a href="#"><%=list.get(i).getTitle() %></a>
+          </h4>
+          <p class="card-text"><a href = "#"><%=list.get(i).getWriter() %></a></p>
+          <p class="card-text"><%=list.get(i).getGen() %></p>
+          <p class="card-text"><%=list.get(i).getTag() %></p>
+        </div>
+      </div>
+    </div>
+    <%}%>   
+    </div>
+  </FORM>
+ 
+	<br><br><br>
+<%} else if(list.size() == 0) {%>
+ 
+<br>
+  	<h1 class="my-4" style="text-align: center">검색 결과가 없습니다.</h1>
+  	<br><br><br>
+	<form name = "out" method = "get" action="search.jsp">
+	<ASIDE style="text-align: center">
+	<select name = "select">
+		<option value = "0">제목 </option>
+		<option value = "1">작가 </option>
+		<option value = "2">태그 </option>
+	</select>
+	<input type='text' name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색">
+       </ASIDE>
+	</form>
+
+<%} %>
+  <DIV class='menu_line' style='clear: both;'></DIV>
+         <br><br><hr style = "border : outset 1px black;"><br>
 	<h3>추천 키워드</h3><br>
 	<div>
 		<div>
@@ -121,112 +172,7 @@
 		</div>
 	</div>
 	<br><br><br>
-
-  <%} else if (search != "null"){%>
-  <h1 class="my-4"><%=request.getParameter("addr") %>
-    <small> 검색 결과 </small>
-  </h1>
-
-   <FORM name='frm' method='GET' action="search.jsp">
-    <ASIDE style='float: right;'>
-	<select name = "select">
-		<option value = "0">제목 </option>
-		<option value = "1">작가 </option>
-		<option value = "2">태그 </option>
-	</select>
-       <input type='text' name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색">
-       </ASIDE>
-       <br>
-       <br>
-       
-           	<div class = "row">
-    	<%for(int i = 0; i < list.size(); i++){%>
-
-
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="/team4_webtoon/resources/image/webtoon/thumbnail/<%=list.get(i).getTitle() %>_som.jpg" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-			 <a href="#"><%=list.get(i).getTitle() %></a>
-          </h4>
-          <p class="card-text"><a href = "#"><%=list.get(i).getWriter() %></a></p>
-          <p class="card-text"><%=list.get(i).getGen() %></p>
-          <p class="card-text"><%=list.get(i).getTag() %></p>
-        </div>
-
-      </div>
-    </div>
-
-    <%}%>   
-
-    </div>
-
-
-  </FORM>
-  <br>
-  <h3>추천 키워드</h3><br>
-	<div>
-		<div>
-			<table>
-
-				<tbody>
-					<tr>
-						<td>#결혼생활</td>
-						<td>#대학생활</td>
-						<td>#반려동물</td>
-						<td>#배틀</td>
-					<tr>
-						<td>#복수</td>
-						<td>#일진</td>
-						<td>#솔로</td>
-						<td>#연예인 </td>
-
-					<tr>
-						<td>#음식</td>
-						<td>#외계인</td>
-						<td>#격투</td>
-						<td>#직장생활</td>
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<br><br>
-	
-	<h3>추천 장르</h3><br>
-	<div>
-		<div>
-			<table>
-				<tbody>
-					<tr>
-						<td>에피소드</td>
-						<td>스토리</td>
-						<td>공포</td>
-						<td>드라마</td>
-					<tr>
-						<td>무협</td>
-						<td>미스터리</td>
-						<td>순정만화</td>
-						<td>스릴러물</td>
-					<tr>
-						<td>스포츠다</td>
-						<td>액션</td>
-						<td>일상</td>
-						<td>지식</td>
-					<tr>
-						<td>코믹</td>
-						<td>판타지</td>
-						<td>학원</td>
-						<td>성인</td>
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<br><br><br>
-<%} %>
- 
-
-  <DIV class='menu_line' style='clear: both;'></DIV>
+  
 </DIV>
 
   <!-- /.row -->
@@ -257,7 +203,9 @@
     </li>
   </ul>
  -->
-<%@ include file="footer.jsp"%>
+ 
+ 
+<%@ include file="../bar/footer.jsp"%>
 <!-- /.container -->
 </body>
 </html>

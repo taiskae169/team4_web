@@ -52,11 +52,15 @@
             <a class="nav-link" href="/team4_webtoon/login/logoutPro.jsp">LOGOUT</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/team4_webtoon/search/search.jsp">SEARCH</a>
+            <a class="nav-link" href="/team4_webtoon/search.jsp">SEARCH</a>
           </li>
                     <li class="nav-item">
             <a class="nav-link" href="/team4_webtoon/wb_register/wb_register.jsp">작품등록</a>
           </li>
+          </li>
+                    <li class="nav-item">
+            <a class="nav-link" href="/team4_webtoon/content/createWB.jsp">회차등록</a>
+          </li>          
           <li class="nav-item">
             <a class="nav-link" href="#">회원정보</a>
           </li>
@@ -68,19 +72,13 @@
             <a class="nav-link" href="/team4_webtoon/login/logoutPro.jsp">LOGOUT</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/team4_webtoon/search/search.jsp">SEARCH</a>
+            <a class="nav-link" href="/team4_webtoon/search.jsp">SEARCH</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">회원정보</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/team4_webtoon/login/adjust.jsp"> 수정</a>
-          </li>
-          <%} 
-          if(check==4){
-          %>
-          <li class="nav-item">
-            <a class="nav-link" href="/team4_webtoon/admin/admin.jsp"> 관리자</a>
           </li>
           <%} %>
 		

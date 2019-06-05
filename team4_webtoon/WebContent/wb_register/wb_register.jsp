@@ -2,13 +2,13 @@
     <%@ page import = "search.SearchVO" %>
     <%@ page import = "java.util.ArrayList" %>
     <%@ page import = "webtoon.list.*" %>
-    
+<%request.setCharacterEncoding("UTF-8"); %>    
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <%
-	String name1 = "";
+
 %>
 
 <html>
@@ -29,8 +29,8 @@
 </head>
 <body>
 
-<%@include file="/menu.jsp" %>
-<%@include file="/navigationBar.jsp" %>
+<%@include file="../bar/menu.jsp" %>
+<%@include file="../bar/navigationBar.jsp" %>
 
 	<!-- Page Content -->
 <div class="container">
@@ -95,7 +95,7 @@
 </div>
 
 
-<%@ include file="../footer.jsp"%>
+<%@ include file="../bar/footer.jsp"%>
 <!-- /.container -->
 </body>
 </html>

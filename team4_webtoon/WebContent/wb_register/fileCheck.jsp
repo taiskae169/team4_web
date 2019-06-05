@@ -4,10 +4,10 @@
 <jsp:useBean id = "member" class = "webtoon.list.WebToonListVO">
 <jsp:setProperty property = "*" name = "member"/>
 </jsp:useBean>
-
+<%request.setCharacterEncoding("UTF-8"); %>
 <%
 	WebToonListDAO dao = WebToonListDAO.getInstance();
 	dao.insertWebtoon(member);
-	response.sendRedirect("../main_page/MainPage.jsp");
+	response.sendRedirect("final.jsp");
 
 %>

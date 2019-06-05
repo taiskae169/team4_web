@@ -2,9 +2,6 @@
 <%@ page import = "team4_webtoon.registerBean" %>
 <%@ page import = "team4_webtoon.registerDAO" %>
     <%request.setCharacterEncoding("UTF-8"); %>
-	<%
-		
-	%>
 	<jsp:useBean id="member" class="team4_webtoon.registerBean">
 	<jsp:setProperty property="*" name="member"/>
 	</jsp:useBean>
@@ -13,7 +10,7 @@
 	<%
 		registerDAO dao = registerDAO.getInstance();
 		dao.insertMember(member);
-		response.sendRedirect("login.jsp");
+		response.sendRedirect("loginFinal.jsp");
 	%>
 	
 	<br>

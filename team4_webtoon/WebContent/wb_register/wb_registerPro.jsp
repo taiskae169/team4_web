@@ -4,11 +4,9 @@
 <%@ page import = "java.util.*" %>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
-    
+ <%request.setCharacterEncoding("UTF-8"); %>   
     <%@ page import = "webtoon.list.*" %>
 <%
-	request.setCharacterEncoding("euc-kr");
-
 
 	int size = 10*1024*1024;
 	String title = "";
