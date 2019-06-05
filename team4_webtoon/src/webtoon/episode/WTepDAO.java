@@ -66,11 +66,11 @@ public class WTepDAO {
 					if (rs.next()) {
 						webtoonEP = new ArrayList(); 
 						do{ 
-							WebToonListVO episode= new WebToonListVO();
-							episode.setEp_img(rs.getString("mw_ep_img"));
-							episode.setSub_title(rs.getString("mw_sub_title"));
-							episode.setStar(rs.getInt("mw_star"));
-							episode.setReg(rs.getTimestamp("mw_reg"));
+							contentVO  episode=new contentVO();
+							episode.setWt_ep_img(rs.getString("mw_ep_img"));
+							episode.setCl_title(rs.getString("cl_title"));
+							episode.setMw_star(rs.getInt("cl_star"));
+							episode.setCl_reg(rs.getTimestamp("cl_reg"));
 							webtoonEP.add(episode); 
 						}while(rs.next());
 					}
@@ -84,4 +84,41 @@ public class WTepDAO {
 		return webtoonEP;
 	} //웹툰별 에피소드 리스트를 리턴하는 메소드
 	
+	public List getDetail(int mw_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List wtDetail=null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"select mw.mw_num, mw.mw_title, m.mw_writer,mw.mw_week, mw.mw_sum, mw.mw_tag,mw.mw_star,mw.mw_star_p,  wg.value , c.cl_title, c.cl_num, c.cl_reg, c.cl_view, c.cl_like"
+					+ "from main_webtoon mw, web_ger wg, content c where mw.mw_num=c.cl_title_id and wg.web_st=mw.mw_gen and mw_num=?");
+					pstmt.setInt(1, mw_num);
+
+					rs = pstmt.executeQuery();
+					if (rs.next()) {
+						wtDetail=new ArrayList();
+
+						do{ 
+							WebToonListVO detail=new WebToonListVO();
+							detail.setTitle(rs.getString("mw.mw_title"));
+							detail.setWriter(rs.getString("mw.mw_writer"));
+							detail.setSum(rs.getString("mw.mw_sum"));
+							detail.setGen(rs.getString("wg.value"));
+							detail.setTag(rs.getString("mw.mw_tag"));
+							detail.setLike(rs.getInt("mw.mw_like"));
+							detail.setWeek(rs.getInt("mw.mw_week"));
+							wtDetail.add(detail);
+						}while(rs.next());
+					}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return wtDetail;
+	} //웹툰별 에피소드 리스트를 리턴하는 메소드
 }

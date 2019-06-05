@@ -8,7 +8,6 @@
     
     <%--
     		int mw_num=Integer.parseInt(request.getParameter("mw_num"));
-    		String title=request.getParameter("title");
     	  	    
     	    int pageSize = 10; 
     	    String pageNum = request.getParameter("pageNum");

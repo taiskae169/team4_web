@@ -1,20 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <meta charset="utf-8">
-    <%@ page import ="team4_webtoon.*" %>
-    <%@ page import ="webtoon.content.contentVO" %>
-    <%@ page import ="webtoon.episode.StarVO" %>
-        <%@ page import ="webtoon.episode.StarDAO" %>
-
-    <%--
-    	int mwNum=Integer.parseInt(request.getParameter("cl_title_id"));
-    	int epNum = Integer.parseInt(request.getParameter("cl_num"));
-    	StarDAO star=StarDAO.getInstance();
-    	int epstar=star.getStar(mwNum,epNum);	
-    	String fstar=Integer.toString(epstar);
-    --%>
-    
-  <head>
+<!DOCTYPE html>
+<html>
+<title>웹툰 뷰어 navbar</title>
+ <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -22,12 +11,11 @@
 
   <!-- Bootstrap core CSS -->
   <link href="/team4_webtoon/resources/Main_page/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/team4_webtoon/resources/Main_page/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  
+
   <!-- Custom styles for this template -->
   <link href="/team4_webtoon/resources/Main_page/css/shop-homepage.css" rel="stylesheet">
-    <link href="/team4_webtoon/resources/Main_page/css/shop-homepage.css" rel="stylesheet">
-    
+</head>
+
 <script language="JavaScript">
     // 아이디 중복 여부를 판단
     function openConfirmstar(starForm) {
@@ -41,22 +29,9 @@
 
 
 
-</head>
-    
-    
-    
-    
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="/team4_webtoon/main_page/MainPage.jsp">사이트 명</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-        <%--if(fstar ==null){ --%>
-          <li class="nav-item">별점주기
-            	<form name="starForm" >	
+<body>
+
+	<form name="starForm" >	
 		<select id="starSelect" >
 			<option value="5" selected>
 				<%for(int j=5;j >0;j--){%>
@@ -99,18 +74,8 @@
 		<input type="button" name="confirm_star" value="확인" 
         							OnClick="openConfirmstar(this.form)">  		
 	</form>
-          </li>
-          <%--} else { --%>
-         <%-- <li class="nav-item">--%>
-            참여하셨습니다.
-          </li>
-          <%--} --%>
-		
-        </ul>
-      </div>
-    </div>
-  </nav>
-  
-  	  <!-- Bootstrap core JavaScript -->
+	  <!-- Bootstrap core JavaScript -->
   <script src="/team4_webtoon/resources/Main_page/vendor/jquery/jquery.min.js"></script>
   <script src="/team4_webtoon/resources/Main_page/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
