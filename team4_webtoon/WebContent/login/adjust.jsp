@@ -18,8 +18,8 @@
 </head>
 <body onload = "begin()">
 
-<%@include file="/menu.jsp" %>
-<%@include file="/navigationBar.jsp" %>
+<%@include file="../bar/menu.jsp" %>
+<%@include file="../bar/navigationBar.jsp" %>
 
 <div class="container">
   	<br>
@@ -65,7 +65,7 @@
 </div>
 
 
-<%@ include file="../footer.jsp"%>
+<%@ include file="../bar/footer.jsp"%>
 <!-- /.container -->
 </body>
 </html>
