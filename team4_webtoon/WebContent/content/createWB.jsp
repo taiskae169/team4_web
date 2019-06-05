@@ -1,12 +1,13 @@
+<%request.setCharacterEncoding("UTF-8"); %>    
 <%@ page import = "webtoon.content.*" %>
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "webtoon.list.*" %>
-<%request.setCharacterEncoding("UTF-8"); %>    
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-	int cl_title_id = 1000;
+	int cl_title_id = 100;
 	contentDAO dao = contentDAO.getInstance();
 	contentVO vo = new contentVO();
 
@@ -54,7 +55,7 @@
 	<b>내용을 확인하셨습니까?</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<input type = "radio" name = "cl_writer" value = "<%=session.getAttribute("sessionID") %>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;확인
 	<br><br><br>
-	
+	<input type = "hidden" name = "cl_title_id" value = "<%=cl_title_id %>">
 </div>
 <div>
 <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">작품 등록</button>

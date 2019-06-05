@@ -59,7 +59,7 @@ public class contentDAO {
 		try {
 			conn = getConnection();
 			
-			pstmt = conn.prepareStatement("insert into content values(cl_num_seq.nextval,?,?,?,sysdate,?,?,?,?,?,?)");
+			pstmt = conn.prepareStatement("insert into content values(cl_num_seq.nextval,?,?,?,sysdate,?,?,?,?,?,?,?)");
 			pstmt.setString(1, content.getCl_title());
 			pstmt.setInt(2, content.getCl_title_id());
 			pstmt.setString(3, content.getCl_content());
@@ -69,6 +69,7 @@ public class contentDAO {
 			pstmt.setInt(7, content.getMw_star());
 			pstmt.setInt(8, content.getMw_star_p());
 			pstmt.setString(9, content.getWt_ep_img());
+			pstmt.setInt(10, content.getCl_star_sum());
 			
 			pstmt.executeUpdate();
 		}catch (Exception ex) {

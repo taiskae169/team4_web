@@ -14,7 +14,14 @@ public class contentVO {
 	private int mw_star; //평점
 	private int mw_star_p; //평점 참여자
 	private String wt_ep_img; //회차별 대표 썸네일
+	private int cl_star_sum;
 	
+	public int getCl_star_sum() {
+		return cl_star_sum;
+	}
+	public void setCl_star_sum(int cl_star_sum) {
+		this.cl_star_sum = cl_star_sum;
+	}
 	public int getCl_num() {
 		return cl_num;
 	}

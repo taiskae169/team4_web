@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%request.setCharacterEncoding("UTF-8"); %> 
     <%@ page import ="team4_webtoon.*" %>
 
     <%
@@ -57,6 +56,9 @@
                     <li class="nav-item">
             <a class="nav-link" href="/team4_webtoon/wb_register/wb_register.jsp">작품등록</a>
           </li>
+                    <li class="nav-item">
+            <a class="nav-link" href="/team4_webtoon/content/createWB.jsp">회차등록</a>
+          </li>          
           <li class="nav-item">
             <a class="nav-link" href="#">회원정보</a>
           </li>

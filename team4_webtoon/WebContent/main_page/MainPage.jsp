@@ -37,13 +37,8 @@
 <body>
 
   <!-- Navigation -->
-<<<<<<< HEAD
   	<%@include file="../bar/menu.jsp" %>
 	<%@include file="../bar/navigationBar.jsp" %>
-=======
-  	<%@include file="/bar/menu.jsp" %>
-	<%@include file="/bar/navigationBar.jsp" %>
->>>>>>> branch 'master' of https://github.com/taiskae169/team4_web
 
   <!-- Page Content -->
   <div class="container">
@@ -78,9 +73,6 @@
   <!-- Footer -->
 <<<<<<< HEAD
 	<%@include file="../bar/footer.jsp" %>
-=======
-	<%@include file="/bar/footer.jsp" %>
->>>>>>> branch 'master' of https://github.com/taiskae169/team4_web
 
   <!-- Bootstrap core JavaScript -->
   <script src="/team4_webtoon/resources/Main_page/vendor/jquery/jquery.min.js"></script>
