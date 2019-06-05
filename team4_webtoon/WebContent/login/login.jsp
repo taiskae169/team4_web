@@ -25,30 +25,34 @@
  }
 
 </script>
-
-<LINK REL=StyleSheet HREF="../resources/login/css/login.css" TYPE="text/css" 	TITLE="login.css" MEDIA="screen,print">
+<style>
+	body{
+		background-color:#FFFFFF;
+	}
+</style>
+<LINK REL=StyleSheet  TYPE="text/css" 	TITLE="login.css" MEDIA="screen,print">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-
+<%@include file="../bar/menu.jsp" %>
+<%@include file="../bar/navigationBar.jsp" %>
 </head>
-<body onload="begin()">
+<body>
 	<%
 	
 	%>
+
   <div class="container">
-    <div class="row"><br><br><br><br><br><br>
-      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto"><br><br><br>
-        <div class="card card-signin my-5"><br>
-          <div class="card-body">
-            <h5 class="card-title text-center">로그인</h5>
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body"><br>
+            <h5 class="card-title text-center">로그인</h5><br>
             <form class="form-signin" name="loginInfo" method = "post" action="loginPro.jsp" onsubmit="return checkIt()">
               <div class="form-label-group">
                 <input type="text" id="id" name = "id" class="form-control" placeholder="ID" required autofocus>
-                <label for="id">ID</label>
               </div>
-
+				<br>
               <div class="form-label-group">
                 <input type="password" id="password" name = "pw" class="form-control" placeholder="Password" required>
-                <label for="password">Password</label>
               </div>
               <hr class="my-4">
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Login</button>
@@ -71,6 +75,6 @@
     </div>
 
   </div>
-  
+  <%@include file="../bar/footer.jsp" %>
 </body>
 </html>

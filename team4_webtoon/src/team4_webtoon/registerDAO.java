@@ -555,5 +555,54 @@ public class registerDAO {
 
 		}
 		
+		public registerBean emaila(String id, String pw) throws Exception
+		{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			registerBean member = null;
+			
+			
+			
+			String dbpasswd = "";
+			int x = -1;
+			
+			try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement(
+						"select * from user_info where id = ?");
+				pstmt.setString(1,id);
+				rs = pstmt.executeQuery();
+
+				
+				if(rs.next())
+				{
+					member = new registerBean();
+					dbpasswd = rs.getString("pw");
+					member.setEmail(rs.getString("email"));
+					member.setName(rs.getString("name"));
+					member.setAge(rs.getString("age"));
+					if(dbpasswd.equals(pw)) {
+						x = 1;
+					}
+					else
+						x = 0;
+				}
+				else 
+					x = -1;
+
+			} catch (Exception ex) {
+				ex.printStackTrace();
+				} finally {
+
+						if( rs != null) try {rs.close();} catch(SQLException ex) {}
+						if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+						if (conn != null) try {conn.close();} catch(SQLException ex) {}
+					} 
+					return member;
+					
+				}
+		
+		
 	}
 

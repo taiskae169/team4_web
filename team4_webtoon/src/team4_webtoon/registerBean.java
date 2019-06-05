@@ -69,5 +69,8 @@ public class registerBean {
 	public int level_check() {
 		return state;
 	}
+	public String emaila() {
+		return email;
+	}
 
 }

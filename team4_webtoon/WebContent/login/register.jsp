@@ -32,7 +32,8 @@
 </script>
 
 <LINK REL=StyleSheet HREF="../resources/register/css/register.css" TYPE="text/css" 	TITLE="register.css" MEDIA="screen,print">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<%@include file="../bar/menu.jsp" %>
+<%@include file="../bar/navigationBar.jsp" %>
 </head>
 <body>
 	<%
@@ -40,7 +41,7 @@
 	%>
   <div class="container">
     <div class="row">
-      <div class="col-lg-10 col-xl-9 mx-auto"><br><br>
+      <div class="col-lg-10 col-xl-9 mx-auto">
         <div class="card card-signin flex-row my-5">
           <div class="card-img-left d-none d-md-flex">
              <!-- Background image for card set in CSS! -->
@@ -94,5 +95,6 @@
       </div>
     </div>
   </div>
+<%@include file="../bar/footer.jsp" %>
 </body>
 </html>

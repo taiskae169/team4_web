@@ -44,7 +44,7 @@
             <a class="nav-link" href="/team4_webtoon/login/register.jsp">SIGN</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/team4_webtoon/search.jsp">SEARCH</a>
+            <a class="nav-link" href="/team4_webtoon/search/search.jsp">SEARCH</a>
           </li>
           <%}else if (id != null && check == 3){ %>
           <%=session.getAttribute("sessionID") %>
@@ -61,7 +61,7 @@
             <a class="nav-link" href="#">회원정보</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/team4_webtoon/login/adjust.jsp"> 수정</a>
+            <a class="nav-link" href="/team4_webtoon/login/adjustForm.jsp"> 수정</a>
           </li>
           <%} else { %>
            <li class="nav-item">
@@ -74,7 +74,7 @@
             <a class="nav-link" href="#">회원정보</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/team4_webtoon/login/adjust.jsp"> 수정</a>
+            <a class="nav-link" href="/team4_webtoon/login/adjustForm.jsp"> 수정</a>
           </li>
           <%} %>
 		
