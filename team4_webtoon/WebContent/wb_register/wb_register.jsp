@@ -2,14 +2,12 @@
     <%@ page import = "search.SearchVO" %>
     <%@ page import = "java.util.ArrayList" %>
     <%@ page import = "webtoon.list.*" %>
-<%request.setCharacterEncoding("UTF-8"); %>    
+<%request.setCharacterEncoding("UTF-8"); %> 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<%
 
-%>
 
 <html>
 <head>
@@ -75,7 +73,7 @@
 				<input type = "radio" name = "week" value = "0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일요일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<br><br><br>
 	<b>줄거리</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="text" size="100" maxlength="30" name="mw_sum" placeholder="줄거리를 입력하세요"> 
+				<input type="text" size="100" maxlength="30" name="sum" placeholder="줄거리를 입력하세요"> 
 				<br><br><br>
 	<b>썸네일 이미지</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;크기 (700 x 400)에 맞게 올려주세요 (jpg 파일) 또한 작품 제목_som.jpg 형식을 지켜주세요<br><br><br>
 	<input type = "file" name = "file">

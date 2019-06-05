@@ -71,7 +71,7 @@
 <br><br><br><br><br><br>
 </div>
 <%} else if (check1 == 0) {%>
-<h1>비밀번호가 틀렸습니다. 이전 페이지로 돌아갑니다.</h1>
+  	<h1 style = "text-align : center">비밀번호가 틀렸습니다. 이전 페이지로 돌아갑니다.</h5><br><br>
 <meta http-equiv="Refresh" content="2;url=adjustForm.jsp" >
 
 <%} else{%>

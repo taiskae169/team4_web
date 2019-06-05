@@ -16,6 +16,7 @@
 </script>
 
 </head>
+
 <body onload = "begin()">
 
 <%@include file="../bar/menu.jsp" %>
@@ -31,7 +32,7 @@
 		<div><br><br><br>
 	<b>비밀번호를 입력하세요</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type = "password" name = "pw" required>
-				<br><br><br><br><br><br><br><br><br>
+				<br><br><br><br><br>
 
 				</div>
 				<button class="btn btn-lg btn-warning btn-block text-uppercase" value ="submit">확인</button>
