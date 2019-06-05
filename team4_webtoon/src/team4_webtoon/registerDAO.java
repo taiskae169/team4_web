@@ -25,6 +25,7 @@ public class registerDAO {
         DataSource ds = (DataSource)envCtx.lookup("jdbc/xe");
         return ds.getConnection();
     }
+    //회원 가입시 DB에 값 넣는 메서드
 	public void insertMember(registerBean user_info) throws SQLException
 	{
 		Connection conn = null;
@@ -53,6 +54,7 @@ public class registerDAO {
 		}
 	}
 	
+	//로그인을 체크하는 메서드
 	public int loginCheck(String id, String pw) throws Exception
 	{
 		Connection conn = null;
@@ -91,6 +93,7 @@ public class registerDAO {
 				return x;
 			}
 	
+	//아이디 찾기 메서드 - 이름과 이메일을 입력하면 아이디를 보여준다.
 	public registerBean idCheck(String name, String email) throws Exception
 	{
 		Connection conn = null;
@@ -137,7 +140,7 @@ public class registerDAO {
 				
 			}
 	
-	
+	//비밀번호 찾기 메서드 - 아이디와 이메일을 입력하면 비밀번호를 찾을 수 있다.
 	public registerBean pwCheck(String id, String email) throws Exception
 	{
 		Connection conn = null;
@@ -184,6 +187,7 @@ public class registerDAO {
 				
 			}
 	
+	//아이디 찾기 메서드 
 	public int idCheck1(String name, String email) throws Exception
 	{
 		Connection conn = null;
@@ -260,6 +264,7 @@ public class registerDAO {
 				return x;
 			}	
 	
+	//아이디 중복 확인 메서드
 	public int confirmId(String id) 
 			throws Exception {
 				Connection conn = null;
@@ -290,6 +295,7 @@ public class registerDAO {
 				return x;
 			}
 	
+	//이메일 중복확인 메서드
 	public int confirmEmail(String email) 
 			throws Exception {
 				Connection conn = null;

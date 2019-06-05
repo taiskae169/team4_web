@@ -70,7 +70,9 @@
 				<input type = "radio" name = "week" value = "4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목요일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type = "radio" name = "week" value = "5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;금요일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type = "radio" name = "week" value = "6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;토요일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type = "radio" name = "week" value = "0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일요일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type = "radio" name = "week" value = "7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일요일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type = "radio" name = "week" value = "0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;도전만화&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 				<br><br><br>
 	<b>줄거리</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="text" size="100" maxlength="30" name="sum" placeholder="줄거리를 입력하세요"> 

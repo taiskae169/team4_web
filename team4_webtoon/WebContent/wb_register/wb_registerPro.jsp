@@ -12,9 +12,9 @@
 	int size = 10*1024*1024;
 	String title = "";
 	String sub_title = "";
-	String gen = "";
+	int gen = 0;
 	String tag = "";
-	String week = "";
+	int week = 0;
 	String writer = "";
 	String sum = "";
 	
@@ -27,9 +27,9 @@
 		MultipartRequest multi=new MultipartRequest(request,path2,size,"UTF-8",new DefaultFileRenamePolicy());
 		title = multi.getParameter("title");	
 		sub_title = multi.getParameter("sub_title");
-		gen = multi.getParameter("gen");
+		gen = Integer.parseInt(multi.getParameter("gen"));
 		tag = multi.getParameter("tag");
-		week = multi.getParameter("week");
+		week = Integer.parseInt(multi.getParameter("week"));
 		sum = multi.getParameter("sum");
 		writer = multi.getParameter("writer");
 		
@@ -81,13 +81,36 @@
 				<%= sub_title %>
 				<br><br><br>
 	<b>장르</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<%= gen %>
+	<%switch (gen){
+		case 0 : %>일상<%break;
+		case 1 : %>개그<%break;
+		case 2 : %>판타지<%break;
+		case 3 : %>액션<%break;
+		case 4 : %>드라마<%break;
+		case 5 : %>순정<%break;
+		case 6 : %>감성<%break;
+		case 7 : %>스릴러<%break;
+		case 8 : %>시대극<%break;
+		case 9 : %>스포츠<%break;
+		
+	} %>
 				<br><br><br>
 	<b>태그</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			
 				<%= tag %>
 				<br><br><br>
 	<b>연재요일</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
-				<%= week %>
+	<%switch (week){ 
+		case 7 : %>일요일<%break;
+		case 1 : %>월요일<%break;
+		case 2 : %>화요일<%break;
+		case 3 : %>수요일<%break;
+		case 4 : %>목요일<%break;
+		case 5 : %>금요일<%break;
+		case 6 : %>토요일<%break;
+		case 0 : %>도전만화<%break;
+		
+	}%>
+		
 				<br><br><br>
 	<b>줄거리</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<%= sum %>
@@ -102,7 +125,8 @@
       <input type = "hidden" name = "tag" value="<%=tag %>">
       <input type = "hidden" name = "week" value="<%=week %>">
       <input type = "hidden" name = "sum" value ="<%=sum %>">
-      <input type = "hidden" name = "writer" value="<%=writer %>">
+            <input type = "hidden" name = "writer" value="<%=writer %>">
+
 				
 	
 </div>
