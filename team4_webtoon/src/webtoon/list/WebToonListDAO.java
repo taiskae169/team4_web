@@ -148,8 +148,8 @@ public class WebToonListDAO {
 			pstmt.setString(8, main_webtoon.getTag());
 			pstmt.setInt(9, main_webtoon.getStar());
 			pstmt.setInt(10, main_webtoon.getStart_p());
-			pstmt.setString(11, main_webtoon.getMw_sum());
-			pstmt.setInt(12, main_webtoon.getWt_view());
+			pstmt.setString(11, main_webtoon.getSum());
+			pstmt.setInt(12, main_webtoon.getView());
 
 			pstmt.executeUpdate();
 			
