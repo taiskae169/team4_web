@@ -1,3 +1,4 @@
+<%request.setCharacterEncoding("UTF-8"); %> 
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -37,8 +38,8 @@
 <body>
 
   <!-- Navigation -->
-  	<%@include file="/menu.jsp" %>
-	<%@include file="/navigationBar.jsp" %>
+  	<%@include file="../bar/menu.jsp" %>
+	<%@include file="../bar/navigationBar.jsp" %>
 
   <!-- Page Content -->
   <div class="container">
@@ -71,7 +72,7 @@
   
   
   <!-- Footer -->
-	<%@include file="/footer.jsp" %>
+	<%@include file="../bar/footer.jsp" %>
 
   <!-- Bootstrap core JavaScript -->
   <script src="/team4_webtoon/resources/Main_page/vendor/jquery/jquery.min.js"></script>

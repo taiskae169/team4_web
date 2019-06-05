@@ -1,3 +1,4 @@
+<%@page import="webtoon.list.WebToonListDAO"%>
 <%@page import="team4_webtoon.registerDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -5,18 +6,18 @@
 
 
 <%
-	int state = Integer.parseInt(request.getParameter("state"));
+	int ger  = Integer.parseInt(request.getParameter("ger"));
 	int num = Integer.parseInt(request.getParameter("num"));
 	
-	registerDAO dao = registerDAO.getInstance();
+	WebToonListDAO dao = WebToonListDAO.getInstance();
 	
-	dao.updateMemberState(state, num);%>
+	dao.updateGer(num, ger);%>
 	
 	
 		<script type="text/javascript">
 			
 			alert("변경되었습니다.")
-			location.href="admin_user.jsp";
+			location.href="admin_webtoon.jsp";
 		</script>
 	<%
 	//response.sendRedirect("admin_user.jsp");

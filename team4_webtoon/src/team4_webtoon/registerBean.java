@@ -3,14 +3,14 @@ package team4_webtoon;
 import java.sql.Timestamp;
 
 public class registerBean {
-	private int user_no;
+	private int user_no;		//유저번호
 	private String id;			//아이디
 	private String password;	//비밀번호
 	private String email;		//이메일
 	private String age;			//나이
 	private String name;		//이름	
 	private Timestamp user_reg;		//가입일자
-	private int state;
+	private int state;			//상태 탈퇴 - 0  휴면 - 1  활동중 - 2  작가 - 3  관리자 - 4
 	public int getUser_no() {
 		return user_no;
 	}
@@ -68,6 +68,9 @@ public class registerBean {
 	}
 	public int level_check() {
 		return state;
+	}
+	public String emaila() {
+		return email;
 	}
 
 }

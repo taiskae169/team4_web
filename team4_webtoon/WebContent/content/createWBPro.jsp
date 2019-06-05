@@ -1,10 +1,11 @@
+<%request.setCharacterEncoding("UTF-8"); %>  
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "java.io.File" %>
 <%@ page import = "java.util.*" %>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
-<%request.setCharacterEncoding("UTF-8"); %>    
+  
     <%@ page import = "webtoon.content.*" %>
     <%@ page import = "webtoon.list.*" %>
 <%
@@ -14,7 +15,7 @@
 	String title = "";
 	String cl_title = "";
 	String cl_content = "";
-	int cl_title_id = 10;
+	int cl_title_id = 0;
 	String cl_writer = "";
 	
 	
@@ -30,7 +31,7 @@
 		cl_title = multi1.getParameter("cl_title");
 		cl_content = multi1.getParameter("cl_content");
 		cl_writer = multi1.getParameter("cl_writer");
-		
+		cl_title_id = Integer.parseInt(multi1.getParameter("cl_title_id"));
 		System.out.println(cl_title_id);	
 		System.out.println(cl_title);
 

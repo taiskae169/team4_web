@@ -28,7 +28,7 @@
 
 
 <body id="page-top">
-  	<%@include file="/menu.jsp" %>
+  	<%@include file="/bar/menu.jsp" %>
   	
   	
   	<% 
@@ -279,7 +279,7 @@
     </div>
     <!-- End of Content Wrapper -->
 
-	<%@include file="/footer.jsp" %>
+	<%@include file="/bar/footer.jsp" %>
   <!-- End of Page Wrapper -->
 
   <!-- Scroll to Top Button-->

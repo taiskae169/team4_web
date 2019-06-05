@@ -25,6 +25,7 @@ public class registerDAO {
         DataSource ds = (DataSource)envCtx.lookup("jdbc/xe");
         return ds.getConnection();
     }
+    //회원 가입시 DB에 값 넣는 메서드
 	public void insertMember(registerBean user_info) throws SQLException
 	{
 		Connection conn = null;
@@ -53,6 +54,7 @@ public class registerDAO {
 		}
 	}
 	
+	//로그인을 체크하는 메서드
 	public int loginCheck(String id, String pw) throws Exception
 	{
 		Connection conn = null;
@@ -91,6 +93,7 @@ public class registerDAO {
 				return x;
 			}
 	
+	//아이디 찾기 메서드 - 이름과 이메일을 입력하면 아이디를 보여준다.
 	public registerBean idCheck(String name, String email) throws Exception
 	{
 		Connection conn = null;
@@ -137,7 +140,7 @@ public class registerDAO {
 				
 			}
 	
-	
+	//비밀번호 찾기 메서드 - 아이디와 이메일을 입력하면 비밀번호를 찾을 수 있다.
 	public registerBean pwCheck(String id, String email) throws Exception
 	{
 		Connection conn = null;
@@ -184,6 +187,7 @@ public class registerDAO {
 				
 			}
 	
+	//아이디 찾기 메서드 
 	public int idCheck1(String name, String email) throws Exception
 	{
 		Connection conn = null;
@@ -260,6 +264,7 @@ public class registerDAO {
 				return x;
 			}	
 	
+	//아이디 중복 확인 메서드
 	public int confirmId(String id) 
 			throws Exception {
 				Connection conn = null;
@@ -290,6 +295,7 @@ public class registerDAO {
 				return x;
 			}
 	
+	//이메일 중복확인 메서드
 	public int confirmEmail(String email) 
 			throws Exception {
 				Connection conn = null;
@@ -554,6 +560,55 @@ public class registerDAO {
 			}
 
 		}
+		
+		public registerBean emaila(String id, String pw) throws Exception
+		{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			registerBean member = null;
+			
+			
+			
+			String dbpasswd = "";
+			int x = -1;
+			
+			try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement(
+						"select * from user_info where id = ?");
+				pstmt.setString(1,id);
+				rs = pstmt.executeQuery();
+
+				
+				if(rs.next())
+				{
+					member = new registerBean();
+					dbpasswd = rs.getString("pw");
+					member.setEmail(rs.getString("email"));
+					member.setName(rs.getString("name"));
+					member.setAge(rs.getString("age"));
+					if(dbpasswd.equals(pw)) {
+						x = 1;
+					}
+					else
+						x = 0;
+				}
+				else 
+					x = -1;
+
+			} catch (Exception ex) {
+				ex.printStackTrace();
+				} finally {
+
+						if( rs != null) try {rs.close();} catch(SQLException ex) {}
+						if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+						if (conn != null) try {conn.close();} catch(SQLException ex) {}
+					} 
+					return member;
+					
+				}
+		
 		
 	}
 
