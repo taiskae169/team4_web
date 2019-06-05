@@ -26,11 +26,12 @@
             <h5 class="card-title text-center">웹툰 등록이 완료되었습니다.</h5>
             <form class="form-signin" name="loginInfo" method = "post" action="../content/createWB.jsp" onsubmit="return checkIt()">
 
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">1화 올리기</button>
-              <button class="btn btn-lg btn-warning btn-block text-uppercase" onclick="location='../main_page/MainPage.jsp'">돌아가기</button>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">1화 올리기</button><br>
+            </form>
+         	     <p class="text-center"><a href="../main_page/MainPage.jsp">돌아가기</a></p>   
               <br>
               
-            </form>
+
 
           </div>
 

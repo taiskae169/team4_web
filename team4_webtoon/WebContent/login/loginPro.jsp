@@ -4,8 +4,6 @@
 <%@ page import ="team4_webtoon.*" %>
 <%@ page import = "java.util.ArrayList" %>
 <!DOCTYPE html>
-
-
 	<jsp:useBean id="member" class="team4_webtoon.registerBean"/>
 	<jsp:setProperty property="*" name="member"/>
 

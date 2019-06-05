@@ -36,9 +36,6 @@
 <%@include file="../bar/navigationBar.jsp" %>
 </head>
 <body>
-	<%
-		
-	%>
   <div class="container">
     <div class="row">
       <div class="col-lg-10 col-xl-9 mx-auto">
@@ -48,21 +45,21 @@
           </div>
           <div class="card-body">
             <h5 class="card-title text-center">회원가입</h5>
-            <form class="form-signin" method="post" action="registerPro.jsp" name="userinput" onsubmit="return checkIt()" >
+            <form class="form-signin" method="post" action="registerPro.jsp" name="userinput">
               <div class="form-label-group">
-                <input type="text" id = "id" class="form-control" placeholder="ID" name = "id" size = "10" maxlength="12">                
+                <input type="text" id = "id" class="form-control" placeholder="ID" name = "id" size = "10" maxlength="12" required autofocus>                
 
 				<label for="id">ID</label>
                 <input type = "button" value = "중복확인" onclick="openConfirmid(this.form)">
               </div>
 
               <div class="form-label-group">
-                <input type="password" id="password" class="form-control" name = "password" placeholder="Password" required>
+                <input type="password" id="password" class="form-control" name = "password" placeholder="Password" required autofocus>
                 <label for="password">Password</label>
               </div>
                 <hr>
                 <div class="form-label-group">
-                <input type="email" id="email" class="form-control" name = "email" placeholder="Email address" required>
+                <input type="email" id="email" class="form-control" name = "email" placeholder="Email address" required autofocus>
                 <label for="email">Email address</label>
                 <input type = "button" value = "중복확인" onclick="openConfirmemail(this.form)">
               </div>

@@ -85,14 +85,14 @@
 	<br><br><br>
 	
 </div>
-<div>
-<button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">작품 등록</button>
+
+<button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">작품 등록</button><br>
+
 <button class="btn btn-lg btn-primary btn-block text-uppercase" type="reset">수정하기</button>
-<button class="btn btn-lg btn-warning btn-block text-uppercase" onclick="location='../main_page/MainPage.jsp'">돌아가기</button>
+</form>
 <br><br><br>
 </div>
-</form>
-</div>
+
 
 
 <%@ include file="../bar/footer.jsp"%>

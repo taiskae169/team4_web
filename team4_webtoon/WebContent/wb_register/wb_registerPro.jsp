@@ -130,12 +130,10 @@
 				
 	
 </div>
-<div>
+
 <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">작품 등록</button>
-<button class="btn btn-lg btn-warning btn-block text-uppercase" onclick="location='../main_page/MainPage.jsp'">돌아가기</button>
-<br><br><br>
-</div>
 </form>
+<br><br><br>
 </div>
 
 
