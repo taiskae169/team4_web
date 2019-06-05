@@ -3,17 +3,17 @@ package webtoon.content;
 import java.sql.Timestamp;
 
 public class contentVO {
-	private int cl_num;
-	private String cl_title;
-	private int cl_title_id;
-	private String cl_content;
-	private Timestamp cl_reg;
-	private int cl_like;
-	private String cl_writer;
-	private int mw_view;
-	private int mw_star;
-	private int mw_star_p;
-	private String wt_ep_img;
+	private int cl_num;  //회차번호
+	private String cl_title; //소제목(에피소드 제목)
+	private int cl_title_id; //웹툰 고유번호
+	private String cl_content; //웹툰 내용(파일이름, 경로)
+	private Timestamp cl_reg; //등록일자
+	private int cl_like; //좋아요 수
+	private String cl_writer; //작가
+	private int mw_view; //조회수
+	private int mw_star; //평점
+	private int mw_star_p; //평점 참여자
+	private String wt_ep_img; //회차별 대표 썸네일
 	
 	public int getCl_num() {
 		return cl_num;

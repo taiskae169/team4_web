@@ -44,7 +44,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">유저관리</h6>
+              <h6 class="m-0 font-weight-bold text-primary">웹툰 관리</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -52,51 +52,36 @@
                   <thead>
                     <tr>
                       <th>NUM</th>
-                      <th>ID</th>
-                      <th>EMAIL</th>
-                      <th>AGE</th>
-                      <th>NAME</th>
-                      <th>SIGN_DATE</th>
-                      <th>STATE</th>
+                      <th>TITLE</th>
+                      <th>GEN</th>
+                      <th>MW_WEEK</th>
+                      <th>WRITER</th>
+                      <th>MAG</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
                       <th>NUM</th>
-                      <th>ID</th>
-                      <th>EMAIL</th>
-                      <th>AGE</th>
-                      <th>NAME</th>
-                      <th>SIGN_DATE</th>
-                      <th>STATE</th>
+                      <th>TITLE</th>
+                      <th>GEN</th>
+                      <th>MW_WEEK</th>
+                      <th>WRITER</th>
+                      <th>MAG</th>
                     </tr>
                   </tfoot>
                   <tbody>
-                  <%for(int i=0; i<list.size(); i++){ 
-                	  	String state="";
-                  		registerBean vo = list.get(i);
-                  		if(vo.getState()==0){
-                  			state = "탈퇴";
-                  		}else if(vo.getState()==1){
-                  			state = "휴먼";
-                  		}else if(vo.getState()==2){
-                  			state = "활동중";
-                  		}else if(vo.getState()==3){
-                  			state = "작가";
-                  		}else if(vo.getState()==4){
-                  			state = "관리자";
-                  		}
+                  <%
+                  
                   %>
 	                    <tr>
-	                      <td><%=vo.getUser_no() %></td>
-	                      <td><%=vo.getId() %></td>
-	                      <td><%=vo.getEmail() %></td>
-	                      <td><%=vo.getAge() %></td>
-	                      <td><%=vo.getName() %></td>
-	                      <td><%=vo.getUser_reg() %></td>
-	                      <td><a href="#" onclick="window.open('stateCh.jsp?state=<%=vo.getState()%>&num=<%=vo.getUser_no()%>', 'confirm',  'toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300, height=200');"><%=state %></a></td>
+	                      <td></td>
+	                      <td></td>
+	                      <td></td>
+	                      <td></td>
+	                      <td></td>
+	                      <td></td>
 	                    </tr>
-                    <%} %>
+                    <% %>
                   </tbody>
                 </table>
               </div>

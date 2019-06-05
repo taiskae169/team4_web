@@ -49,8 +49,8 @@
 <body>
 
   <!-- Navigation -->
-  	<%@include file="/menu.jsp" %>
-	<%@include file="/navigationBar.jsp" %>
+  	<%@include file="/bar/menu.jsp" %>
+	<%@include file="/bar/navigationBar.jsp" %>
 
   <!-- Page Content -->
    <div class="container">
@@ -90,7 +90,7 @@
   
   
   <!-- Footer -->
-	<%@include file="/footer.jsp" %>
+	<%@include file="/bar/footer.jsp" %>
 
   <!-- Bootstrap core JavaScript -->
   <script src="/team4_webtoon/resources/Main_page/vendor/jquery/jquery.min.js"></script>
