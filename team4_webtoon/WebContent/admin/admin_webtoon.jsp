@@ -54,7 +54,7 @@
 
       <!-- Main Content -->
       <div id="content">
-			<%@include file="user_table.jsp" %>
+			<%@include file="webtoon_table.jsp" %>
 	  </div>
 	</div>
   </div>
