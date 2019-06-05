@@ -1,3 +1,5 @@
+<%@page import="webtoon.comment.cmtDAO"%>
+<%@page import="webtoon.comment.cmtVO"%>
 <%@page import="webtoon.list.WebtoonListForAdminVO"%>
 <%@page import="webtoon.list.WebToonListDAO"%>
 <%@page import="team4_webtoon.registerBean"%>
@@ -27,10 +29,8 @@
   <link href="/team4_webtoon/resources/admin/css/sb-admin-2.min.css" rel="stylesheet">
 
 <%
-	WebToonListDAO dao = WebToonListDAO.getInstance();
-	ArrayList<WebtoonListForAdminVO> list = dao.getListForAdmin();
-	ArrayList<String> gen = dao.getGen();
-	ArrayList<String> mag = dao.getMag();
+	cmtDAO dao = cmtDAO.getinstance();
+	ArrayList<cmtVO> list = dao.getListForAdmin();
 		  
 %>
 	<style>
@@ -98,7 +98,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">웹툰 관리</h6>
+              <h6 class="m-0 font-weight-bold text-primary">댓글 관리</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -106,105 +106,67 @@
                   <thead>
                     <tr>
                       <th>NUM</th>
-                      <th>TITLE</th>
-                      <th>GEN</th>
-                      <th>WEEK</th>
                       <th>WRITER</th>
-                      <th>MAG</th>
+                      <th>CONTENT</th>
+                      <th>STATE</th>
+                      <th>REG</th>
+                      <th>MW_NUM</th>
+                      <th>CL_NUM</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
                       <th>NUM</th>
-                      <th>TITLE</th>
-                      <th>GEN</th>
-                      <th>WEEK</th>
                       <th>WRITER</th>
-                      <th>MAG</th>
+                      <th>CONTENT</th>
+                      <th>STATE</th>
+                      <th>REG</th>
+                      <th>MW_NUM</th>
+                      <th>CL_NUM</th>
                     </tr>
                   </tfoot>
                   <tbody>
                   <%
                   	for(int i=0; i<list.size(); i++){
-                  		WebtoonListForAdminVO vo = list.get(i);
-                  	
+                  		cmtVO vo = list.get(i);
+                  		String state;
+                  		if(vo.getState()==0){
+                  			state="기본";
+                  		}else{
+                  			state="숨김";
+                  		}
                   %>
 	                    <tr>
 	                      <td><%=vo.getNum() %></td>
-	                      <td><%=vo.getTitle() %></td>
-	                      <td><a href="#open-gerModa<%=i%>" ><%=vo.getGen() %></a></td>
-	                      <td><a href="#open-weekModa<%=i%>"><%=vo.getWeek() %></td>
-	                      <td><%=vo.getWriter() %></a></td>
-	                      <td><a href="#open-magModa<%=i%>"><%=vo.getMag() %></a></td>
+	                      <td><%=vo.getId() %></td>
+	                      <td><%=vo.getContent() %></td>
+	                      <td><a href="#open-stateModa<%=i%>"><%=state%></a></td>
+	                      <td><%=vo.getReg() %></td>
+	                      <td><%=vo.getMw_num()%></td>
+	                      <td><%=vo.getCl_num()%></td>
 	                    </tr>
 	                    
-	                    <div id="open-gerModa<%=i %>" class="modal-window">
+	                    
+	                    <div id="open-stateModa<%=i %>" class="modal-window">
 		                    	<div>
 		                    		<a href="#modal-close" title="Close" class="modal-close">Close</a>            		
-									<form action="gerChPro.jsp" style="margin:0 auto;">
-										<p>현재장르는 <%=vo.getGen() %>입니다.</p>
-										<p>변경할 항목을 선택해 주세요</p>
-										<select name="ger" style="width:50%;">
-											<% 
-											for(int a = 0; a<gen.size();a++){
-												String ge = gen.get(a);
-												%>
-												<option value=<%=a %>><%=ge %></option>
-	
-											<%}%>
-										</select>
-										<input type="hidden" value="<%=vo.getNum() %>" name="num" />
-										<input type="submit" value="변경" />
+									<form action=".jsp" style="margin:0 auto;">
+										<p>현재장르는 <%=state%>입니다.</p>
+										<%if(vo.getState()==0){ %>
+											<p>숨기시겠습니까?</p>
+											<input type="hidden" value=1 name="state" />
+										<%}else{ %>
+											<p>숨김을 푸시겠습니까?</p>
+											<input type="hidden" value=2 name="state" />
+										<%} %>
 										
-									</form>
-								</div> <!-- 폼을 둘러싸고 있는 div -->
-							</div>  <!-- 장르 변경 팝업창 div -->
-							
-							<div id="open-weekModa<%=i %>" class="modal-window">
-		                    	<div>
-		                    		<a href="#modal-close" title="Close" class="modal-close">Close</a>            		
-									<form action="weekChPro.jsp" style="margin:0 auto;">
-										<p>현재장르는 <%=vo.getWeek() %>입니다.</p>
-										<p>변경할 항목을 선택해 주세요</p>
-										<select name="week" style="width:50%;">
-												<option value=0>도전만화</option>
-												<option value=1>월요일</option>
-												<option value=2>화요일</option>
-												<option value=3>수요일</option>
-												<option value=4>목요일</option>
-												<option value=5>금요일</option>
-												<option value=6>토요일</option>
-												<option value=7>일요일</option>											
-										</select>
 										<input type="hidden" value="<%=vo.getNum() %>" name="num" />
 										<input type="submit" value="변경" />
 										
 									</form>
 								</div> <!-- 폼을 둘러싸고 있는 div -->
 							</div>  <!--  요일 변경 팝업창 div -->
-							
-							
-							<div id="open-magModa<%=i %>" class="modal-window">
-		                    	<div>
-		                    		<a href="#modal-close" title="Close" class="modal-close">Close</a>            		
-									<form action="magChPro.jsp" style="margin:0 auto;">
-										<p>현재장르는 <%=vo.getMag() %>입니다.</p>
-										<p>변경할 항목을 선택해 주세요</p>
-										<select name="mag" style="width:50%;">
-											<% 
-											for(int a = 0; a<mag.size();a++){
-												String ma = mag.get(a);
-												%>
-												<option value=<%=a %>><%=ma %></option>
-	
-											<%}%>						
-										</select>
-										<input type="hidden" value="<%=vo.getNum() %>" name="num" />
-										<input type="submit" value="변경" />
-										
-									</form>
-								</div> <!-- 폼을 둘러싸고 있는 div -->
-							</div>  <!--  요일 변경 팝업창 div -->
+	                    
                     <% }%>
                   </tbody>
                 </table>

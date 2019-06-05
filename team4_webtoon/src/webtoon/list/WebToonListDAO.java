@@ -289,6 +289,144 @@ public class WebToonListDAO {
 		return result;
 	}
 	
+	public ArrayList<WebtoonListForAdminVO> getListForAdmin(){
+		conn = getConnection();
+		ArrayList<WebtoonListForAdminVO> list = new ArrayList<WebtoonListForAdminVO>();
+		try {
+			String sql = "select mw_num num, mw_title title, gen, week, writer, value mag from"
+					+ " (select mw_num, mw_title, gen, value week, writer, mw_mag from"
+					+ " (select mw_num, mw_title, value gen, mw_week, mw_writer writer, mw_mag from"
+					+ " main_webtoon, web_ger where mw_gen=web_st), web_week where mw_week = web_week.num), web_mag where mw_mag = mag_st";
+			// num, title, gen, week, writer, mag를 찾는 sql문
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				WebtoonListForAdminVO vo = new WebtoonListForAdminVO();
+				vo.setNum(rs.getInt(1));
+				vo.setTitle(rs.getString(2));
+				vo.setGen(rs.getString(3));
+				vo.setWeek(rs.getString(4));
+				vo.setWriter(rs.getString(5));
+				vo.setMag(rs.getString(6));
+				list.add(vo);
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			if(rs !=null) { try {rs.close();}catch(SQLException e) {e.printStackTrace();}}
+			if(pstmt != null) {try{pstmt.close();}catch(SQLException e) {e.printStackTrace();}}
+			if(conn !=null) {try{conn.close();}catch(SQLException e) {e.printStackTrace();}}
+		}
+		
+		return list;
+	}//관리자용 웹툰 목록 페이지를 위한 메소드
+	
+	public ArrayList<String> getGen(){
+		conn = getConnection();
+		ArrayList<String> list = new ArrayList<String>();
+		try {
+			String sql = "select value from web_ger";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(rs.getString(1));
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			if(rs !=null) { try {rs.close();}catch(SQLException e) {e.printStackTrace();}}
+			if(pstmt != null) {try{pstmt.close();}catch(SQLException e) {e.printStackTrace();}}
+			if(conn !=null) {try{conn.close();}catch(SQLException e) {e.printStackTrace();}}
+		}
+		
+		return list;
+	}//웹툰 장르 정의 항목을 불러오는 메소드
+	
+	public ArrayList<String> getMag(){
+		conn = getConnection();
+		ArrayList<String> list = new ArrayList<String>();
+		try {
+			String sql = "select value from web_mag";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(rs.getString(1));
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			if(rs !=null) { try {rs.close();}catch(SQLException e) {e.printStackTrace();}}
+			if(pstmt != null) {try{pstmt.close();}catch(SQLException e) {e.printStackTrace();}}
+			if(conn !=null) {try{conn.close();}catch(SQLException e) {e.printStackTrace();}}
+		}
+		
+		return list;
+	}//웹툰 장르 정의 항목을 불러오는 메소드
+	
+	public void updateGer(int num, int ger) {
+		conn = getConnection();
+		//int state = changeGer(ger);
+		try {
+			String sql = "update main_webtoon set mw_gen=? where mw_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, ger);
+			pstmt.setInt(2, num);
+			pstmt.executeUpdate();
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			if(rs !=null) { try {rs.close();}catch(SQLException e) {e.printStackTrace();}}
+			if(pstmt != null) {try{pstmt.close();}catch(SQLException e) {e.printStackTrace();}}
+			if(conn !=null) {try{conn.close();}catch(SQLException e) {e.printStackTrace();}}
+		}
+	}//main_webtoon의 장르을 변경해주는 메소드
+	
+	public void updateWeek(int num, int week) {
+		conn = getConnection();
+		try {
+			String sql = "update main_webtoon set mw_week=? where mw_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, week);
+			pstmt.setInt(2, num);
+			pstmt.executeUpdate();
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			if(rs !=null) { try {rs.close();}catch(SQLException e) {e.printStackTrace();}}
+			if(pstmt != null) {try{pstmt.close();}catch(SQLException e) {e.printStackTrace();}}
+			if(conn !=null) {try{conn.close();}catch(SQLException e) {e.printStackTrace();}}
+		}
+	}//main_webtoon의 mw_mag 항목을 변경해주는 메소드
+	
+	
+	public void updateMag(int num, int mag) {
+		conn = getConnection();
+		try {
+			String sql = "update main_webtoon set mw_mag=? where mw_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, mag);
+			pstmt.setInt(2, num);
+			pstmt.executeUpdate();
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			if(rs !=null) { try {rs.close();}catch(SQLException e) {e.printStackTrace();}}
+			if(pstmt != null) {try{pstmt.close();}catch(SQLException e) {e.printStackTrace();}}
+			if(conn !=null) {try{conn.close();}catch(SQLException e) {e.printStackTrace();}}
+		}
+	}//main_webtoon의 mw_mag 항목을 변경해주는 메소드
+	
+	
+	
 }
 
 	

@@ -39,6 +39,11 @@
          	<i class="fas fa-fw fa-cog"></i>
           	<span>웹툰 관리</span></a>
       </li>
+      <li class="nav-item">
+         <a class="nav-link" href="admin_comment.jsp">
+         	<i class="fas fa-fw fa-cog"></i>
+          	<span>코멘트 관리</span></a>
+      </li>
       
 
 

@@ -217,5 +217,35 @@ public class cmtDAO {
 			if(pstmt!=null) {try{pstmt.close();}catch(SQLException e) {e.printStackTrace();}}
 			if(conn!=null) {try{conn.close();}catch(SQLException e) {e.printStackTrace();}}
 		}
-	}
+	}//코멘트 추가
+	
+	
+	public ArrayList<cmtVO> getListForAdmin(){
+		ArrayList<cmtVO> list = new ArrayList<cmtVO>();
+		try {
+			conn = getConnection();
+			String sql = "select * from comment_wb";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				cmtVO vo = new cmtVO();
+				
+				vo.setNum(rs.getInt("R_NUM"));
+				vo.setReg(rs.getTimestamp("R_REG"));
+				vo.setId(rs.getString("R_WR"));
+				vo.setState(rs.getInt("R_STATE"));
+				vo.setMw_num(rs.getInt("R_MW_NUM"));
+				vo.setCl_num(rs.getInt("R_CL_NUM"));
+				vo.setContent(rs.getString("R_CONTENT"));
+				list.add(vo);
+			}
+		}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				if(rs!=null) {try{rs.close();}catch(SQLException e){e.printStackTrace();}}
+				if(pstmt!=null) {try{pstmt.close();}catch(SQLException e) {e.printStackTrace();}}
+				if(conn!=null) {try{conn.close();}catch(SQLException e) {e.printStackTrace();}}
+		}
+		return list;
+	}//댓글 리스트를 보내는 것
 }
