@@ -59,12 +59,20 @@
 		<br><br><br>
 	</form>
 
-	<form action = "changeAge.jsp" method="post" name = "">
+	<form action = "changeAge.jsp" method="post" name = "changeAge">
 		<b>나이 변경</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= b.getAge() %><br><br>
 		<input type = "text" name = "age" required> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type="submit" name="changeAge" value = "나이 변경"> 
-		<br><br><br><br><br>
+		<br><br><br>
 	</form>	
+
+	<form action = "delete.jsp" method ="post" name = "delete">
+	<b>회원 탈퇴</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<br><br>
+	<input type = "password" name = "pw" placeholder = "비밀번호를 입력하세요." required> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type = "submit" name = "delete" value = "회원탈퇴">
+	<br><br><br><br><br>
+	</form>
 </div>
 
 <div class = "container">

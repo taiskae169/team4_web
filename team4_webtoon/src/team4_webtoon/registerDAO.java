@@ -609,6 +609,23 @@ public class registerDAO {
 					return member;
 					
 				}
+		public void deleteMember(registerBean member) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			
+			try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement(
+						"update user_info set state = 0 where id = ?");
+				pstmt.setString(1,member.getId());
+				pstmt.executeUpdate();
+			}catch(Exception ex) {
+				ex.printStackTrace();
+			}finally {
+				if(pstmt != null) try {pstmt.close();} catch(SQLException ex) {}
+				if(conn != null) try {conn.close();} catch(SQLException ex) {}
+			}
+		}
 		
 		
 	}
