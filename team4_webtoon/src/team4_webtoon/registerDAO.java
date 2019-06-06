@@ -140,7 +140,7 @@ public class registerDAO {
 				
 			}
 	
-	//비밀번호 찾기 메서드 - 아이디와 이메일을 입력하면 비밀번호를 찾을 수 있다.
+	//비밀번호 찾기 메서드 - 아이디와 이메일을 입력하면 비밀번호를 보여준다.
 	public registerBean pwCheck(String id, String email) throws Exception
 	{
 		Connection conn = null;
@@ -187,7 +187,7 @@ public class registerDAO {
 				
 			}
 	
-	//아이디 찾기 메서드 
+	//아이디 찾기 메서드  (번호로 반환)
 	public int idCheck1(String name, String email) throws Exception
 	{
 		Connection conn = null;
@@ -225,7 +225,7 @@ public class registerDAO {
 				} 
 				return x;
 			}
-	
+	//비밀번호 체크 메서드 맞으면 1 반환
 	public int pwCheck1(String id, String email) throws Exception
 	{
 		Connection conn = null;
@@ -326,6 +326,7 @@ public class registerDAO {
 				return x;
 			}
 		
+		//상태를 체크하는 메서드
 		public int level_check(String id) {
 			
 			Connection conn = null;
@@ -385,7 +386,7 @@ public class registerDAO {
 			return member;
 		}//회원 등급을 확인하는 메소드
 		
-		
+		//휴면 상태를 해제하는 메서드
 		public void updateMember(registerBean member) throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
@@ -560,8 +561,8 @@ public class registerDAO {
 			}
 
 		}
-		
-		public registerBean emaila(String id, String pw) throws Exception
+		//이메일, 이름, 나이 반환 메서드, adjust 페이지에서 사용 (현재 이름, 이메일, 나이 보여주기 위해
+		public registerBean adjust(String id, String pw) throws Exception
 		{
 			Connection conn = null;
 			PreparedStatement pstmt = null;

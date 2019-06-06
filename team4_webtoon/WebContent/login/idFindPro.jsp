@@ -21,10 +21,9 @@
 	String email = request.getParameter("email");
 	
 	registerDAO manager1 = registerDAO.getInstance();
-	registerBean c = manager1.idCheck(name, email);
+	registerBean c = manager1.idCheck(name, email);		//아이디 반환 메서드 (아이디 자체를 반환한다.)
 	
-	
-	int check1 = manager.idCheck1(name, email);
+	int check1 = manager.idCheck1(name, email);			//아아디 반환 메서드 (맞으면  if 틀리면 else)
 	%>
 	
 	<% if (check1 == 1){%>
