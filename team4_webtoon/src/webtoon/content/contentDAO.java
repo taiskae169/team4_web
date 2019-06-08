@@ -51,7 +51,7 @@ public class contentDAO {
 		return result;
 	}
 	
-	
+	//회차 등록 메서드
 	public void insertwb(contentVO content) throws SQLException{
 		Connection conn = null;
 		PreparedStatement pstmt = null;

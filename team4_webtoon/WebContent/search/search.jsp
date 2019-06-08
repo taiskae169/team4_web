@@ -85,7 +85,20 @@
 			 <a href="#"><%=list.get(i).getTitle() %></a>
           </h4>
           <p class="card-text"><a href = "#"><%=list.get(i).getWriter() %></a></p>
-          <p class="card-text"><%=list.get(i).getGen() %></p>
+          <p class="card-text">
+          <%switch (list.get(i).getGen()){ 
+        	  case "0" : %>일상<%break;
+        	  case "1" : %>개그<%break;
+        	  case "2" : %>판타지<%break;
+        	  case "3" : %>액션<%break;
+        	  case "4" : %>드라마<%break;	
+        	  case "5" : %>순정<%break;
+        	  case "6" : %>감성<%break;
+        	  case "7" : %>스릴러<%break;
+        	  case "8" : %>시대극<%break;
+        	  case "9" : %>스포츠<%break;
+        	  }%>
+          </p>
           <p class="card-text"><%=list.get(i).getTag() %></p>
         </div>
       </div>

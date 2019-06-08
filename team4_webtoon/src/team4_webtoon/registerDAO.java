@@ -434,6 +434,7 @@ public class registerDAO {
 			return result;
 		}
 
+		//비밀번호 변경 메서드
 		public void changePW(registerBean member) throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
@@ -452,6 +453,8 @@ public class registerDAO {
 				if(conn != null) try {conn.close();} catch(SQLException ex) {}
 			}
 		}
+		
+		//이메일 변경 메서드
 		public void changeEmail(registerBean member) throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
@@ -470,6 +473,8 @@ public class registerDAO {
 				if(conn != null) try {conn.close();} catch(SQLException ex) {}
 			}
 		}
+		
+		//이름 변경 메서드
 		public void changeName(registerBean member) throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
@@ -489,7 +494,7 @@ public class registerDAO {
 			}
 		}
 		
-
+		//나이 변경 메서드
 		public void changeAge(registerBean member) throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
@@ -609,6 +614,8 @@ public class registerDAO {
 					return member;
 					
 				}
+		
+		//회원 탈퇴 메서드
 		public void deleteMember(registerBean member) throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
