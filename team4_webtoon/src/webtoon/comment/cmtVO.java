@@ -5,15 +5,15 @@ import java.sql.Timestamp;
 
 public class cmtVO {
 	
-	private int num;
-	private int like;
-	private int hate;
-	private Timestamp reg;
-	private String id;
-	private int state;
-	private int mw_num;
-	private int cl_num;
-	private String content;
+	private int num;			//코멘트 번호
+	private int like;			//좋아요 숫자
+	private int hate;			//싫어요 숫자
+	private Timestamp reg;		//생성 날짜
+	private String id;			//작성자 ID
+	private int state;			//숨김여부 설정, 0은 정상/1은 숨김
+	private int mw_num;			//코멘트가 작성된 웹툰 번호
+	private int cl_num;			//코멘트가 작성된 웹툰 회차번호(0일시 해당 웹툰 리뷰 페이지)
+	private String content;		//코멘트 내용
 	public String getContent() {
 		return content;
 	}

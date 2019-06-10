@@ -55,6 +55,7 @@
       <!-- Main Content -->
       <div id="content">
 			<%@include file="user_table.jsp" %>
+			<!-- 테이블이 저장되어 있는 페이지 인클루드 -->
 	  </div>
 	</div>
   </div>

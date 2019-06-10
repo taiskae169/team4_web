@@ -11,6 +11,7 @@
 	registerDAO dao = registerDAO.getInstance();
 	
 	dao.updateMemberState(state, num);%>
+	<!-- 현재 회원 상태 변경 -->
 	
 	
 		<script type="text/javascript">

@@ -3,23 +3,19 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-	String state = request.getParameter("state");
-	String num = request.getParameter("num");
-	String pageNum = request.getParameter("pageNum");
-	String mw_num = request.getParameter("mw_num");
-	String cl_num = request.getParameter("cl_num");
+	String state = request.getParameter("state");				// 변환할 상태정보 0일시 정상, 1일시 신고된 댓글
+	String num = request.getParameter("num");					// 댓글 번호
+	String pageNum = request.getParameter("pageNum");			// 변환 후 돌아가기 위한 페이지 번호
+	String mw_num = request.getParameter("mw_num");				// 웹툰 번호
+	String cl_num = request.getParameter("cl_num");				// 회차 번호
 	
 	
-	System.out.println("----comment hide에서 변수값 확인 ---------");
-	System.out.println(pageNum);
-	System.out.println(num);
-	System.out.println(mw_num);
-	System.out.println(cl_num);
-	System.out.println("==========");
 	
 	cmtDAO dao = cmtDAO.getinstance();
 	
 	dao.chState(num, state);
 	
 	response.sendRedirect("comment.jsp?cmtNum=" + pageNum + "&mw_num="+mw_num+"&cl_num="+cl_num);
+	//작업 완료 후 다시 돌아가기 위한 항목
+	//이후 컨텐츠/웹툰 상세 페이지 완성 시 해당페이지로 변경 필요
 %>

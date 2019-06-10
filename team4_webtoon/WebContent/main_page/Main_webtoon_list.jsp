@@ -9,7 +9,9 @@
 		String sub_title = request.getParameter("subtitle");
 		String writer = request.getParameter("writer");
 		int star_point = Integer.parseInt(request.getParameter("star_point"));
+		// 전송받은 항목을 각 변수에 대입
 		int i=0;
+		// 별점 출력을 위한 i 변수 생성
 %>
           <div class="col-lg-4 col-md-6 mb-5">
             <div class="card h-100">
@@ -25,10 +27,12 @@
               </div>
               <div class="card-footer">
               	<%for(; i<star_point/20; i++){ %>
+              	<!-- 별점을 받아 출력된 n개 만큼 출력 -->
                	 	<small class="text-muted">&#9733;</small>
                 <%}
               	for(;i<5;i++){ %>
                 	<small class="text-muted">&#9734;</small>
+                	<!-- n개 이후 빈별을 출력 -->
                 <%} %>
               </div>
             </div>

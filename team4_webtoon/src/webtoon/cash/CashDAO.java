@@ -41,8 +41,10 @@ public class CashDAO {
 			if(rs.next()) {
 				do {
 					int i = rs.getInt("cash_io");
+					//cash_io -> 입출력 내역
 					if(i>0) {
 						result +=i;
+						//io가 0보다 클 시 충전한 것이므로 result에 가산
 					}
 				}while(rs.next());
 			}
@@ -55,7 +57,7 @@ public class CashDAO {
 			if (conn != null) try {conn.close();} catch(SQLException ex) {}
 		} 
 		return result;
-	}
+	}//이번달 캐시 충전을 체크
 
 
 }

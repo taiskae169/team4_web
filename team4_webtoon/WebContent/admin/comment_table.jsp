@@ -143,21 +143,23 @@
 	                      <td><a href="#open-stateModa<%=i%>"><%=state%></a></td>
 	                      <td><%=vo.getReg() %></td>
 	                      <td><%=vo.getMw_num()%></td>
+	                      <!-- 누르면 웹툰 리스트 페이지로 가도록 -->
 	                      <td><%=vo.getCl_num()%></td>
+	                      <!-- 누르면 해당 화로 가도록 링크 -->
 	                    </tr>
 	                    
 	                    
 	                    <div id="open-stateModa<%=i %>" class="modal-window">
 		                    	<div>
 		                    		<a href="#modal-close" title="Close" class="modal-close">Close</a>            		
-									<form action=".jsp" style="margin:0 auto;">
+									<form action="CommentCh.jsp" style="margin:0 auto;">
 										<p>현재장르는 <%=state%>입니다.</p>
 										<%if(vo.getState()==0){ %>
 											<p>숨기시겠습니까?</p>
 											<input type="hidden" value=1 name="state" />
 										<%}else{ %>
 											<p>숨김을 푸시겠습니까?</p>
-											<input type="hidden" value=2 name="state" />
+											<input type="hidden" value=0 name="state" />
 										<%} %>
 										
 										<input type="hidden" value="<%=vo.getNum() %>" name="num" />

@@ -28,9 +28,9 @@
 
 <%
 	WebToonListDAO dao = WebToonListDAO.getInstance();
-	ArrayList<WebtoonListForAdminVO> list = dao.getListForAdmin();
-	ArrayList<String> gen = dao.getGen();
-	ArrayList<String> mag = dao.getMag();
+	ArrayList<WebtoonListForAdminVO> list = dao.getListForAdmin();	//전체 웹툰을 받아옴
+	ArrayList<String> gen = dao.getGen();							//생성되어 있는 장르를 받아옴
+	ArrayList<String> mag = dao.getMag();							//현재 매거진 항목을 가지고옴
 		  
 %>
 	<style>
@@ -90,6 +90,7 @@
 
 	
 	</style>
+	<!-- 팝업용 스크립트문 나중에 빼기 -->
 
 </head>
 
@@ -113,6 +114,7 @@
                       <th>MAG</th>
                     </tr>
                   </thead>
+                  <!-- 상단 제목 바 -->
                   <tfoot>
                     <tr>
                       <th>NUM</th>
@@ -123,10 +125,12 @@
                       <th>MAG</th>
                     </tr>
                   </tfoot>
+                  <!-- 하단 제목바 -->
                   <tbody>
                   <%
                   	for(int i=0; i<list.size(); i++){
                   		WebtoonListForAdminVO vo = list.get(i);
+                  		//웹툰 리스트 출력 시작
                   	
                   %>
 	                    <tr>
@@ -150,7 +154,7 @@
 												String ge = gen.get(a);
 												%>
 												<option value=<%=a %>><%=ge %></option>
-	
+												<!-- 장르 사이즈를 받아 현재 있는 장르를 출력 -->
 											<%}%>
 										</select>
 										<input type="hidden" value="<%=vo.getNum() %>" name="num" />
@@ -188,7 +192,7 @@
 		                    	<div>
 		                    		<a href="#modal-close" title="Close" class="modal-close">Close</a>            		
 									<form action="magChPro.jsp" style="margin:0 auto;">
-										<p>현재장르는 <%=vo.getMag() %>입니다.</p>
+										<p>현재MAG항목은 <%=vo.getMag() %>입니다.</p>
 										<p>변경할 항목을 선택해 주세요</p>
 										<select name="mag" style="width:50%;">
 											<% 
@@ -196,7 +200,7 @@
 												String ma = mag.get(a);
 												%>
 												<option value=<%=a %>><%=ma %></option>
-	
+												<!-- 현재 존재하는 MAG 항목을 받아 출력-->
 											<%}%>						
 										</select>
 										<input type="hidden" value="<%=vo.getNum() %>" name="num" />

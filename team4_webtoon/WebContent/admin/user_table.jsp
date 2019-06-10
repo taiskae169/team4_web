@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
+	<!-- 테이블용 스크립트 파일 -->
 	<style>
 			.modal-window {
 		  position: fixed;
@@ -83,15 +83,10 @@
 <%
 	registerDAO userdao = registerDAO.getInstance();
 	ArrayList<registerBean> list = userdao.get_user_list();
+	//회원정보를 받은 list 저장
 
 %>
-<script type="text/javascript">
-	function openlink(state,id){
-		var url = "stateCh.jsp?state=" + state +"&id=" + id; 
-		open(url, "confirm",  "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300, height=200");
-		
-	}
-</script>
+
 
 </head>
 
@@ -116,6 +111,7 @@
                       <th>STATE</th>
                     </tr>
                   </thead>
+                  <!-- 상단 제목바 -->
                   <tfoot>
                     <tr>
                       <th>NUM</th>
@@ -127,11 +123,13 @@
                       <th>STATE</th>
                     </tr>
                   </tfoot>
+                  <!-- 하단 제목 바 -->
                   <tbody>
                   <%for(int i=0; i<list.size(); i++){ 
+                	  //리스트의 숫자만큼(회원 수) 반복하여 출력
                 	  	String state="";
                   		registerBean vo = list.get(i);
-                  		if(vo.getState()==0){
+                  		if(vo.getState()==0){			//회원 상태를 확인하여 출력할 내용을 선택
 	                  			state = "탈퇴";
 	                  		}else if(vo.getState()==1){
 	                  			state = "휴먼";
@@ -142,6 +140,7 @@
 	                  		}else if(vo.getState()==4){
 	                  			state = "관리자";
 	                  		}
+                  		
 	                  %>
 		                    <tr>
 		                      <td><%=vo.getUser_no() %></td>
@@ -154,8 +153,10 @@
 		                    </tr>
 		                    
 		                    <div id="open-moda<%=i %>" class="modal-window">
+		                    <!-- 팝업창 생성 각 항목마다 전용 팝업창이 생성이 되어야 하므로 i값을 뒤에 붙여서 생성 -->		
 		                    	<div>
-		                    		<a href="#modal-close" title="Close" class="modal-close">Close</a>            		
+		                    		<a href="#modal-close" title="Close" class="modal-close">Close</a>
+		                    		<!-- 창 닫기 -->            		
 									<form action="stateChPro.jsp" style="margin:0 auto;">
 										<p>현재상태는 <%=state %>입니다.</p>
 										<p>변경할 항목을 선택해 주세요</p>
@@ -193,8 +194,9 @@
 												<option value=1>휴먼</option>
 												<option value=2>할동중</option>
 												<option value=3>작가</option>
-												<option value=4>관리자</option>
+												<option value=4 selected>관리자</option>
 											<%}%>
+											<!-- 현재 상태를 selected한 상태로 출력하기 위한 if문 -->
 										</select>
 										<input type="hidden" value="<%= vo.getUser_no()%>" name="num" />
 										<input type="submit" value="변경" />
