@@ -58,6 +58,9 @@
           </li>
                     <li class="nav-item">
             <a class="nav-link" href="/team4_webtoon/content/createWB.jsp">회차등록</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/team4_webtoon/wb_register/myWebtoon.jsp">내 웹툰 보기</a>
           </li>          
           <li class="nav-item">
             <a class="nav-link" href="#">회원정보</a>

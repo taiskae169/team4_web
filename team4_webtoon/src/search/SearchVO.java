@@ -17,6 +17,30 @@ public class SearchVO {
 	private String tag;		//태그
 	private int star;		//총 별점
 	private int start_p;	//별점 참여 인원
+	private String sum;
+	private int view;
+	private String ep_img;
+	
+	
+	
+	public String getSum() {
+		return sum;
+	}
+	public void setSum(String sum) {
+		this.sum = sum;
+	}
+	public int getView() {
+		return view;
+	}
+	public void setView(int view) {
+		this.view = view;
+	}
+	public String getEp_img() {
+		return ep_img;
+	}
+	public void setEp_img(String ep_img) {
+		this.ep_img = ep_img;
+	}
 	public SimpleDateFormat getSdf() {
 		return sdf;
 	}
