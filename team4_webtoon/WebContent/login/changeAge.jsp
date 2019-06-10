@@ -11,7 +11,6 @@
 	registerDAO manager1 = registerDAO.getInstance();
 	manager1.changeAge(member);	
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,8 +21,8 @@
 <%@include file="../bar/menu.jsp" %>
 <%@include file="../bar/navigationBar.jsp" %>
 </head>
-<body>
 
+<body>
 <div class="container">
   	<br>
   	<h1 class="my-4" style="text-align: center">나이가 변경되었습니다.</h1>

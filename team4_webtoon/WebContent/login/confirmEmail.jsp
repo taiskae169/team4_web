@@ -11,7 +11,7 @@
 	String email = request.getParameter("email");
 	
 	registerDAO manager = registerDAO.getInstance();
-	int check = manager.confirmEmail(email);
+	int check = manager.confirmEmail(email);			//이메일 중복 확인 메서드
 %>
 </head>
 <body>
@@ -38,11 +38,10 @@
 </body>
 </html>
 <script language="javascript">
-<!--
   function setemail()
     {		
     	opener.document.userinput.email.value="<%=email%>";
 		self.close();
 		}
-		-->
+
 </script>

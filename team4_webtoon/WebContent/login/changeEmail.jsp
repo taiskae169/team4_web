@@ -2,10 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "team4_webtoon.*"%>
 <%request.setCharacterEncoding("UTF-8"); %>
-
 	<jsp:useBean id="member" class="team4_webtoon.registerBean"/>
 	<jsp:setProperty property="*" name="member"/>
-	
 	<%
 		String id1 = (String)session.getAttribute("sessionID");
 		member.setId(id1);

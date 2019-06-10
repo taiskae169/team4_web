@@ -21,7 +21,7 @@ public class SearchDAO {
 	public ArrayList<SearchVO> getAddrs(String search, String select) throws SQLException{
 		ArrayList<SearchVO> list = new ArrayList<SearchVO>();
 
-		if(select.equals("0")) {
+		if(select.equals("0")) {	//select 가 0 일 때 = 제목일 때
 		StringBuffer sql = new StringBuffer();
 		sql.append("select mw_title, mw_writer, mw_gen, mw_tag from main_webtoon where mw_title like '%' || :search || '%' ");
 		PreparedStatement pstmt = conn.prepareStatement(sql.toString());
@@ -38,7 +38,7 @@ public class SearchDAO {
 			}
 		}
 		
-		else if(select.equals("1")) {
+		else if(select.equals("1")) {	//select가 1 일 때 = 작가일 때
 		StringBuffer sql = new StringBuffer();
 		sql.append("select mw_title, mw_writer, mw_gen, mw_tag from main_webtoon where mw_writer like '%' || :search || '%' ");
 		PreparedStatement pstmt = conn.prepareStatement(sql.toString());
@@ -54,7 +54,7 @@ public class SearchDAO {
 			
 			}
 		}
-		else {
+		else {		//select 가 나머지일 때(2) = 태그, 더 추가 하고 싶으면 equals("2")로 두고 추가한다. 
 			StringBuffer sql = new StringBuffer();
 			sql.append("select mw_title, mw_writer, mw_gen, mw_tag from main_webtoon where mw_tag like '%' || :search || '%' ");
 			PreparedStatement pstmt = conn.prepareStatement(sql.toString());

@@ -15,7 +15,7 @@
 	
 	registerDAO dao = registerDAO.getInstance();
 	int check = dao.loginCheck(id,pw);
-	int level = dao.level_check(id);
+	int level = dao.level_check(id);				//상태 체크 메서드
 
 	String msg = "";
 	%>	

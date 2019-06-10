@@ -59,17 +59,20 @@ public class registerBean {
 	public void setState(int state) {
 		this.state = state;
 	}
+	//idCheck 메서드를 사용하면 id를 반환한다.
 	public String idCheck() {
 		return id;
 	}
-	
+	//pwCheck 메서드를 사용하면 pw를 반환한다.
 	public String pwCheck() {
 		return password;
 	}
+	//level_check 메서드를 사용하면 현재 status 상태를 반환한다.
 	public int level_check() {
 		return state;
 	}
-	public String emaila() {
+	//adjust 메서드를 사용하면 이메일을 반환한다.
+	public String adjust() {
 		return email;
 	}
 

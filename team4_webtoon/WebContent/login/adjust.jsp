@@ -1,17 +1,16 @@
+<%request.setCharacterEncoding("UTF-8"); %>
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "team4_webtoon.registerDAO" %>
 <%@ page import = "team4_webtoon.registerBean" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%request.setCharacterEncoding("UTF-8"); %>
 <jsp:useBean id = "member" class = "team4_webtoon.registerBean"/>
 <jsp:setProperty property = "*" name = "member"/>
-
 <%
-	String pw = request.getParameter("pw");
-	String id1= (String)session.getAttribute("sessionID");
-	registerDAO a = registerDAO.getInstance();
-	registerBean b = a.emaila(id1, pw);
-	int check1 = a.loginCheck(id1, pw);
+	String pw = request.getParameter("pw");					//입력받은 pw값을 가져온다
+	String id1= (String)session.getAttribute("sessionID");	//메뉴에 있는 세션 아이디를 가져와 id1에 넣는다.
+	registerDAO a = registerDAO.getInstance();			
+	registerBean b = a.adjust(id1, pw);						//adjust 메서드 사용(id, pw 사용해 이메일, 이름, 나이 반환)
+	int check1 = a.loginCheck(id1, pw);						//id1과 pw가 같으면 1, 다르면 0
 %>
 <!DOCTYPE html>
 
@@ -21,24 +20,22 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
 </script>
-
 </head>
-<body onload = "begin()">
 
+<body>
 <%@include file="../bar/menu.jsp" %>
 <%@include file="../bar/navigationBar.jsp" %>
+
 <%if (check1 == 1){ 
 //세션 아이디와 비밀번호가 일치할 때 실행되는 문
 %>
 <div class="container">
-  	<br>
-  	
+  	<br>  	
   	<h1 class="my-4" style="text-align: center"><%=session.getAttribute("sessionID") %></h1>
   	<h5 style = "text-align : center">님의 정보 수정</h5>
-  	
   	<br><br><br>
   	
-  	<form action = "changePW.jsp" method="post" name = "userinput" onSubmit="return checkIt()">
+  	<form action = "changePW.jsp" method="post" name = "changePW">
 		<div>
 			<b>비밀번호 변경</b><br><br>
 				<input type = "password" name = "password" required> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -47,7 +44,7 @@
 		</div>
 	</form>
 	
-	<form action = "changeEmail.jsp" method="post" name = "userinput">
+	<form action = "changeEmail.jsp" method="post" name = "changeEmail">
 		<b>이메일 변경</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<%=b.getEmail() %><br><br>
 		<input type = "email" name = "email" required> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -55,35 +52,42 @@
 		<br><br><br>
 	</form>
 	
-	<form action = "changeName.jsp" method="post" name = "userinput">
+	<form action = "changeName.jsp" method="post" name = "changeName">
 		<b>이름 변경</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&nbsp;&nbsp;<%=b.getName() %><br><br>
 		<input type = "text" name = "name" required> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type="submit" name="changeName" value = "이름 변경"> 
 		<br><br><br>
 	</form>
 
-	<form action = "changeAge.jsp" method="post" name = "userinput">
+	<form action = "changeAge.jsp" method="post" name = "changeAge">
 		<b>나이 변경</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= b.getAge() %><br><br>
 		<input type = "text" name = "age" required> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type="submit" name="changeAge" value = "나이 변경"> 
-		<br><br><br><br><br>
+		<br><br><br>
 	</form>	
+
+	<form action = "delete.jsp" method ="post" name = "delete">
+	<b>회원 탈퇴</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<br><br>
+	<input type = "password" name = "pw" placeholder = "비밀번호를 입력하세요." required> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type = "submit" name = "delete" value = "회원탈퇴">
+	<br><br><br><br><br>
+	</form>
 </div>
 
 <div class = "container">
 	<button class="btn btn-lg btn-warning btn-block text-uppercase" onclick="location='../main_page/MainPage.jsp'">돌아가기</button>
 	<br><br><br><br><br><br>
 </div>
+<%@ include file="../bar/footer.jsp"%>
 
+<!-- 비밀번호가 틀렸을 시  -->
 <%} else if (check1 == 0) {
-//비밀번호가 틀렸을 시
-%>
+%>	<br><br><br>
   	<h1 style = "text-align : center">비밀번호가 틀렸습니다. 이전 페이지로 돌아갑니다.</h1><br><br>
 	<meta http-equiv="Refresh" content="2;url=adjustForm.jsp" >
-
 <%} %>
 
-<%@ include file="../bar/footer.jsp"%>
 <!-- /.container -->
 </body>
 </html>

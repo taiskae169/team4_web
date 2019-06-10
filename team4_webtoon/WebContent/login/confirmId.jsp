@@ -11,7 +11,7 @@
 	String id = request.getParameter("id");
 	
 	registerDAO manager = registerDAO.getInstance();
-	int check = manager.confirmId(id);
+	int check = manager.confirmId(id);					//id 중복 확인 메서드
 %>
 </head>
 <body>
@@ -42,11 +42,11 @@
 </body>
 </html>
 <script language="javascript">
-<!--
+
   function setid()
     {		
     	opener.document.userinput.id.value="<%=id%>";
 		self.close();
 		}
-		-->
+  
 </script>

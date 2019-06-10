@@ -21,11 +21,13 @@
     	    int countEP = 0;   
     	    int numberEP = 0; 
  
+ 			List wtDetail=null;
     	    List webtoonEP = null;
     	    
     	    WTepDAO epdao = WTepDAO.getInstance();   
     	    countEP = epdao.getEPCount(mw_num);   //웹툰의 에피소드 갯수
     	    if (countEP > 0) {
+    	    	wtDetail=epdao.getDetail(mw_num);
     	        webtoonEP = epdao.getEpisodes(mw_num);
     	    }
 
