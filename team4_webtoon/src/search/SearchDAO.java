@@ -14,13 +14,14 @@ public class SearchDAO {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
-	public SearchDAO() throws SQLException{
-		conn = ConnectionUtil.getConnection();
-	}
+	private static SearchDAO instance = new SearchDAO();
+	
+	public static SearchDAO getInstance() {return instance;}
+	
 	
 	public ArrayList<SearchVO> getAddrs(String search, String select) throws SQLException{
 		ArrayList<SearchVO> list = new ArrayList<SearchVO>();
-
+		conn = ConnectionUtil.getConnection();
 		if(select.equals("0")) {	//select 啊 0 老 锭 = 力格老 锭
 		StringBuffer sql = new StringBuffer();
 		sql.append("select mw_title, mw_writer, mw_gen, mw_tag from main_webtoon where mw_title like '%' || :search || '%' ");
@@ -75,5 +76,59 @@ public class SearchDAO {
 		
 		return list;
 	}
+	
+	public ArrayList<SearchVO> getAdd(String mywebtoon) throws SQLException{
+		ArrayList<SearchVO> list = new ArrayList<SearchVO>();
+		conn = ConnectionUtil.getConnection();
+		
+		StringBuffer sql = new StringBuffer();
+		sql.append("select mw_title, mw_writer, mw_gen, mw_tag from main_webtoon where mw_writer = ?");
+		PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+		pstmt.setString(1, mywebtoon);
+		ResultSet rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			SearchVO vo = new SearchVO();
+			vo.setTitle(rs.getString("mw_title"));
+			vo.setWriter(rs.getString("mw_writer"));
+			vo.setGen(rs.getString("mw_gen"));
+			vo.setTag(rs.getString("mw_tag"));
+			list.add(vo);
+		}
+		return list;
+	}
+	
+	public int deleteWB(String title, String writer) throws Exception{
 
-}
+		String dbpasswd = "";
+		int x = -1;
+		try {
+			conn = ConnectionUtil.getConnection();
+			
+			pstmt = conn.prepareStatement("select mw_writer from main_webtoon where mw_title = ?");
+			pstmt.setString(1, title);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dbpasswd = rs.getString("mw_writer");
+				if(dbpasswd.equals(writer)) {
+					pstmt = conn.prepareStatement("delete from main_webtoon where mw_title=?");
+					pstmt.setString(1, title);
+					pstmt.executeUpdate();
+					x = 1;
+				}else
+					x = 0;
+			}
+			} catch(Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				if (rs != null) try {rs.close();} catch(SQLException ex) {}
+				if (pstmt != null) try {pstmt.close();} catch(SQLException ex) {}
+				if (conn != null) try {conn.close();} catch(SQLException ex) {}
+			}
+			return x;
+		
+	}
+
+
+	}
