@@ -9,6 +9,7 @@
 		String sub_title = request.getParameter("subtitle");
 		String writer = request.getParameter("writer");
 		int star_point = Integer.parseInt(request.getParameter("star_point"));
+		String num = request.getParameter("num");
 		// 전송받은 항목을 각 변수에 대입
 		int i=0;
 		// 별점 출력을 위한 i 변수 생성
@@ -19,7 +20,7 @@
               <%//리스트 페이지 완성시 링크 변경 필요 %>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="/main_wt/main_wt.jsp"><%=title %></a>
+                  <a href="/main_wt/main_wt.jsp?mw_num=<%=num%>"><%=title %></a>
                   <%//리스트 페이지 완성시 링크 변경 필요 %>
                 </h4>
                 <h5><%=sub_title %></h5>

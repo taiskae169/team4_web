@@ -40,9 +40,85 @@
 
   <!-- Bootstrap core CSS -->
   <link href="/team4_webtoon/resources/comment/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  
+    <script src="/team4_webtoon/resources/admin/js/sb-admin-2.min.js"></script>
+    
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  
+   <link href="/team4_webtoon/resources/admin/css/sb-admin-2.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="/team4_webtoon/resources/comment/css/blog-post.css" rel="stylesheet">
+  <script type="text/javascript">
+	function r_che(){
+		if(document.r_form.comment.value==""){
+			
+			alert("댓글을 입력해주세요");
+			document.r_form.comment.focus();
+			return false;
+			
+		}
+	}
+	</script>
+  
+  	<style>
+			.modal-window {
+		  position: fixed;
+		  background-color: rgba(1, 1, 1, 0.15);
+		  top: 0;
+		  right: 0;
+		  bottom: 0;
+		  left: 0;
+		  z-index: 999;
+		  opacity: 0;
+		  pointer-events: none;
+		  -webkit-transition: all 0.3s;
+		  -moz-transition: all 0.3s;
+		  transition: all 0.3s;
+		}
+		
+		.modal-window:target {
+		  opacity: 1;
+		  pointer-events: auto;
+		}
+		
+		.modal-window>div {
+		  width: 400px;
+		  position: relative;
+		  margin: 10% auto;
+		  padding: 2rem;
+		  background: #f3f3f3;
+		  color: #444;
+		}
+		
+		.modal-window header {
+		  font-weight: bold;
+		}
+		
+		.modal-close {
+		  color: #aaa;
+		  line-height: 50px;
+		  font-size: 80%;
+		  position: absolute;
+		  right: 0;
+		  text-align: center;
+		  top: 0;
+		  width: 70px;
+		  text-decoration: none;
+		}
+		
+		.modal-close:hover {
+		  color: #000;
+		}
+		
+		.modal-window h1 {
+		  font-size: 150%;
+		  margin: 0 0 15px;
+		}
+
+	
+	</style>
 
 </head>
 
@@ -52,8 +128,19 @@
           <h4 class="card-header"><%=id %></h4>
           <!-- id를 출력 -->
           <div class="card-body">
-            <p class="card-text"><%=content %></p>
+            <p class="card-text"><%=content %>
+            <%if(id.equals(seID)){ %>
+           		  
+           		 <a href="#open-moda<%=num %>" class="btn btn-danger btn-circle" style="float:right; margin-left:10px;">
+                    <i class="fas fa-trash"></i>
+                 </a>
+                 <a href="#open-chmoda<%=num %>" class="btn btn-info btn-circle"  style="float:right; margin-rigt:10px;">
+                    <i class="fas fa-info-circle"></i>
+                  </a>
+            <%} %>
+            </p>
             <!-- 댓글 내용을 출력 -->
+            
           </div>
           <div class="card-footer">
           	<div style="float:right;">
@@ -123,20 +210,63 @@
 					
 					if(level ==4){%>
 						<%if(state==1){%>
-							<button onclick="location.href='commentHide.jsp?num=<%=num %>&state=0&pageNum=<%=Integer.toString(cmtNum) %>&mw_num=<%=mw_num %>&cl_num=<%=cl_num %>'" class="btn btn-primary">댓글 보이기</button>
+							
+							<a href="commentHide.jsp?num=<%=num %>&state=0&pageNum=<%=Integer.toString(cmtNum) %>&mw_num=<%=mw_num %>&cl_num=<%=cl_num %>" class="btn btn-primary btn-icon-split btn-sm" style="margin-left:10px;">
+			                    <span class="icon text-white-50">
+			                    	  <i class="fas fa-flag"></i>
+			                    </span>
+			                    <span class="text">댓글 보이기</span>
+              		   		</a>
 						<%}else{ %>
-							<button onclick="location.href='commentHide.jsp?num=<%=num %>&state=1&pageNum=<%=Integer.toString(cmtNum) %>&mw_num=<%=mw_num %>&cl_num=<%=cl_num %>'" class="btn btn-primary">댓글 숨기기</button>
+							<a href="commentHide.jsp?num=<%=num %>&state=1&pageNum=<%=Integer.toString(cmtNum) %>&mw_num=<%=mw_num %>&cl_num=<%=cl_num %>" class="btn btn-danger btn-icon-split btn-sm" style="margin-left:10px;">
+			                    <span class="icon text-white-50">
+			                    	  <i class="fas fa-flag"></i>
+			                    </span>
+			                    <span class="text">댓글 숨기기</span>
+              		   		</a>
 						<%} %>
 					<!-- 레벨을 체크하여 관리자일 시 댓글을 숨기기, 풀기 버튼  -->
 					<%}else{ %>
-						<a href="mailto:admin@ex.com?" class="nav-link" style="color:red;" class="btn btn-primary">신고하기</a>
+						
+						<a href="mailto:admin@ex.com?" class="btn btn-warning btn-icon-split btn-sm" style="margin-left:10px;">
+		                    <span class="icon text-white-50">
+		                      	<i class="fas fa-flag"></i>
+		                    </span>
+		                    <span class="text">신고하기</span>
+		               	</a>
 					<%} %>
 					<!-- 관리자가 아닐 시 신고하기 버튼으로 관리자에게 메일을 보낼 수 있도록 설정 -->
 				</div>
-					</div>
+			</div>
+			<div id="open-moda<%=num %>" class="modal-window">
+		                    <!-- 팝업창 생성 각 항목마다 전용 팝업창이 생성이 되어야 하므로 i값을 뒤에 붙여서 생성 -->		
+		                    	<div>
+		                    		<a href="#modal-close" title="Close" class="modal-close">Close</a>
+		                    		<!-- 창 닫기 -->            		
+									<p> 정말 삭제하시겠습니까? </p>
+									<a href="deleteCmt.jsp?num=<%=num %>" title="yes" style="margin-right:10px;">예</a>
+									<a href="#modal-close" title="no" style="margin-left:10px;">아니요</a>
+								</div> <!-- 폼을 둘러싸고 있는 div -->
+			</div>  <!-- 팝업창 div -->
+			<div id="open-chmoda<%=num %>" class="modal-window">
+		                    <!-- 팝업창 생성 각 항목마다 전용 팝업창이 생성이 되어야 하므로 i값을 뒤에 붙여서 생성 -->		
+		                    	<div>
+		                    		<a href="#modal-close" title="Close" class="modal-close">Close</a>
+		                    		<!-- 창 닫기 -->            		
+									<p>수정할 내용을 써주세요 </p>
+									<form action="mo_cmt.jsp" name="mo_cmt" onsubmit="return r_che();">
+										<input type="hidden" name="num" value="<%=num  %>" />
+										<textarea name="content" class="form-control" rows="3"></textarea>
+										<button type="submit"  Style="float:right">댓글 수정</button>
+									</form>
+								</div> <!-- 폼을 둘러싸고 있는 div -->
+			</div>  <!-- 팝업창 div -->
+			
           </div>
         </div>
 	</div>
 
+
+	
 </body>
   <!-- /.container -->

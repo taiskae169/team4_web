@@ -99,6 +99,7 @@
         
           
           <jsp:include page="Main_webtoon_list.jsp">
+          		<jsp:param value="<%=vo.getNum() %>" name="num" />
           		<jsp:param value="<%=vo.getTitle() %>" name="title"/>
           		<jsp:param value="<%=vo.getSub_title() %>" name="subtitle"/>
           		<jsp:param value="<%=vo.getWriter() %>" name="writer"/>

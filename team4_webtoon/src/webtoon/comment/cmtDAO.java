@@ -136,18 +136,16 @@ public class cmtDAO {
 		return result;
 	}//댓글을 좋아요 참여 여부 확인 0일시 미참여, 1일시 좋아요, 2일시 싫어요 체크
 	
-	public void chLike(String id, int mw_num, int cl_num, int like_ch, int cmt_num) {
+	public void chLike(String id, int like_ch, int cmt_num) {
 		try {
 			conn = getConnection();
-			String sql="insert into like_check values(?,?,?,?,0,?)";
+			String sql="insert into like_check(id,like_ch, cmt_num) values(?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
-			pstmt.setInt(2, mw_num);
-			pstmt.setInt(3, cl_num);
-			pstmt.setInt(4, like_ch);
-			pstmt.setInt(5, cmt_num);
+			pstmt.setInt(2, like_ch);
+			pstmt.setInt(3, cmt_num);
 			pstmt.executeUpdate();
-			//먼저 like_ch 테이블에 좋아요/싫어요 했다는 것을 기입
+			//먼저 like_ch 테이블에 좋아요/싫어요 했다는 것을 기입 1일시 좋아요, 2일시 싫어요
 			
 			if(like_ch==1) {
 				sql = "update comment_wb set r_like=r_like+1 where r_num=?";
@@ -171,7 +169,7 @@ public class cmtDAO {
 		}
 	}//댓글 좋아요/싫어요 추가 메소드
 	
-	public void chLike(String id, int cmt_num, int like_ch) {
+	public void deleteLike(String id, int cmt_num, int like_ch) {
 		try {
 			conn = getConnection();
 			String sql="delete from like_check where id =? and cmt_num=?";
@@ -251,4 +249,22 @@ public class cmtDAO {
 		}
 		return list;
 	}//관리자용 코멘트 리스트( 전체 리스트를 보낸다.)
+	
+	public void deleteCmt(int num) {
+		try {
+			conn = getConnection();
+			String sql = "delete from comment_wb where r_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+		
+			
+		}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				if(rs!=null) {try{rs.close();}catch(SQLException e){e.printStackTrace();}}
+				if(pstmt!=null) {try{pstmt.close();}catch(SQLException e) {e.printStackTrace();}}
+				if(conn!=null) {try{conn.close();}catch(SQLException e) {e.printStackTrace();}}
+		}
+	}
 }

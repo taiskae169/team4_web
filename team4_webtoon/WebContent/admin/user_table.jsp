@@ -144,7 +144,7 @@
 	                  %>
 		                    <tr>
 		                      <td><%=vo.getUser_no() %></td>
-		                      <td><%=vo.getId() %></td>
+		                      <td><a href="#open-usermoda<%=i%>"><%=vo.getId() %></a></td>
 		                      <td><%=vo.getEmail() %></td>
 		                      <td><%=vo.getAge() %></td>
 		                      <td><%=vo.getName() %></td>
@@ -203,6 +203,15 @@
 										
 									</form>
 								</div> <!-- 폼을 둘러싸고 있는 div -->
+						</div>  <!-- 팝업창 div -->
+						
+						
+						<div id="open-usermoda<%=i%>" class="modal-window">
+		                    <!-- 팝업창 생성 각 항목마다 전용 팝업창이 생성이 되어야 하므로 i값을 뒤에 붙여서 생성 -->		
+		                    	<div>
+		                    		<a href="#modal-close" title="Close" class="modal-close">Close</a>
+		                    		<p>현재 보유 캐시 : </p>
+								</div> 
 						</div>  <!-- 팝업창 div -->
                     <%}%>
                   </tbody>
