@@ -77,9 +77,7 @@
          </td>
 
          <td>
-
          	<%= list.get(j).getNt_title() %>
-
 
          </td>
 
