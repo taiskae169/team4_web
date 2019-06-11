@@ -9,6 +9,8 @@ import java.sql.*;
 import javax.naming.*;
 import javax.sql.*;
 
+import oracle.net.aso.r;
+
 public class SearchDAO {
 	Connection conn = null;
 	PreparedStatement pstmt = null;
@@ -130,6 +132,143 @@ public class SearchDAO {
 		
 	}
 	
-
-
+	public SearchVO adjust(String title, String writer) throws Exception{
+		SearchVO member = null;
+		
+		String dbpasswd = "";
+		
+		int x = -1;
+		
+		try {
+			conn = ConnectionUtil.getConnection();
+			pstmt = conn.prepareStatement("select * from main_webtoon where mw_title = ?");
+			pstmt.setString(1, title);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				member = new SearchVO();
+				dbpasswd = rs.getString("mw_writer");
+				member.setGen(rs.getString("mw_gen"));
+				member.setSub_title(rs.getString("mw_sub_title"));
+				member.setTag(rs.getString("mw_tag"));
+				member.setWeek(rs.getInt("mw_week"));
+				member.setSum(rs.getString("mw_sum"));
+				member.setNum(rs.getInt("mw_num"));
+				
+			if(dbpasswd.equals(writer)) {
+				x = 1;
+			}
+			else
+				x = 0;
+			}
+			else
+			x = -1;	
+	} catch (Exception ex) {
+		ex.printStackTrace();
+	} finally {
+		if( rs != null) try {rs.close();} catch(SQLException ex) {}
+		if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+		if (conn != null) try {conn.close();} catch(SQLException ex) {}
 	}
+	return member;
+}
+	
+	
+	public void changeTag(SearchVO member) throws Exception{
+		try {
+			conn = ConnectionUtil.getConnection();
+			pstmt = conn.prepareStatement("update main_webtoon set mw_tag=? where mw_title = ?");
+			pstmt.setString(1, member.getTag());
+			pstmt.setString(2, member.getTitle());
+			
+			pstmt.executeUpdate();
+			
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if(pstmt != null) try { pstmt.close();} catch(SQLException ex) {}
+			if(conn != null) try { conn.close();} catch(SQLException ex) {}
+		}
+	}
+	
+	public void changeWeek(SearchVO member) throws Exception{
+		try {
+			conn = ConnectionUtil.getConnection();
+			pstmt = conn.prepareStatement("update main_webtoon set mw_week = ? where mw_title = ?");
+			pstmt.setInt(1, member.getWeek());
+			pstmt.setString(2, member.getTitle());
+			
+			pstmt.executeUpdate();
+			
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if(pstmt != null) try { pstmt.close();} catch(SQLException ex) {}
+			if(conn != null) try { conn.close();} catch(SQLException ex) {}
+		}
+	}
+	
+	public void changeSub(SearchVO member) throws Exception{
+		try {
+			conn = ConnectionUtil.getConnection();
+			pstmt = conn.prepareStatement("update main_webtoon set mw_sub_title = ? where mw_title = ? ");
+			pstmt.setString(1, member.getSub_title());
+			pstmt.setString(2, member.getTitle());
+			pstmt.executeUpdate();
+			
+			
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if(pstmt != null) try { pstmt.close();} catch(SQLException ex) {}
+			if(conn != null) try { conn.close();} catch(SQLException ex) {}		
+		}
+	}
+	
+	
+	public void changeGen(SearchVO member) throws Exception{
+		try {
+			conn = ConnectionUtil.getConnection();
+			pstmt = conn.prepareStatement("update main_webtoon set mw_gen = ? where mw_title = ? ");
+			pstmt.setString(1, member.getGen());
+			pstmt.setString(2, member.getTitle());
+			pstmt.executeUpdate();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if(pstmt != null) try { pstmt.close();} catch(SQLException ex) {}
+			if(conn != null) try { conn.close();} catch(SQLException ex) {}				
+		}
+	}
+	
+	public void changeSum(SearchVO member) throws Exception{
+		try {
+			conn = ConnectionUtil.getConnection();
+			pstmt = conn.prepareStatement("update main_webtoon set mw_sum = ? where mw_title = ? ");
+			pstmt.setString(1, member.getSum());
+			pstmt.setString(2, member.getTitle());
+			pstmt.executeUpdate();
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if(pstmt != null) try { pstmt.close();} catch(SQLException ex) {}
+			if(conn != null) try { conn.close();} catch(SQLException ex) {}		
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
