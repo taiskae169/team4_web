@@ -42,6 +42,9 @@
           <li class="nav-item">
             <a class="nav-link" href="/team4_webtoon/login/register.jsp">SIGN</a>
           </li>
+           <li class="nav-item">
+            <a class="nav-link" href="/team4_webtoon/notice/notice.jsp">NOTICE</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="/team4_webtoon/search/search.jsp">SEARCH</a>
           </li>
@@ -49,6 +52,9 @@
            <li class="nav-item">
             <a class="nav-link" href="/team4_webtoon/mypage/mypage.jsp"><%=id %> 님</a>
           </li>
+           <li class="nav-item">
+            <a class="nav-link" href="/team4_webtoon/notice/notice.jsp">NOTICE</a>
+          </li>        
           <li class="nav-item">
             <a class="nav-link" href="/team4_webtoon/search/search.jsp">SEARCH</a>
           </li>
@@ -61,6 +67,9 @@
           <%} else { %>
            <li class="nav-item">
             <a class="nav-link" href="/team4_webtoon/mypage/mypage.jsp"><%=id %> 님</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="/team4_webtoon/notice/notice.jsp">NOTICE</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/team4_webtoon/search/search.jsp">SEARCH</a>
