@@ -1,115 +1,327 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <meta charset="utf-8">
-    <%@ page import ="team4_webtoon.*" %>
-    <%@ page import ="webtoon.content.contentVO" %>
-    <%@ page import ="webtoon.episode.StarVO" %>
-        <%@ page import ="webtoon.episode.StarDAO" %>
+<!DOCTYPE html>
+<html lang="en">
 
-    <%--
-    	int mwNum=Integer.parseInt(request.getParameter("cl_title_id"));
-    	int epNum = Integer.parseInt(request.getParameter("cl_num"));
-    	StarDAO star=StarDAO.getInstance();
-    	int epstar=star.getStar(mwNum,epNum);	
-    	String fstar=Integer.toString(epstar);
-    --%>
-    
-  <head>
+<head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
+  <title>Agency - Start Bootstrap Theme</title>
+
   <!-- Bootstrap core CSS -->
-  <link href="/team4_webtoon/resources/Main_page/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/team4_webtoon/resources/Main_page/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  
+  <link href="/team4_webtoon/resources/main_webtoon/agency/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="/team4_webtoon/resources/main_webtoon/agency/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
   <!-- Custom styles for this template -->
-  <link href="/team4_webtoon/resources/Main_page/css/shop-homepage.css" rel="stylesheet">
-    <link href="/team4_webtoon/resources/Main_page/css/shop-homepage.css" rel="stylesheet">
-    
-<script language="JavaScript">
-    // 아이디 중복 여부를 판단
-    function openConfirmstar(starForm) {
-        // 아이디를 입력했는지 검사
-        if (starForm.starSelect.value != "") {
-            alert("별점이 등록되었습니다.");
-            if(starForm.starSelect.value=="5"){            
-            	document.getElementbyId("yesS").style.display="block";
-            	document.getElementbyId("starSelect").style.display="none";
-           	 	document.getElementbyId("cStar").style.display="none";
-            	return;}
+  <link href="/team4_webtoon/resources/main_webtoon/agency/css/agency.min.css" rel="stylesheet">
 
-        }
-    }
-</script>
-
+<style>
+	.ml-center {margin-left:350px; }
+	#box {float:left; padding:30px;margin-left:550px;margin-top:200px; margin-bottom:500px;}
+	#box {float:left; }
+	#mainNav{top:0px;}
+	.navbar-expand-lg .navbar-collapse {color:#808080;}
+</style>
 
 
 </head>
-    
-    
-    
-    
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+
+<body id="page-top">
+
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-shrink" id="mainNav">
     <div class="container">
-      <a class="navbar-brand" href="/team4_webtoon/main_page/MainPage.jsp">사이트 명</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">WebToon</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">별점주기
-            	<form name="starForm" >	
-		<select id="starSelect"   style="display:block">
-			<option value="5" selected>
-				<%for(int j=5;j >0;j--){%>
-					<small class="text-muted">&#9733;</small>
-				<%}%>
-			</option>
-			<option value="4" >			
-				<%for(int j=4;j >0;j--){%>
-					<small class="text-muted">&#9733;</small>
-				<%}%>
-				<%for(int i=0;i<1;i++){ %>
-					<small class="text-muted">&#9734;</small>
-				<%} %>
-			</option>
-			<option value="3" >
-				<%for(int j=3;j >0;j--){%>
-					<small class="text-muted">&#9733;</small>
-				<%}%>
-				<%for(int i=0;i<2;i++){ %>
-					<small class="text-muted">&#9734;</small>
-				<%} %>
-			</option>	
-			<option value="2" >
-				<%for(int j=2;j >0;j--){%>
-					<small class="text-muted">&#9733;</small>
-				<%}%>
-				<%for(int i=0;i<3;i++){ %>
-					<small class="text-muted">&#9734;</small>
-				<%} %>
-			</option>	
-			<option value="1" >
-				<%for(int j=1;j >0;j--){%>
-					<small class="text-muted">&#9733;</small>
-				<%}%>
-				<%for(int i=0;i<4;i++){ %>
-					<small class="text-muted">&#9734;</small>
-				<%} %>
-			</option>		
-		</select>
-		<input type="button" name="confirm_star" value="확인"  id="cStar" style="display:block"
-        							OnClick="openConfirmstar(this.form)">
-        <span name="yesS" id="yesS" style="display:none">참여하셨습니다</span>  		
-	</form>
+        <ul class="navbar-nav text-uppercase ml-center">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#services"><b>랭킹</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#portfolio"><b>웹툰리그</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about"><b>My</b></a>
           </li>
         </ul>
       </div>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+       <ul class="navbar-nav text-uppercase ml-auto">
+        <li class="nav-item"><b>별점주기</b></li>&nbsp;
+         <li class="nav-item">
+        <%@include file="/webtoon_view/wt_view.jsp" %>
+        </li>
+        </ul>
+       </div>
     </div>
   </nav>
+  <br><br><br><br><br>
   
-  	  <!-- Bootstrap core JavaScript -->
-  <script src="/team4_webtoon/resources/Main_page/vendor/jquery/jquery.min.js"></script>
-  <script src="/team4_webtoon/resources/Main_page/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+  
+  
+  	 <!-- Services -->
+  <section class="page-section" id="services">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Services</h2>
+          <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-md-4">
+          <span class="fa-stack fa-4x">
+            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+            <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+          </span>
+          <h4 class="service-heading">E-Commerce</h4>
+          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+        </div>
+        <div class="col-md-4">
+          <span class="fa-stack fa-4x">
+            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+            <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+          </span>
+          <h4 class="service-heading">Responsive Design</h4>
+          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+        </div>
+        <div class="col-md-4">
+          <span class="fa-stack fa-4x">
+            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+            <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+          </span>
+          <h4 class="service-heading">Web Security</h4>
+          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Grid -->
+  <section class="bg-light page-section" id="portfolio">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Portfolio</h2>
+          <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="img/portfolio/01-thumbnail.jpg" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>Threads</h4>
+            <p class="text-muted">Illustration</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="img/portfolio/02-thumbnail.jpg" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>Explore</h4>
+            <p class="text-muted">Graphic Design</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="img/portfolio/03-thumbnail.jpg" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>Finish</h4>
+            <p class="text-muted">Identity</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="img/portfolio/04-thumbnail.jpg" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>Lines</h4>
+            <p class="text-muted">Branding</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="img/portfolio/05-thumbnail.jpg" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>Southwest</h4>
+            <p class="text-muted">Website Design</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="img/portfolio/06-thumbnail.jpg" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>Window</h4>
+            <p class="text-muted">Photography</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="page-section" id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">About</h2>
+          <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <ul class="timeline">
+            <li>
+              <div class="timeline-image">
+                <img class="rounded-circle img-fluid" src="img/about/1.jpg" alt="">
+              </div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4>2009-2011</h4>
+                  <h4 class="subheading">Our Humble Beginnings</h4>
+                </div>
+                <div class="timeline-body">
+                  <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                </div>
+              </div>
+            </li>
+            <li class="timeline-inverted">
+              <div class="timeline-image">
+                <img class="rounded-circle img-fluid" src="img/about/2.jpg" alt="">
+              </div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4>March 2011</h4>
+                  <h4 class="subheading">An Agency is Born</h4>
+                </div>
+                <div class="timeline-body">
+                  <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="timeline-image">
+                <img class="rounded-circle img-fluid" src="img/about/3.jpg" alt="">
+              </div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4>December 2012</h4>
+                  <h4 class="subheading">Transition to Full Service</h4>
+                </div>
+                <div class="timeline-body">
+                  <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                </div>
+              </div>
+            </li>
+            <li class="timeline-inverted">
+              <div class="timeline-image">
+                <img class="rounded-circle img-fluid" src="img/about/4.jpg" alt="">
+              </div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4>July 2014</h4>
+                  <h4 class="subheading">Phase Two Expansion</h4>
+                </div>
+                <div class="timeline-body">
+                  <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                </div>
+              </div>
+            </li>
+            <li class="timeline-inverted">
+              <div class="timeline-image">
+                <h4>Be Part
+                  <br>Of Our
+                  <br>Story!</h4>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+	
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ <!-- Bootstrap core JavaScript -->
+  <script src="/team4_webtoon/resources/main_webtoonagency/vendor/jquery/jquery.min.js"></script>
+  <script src="/team4_webtoon/resources/main_webtoon/agency/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="/team4_webtoon/resources/main_webtoon/agency/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Contact form JavaScript -->
+  <script src="/team4_webtoon/resources/main_webtoon/agency/js/jqBootstrapValidation.js"></script>
+  <script src="/team4_webtoon/resources/main_webtoon/agency/js/contact_me.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="/team4_webtoon/resources/main_webtoon/agency/js/agency.min.js"></script>
+
+</body>
+
+</html>

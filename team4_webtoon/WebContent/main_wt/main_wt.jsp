@@ -47,7 +47,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Tables</title>
+  <title>웹툰 상세 페이지</title>
 
   <!-- Custom fonts for this template -->
   <link href="/team4_webtoon/resources/main_webtoon/sbadmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

@@ -59,6 +59,7 @@
     </div>
   </nav>
   <br><br><br><br><br>
+  <%--<br><br><br><br><br>--%>
   
  <!-- Bootstrap core JavaScript -->
   <script src="/team4_webtoon/resources/main_webtoonagency/vendor/jquery/jquery.min.js"></script>
