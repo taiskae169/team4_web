@@ -66,11 +66,23 @@
         	  }%>
           </p>
           <p class="card-text"><%=list.get(i).getTag() %></p>
+          <div class = "container">
+          	<div class = "row">
+
+          <form name = "adjust" method = "post" action = "wb_adjust.jsp">
+          <input type = "hidden" name = "title" value = "<%=list.get(i).getTitle() %>">
+          <input type = "hidden" name = "writer" value = "<%=list.get(i).getWriter() %>">
+          <input type = "submit" value = "수정">&nbsp;&nbsp;
+          </form>
+          
           <form name = "delete" method = "post" action = "wb_delete.jsp">
           <input type = "hidden" name = "title" value = "<%=list.get(i).getTitle() %>">
           <input type = "hidden" name = "writer" value = "<%=list.get(i).getWriter() %>">
-          <input type ="submit" value = "웝툰 삭제">
+          <input type ="submit" value = "삭제">
+          
           </form>
+          </div>
+          </div>
         </div>
                       	
       </div>
