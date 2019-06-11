@@ -46,41 +46,31 @@
             <a class="nav-link" href="/team4_webtoon/search/search.jsp">SEARCH</a>
           </li>
           <%}else if (id != null && check == 3){ %>
-          <%=session.getAttribute("sessionID") %>
-          <li class="nav-item">
-            <a class="nav-link" href="/team4_webtoon/login/logoutPro.jsp">LOGOUT</a>
+           <li class="nav-item">
+            <a class="nav-link" href="/team4_webtoon/mypage/mypage.jsp"><%=id %> 님</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/team4_webtoon/search/search.jsp">SEARCH</a>
           </li>
-                    <li class="nav-item">
-            <a class="nav-link" href="/team4_webtoon/wb_register/wb_register.jsp">작품등록</a>
-          </li>
-                    <li class="nav-item">
-            <a class="nav-link" href="/team4_webtoon/content/createWB.jsp">회차등록</a>
-          </li>
           <li class="nav-item">
-            <a class="nav-link" href="/team4_webtoon/wb_register/myWebtoon.jsp">내 웹툰 보기</a>
-          </li>          
-          <li class="nav-item">
-            <a class="nav-link" href="#">회원정보</a>
+            <a class="nav-link" href="/team4_webtoon/login/logoutPro.jsp">LOGOUT</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/team4_webtoon/login/adjustForm.jsp"> 수정</a>
-          </li>
+
+
+
           <%} else { %>
+           <li class="nav-item">
+            <a class="nav-link" href="/team4_webtoon/mypage/mypage.jsp"><%=id %> 님</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/team4_webtoon/search/search.jsp">SEARCH</a>
+          </li>
            <li class="nav-item">
             <a class="nav-link" href="/team4_webtoon/login/logoutPro.jsp">LOGOUT</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/team4_webtoon/search/search.jsp">SEARCH</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">회원정보</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/team4_webtoon/login/adjustForm.jsp"> 수정</a>
-          </li>
+
+
+
           <%} 
           if(check==4){
           %>
