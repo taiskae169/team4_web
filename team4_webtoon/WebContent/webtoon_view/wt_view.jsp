@@ -17,28 +17,43 @@
 </head>
 
 <script language="JavaScript">
-    // 아이디 중복 여부를 판단
+    // 별정 등록 여부를 판단
     function openConfirmstar(starForm) {
-        // 아이디를 입력했는지 검사
-        if (starForm.starSelect.value != "") {
-            alert("별점이 등록되었습니다.");
-            return;
-        }
+    	//if(session.getAttribute("sessionID") != null){
+            if (starForm.starSelect.value != "") {
+                alert("별점이 등록되었습니다.");
+                document.starForm.submit();
+                document.getElementbyId("yesS").style.display="block";
+                document.getElementbyId("starSelect").style.display="none";
+                return;
+             }
+        /* }else{
+                response.sendRedirect("/team4_webtoon/login/login.jsp"); 
+         }  */ 
     }
+
 </script>
 
+<% 
+	int sMN=100;//Integer.parseInt(request.getParameter("1"));
+	int sCN=6;//Integer.parseInt(request.getParameter("2"));
 
+
+	
+%>
 
 <body>
 
-	<form name="starForm" >	
-		<select id="starSelect" >
-			<option value="5" selected>
+	<form name="starForm"  method="post" action="starPro.jsp">
+	<input type="hidden" name="mw_num" value="<%= sMN%>" />
+	<input type="hidden" name="cl_num" value="<%=sCN %>" />
+		<select id="starSelect"  name="starSelect">
+			<option value=5 selected>
 				<%for(int j=5;j >0;j--){%>
 					<small class="text-muted">&#9733;</small>
 				<%}%>
 			</option>
-			<option value="4" >			
+			<option value=4 >			
 				<%for(int j=4;j >0;j--){%>
 					<small class="text-muted">&#9733;</small>
 				<%}%>
@@ -46,7 +61,7 @@
 					<small class="text-muted">&#9734;</small>
 				<%} %>
 			</option>
-			<option value="3" >
+			<option value=3 >
 				<%for(int j=3;j >0;j--){%>
 					<small class="text-muted">&#9733;</small>
 				<%}%>
@@ -54,7 +69,7 @@
 					<small class="text-muted">&#9734;</small>
 				<%} %>
 			</option>	
-			<option value="2" >
+			<option value=2 >
 				<%for(int j=2;j >0;j--){%>
 					<small class="text-muted">&#9733;</small>
 				<%}%>
@@ -62,7 +77,7 @@
 					<small class="text-muted">&#9734;</small>
 				<%} %>
 			</option>	
-			<option value="1" >
+			<option value=1 >
 				<%for(int j=1;j >0;j--){%>
 					<small class="text-muted">&#9733;</small>
 				<%}%>
@@ -71,8 +86,10 @@
 				<%} %>
 			</option>		
 		</select>
+		<span name="yesS" id="yesS" style="display:none">참여하셨습니다</span>
+		<%-- <input type="submit" name="confirm_star" value="확인" >--%> 
 		<input type="button" name="confirm_star" value="확인" 
-        							OnClick="openConfirmstar(this.form)">  		
+        							OnClick="openConfirmstar(this.form)">
 	</form>
 	  <!-- Bootstrap core JavaScript -->
   <script src="/team4_webtoon/resources/Main_page/vendor/jquery/jquery.min.js"></script>

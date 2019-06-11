@@ -34,7 +34,12 @@
         // 아이디를 입력했는지 검사
         if (starForm.starSelect.value != "") {
             alert("별점이 등록되었습니다.");
-            return;
+            if(starForm.starSelect.value=="5"){            
+            	document.getElementbyId("yesS").style.display="block";
+            	document.getElementbyId("starSelect").style.display="none";
+           	 	document.getElementbyId("cStar").style.display="none";
+            	return;}
+
         }
     }
 </script>
@@ -54,10 +59,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-        <%--if(fstar ==null){ --%>
           <li class="nav-item">별점주기
             	<form name="starForm" >	
-		<select id="starSelect" >
+		<select id="starSelect"   style="display:block">
 			<option value="5" selected>
 				<%for(int j=5;j >0;j--){%>
 					<small class="text-muted">&#9733;</small>
@@ -96,16 +100,11 @@
 				<%} %>
 			</option>		
 		</select>
-		<input type="button" name="confirm_star" value="확인" 
-        							OnClick="openConfirmstar(this.form)">  		
+		<input type="button" name="confirm_star" value="확인"  id="cStar" style="display:block"
+        							OnClick="openConfirmstar(this.form)">
+        <span name="yesS" id="yesS" style="display:none">참여하셨습니다</span>  		
 	</form>
           </li>
-          <%--} else { --%>
-         <%-- <li class="nav-item">--%>
-            참여하셨습니다.
-          </li>
-          <%--} --%>
-		
         </ul>
       </div>
     </div>

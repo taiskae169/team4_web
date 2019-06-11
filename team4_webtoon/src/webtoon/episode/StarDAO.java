@@ -49,7 +49,51 @@ public class StarDAO {
 			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
-		return x; 
-		 
+		return x; 	 
+	}
+	
+	public void insertStar(StarVO sVO ) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int sSum=sVO.getsStar_sum();	
+		int sMw=sVO.getsMw_num();
+		int sCl=sVO.getsCl_num();
+		
+		String sql="";
+		try {
+			conn=getConnection();
+			pstmt=conn.prepareStatement("select * from star where sMw_num=? and sCl_num=?");
+			pstmt.setInt(1, sMw);
+			pstmt.setInt(2, sCl);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				sql="update star set sStar_p=sStar_p+1,sSum=sSum+?,sStar=? where sMw_num=? and sCl_num=?";
+				pstmt=conn.prepareStatement(sql);
+				//pstmt.setInt(1,sP);
+				pstmt.setInt(1, sVO.);
+				pstmt.setInt(2, sVO.getsStar());
+				sStar=(rs.getInt("sStar_sum")+sSum)/(sP+1);
+				sSum+=sSum;
+				
+				pstmt.executeUpdate();
+			}else {
+				sql="insert into star values (?,?,?,1,?)";
+				pstmt=conn.prepareStatement(sql);
+				//pstmt.setInt(1,sP);
+				pstmt.setInt(1, sCl);
+				pstmt.setInt(2, sMw);
+				pstmt.setInt(3, sSum);
+				pstmt.setInt(4, sSum);
+				pstmt.executeUpdate();
+			}		
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}		
 	}
 }
