@@ -76,8 +76,6 @@
           <a href="MainPage.jsp?week=1" class="list-group-item">월요일</a>
           <a href="MainPage.jsp?week=2" class="list-group-item">화요일</a>
           <a href="MainPage.jsp?week=3" class="list-group-item">수요일</a>
-          <a href="MainPage.jsp?week=4" class="list-group-item">목요일</a>
-          <a href="MainPage.jsp?week=5" class="list-group-item">금요일</a>
         </div><!-- 공지사항 DIV 종료 -->
       </div>
       <!-- /.col-lg-3 -->

@@ -23,20 +23,6 @@
   <!-- Custom styles for this template -->
   <link href="/team4_webtoon/resources/main_webtoon/scrolling/css/scrolling-nav.css" rel="stylesheet">
 
-<style>
-   .wtInfo .thumb{float:left; margin-right:15px;}
-   .wtInfo .detail{float:left; width:554px;}
-   .wtInfo h2{float:left; max-width:395px; margin:1px 0 11px -1px; font-size:18px; color:#020202; word-break:break-all; word-wrap:break-word;}
-   .wtInfo h2 .wrt_nm{display:inline-block; margin:0 4px 0 7px; font-size:12px; color:#434343; font-weight:normal; vertical-align:middle;}
-   p{display:block; margin-block-start:1em; margin-block-end:1em; margn-inline-start:0px; margin-inline-end:0px;}
-   .bg-primary{background-color: #fff!important;}
-   .info_wt .publish, .info_wt .genre, .info_wt .tag{margin-left:13px;}
-   .info wt{padding:9px 0 17px; font-size:14px; color:#888; }
-</style>
-   <%--
-   .info_wt .publish, .info_wt .genre, .info_wt .tag{display:inline-float:left;marign}
-   .info_wt .publish, .info_wt .genre, .info_wt .tag{margin-left:13px;}
-   .info wt{padding:9px 0 17px; font-size:14px; color:#888; }--%>
 
 </head>
 <body id="page-top">
@@ -61,17 +47,17 @@
 		<option value = "2">결제 관련</option>
 		<option value = "3">안내</option>
 		<option value = "4">문의</option>
-	</select><br>
+	</select><br><br>
 	제목 : 
-	<input type = "text" name = "nt_title" placeholder = "제목을 입력해주세요"><br>
-	내용 :
-	<input type = "text" name = "nt_content" placeholder = "내용을 입력해주세요">
+	<input type = "text" name = "nt_title" placeholder = "제목을 입력해주세요"><br><br>
+	내용 :<br>
+	<textarea name = "nt_content" rows="13" cols="40"></textarea><br><br>
 	<input type = "hidden" name = "nt_writer" value = "<%=id1 %>">
-<button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">작품 등록</button><br>
-
-<button class="btn btn-lg btn-primary btn-block text-uppercase" type="reset">수정하기</button>
+	<input type="submit" value = "공지 등록">
+	<input type = "reset" value ="수정하기">
+	<input type = "button" onclick = "location.href='notice.jsp'" value = "돌아가기">
 	</form>
-      </div>
+      </div><br><br>
 	
 
    

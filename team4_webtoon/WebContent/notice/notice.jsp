@@ -60,11 +60,72 @@
    .bg-primary{background-color: #fff!important;}
    .info_wt .publish, .info_wt .genre, .info_wt .tag{margin-left:13px;}
    .info wt{padding:9px 0 17px; font-size:14px; color:#888; }
+   
+   
+   			.modal-window {
+		  position: fixed;
+		  background-color: rgba(1, 1, 1, 0.15);
+		  top: 0;
+		  right: 0;
+		  bottom: 0;
+		  left: 0;
+		  z-index: 999;
+		  opacity: 0;
+		  pointer-events: none;
+		  -webkit-transition: all 0.3s;
+		  -moz-transition: all 0.3s;
+		  transition: all 0.3s;
+		}
+		
+		.modal-window:target {
+		  opacity: 1;
+		  pointer-events: auto;
+		}
+		
+		.modal-window>div {
+		  width: 400px;
+		  position: relative;
+		  margin: 10% auto;
+		  padding: 2rem;
+		  background: #f3f3f3;
+		  color: #444;
+		}
+		
+		.modal-window header {
+		  font-weight: bold;
+		}
+		
+		.modal-close {
+		  color: #aaa;
+		  line-height: 50px;
+		  font-size: 80%;
+		  position: absolute;
+		  right: 0;
+		  text-align: center;
+		  top: 0;
+		  width: 70px;
+		  text-decoration: none;
+		}
+		
+		.modal-close:hover {
+		  color: #000;
+		}
+		
+		.modal-window h1 {
+		  font-size: 150%;
+		  margin: 0 0 15px;
+		}
+
+	
+   
+   
 </style>
    <%--
    .info_wt .publish, .info_wt .genre, .info_wt .tag{display:inline-float:left;marign}
    .info_wt .publish, .info_wt .genre, .info_wt .tag{margin-left:13px;}
    .info wt{padding:9px 0 17px; font-size:14px; color:#888; }--%>
+
+
 
 </head>
 <body id="page-top">
@@ -134,6 +195,9 @@
          <td>
 			<%= sdf.format(notice1.getNt_reg()) %>
 		</td>
+		<%
+
+		%>
 		<%if (check1 == 4){ %>
 		<td>	
 			<a href = "<%=request.getContextPath()%>/notice/nt_adjust.jsp?nt_num=<%=notice1.getNt_num()%>">
