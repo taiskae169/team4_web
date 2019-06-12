@@ -34,8 +34,10 @@
   	<% 
   		ArrayList<Integer> MView = new ArrayList<Integer>();	//장르별 조회수 리스트
 		  
-		id = "admin";
 		//세션 아이디를 받아서 level 체크 후에 관리자가 아닐 시 뒤로가기를 하는 로직 추가 필요
+		%>
+		<%@include file="admincheck.jsp" %>
+		<%
 		registerDAO userdao = registerDAO.getInstance();
 		CashDAO cashdao = CashDAO.getInstance();
 		WebToonListDAO mainWbdao = WebToonListDAO.getInstance();

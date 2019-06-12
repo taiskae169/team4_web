@@ -34,10 +34,11 @@
   	<% 
   		ArrayList<Integer> MView = new ArrayList<Integer>();
 		  
-		id = "admin";
+		
 
 	
 	%>
+	<%@include file="admincheck.jsp" %>
   	<!-- 메뉴바 올려놓기 -->
 
 

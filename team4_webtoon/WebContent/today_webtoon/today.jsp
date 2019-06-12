@@ -10,17 +10,14 @@
 
 
 <%
-	System.out.println("시작-------------");
 	SimpleDateFormat sdt = new SimpleDateFormat("MM월dd일");
 	Date currentTime = new Date();
 	String today = sdt.format(currentTime);
 	
 	WebToonListDAO dao = WebToonListDAO.getInstance();
 	//테스트용
-		today = "05월40일";
 	//테스트용
 	ArrayList<WebToonListVO> list = dao.getTodayrecom(today);
-	System.out.println("리스트 사이즈 : "+list.size());
 	if(list.size()==0){
 		dao.setTodayrecom(today);
 		response.sendRedirect("today.jsp");
