@@ -39,6 +39,8 @@
 	.link_tag:hover{text-decoration: underline; color: #212529;}
 	.link_wt{text-decoration: none; color: #212529;}
 	.link_wt:hover{text-decoration: underline; color: #212529;}
+	.link_page{text-decoration: none; color: #212529;}
+	.link_page:hover{text-decoration: underline; color: #212529;}
 </style>
 	<%--
 	.info_wt .publish, .info_wt .genre, .info_wt .tag{display:inline-float:left;marign}
@@ -49,8 +51,8 @@
 
 
 <%
-		int mNum=109;//Integer.parseInt(request.getParameter("mw_num"));
-	    /*
+		int mNum=1000;//Integer.parseInt(request.getParameter("mw_num"));
+	    
 		int pageSize = 10; 
 	    String pageNum = request.getParameter("pageNum");
 	    if (pageNum == null) {  
@@ -59,7 +61,9 @@
 	    int currentPage = Integer.parseInt(pageNum);     
 	    int startRow = (currentPage - 1) * pageSize + 1;   
 	    int endRow = currentPage * pageSize;  
-	    */ 
+	    System.out.println(currentPage + " " + startRow + " " + endRow);
+	    
+	    
 	    int countEP = 0;   
 	   // int numberEP = 0; 
 	
@@ -73,7 +77,7 @@
 	  
 	    countEP = epdao.getEPCount(mNum);   //웹툰의 에피소드 갯수
 	    if (countEP > 0) {
-	        webtoonEP = epdao.getEpisodes(mNum);
+	        webtoonEP = epdao.getEpisodes(mNum,startRow, endRow);
 	    }
 	    /*
 	   numberEP = countEP-(currentPage-1)*pageSize;
@@ -81,18 +85,6 @@
 
 
 %>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -105,7 +97,7 @@
  			<div class="wtInfo" >
 				<div class="thumb">
 				<a>
-				<img src="/team4_webtoon/resources/image/webtoon/thumbnail/<%=wtDetail.getWtTitle() %>_som.jpg" title="여신강림" alt="여신강림" width="125" height="101" onerror="this.src='https://static-comic.pstatic.net/staticImages/COMICWEB/NAVER/img/common/non125_101.gif'">
+				<img src="/team4_webtoon/resources/image/webtoon/thumbnail/<%=wtDetail.getWtTitle() %>_som.jpg" title="<%=wtDetail.getWtTitle() %>" alt="<%=wtDetail.getWtTitle() %>" width="125" height="101" onerror="this.src='/team4_webtoon/resources/image/webtoon/thumbnail/imgErr.gif'">
 				</a>
 				</div>
 				<div class="detail">
@@ -117,7 +109,22 @@
 				<p></p>
 				<span class="publish"><%=wtDetail.getDay() %> 연재</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a class="link_genre"  href=""><%=wtDetail.getWtGenre() %></a>&nbsp;&nbsp;&nbsp;&nbsp;
-				<a class="link_tag"  href=""><%=wtDetail.getWtTag() %></a>	
+				<%String wtTag=wtDetail.getWtTag();
+					wtTag=wtTag.trim();
+					wtTag=wtTag.replaceAll("#","");
+					
+					String[] arrTag= wtTag.split(",");
+					
+					for(int i=0;i<arrTag.length;i++) {
+						System.out.println(arrTag[i]);
+						String tag = arrTag[i].trim();
+						%>
+						<a class="link_tag"  href="/team4_webtoon/search/search.jsp?select=2&addr=<%=tag%>">#<%=tag%></a>
+						<% }%>	
+				
+				<%--<a class="link_tag"  href="/team4_webtoon/search/search.jsp?select=2&addr=<%=arrTag[i] %>"><%=wtDetail.getWtTag() %></a>--%>
+				
+
 				<br />
 				<p>
 				<%=wtDetail.getWtSumm() %>
@@ -215,29 +222,23 @@
 		<tr>
 			<th>
 				<a href="" class="link_wt" data-id="66053">
-   				<img src="/team4_webtoon/resources/image/webtoon/wt_ep/<%=episode.getWt_ep_img()%>" alt="<%=episode.getCl_title() %>" width="71" height="41"> 
+   				<img src="/team4_webtoon/resources/image/webtoon/wt_ep/<%=episode.getWt_ep_img()%>" alt="<%=episode.getCl_title() %>" width="71" height="41" onerror="this.src='/team4_webtoon/resources/image/webtoon/thumbnail/imgErr2.gif'">
    				</a>
    			</th>
 			<th>
 				<a href=""  class="link_wt"><%=episode.getCl_title() %></a>
+				<%
+				java.util.Date date = episode.getCl_reg();
+				long now = System.currentTimeMillis();
+				long inputDate = date.getTime();
+				// 1000*60*60*24(하루를 1/1000초단위로 변환)*지정할 기간(만약 2일동안 new가 보여져야 한다면 2)
+				if(now - inputDate < (1000*60*60*24*2)){  %>
+			<img src="/team4_webtoon/resources/image/webtoon/wt_ep/up.png" width="27" height="15" alt="UP">
+			<%}%>
 			</th>
 			<th><%=episode.getMw_star() %></th>
 			<th><%=sdf.format(episode.getCl_reg())%></th>
 		</tr>
-		<%-- 	
-		<tr>
-			<td>
-				<a href="*" class="link_wt" data-id="66053">
-   				<img src="http://t1.daumcdn.net/webtoon/op/4f4685a5d28ead8610292e7785e0d3434d7ffbd4" alt="48화 호구 내일로 여행기(5)" width="71" height="41"> 
-   				</a>
-   			</td>
-			<td>
-				<a href="http://webtoon.daum.net/webtoon/viewer/66053" class="link_wt">48화 호구 내일로 여행기(5)</a>
-			</td>
-			<td></td>
-			<td>2019.05.24</td>
-		</tr>
-		--%>
 		<%}%>
 		</tbody>
 	
@@ -245,50 +246,39 @@
 	
 	</table>
 	
+		<%
+    if (countEP > 0) {
+    	int pageBlock=10;
+        int pageCount = countEP / pageSize + ( countEP % pageSize == 0 ? 0 : 1);
+		 
+        int startPage = (int)(currentPage/pageBlock)*pageBlock+1;
+		
+        int endPage = startPage + pageBlock-1;
+        if (endPage > pageCount) endPage = pageCount;
+        
+        if (startPage > pageBlock) {    %>
+        <a  class="link_page" href="wtTable.jsp?pageNum=<%= startPage - pageBlock %>">[이전]</a>
+<%      }
+        for (int i = startPage ; i <= endPage ; i++) {  %>
+        <a  class="link_page"  href="wtTable.jsp?pageNum=<%= i %>">[<%= i %>]</a>
+<%
+        }
+        if (endPage < pageCount) {  %>
+        <a  class="link_page"  href="wtTable.jsp?pageNum=<%= startPage + pageBlock %>">[다음]</a>
+<%
+        }
+    }
+%>
+	
+	
+	
+	
+	
+	
+	
+	
 	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	  <!-- Bootstrap core JavaScript -->
   <script src="/team4_webtoon/resources/main_webtoon/scrolling/vendor/jquery/jquery.min.js"></script>
   <script src="/team4_webtoon/resources/main_webtoon/scrolling/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

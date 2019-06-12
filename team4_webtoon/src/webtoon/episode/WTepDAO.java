@@ -89,7 +89,7 @@ public class WTepDAO {
 	
 	
 	
-	public List getEpisodes(int mw_num) throws Exception {
+	public List getEpisodes(int mw_num,int start, int end) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -97,9 +97,12 @@ public class WTepDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"select cl_num,cl_title,cl_title_id,mw_num,cl_reg,cl_star, wt_ep_img from content,main_webtoon where cl_title_id=mw_num and mw_num=?");
+					"select * "+ 
+					"from (select cl_num,cl_title,cl_title_id,mw_num,cl_reg,cl_star, wt_ep_img, rowNum r "+
+					"from (select cl_num,cl_title,cl_title_id,mw_num,cl_reg,cl_star, wt_ep_img from content,main_webtoon where cl_title_id=mw_num and mw_num=? order by cl_reg desc) order by cl_reg desc) where r >=? and r<=? ");
 					pstmt.setInt(1, mw_num);
-
+					pstmt.setInt(2, start);
+					pstmt.setInt(3, end);
 					rs = pstmt.executeQuery();
 					if (rs.next()) {
 						webtoonEP = new ArrayList(); 
