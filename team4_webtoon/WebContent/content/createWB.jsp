@@ -7,7 +7,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-	int cl_title_id = 100;
+	int cl_title_id = Integer.parseInt(request.getParameter("mw_num"));
 	contentDAO dao = contentDAO.getInstance();
 	contentVO vo = new contentVO();
 

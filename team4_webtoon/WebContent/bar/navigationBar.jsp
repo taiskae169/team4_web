@@ -57,9 +57,9 @@
             <a class="nav-link js-scroll-trigger" href="#services"><b>랭킹</b></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#portfolio"><b>웹툰리그</b></a>
+            <a class="nav-link js-scroll-trigger" href="/team4_webtoon/today_webtoon/today.jsp"><b>추천 웹툰</b></a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" style="width:50px;">
           <%if (navID != null) {%>
             <a class="nav-link js-scroll-trigger" href="/team4_webtoon/mypage/mypage.jsp"><b>My</b></a>
             <%} else {%>

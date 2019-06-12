@@ -27,10 +27,10 @@
   <link href="/team4_webtoon/resources/admin/css/sb-admin-2.min.css" rel="stylesheet">
 
 <%
-	WebToonListDAO dao = WebToonListDAO.getInstance();
-	ArrayList<WebtoonListForAdminVO> list = dao.getListForAdmin();	//전체 웹툰을 받아옴
-	ArrayList<String> gen = dao.getGen();							//생성되어 있는 장르를 받아옴
-	ArrayList<String> mag = dao.getMag();							//현재 매거진 항목을 가지고옴
+	WebToonListDAO wdao = WebToonListDAO.getInstance();
+	ArrayList<WebtoonListForAdminVO> list = wdao.getListForAdmin();	//전체 웹툰을 받아옴
+	ArrayList<String> gen = wdao.getGen();							//생성되어 있는 장르를 받아옴
+	ArrayList<String> mag = wdao.getMag();							//현재 매거진 항목을 가지고옴
 		  
 %>
 	<style>

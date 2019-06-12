@@ -84,13 +84,14 @@ public class SearchDAO {
 		conn = ConnectionUtil.getConnection();
 		
 		StringBuffer sql = new StringBuffer();
-		sql.append("select mw_title, mw_writer, mw_gen, mw_tag from main_webtoon where mw_writer = ?");
+		sql.append("select mw_num, mw_title, mw_writer, mw_gen, mw_tag from main_webtoon where mw_writer = ?");
 		PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 		pstmt.setString(1, mywebtoon);
 		ResultSet rs = pstmt.executeQuery();
 		
 		while(rs.next()) {
 			SearchVO vo = new SearchVO();
+			vo.setNum(rs.getInt("mw_num"));
 			vo.setTitle(rs.getString("mw_title"));
 			vo.setWriter(rs.getString("mw_writer"));
 			vo.setGen(rs.getString("mw_gen"));

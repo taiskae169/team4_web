@@ -236,13 +236,11 @@ public class WebToonListDAO {
 				pstmt = conn.prepareStatement(sql);
 				int mw_num = rs.getInt("wb"+i);
 				//rs에서 웹툰 번호를 확인하여 mw_num에 대입
-				//System.out.println(mw_num);
 				pstmt.setInt(1, mw_num);
 				ResultSet rs2 = pstmt.executeQuery();
 				//rs1의 값을 계속 사용해야하므로 rs2를 생성
 				
 				if(rs2.next()) {
-					System.out.println(rs2.getInt("mw_num"));
 					WebToonListVO vo = new WebToonListVO();
 					vo.setNum(rs2.getInt("mw_num"));
 					vo.setTitle(rs2.getString("mw_title"));
