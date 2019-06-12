@@ -77,6 +77,9 @@ public class SearchVO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
+	public String adjust() {
+		return title;
+	}
 	public String getGen() {
 		return gen;
 	}

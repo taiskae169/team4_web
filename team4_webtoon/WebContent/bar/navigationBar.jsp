@@ -2,7 +2,15 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+<%@ page import = "team4_webtoon.*"  %>
 
+<%
+	String navID = (String)session.getAttribute("sessionID");
+	registerDAO manager2 = registerDAO.getInstance();
+
+	int check2 = manager2.level_check(navID);	
+	
+%>
 <head>
 
   <meta charset="utf-8">
@@ -52,12 +60,27 @@
             <a class="nav-link js-scroll-trigger" href="/team4_webtoon/today_webtoon/today.jsp"><b>오늘의 추천 웹툰</b></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about"><b>My</b></a>
+          <%if (navID != null) {%>
+            <a class="nav-link js-scroll-trigger" href="/team4_webtoon/mypage/mypage.jsp"><b>My</b></a>
+            <%} else {%>
+            <a class="nav-link js-scroll-trigger" href="/team4_webtoon/login/login.jsp"><b>My</b></a>
+            <%} %>
           </li>
         </ul>
       </div>
+      <% if (check2 == 3){%>
+      <div>
+		 <ul class="navbar-nav text-uppercase ml-center">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="../wb_register/myWebtoon.jsp"><b>내 웹툰</b></a>
+          </li>
+          </ul>
+      </div>
+      <%} %>
     </div>
   </nav>
+  <br><br><br>
+
   <br><br><br><br><br>
   <%--<br><br><br><br><br>--%>
   

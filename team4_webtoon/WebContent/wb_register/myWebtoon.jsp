@@ -40,6 +40,26 @@
 
  
            	<div class = "row">
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card h-100">
+        <a href="wb_register.jsp"><img class="card-img-top" src="/team4_webtoon/resources/image/webtoon/thumbnail/new1.jpg" alt=""></a>
+        <div class="card-body">
+
+          <div class = "container">
+          	<div class = "row">
+          	
+          
+          </div>
+          </div>
+        </div>
+                      	
+      </div>
+    </div>
+
+
+
+
+
 
     	<%for(int i = 0; i < list.size(); i++){%>
 
@@ -68,6 +88,13 @@
           <p class="card-text"><%=list.get(i).getTag() %></p>
           <div class = "container">
           	<div class = "row">
+          	
+          <form name = "createWB" method = "post" action = "../content/createWB.jsp">
+          <input type = "hidden" name = "title" value = "<%=list.get(i).getTitle() %>">
+          <input type = "hidden" name = "writer" value = "<%=list.get(i).getWriter() %>">
+          <input type = "submit" value = "회차등록">&nbsp;&nbsp;
+          </form>
+
 
           <form name = "adjust" method = "post" action = "wb_adjust.jsp">
           <input type = "hidden" name = "title" value = "<%=list.get(i).getTitle() %>">
@@ -93,36 +120,6 @@
   
 </DIV>
 
-  <!-- /.row -->
-
-  <!-- Pagination -->
-  <!-- 
-  <ul class="pagination justify-content-center">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-            <span class="sr-only">Previous</span>
-          </a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">1</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">2</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">3</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-            <span class="sr-only">Next</span>
-          </a>
-    </li>
-  </ul>
- -->
- 
- 
 <%@ include file="../bar/footer.jsp"%>
 <!-- /.container -->
 </body>
