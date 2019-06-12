@@ -2,13 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "webtoon.notice.*" %>
 <%@ page import = "java.util.*" %>
-    <%
-	int nt_num = 0;
-	nt_num = Integer.parseInt(request.getParameter("nt_num"));
-	noticeDAO noticeView = noticeDAO.getInstance();
-	noticeVO b = noticeView.content(nt_num);
-    
-    %>
+<%@ page import = "java.text.SimpleDateFormat" %>
+<%
+	String id1 = (String)session.getAttribute("sessionID");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,37 +43,40 @@
   <!-- Navigation -->
      <%@include file="/bar/menu.jsp" %>
    <%@include file="/bar/navigationBar.jsp" %>   
-   
+
         <div class="container">
 
             <div class="detail">
-                 <h1 class="my-4" style="text-align: center">공지사항</h1><br><br><br>
+                 <h1 class="my-4" style="text-align: center">공지 등록</h1><br><br><br>
          </div>   
 
    </div>
    
    <div class="container">
-   <table class="table table-stripped">
-      <thead>
-      <tr>
-         <th>내용</th>
+   <form method = "post" action = "nt_registerPro.jsp">
+	카테고리 : 
+	<select name = "nt_category">
+		<option value = "0">서비스공지</option>
+		<option value = "1">컨텐츠공지</option>
+		<option value = "2">결제 관련</option>
+		<option value = "3">안내</option>
+		<option value = "4">문의</option>
+	</select><br>
+	제목 : 
+	<input type = "text" name = "nt_title" placeholder = "제목을 입력해주세요"><br>
+	내용 :
+	<input type = "text" name = "nt_content" placeholder = "내용을 입력해주세요">
+	<input type = "hidden" name = "nt_writer" value = "<%=id1 %>">
+<button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">작품 등록</button><br>
 
-      </tr>
-      </thead>
-      
-      <tbody>
-      <tr>
-         <td>
-            <%= b.getNt_content() %>
-            </td>
-        
-      </tbody>
+<button class="btn btn-lg btn-primary btn-block text-uppercase" type="reset">수정하기</button>
+	</form>
+      </div>
+	
+
    
-   
-   
-   </table>
-   </div>
-   
+
+   			
      <!-- Bootstrap core JavaScript -->
   <script src="/team4_webtoon/resources/main_webtoon/scrolling/vendor/jquery/jquery.min.js"></script>
   <script src="/team4_webtoon/resources/main_webtoon/scrolling/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

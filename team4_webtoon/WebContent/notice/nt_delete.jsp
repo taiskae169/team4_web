@@ -1,14 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+
+<%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8"); %>
 <%@ page import = "webtoon.notice.*" %>
 <%@ page import = "java.util.*" %>
-    <%
-	int nt_num = 0;
-	nt_num = Integer.parseInt(request.getParameter("nt_num"));
-	noticeDAO noticeView = noticeDAO.getInstance();
-	noticeVO b = noticeView.content(nt_num);
-    
-    %>
+<%@ page import = "java.text.SimpleDateFormat" %>
+<%
+String id1 = (String)session.getAttribute("sessionID");
+int nt_num = 0;
+nt_num = Integer.parseInt(request.getParameter("nt_num"));
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,37 +47,28 @@
   <!-- Navigation -->
      <%@include file="/bar/menu.jsp" %>
    <%@include file="/bar/navigationBar.jsp" %>   
-   
+
         <div class="container">
 
             <div class="detail">
-                 <h1 class="my-4" style="text-align: center">공지사항</h1><br><br><br>
+                 <h1 class="my-4" style="text-align: center">공지 삭제</h1><br><br><br>
          </div>   
 
    </div>
    
    <div class="container">
-   <table class="table table-stripped">
-      <thead>
-      <tr>
-         <th>내용</th>
+	<form method = "post" action = "nt_deletePro.jsp">
+	삭제하시겠습니까
+	<input type = "hidden" name = "nt_writer" value = "<%=id1 %>">
+	<input type = "hidden" name = "nt_num" value = "<%=nt_num %>">
+	<input type="submit"value = "삭제">
+	</form>
+      </div>
+	
 
-      </tr>
-      </thead>
-      
-      <tbody>
-      <tr>
-         <td>
-            <%= b.getNt_content() %>
-            </td>
-        
-      </tbody>
    
-   
-   
-   </table>
-   </div>
-   
+
+   			
      <!-- Bootstrap core JavaScript -->
   <script src="/team4_webtoon/resources/main_webtoon/scrolling/vendor/jquery/jquery.min.js"></script>
   <script src="/team4_webtoon/resources/main_webtoon/scrolling/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
