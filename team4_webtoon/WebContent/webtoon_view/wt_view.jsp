@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="webtoon.episode.StarDAO" %>
 <!DOCTYPE html>
 <html>
 <title>웹툰 뷰어 navbar</title>
@@ -19,34 +20,36 @@
 <script language="JavaScript">
     // 별정 등록 여부를 판단
     function openConfirmstar(starForm) {
-    	//if(session.getAttribute("sessionID") != null){
-            if (starForm.starSelect.value != "") {
-                alert("별점이 등록되었습니다.");
-                document.starForm.submit();
-                document.getElementbyId("yesS").style.display="block";
-                document.getElementbyId("starSelect").style.display="none";
-                return;
-             }
-        /* }else{
-                response.sendRedirect("/team4_webtoon/login/login.jsp"); 
-         }  */ 
-    }
+        if (starForm.starSelect.value != "") {
+            alert("별점이 등록되었습니다.");
+            document.starForm.submit();
+             return;
+          }
+	}
 
 </script>
 
 <% 
-	int sMN=100;//Integer.parseInt(request.getParameter("1"));
-	int sCN=6;//Integer.parseInt(request.getParameter("2"));
-
-
+	int sMN=100;//Integer.parseInt(request.getParameter(""));
+	int sCN=6;//Integer.parseInt(request.getParameter(""));
+	String sId=(String)session.getAttribute("sessionID");
+	sId="user01"; //"admin";
+	StarDAO starDAO= StarDAO.getInstance();
+	
+	
 	
 %>
 
 <body>
 
-	<form name="starForm"  method="post" action="starPro.jsp">
+	<form name="starForm"  method="post" action="/team4_webtoon/webtoon_view/starPro.jsp">
+	<input type="hidden" name="sId" value="<%=sId %>" />
 	<input type="hidden" name="mw_num" value="<%= sMN%>" />
 	<input type="hidden" name="cl_num" value="<%=sCN %>" />
+	<% boolean yn = starDAO.checkStar(sId,sMN,sCN);
+			if(yn){%>
+			<span name="yesS" id="yesS" >참여하셨습니다</span>
+		<%}else{ %>
 		<select id="starSelect"  name="starSelect">
 			<option value=5 selected>
 				<%for(int j=5;j >0;j--){%>
@@ -83,14 +86,15 @@
 				<%}%>
 				<%for(int i=0;i<4;i++){ %>
 					<small class="text-muted">&#9734;</small>
-				<%} %>
+				<%}%>
+			
 			</option>		
 		</select>
-		<span name="yesS" id="yesS" style="display:none">참여하셨습니다</span>
 		<%-- <input type="submit" name="confirm_star" value="확인" >--%> 
 		<input type="button" name="confirm_star" value="확인" 
         							OnClick="openConfirmstar(this.form)">
 	</form>
+	<% }%>
 	  <!-- Bootstrap core JavaScript -->
   <script src="/team4_webtoon/resources/Main_page/vendor/jquery/jquery.min.js"></script>
   <script src="/team4_webtoon/resources/Main_page/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

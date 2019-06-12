@@ -1,12 +1,12 @@
 package webtoon.list;
 
 public class WebtoonListForAdminVO {
-	private int num;
-	private String title;
-	private String gen;
-	private String week;
-	private String writer;
-	private String mag;
+	private int num;		//웹툰 번호
+	private String title;	//웹툰 제목
+	private String gen;		//웹툰 장르
+	private String week;	//웹툰 요일
+	private String writer;	//웹툰 작가
+	private String mag;		//현재 MAG
 	
 	
 	public int getNum() {

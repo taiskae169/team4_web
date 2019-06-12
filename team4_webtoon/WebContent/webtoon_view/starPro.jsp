@@ -8,18 +8,34 @@
    <jsp:setProperty name="sVO" property="*"/>
 </jsp:useBean>
  
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  <%
  	StarDAO sDAO=StarDAO.getInstance();
  	int star=Integer.parseInt(request.getParameter("starSelect"));
  	int sMN=Integer.parseInt(request.getParameter("mw_num"));
  	int sCN=Integer.parseInt(request.getParameter("cl_num"));
+ 	String sId=request.getParameter("sId");
  	
 
  	sVO.setsStar_sum(star);	
  	sVO.setsMw_num(sMN);	
  	sVO.setsCl_num(sCN);	
  	sDAO.insertStar(sVO);
+ 	
+ 	sDAO.addSrecord(sId,sMN,sCN);
+ 	
  	//response.sendRedirect("wt_view.jsp");
  
  %>
- <h2>별점 추가완료...</h2>
+  <h2>별점 추가완료...</h2>
+  <script>
+ 	location.href=document.referrer;
+ </script>

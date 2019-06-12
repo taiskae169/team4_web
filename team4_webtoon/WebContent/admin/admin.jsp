@@ -32,27 +32,32 @@
   	
   	
   	<% 
-  		ArrayList<Integer> MView = new ArrayList<Integer>();
+  		ArrayList<Integer> MView = new ArrayList<Integer>();	//장르별 조회수 리스트
 		  
 		id = "admin";
+		//세션 아이디를 받아서 level 체크 후에 관리자가 아닐 시 뒤로가기를 하는 로직 추가 필요
 		registerDAO userdao = registerDAO.getInstance();
 		CashDAO cashdao = CashDAO.getInstance();
 		WebToonListDAO mainWbdao = WebToonListDAO.getInstance();
 		int allView =0;
+		//모든 게시물의 조회수를 체크
 		for(int i = 0; i < 10; i++){
 			allView += mainWbdao.getGenView(i);
 		}
 
 		for(int i = 0; i < 10; i++){
-			int per = 0;
-			int gen_view = mainWbdao.getGenView(i);
+			int per = 0;		//퍼센트
+			int gen_view = mainWbdao.getGenView(i);		//장르별 조회수를 체크
 			if(gen_view!=0){
-				per = (int)((gen_view/(double)allView)*100);				
+				per = (int)((gen_view/(double)allView)*100);			
+				//100분율로 나누어서 per에 저장
 			}
 			
 			MView.add(per);
+			//차례대로 MView에 퍼센트를 지저앟ㄴ다.
 		}		
 		int month = new Date().getMonth() +1; 
+		//오늘이 몇월인지 저장(getMonth로 받아오는 항목은 현재 월-1이므로 +1을 해준다.)
 	
 	%>
   	<!-- 메뉴바 올려놓기 -->
@@ -91,6 +96,7 @@
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">회원수</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800"><%=userdao.getUserCount() %></div>
+                      <!-- 회원수를 받아 출력 -->
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -108,6 +114,7 @@
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">이번달 매출</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">$<%=cashdao.getMonthCash(month) %></div>
+                      <!-- 이번달 매출을 계산하여 출력한다. -->
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -168,7 +175,7 @@
             <!-- Area Chart -->
             <div class="col-xl-8 col-lg-7">
               <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
+                <!-- Card Header - Dropdown 제목 -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">월별 매출</h6>
                   <div class="dropdown no-arrow">
@@ -188,6 +195,7 @@
                 <div class="card-body">
                   <div class="chart-area">
                     <canvas id="myAreaChart"></canvas>
+                    <!-- myAreaChart라는 스크립트를 불러오는 것 -->
                   </div>
                 </div>
               </div>
@@ -196,7 +204,7 @@
             <!-- Pie Chart -->
             <div class="col-xl-4 col-lg-5">
               <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
+                <!-- Card Header - Dropdown 제목 -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">장르별 조회수</h6>
                   <div class="dropdown no-arrow">
@@ -216,6 +224,7 @@
                 <div class="card-body">
                   <div class="chart-pie pt-4 pb-2">
                     <canvas id="myPieChart"></canvas>
+                    <!-- myPieChart라는 스크립트 기반 차트 로드 -->
                   </div>
                   <div class="mt-4 text-center small">
                     <span class="mr-2">
@@ -249,6 +258,7 @@
                       <i class="fas fa-circle" style="color:#D10000;"></i> 스포츠
                     </span>
                   </div>
+                  <!-- 차트 하단 범례출력 -->
                 </div>
               </div>
             </div>
@@ -267,19 +277,15 @@
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
-          </div>
-        </div>
-      </footer>
+     
+
+      
       <!-- End of Footer -->
 
     </div>
     <!-- End of Content Wrapper -->
-
-	<%@include file="/bar/footer.jsp" %>
+        <%@include file="/bar/footer.jsp" %>
+	
   <!-- End of Page Wrapper -->
 
   <!-- Scroll to Top Button-->
@@ -303,6 +309,7 @@
   <script src="/team4_webtoon/resources/admin/vendor/chart.js/Chart.min.js"></script>
 
   <!-- Page level custom scripts -->
+  <!-- 차트 용 스크립트 언어 -->
   <script type="text/javascript">
 	 	Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 	  	Chart.defaults.global.defaultFontColor = '#858796';

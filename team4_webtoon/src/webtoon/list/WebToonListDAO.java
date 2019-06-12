@@ -87,7 +87,7 @@ public class WebToonListDAO {
 		
 		return result;
 		
-	}//전채 웹툰 갯수를 리턴
+	}//전채 정식 연재 웹툰 갯수를 리턴
 	
 	public ArrayList<WebToonListVO> getWeeklyWebtoon(int week){
 		conn = getConnection();
@@ -166,10 +166,11 @@ public class WebToonListDAO {
 	public void setTodayrecom(String today) {
 		int count = 0; //메인웹툰 갯수
 		HashMap<Integer, Integer> mp = new HashMap<Integer, Integer>();
+		//리스트 번호와 만화 번호를 같이 입력해 놓기 위해 map을 사용 key : 리스트 번호(rownum), value : 웹툰 번호
 		try {
 		conn = getConnection();
 		HashSet<Integer> hs = new HashSet<Integer>();
-		
+		//중복되어 나오는 것을 방지하기 위해 hashmap 사용
 		
 		String sql = "select count(*) from main_webtoon where mw_week!=0";
 		pstmt = conn.prepareStatement(sql);
@@ -189,21 +190,23 @@ public class WebToonListDAO {
 		
 		for(;hs.size()<5;) {
 			int recom = (int)(Math.random()*count)+1;
-			System.out.println("랜던숫자 :" + recom);
+			//전체 웹툰 갯수까지 랜덤값 생성하여 recom에 대입, (rownum으로 나오는 숫자는 1부터 이므로 +1을 하여 대입)
 			hs.add(mp.get(recom));
-			System.out.println("랜덤 웹툰번호 : " + mp.get(recom));
+			//랜덤값을 받아 hashset인 hs 리스트에 웹툰 번호를 받음
 			
-		}
+		}//hashset의 갯수가 5개가 될때까지 반복하여 
 		
 		Iterator<Integer> it = hs.iterator();
+		//차례대로 hs를 출력하기 위해 iterator 사용
 		sql = "insert into today_recom values(?,?,?,?,?,?)";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, today);
-		int co = 2;//5개까지 하기 위한 것
-		System.out.println("test");
-		while(it.hasNext()) {
+		int co = 2;//이미 1번째는 해결됬으므로 2부터 넣기 위해 설정
+		while(it.hasNext()) {	//it에 5개가 들어있으므로 5번만 출력됨
 			pstmt.setInt(co, it.next());
+			//it 안에 있는 값을 입력
 			co++;
+			//co값을 증가시킨다.
 		}
 		pstmt.executeUpdate();
 		
@@ -216,7 +219,7 @@ public class WebToonListDAO {
 			if(conn !=null) {try{conn.close();}catch(SQLException e) {e.printStackTrace();}}
 		}
 			
-	}
+	}//오늘의 추천 웹툰 리스트 저장 
 	
 	public ArrayList<WebToonListVO> getTodayrecom(String today) {
 		ArrayList<WebToonListVO> list = new ArrayList<WebToonListVO>();
@@ -232,9 +235,11 @@ public class WebToonListDAO {
 						+ "(select * from main_webtoon where mw_num=?), WEB_GER where web_st = mw_gen";
 				pstmt = conn.prepareStatement(sql);
 				int mw_num = rs.getInt("wb"+i);
+				//rs에서 웹툰 번호를 확인하여 mw_num에 대입
 				//System.out.println(mw_num);
 				pstmt.setInt(1, mw_num);
 				ResultSet rs2 = pstmt.executeQuery();
+				//rs1의 값을 계속 사용해야하므로 rs2를 생성
 				
 				if(rs2.next()) {
 					System.out.println(rs2.getInt("mw_num"));
@@ -252,6 +257,7 @@ public class WebToonListDAO {
 					vo.setStar(rs2.getInt("mw_star"));
 					vo.setStart_p(rs2.getInt("mw_star_p"));
 					list.add(vo);
+					//추천 웹툰 정보를 list에 저장
 				}//if문 종료
 			}//for문 종료
 		}//if문 종료
@@ -263,7 +269,7 @@ public class WebToonListDAO {
 			if(conn !=null) {try{conn.close();}catch(SQLException e) {e.printStackTrace();}}
 		}
 			return list;
-	}
+	}//오늘의 추천 리스트 리턴
 	
 	public int getGenView(int gen) {
 		conn = getConnection(); 
@@ -275,6 +281,7 @@ public class WebToonListDAO {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				result += rs.getInt("mw_view");
+				//result에 조회수를 더함
 				
 			}
 			
@@ -287,7 +294,7 @@ public class WebToonListDAO {
 		}
 		
 		return result;
-	}
+	}//장르별 총 조회수를 리턴
 	
 	public ArrayList<WebtoonListForAdminVO> getListForAdmin(){
 		conn = getConnection();
@@ -403,7 +410,7 @@ public class WebToonListDAO {
 			if(pstmt != null) {try{pstmt.close();}catch(SQLException e) {e.printStackTrace();}}
 			if(conn !=null) {try{conn.close();}catch(SQLException e) {e.printStackTrace();}}
 		}
-	}//main_webtoon의 mw_mag 항목을 변경해주는 메소드
+	}//main_webtoon의 mw_week 항목을 변경해주는 메소드
 	
 	
 	public void updateMag(int num, int mag) {

@@ -15,9 +15,11 @@
 
 	cmtDAO dao = cmtDAO.getinstance();
 	if(ch==1){
-		dao.chLike(id, mw_num, cl_num, like, cmt_num);
+		dao.chLike(id, like, cmt_num);
+		//1일시 추가를 위한 메소드
 	}else{
-		dao.chLike(id, cmt_num, like);
+		dao.deleteLike(id, cmt_num, like);
+		//삭제를 위한 메소드
 	}
 	
 	//response.sendRedirect("/team4_webtoon/comment/comment.jsp");
