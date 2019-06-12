@@ -8,6 +8,8 @@
     <%
     	int ger = Integer.parseInt(request.getParameter("genre"));
     	int num = Integer.parseInt(request.getParameter("num"));
+    	String title = request.getParameter("title");
+    	String writer = request.getParameter("writer");
     	
     	WebToonListDAO a = WebToonListDAO.getInstance();
     	a.updateGer(num, ger);    
@@ -28,9 +30,10 @@
 <div class="container">
   	<br>
   	<h1 class="my-4" style="text-align: center">장르가 변경되었습니다.</h1>
-  	<h5 style = "text-align : center">메인페이지로 돌아갑니다.</h5>
-  	<meta http-equiv="Refresh" content="1;url=../main_page/MainPage.jsp" >
+  	<h5 style = "text-align : center">수정페이지로 돌아갑니다.</h5>
+  	<meta http-equiv="Refresh" content="1;url=wb_adjust.jsp?title=<%=title %>&writer=<%=writer %>" >
 </div>
 <!-- /.container -->
 </body>
 </html>	
+

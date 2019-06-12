@@ -89,7 +89,7 @@
           <div class = "container">
           	<div class = "row">
           	
-          <form name = "createWB" method = "post" action = "../content/createWB.jsp">
+          <form name = "createWB" method = "post" action = "../content/createWB.jsp?mw_num=<%=list.get(i).getNum()%>">
           <input type = "hidden" name = "title" value = "<%=list.get(i).getTitle() %>">
           <input type = "hidden" name = "writer" value = "<%=list.get(i).getWriter() %>">
           <input type = "submit" value = "회차등록">&nbsp;&nbsp;

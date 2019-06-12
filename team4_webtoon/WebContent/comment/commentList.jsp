@@ -52,7 +52,7 @@
   <link href="/team4_webtoon/resources/comment/css/blog-post.css" rel="stylesheet">
   <script type="text/javascript">
 	function r_che(){
-		if(document.r_form.comment.value==""){
+		if(document.mo_cmt.form-control.value==""){
 			
 			alert("댓글을 입력해주세요");
 			document.r_form.comment.focus();
@@ -254,7 +254,7 @@
 		                    		<a href="#modal-close" title="Close" class="modal-close">Close</a>
 		                    		<!-- 창 닫기 -->            		
 									<p>수정할 내용을 써주세요 </p>
-									<form action="mo_cmt.jsp" name="mo_cmt" onsubmit="return r_che();">
+									<form action="commentMod.jsp" name="mo_cmt" onsubmit="return r_che();">
 										<input type="hidden" name="num" value="<%=num  %>" />
 										<textarea name="content" class="form-control" rows="3"></textarea>
 										<button type="submit"  Style="float:right">댓글 수정</button>

@@ -50,6 +50,8 @@
 			<br><br>
 				<input type = "text" name = "tag" required> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type = "hidden" name = "title" value = "<%=title %>">
+				<input type = "hidden" name = "writer" value = "<%=writer %>">
+				
 				<input type="submit" name="tag" value = "태그 변경"> 
 				<br><br><br>
 		</div>
@@ -75,6 +77,7 @@
 		<input type = "radio" name = "week" value = "6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;토요일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type = "radio" name = "week" value = "7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일요일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type = "hidden" name = "title" value = "<%=title %>"><br><br>
+		<input type = "hidden" name = "writer" value = "<%=writer %>">
 		<input type="submit" name="genre" value = "요일 변경"> 
 		<br><br><br>
 	</form>
@@ -83,6 +86,7 @@
 		<b>소제목 변경</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&nbsp;&nbsp;<%=b.getSub_title() %><br><br>
 		<input type = "text" name = "sub_title" required> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type = "hidden" name = "title" value = "<%=title %>">
+		<input type = "hidden" name = "writer" value = "<%=writer %>">
 		<input type="submit" name="sub_title" value = "소제목 변경"> 
 		<br><br><br>
 	</form>
@@ -114,6 +118,7 @@
 				<input type = "radio" name = "genre" id = "0" value = "9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;스포츠&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br>
 		<input type = "hidden" name = "title" value = "<%=title %>">
 		<input type = "hidden" name = "num" value = "<%=b.getNum() %>">
+        <input type = "hidden" name = "writer" value = "<%=writer %>">
 		<input type="submit" name="genre" value = "장르 변경"> 
 		<br><br><br>
 	</form>	
@@ -124,13 +129,14 @@
 	
 	<input type = "text" name = "sum" required> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<input type = "hidden" name = "title" value = "<%=title %>">
+	<input type = "hidden" name = "writer" value = "<%=writer %>">
 	<input type = "submit" name = "sum" value = "줄거리 변경">
 	<br><br><br><br><br>
 	</form>
 </div>
 
 <div class = "container">
-	<button class="btn btn-lg btn-warning btn-block text-uppercase" onclick="location='../main_page/MainPage.jsp'">돌아가기</button>
+	<button class="btn btn-lg btn-warning btn-block text-uppercase" onclick="location='../wb_register/myWebtoon.jsp'">돌아가기</button>
 	<br><br><br><br><br><br>
 </div>
 <%@ include file="../bar/footer.jsp"%>

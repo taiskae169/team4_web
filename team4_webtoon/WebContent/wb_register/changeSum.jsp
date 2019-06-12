@@ -8,6 +8,7 @@
     
     <%
     	String title = request.getParameter("title");
+ 	    String writer = request.getParameter("writer");
     	member.setTitle(title);
     	
     	SearchDAO a = SearchDAO.getInstance();
@@ -28,8 +29,8 @@
 <div class="container">
   	<br>
   	<h1 class="my-4" style="text-align: center">줄거리가 변경되었습니다.</h1>
-  	<h5 style = "text-align : center">메인페이지로 돌아갑니다.</h5>
-  	<meta http-equiv="Refresh" content="1;url=../main_page/MainPage.jsp" >
+  	<h5 style = "text-align : center">수정페이지로 돌아갑니다.</h5>
+  	<meta http-equiv="Refresh" content="1;url=wb_adjust.jsp?title=<%=title %>&writer=<%=writer %>" >
 </div>
 <!-- /.container -->
 </body>

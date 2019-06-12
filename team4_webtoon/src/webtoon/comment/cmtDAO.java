@@ -266,5 +266,24 @@ public class cmtDAO {
 				if(pstmt!=null) {try{pstmt.close();}catch(SQLException e) {e.printStackTrace();}}
 				if(conn!=null) {try{conn.close();}catch(SQLException e) {e.printStackTrace();}}
 		}
-	}
+	}//코멘트 삭제
+	
+	public void modifyCmt(int num, String content) {
+		try {
+			conn = getConnection();
+			String sql = "update comment_wb set r_content=? where r_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, content);
+			pstmt.setInt(2, num);
+			pstmt.executeUpdate();
+		
+			
+		}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				if(rs!=null) {try{rs.close();}catch(SQLException e){e.printStackTrace();}}
+				if(pstmt!=null) {try{pstmt.close();}catch(SQLException e) {e.printStackTrace();}}
+				if(conn!=null) {try{conn.close();}catch(SQLException e) {e.printStackTrace();}}
+		}
+	}//코멘트 수정
 }
