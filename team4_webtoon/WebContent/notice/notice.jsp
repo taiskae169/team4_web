@@ -203,15 +203,27 @@
 			<a href = "<%=request.getContextPath()%>/notice/nt_adjust.jsp?nt_num=<%=notice1.getNt_num()%>">
 			<input type = "submit" value = "수정">
 			</a>
-			<a href = "<%=request.getContextPath()%>/notice/nt_delete.jsp?nt_num=<%=notice1.getNt_num()%>">
+			<a href = "#open-stateModa">
 			<input type = "button" value = "삭제">
 			</a>
 		</td>
 	<%} %>
       </tr>
-
+      <div id = "open-stateModa" class="modal-window">
+      	<div>
+      		<a href="#modal-close" title = "Close" class = "modal-close">Close</a>
+      		<form action = "nt_deletePro.jsp" style = "margin:0 auto;">
+      		<p>댓글을 삭제하시겠습니까?</p>
+	<input type = "hidden" name = "nt_writer" value = "<%=id1 %>">
+	<input type = "hidden" name = "nt_num" value = "<%=notice1.getNt_num() %>">
+	<input type = "submit" value = "삭제"/>
+	</form>
+      	</div>
+      </div>
      
       <%} %>
+      
+
       </tbody>
 
    

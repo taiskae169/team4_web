@@ -1,5 +1,7 @@
 <%request.setCharacterEncoding("UTF-8"); %> 
 <%@page import="java.util.Date"%>
+<%@ page import = "webtoon.notice.*" %>
+<%@ page import = "java.util.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,7 +18,11 @@
 		}
 		//선택한 요일이 없었을 때 오늘 날자를 받아온다. 0 = 일요일, 1=월요일~
 		
-		
+				
+		int end = 3;
+		List noticeList = null;
+		noticeDAO notice = noticeDAO.getInstance();
+		noticeList = notice.getNotice1(end);
 		
 	%>
 <head>
@@ -72,12 +78,15 @@
         </div><!-- 카테고리 DIV 종료 -->
         <!-- 메인페이지에 요일을 보내서 클릭한 요일의 웹툰이 나오게 한다.  -->
 		<h1 class="my-4">공지사항</h1>
+		<%for (int j = 0; j < noticeList.size(); j++){ 
+			noticeVO notice2 = (noticeVO)noticeList.get(j);
+		%>
 		<div class="list-group">
-          <a href="MainPage.jsp?week=1" class="list-group-item">월요일</a>
-          <a href="MainPage.jsp?week=2" class="list-group-item">화요일</a>
-          <a href="MainPage.jsp?week=3" class="list-group-item">수요일</a>
+          <a href="../notice/noticeView.jsp?nt_num=<%=notice2.getNt_num() %>" class="list-group-item"><%=notice2.getNt_title() %></a>
         </div><!-- 공지사항 DIV 종료 -->
+              <%} %>
       </div>
+
       <!-- /.col-lg-3 -->
       <%@include file="Main_content.jsp" %>
 	  <!-- 메인 컨텐츠 추가 -->

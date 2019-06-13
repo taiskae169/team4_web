@@ -1,5 +1,6 @@
 <%request.setCharacterEncoding("UTF-8"); %> 
 <%@page import="webtoon.list.*"%>
+<%@page import="webtoon.notice.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,6 +14,7 @@
 		// 전송받은 항목을 각 변수에 대입
 		int i=0;
 		// 별점 출력을 위한 i 변수 생성
+
 %>
           <div class="col-lg-4 col-md-6 mb-5">
             <div class="card h-100">

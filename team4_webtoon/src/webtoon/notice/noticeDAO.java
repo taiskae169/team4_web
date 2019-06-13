@@ -76,6 +76,58 @@ public class noticeDAO {
 	
 	
 	
+	
+	public List getNotice1(int end) throws Exception{
+		conn = getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List noticeList = null;
+		try {
+			conn = getConnection();
+			String sql = "select nt_num, nt_title, nt_reg, nt_content, nt_writer, nt_category, r "
+					+ "from (select nt_num, nt_title, nt_reg, nt_content, nt_writer, nt_category, rownum r "
+					+ "from (select nt_num, nt_title, nt_reg, nt_content, nt_writer, nt_category "
+					+ "from notice order by nt_reg desc) order by nt_reg desc) where r <= ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, end);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				noticeList = new ArrayList(end);
+				do {
+				noticeVO vo = new noticeVO();
+				vo.setNt_num(rs.getInt("nt_num"));
+				vo.setNt_title(rs.getString("nt_title"));
+				vo.setNt_reg(rs.getTimestamp("nt_reg"));
+				vo.setNt_content(rs.getString("nt_content"));
+				vo.setNt_writer(rs.getString("nt_writer"));
+				vo.setNt_category(rs.getInt("nt_category"));
+				noticeList.add(vo);
+			} while(rs.next());
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			if(rs !=null) { try {rs.close();}catch(SQLException e) {e.printStackTrace();}}
+			if(pstmt != null) {try{pstmt.close();}catch(SQLException e) {e.printStackTrace();}}
+			if(conn !=null) {try{conn.close();}catch(SQLException e) {e.printStackTrace();}}
+		}
+		return noticeList;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public noticeVO content(int num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -231,5 +283,7 @@ public class noticeDAO {
 			if(conn != null) try {conn.close();} catch(SQLException ex) {}	
 		}
 	}
+	
+
 	
 }
