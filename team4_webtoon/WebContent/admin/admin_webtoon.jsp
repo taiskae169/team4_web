@@ -33,7 +33,16 @@
   	
   	<% 
   		ArrayList<Integer> MView = new ArrayList<Integer>();
-		  
+		String mw_num = request.getParameter("mw_num");
+		int num=0;
+		if(mw_num!=null){
+			num=Integer.parseInt(mw_num);
+		}
+		
+		//test
+		num=100;
+		//test
+		
 	
 	%>
 	
@@ -54,7 +63,11 @@
 
       <!-- Main Content -->
       <div id="content">
+      <%if(num==0){ %>
 			<%@include file="webtoon_table.jsp" %>
+	  <%}else{ %>
+	  		<%@include file="content_table.jsp" %>
+	  <%} %>
 	  </div>
 	</div>
   </div>

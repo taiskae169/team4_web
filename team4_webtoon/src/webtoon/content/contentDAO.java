@@ -80,5 +80,24 @@ public class contentDAO {
 		}
 	}
 	
+	public void deleteContent(int mw_num) throws SQLException{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = getConnection();
+			String sql = "delete from content where cl_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, mw_num);
+			pstmt.executeUpdate();
+			
+		}catch (Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(pstmt != null) try { pstmt.close();} catch(SQLException ex) {}
+			if(conn != null) try {conn.close();} catch(SQLException ex) {}
+		}
+	}
+	
 	
 }
