@@ -35,7 +35,7 @@
 <%@include file="../bar/navigationBar.jsp" %>
 
 	<!-- Page Content -->
-<div class="container">
+<div class="container" style="margin-top:100px;">
   <h1 class="my-4" style="text-align: center"><%=mywebtoon %> 님의 웹툰입니다.</h1><br><br><br>
 
  

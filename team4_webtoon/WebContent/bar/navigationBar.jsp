@@ -79,9 +79,6 @@
       <%} %>
     </div>
   </nav>
-  <br><br><br>
-
-  <br><br><br><br><br>
   <%--<br><br><br><br><br>--%>
   
  <!-- Bootstrap core JavaScript -->

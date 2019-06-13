@@ -15,7 +15,7 @@
 <body>
 <%@include file="../bar/menu.jsp" %>
 <%@include file="../bar/navigationBar.jsp" %>
-<div class="container">
+<div class="container" style="margin-top:100px;">
   	<br>
   	<h1 class="my-4" style="text-align: center"><%=session.getAttribute("sessionID") %></h1>
   	<h5 style = "text-align : center">님의 정보 수정</h5>

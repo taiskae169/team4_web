@@ -21,13 +21,13 @@
 	String email = request.getParameter("email");
 	
 	registerDAO manager1 = registerDAO.getInstance();
-	registerBean c = manager1.idCheck(name, email);		//아이디 반환 메서드 (아이디 자체를 반환한다.)
+	registerBean c = manager1.idCheck(email, name);		//아이디 반환 메서드 (아이디 자체를 반환한다.)
 	
-	int check1 = manager.idCheck1(name, email);			//아아디 반환 메서드 (맞으면  if 틀리면 else)
+	int check1 = manager.idCheck1(email, name);			//아아디 반환 메서드 (맞으면  if 틀리면 else)
 	%>
 	
 	<% if (check1 == 1){%>
-  <div class="container">
+  <div class="container"style = "margin-top: 150px; margin-bottom : 110px;">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5"><br>

@@ -10,6 +10,7 @@ import javax.naming.*;
 import javax.sql.*;
 
 import oracle.net.aso.r;
+import team4_webtoon.registerBean;
 
 public class SearchDAO {
 	Connection conn = null;
@@ -283,14 +284,7 @@ public class SearchDAO {
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	

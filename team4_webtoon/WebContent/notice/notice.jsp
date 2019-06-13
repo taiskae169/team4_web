@@ -143,14 +143,15 @@
    		
    	} else {
    %>
+   
         <div class="container">
 
-            <div class="detail" style="margin-bottom : 100px;">
+            <div class="detail" style="margin-top:150px; margin-bottom : 100px;">
                  <h1 class="my-4" style="text-align: center">공지사항</h1>
          </div>   
 
    </div>
-   
+
    <div class="container">
 	<%if (check1 == 4){%>
 	<form name = "register" method = "post" action ="nt_register.jsp">
@@ -236,6 +237,7 @@
    
    
    </table>
+
       </div>
 <div style="margin-bottom:50px;">
    <center>
@@ -267,7 +269,7 @@
    		%>     
      </center> 
 </div>
-   
+ <%@include file="/bar/footer.jsp" %>     
 
    			
      <!-- Bootstrap core JavaScript -->
@@ -283,4 +285,3 @@
 </body>
 
 </html>
-<%@include file="/bar/footer.jsp" %>

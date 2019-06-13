@@ -29,7 +29,7 @@
 <%if (check1 == 1){ 
 //세션 아이디와 비밀번호가 일치할 때 실행되는 문
 %>
-<div class="container">
+<div class="container" style="margin-top:100px;">
   	<br>  	
   	<h1 class="my-4" style="text-align: center"><%=session.getAttribute("sessionID") %></h1>
   	<h5 style = "text-align : center">님의 정보 수정</h5>
