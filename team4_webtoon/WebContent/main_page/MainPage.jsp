@@ -23,6 +23,8 @@
 		List noticeList = null;
 		noticeDAO notice = noticeDAO.getInstance();
 		noticeList = notice.getNotice1(end);
+		int count = 0;
+		count = notice.count();
 		
 	%>
 <head>
@@ -77,7 +79,9 @@
           <a href="MainPage.jsp?week=0" class="list-group-item">도전만화</a>
         </div><!-- 카테고리 DIV 종료 -->
         <!-- 메인페이지에 요일을 보내서 클릭한 요일의 웹툰이 나오게 한다.  -->
+
 		<h1 class="my-4">공지사항</h1>
+		        <%if (count > 0){ %>
 		<%for (int j = 0; j < noticeList.size(); j++){ 
 			noticeVO notice2 = (noticeVO)noticeList.get(j);
 		%>
@@ -85,6 +89,8 @@
           <a href="../notice/noticeView.jsp?nt_num=<%=notice2.getNt_num() %>" class="list-group-item"><%=notice2.getNt_title() %></a>
         </div><!-- 공지사항 DIV 종료 -->
               <%} %>
+		       <%
+		       }%>
       </div>
 
       <!-- /.col-lg-3 -->

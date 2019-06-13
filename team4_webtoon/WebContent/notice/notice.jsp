@@ -134,6 +134,12 @@
    <%@include file="/bar/navigationBar.jsp" %>   
    <%
    	if (count == 0 ){
+   		if(check == 4){%>
+   		<h1 class="my-4" style="text-align: center">공지사항</h1><br><br><br>
+   				<form name = "register" method = "post" action ="nt_register.jsp">
+	<input type = "submit" value = "등록">
+	</form>
+<%   		}
    		
    	} else {
    %>
