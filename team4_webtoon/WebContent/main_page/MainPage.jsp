@@ -63,7 +63,7 @@
   <!-- Page Content -->
   <div class="container" style="margin-top:0px;">
 
-    <div class="row">
+    <div class="row" style="margin-bottom:50px;">
 
       <div class="col-lg-3">
 
@@ -85,7 +85,7 @@
 		<%for (int j = 0; j < noticeList.size(); j++){ 
 			noticeVO notice2 = (noticeVO)noticeList.get(j);
 		%>
-		<div class="list-group">
+		<div class="list-group" style = "margin-botton:130px;">
           <a href="../notice/noticeView.jsp?nt_num=<%=notice2.getNt_num() %>" class="list-group-item"><%=notice2.getNt_title() %></a>
         </div><!-- 공지사항 DIV 종료 -->
               <%} %>

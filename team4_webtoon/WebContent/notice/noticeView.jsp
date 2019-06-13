@@ -75,6 +75,7 @@
    
    
    </table>
+   <input type = "button" onclick = "location.href='notice.jsp'" value = "돌아가기">
    </div>
    
      <!-- Bootstrap core JavaScript -->

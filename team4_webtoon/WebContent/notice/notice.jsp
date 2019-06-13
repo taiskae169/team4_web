@@ -135,7 +135,7 @@
    <%
    	if (count == 0 ){
    		if(check == 4){%>
-   		<h1 class="my-4" style="text-align: center">공지사항</h1><br><br><br>
+   		<h1 class="my-4" style="text-align: center; margin-top:50px;">공지사항</h1>
    				<form name = "register" method = "post" action ="nt_register.jsp">
 	<input type = "submit" value = "등록">
 	</form>
@@ -145,8 +145,8 @@
    %>
         <div class="container">
 
-            <div class="detail">
-                 <h1 class="my-4" style="text-align: center">공지사항</h1><br><br><br>
+            <div class="detail" style="margin-bottom : 100px;">
+                 <h1 class="my-4" style="text-align: center">공지사항</h1>
          </div>   
 
    </div>
@@ -190,7 +190,7 @@
          </td>
 
          <td>
-         <a href = "<%=request.getContextPath()%>/notice/noticeView.jsp?nt_num=<%=notice1.getNt_num()%>">
+         <a style="color:black"href = "<%=request.getContextPath()%>/notice/noticeView.jsp?nt_num=<%=notice1.getNt_num()%>">
          	<%= notice1.getNt_title() %>
 		</a>
          </td>
@@ -237,7 +237,7 @@
    
    </table>
       </div>
-
+<div style="margin-bottom:50px;">
    <center>
    
       <%} %>
@@ -256,7 +256,7 @@
    		<%}
    		for (int i = startPage; i <= endPage; i++){
    		%>
-   		<a href="notice.jsp?pageNum=<%= i %>">[<%= i %>]</a>
+   		<a style="color:black"href="notice.jsp?pageNum=<%= i %>">[<%= i %>]</a>
    		<%}
    		if(endPage < pageCount){
    		%>
@@ -266,7 +266,7 @@
    	}
    		%>     
      </center> 
-
+</div>
    
 
    			
