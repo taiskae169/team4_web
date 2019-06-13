@@ -34,14 +34,13 @@
   	<% 
   		ArrayList<Integer> MView = new ArrayList<Integer>();
 		String mw_num = request.getParameter("mw_num");
+		
 		int num=0;
 		if(mw_num!=null){
 			num=Integer.parseInt(mw_num);
 		}
 		
-		//test
-		num=100;
-		//test
+
 		
 	
 	%>

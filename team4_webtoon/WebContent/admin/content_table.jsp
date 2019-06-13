@@ -32,7 +32,7 @@
 <%
 	WTepDAO contentDAO = WTepDAO.getInstance();
 	ArrayList<contentVO> list = contentDAO.getEpisodesForAdmin(num);	//num은 상위페이지에서 정의되어있음, num = mw_num
-	
+	String mw_title = request.getParameter("mw_title");
 		  
 %>
 	<style>
@@ -101,7 +101,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">웹툰 관리</h6>
+              <h6 class="m-0 font-weight-bold text-primary">웹툰 제목 : <%=mw_title %></h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">

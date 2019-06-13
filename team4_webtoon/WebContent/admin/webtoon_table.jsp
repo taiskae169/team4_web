@@ -137,7 +137,7 @@
                   %>
 	                    <tr>
 	                      <td><%=vo.getNum() %></td>
-	                      <td><%=vo.getTitle() %></td>
+	                      <td><a href="admin_webtoon.jsp?mw_num=<%=vo.getNum()%>&mw_title=<%=vo.getTitle()%>"><%=vo.getTitle() %></a></td>
 	                      <td><a href="#open-gerModa<%=i%>" ><%=vo.getGen() %></a></td>
 	                      <td><a href="#open-weekModa<%=i%>"><%=vo.getWeek() %></td>
 	                      <td><%=vo.getWriter() %></a></td>
