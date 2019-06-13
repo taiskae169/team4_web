@@ -51,9 +51,9 @@
 
 
 <%
-		int mNum=1000;//Integer.parseInt(request.getParameter("mw_num"));
+		int mNum=0;//Integer.parseInt(request.getParameter("mw_num"));
 	    
-		int pageSize = 10; 
+		int pageSize = 2; 
 	    String pageNum = request.getParameter("pageNum");
 	    if (pageNum == null) {  
 	        pageNum = "1";       
@@ -248,7 +248,7 @@
 	
 		<%
     if (countEP > 0) {
-    	int pageBlock=10;
+    	int pageBlock=8;
         int pageCount = countEP / pageSize + ( countEP % pageSize == 0 ? 0 : 1);
 		 
         int startPage = (int)(currentPage/pageBlock)*pageBlock+1;
@@ -256,17 +256,34 @@
         int endPage = startPage + pageBlock-1;
         if (endPage > pageCount) endPage = pageCount;
         
-        if (startPage > pageBlock) {    %>
-        <a  class="link_page" href="wtTable.jsp?pageNum=<%= startPage - pageBlock %>">[이전]</a>
-<%      }
-        for (int i = startPage ; i <= endPage ; i++) {  %>
-        <a  class="link_page"  href="wtTable.jsp?pageNum=<%= i %>">[<%= i %>]</a>
-<%
+        
+        if (startPage > 1) {%>
+        	<a  class="link_page" href="wtTable.jsp?pageNum=1">[처음]</a>
+ <%  }
+
+        if (currentPage > 1) {%>
+        	<a  class="link_page" href="wtTable.jsp?pageNum=<%= currentPage - 1 %>">[이전]</a>
+ <%  }
+
+        for (int i = startPage; i <= endPage; i++) {
+        	if(startPage !=1){
+        		
+        	}
+           	 if (i == currentPage) {%>
+                <b><a  class="link_page"  href="wtTable.jsp?pageNum=<%=currentPage %>">[<%=currentPage%>]</a></b>
+ <%           } else {%>
+                <a  class="link_page"  href="wtTable.jsp?pageNum=<%= i %>">[<%= i %>]</a>
+ <% 		      }
         }
-        if (endPage < pageCount) {  %>
-        <a  class="link_page"  href="wtTable.jsp?pageNum=<%= startPage + pageBlock %>">[다음]</a>
-<%
-        }
+
+        if (currentPage < pageCount) { %> 
+            <a  class="link_page"  href="wtTable.jsp?pageNum=<%= currentPage %>">[다음]</a>
+ <%  }
+        
+        if (endPage <pageCount) {%>
+            <a  class="link_page"  href="wtTable.jsp?pageNum=<%= pageCount %>">[끝]</a>
+<%  }            
+
     }
 %>
 	
