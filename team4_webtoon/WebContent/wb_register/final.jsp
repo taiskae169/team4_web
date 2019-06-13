@@ -23,12 +23,9 @@
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto"><br><br><br><br><br><br><br><br><br><br><br><br>
         <div class="card card-signin my-5"><br>
           <div class="card-body">
-            <h5 class="card-title text-center">웹툰 등록이 완료되었습니다.</h5>
-            <form class="form-signin" name="loginInfo" method = "post" action="../content/createWB.jsp" onsubmit="return checkIt()">
+            <h5 class="card-title text-center">웹툰 등록이 완료되었습니다! </h5>
 
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">1화 올리기</button><br>
-            </form>
-         	     <p class="text-center"><a href="../main_page/MainPage.jsp">돌아가기</a></p>   
+         	     <p class="text-center"><a href="myWebtoon.jsp">내 웹툰 페이지로 이동</a></p>   
               <br>
               
 
