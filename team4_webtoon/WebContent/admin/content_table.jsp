@@ -1,3 +1,6 @@
+<%@page import="webtoon.content.contentVO"%>
+<%@page import="webtoon.episode.WTepDAO"%>
+<%@page import="webtoon.list.MWdetailVO"%>
 <%@page import="webtoon.list.WebtoonListForAdminVO"%>
 <%@page import="webtoon.list.WebToonListDAO"%>
 <%@page import="team4_webtoon.registerBean"%>
@@ -27,10 +30,9 @@
   <link href="/team4_webtoon/resources/admin/css/sb-admin-2.min.css" rel="stylesheet">
 
 <%
-	WebToonListDAO wdao = WebToonListDAO.getInstance();
-	ArrayList<WebtoonListForAdminVO> list = wdao.getListForAdmin();	//전체 웹툰을 받아옴
-	ArrayList<String> gen = wdao.getGen();							//생성되어 있는 장르를 받아옴
-	ArrayList<String> mag = wdao.getMag();							//현재 매거진 항목을 가지고옴
+	WTepDAO contentDAO = WTepDAO.getInstance();
+	ArrayList<contentVO> list = contentDAO.getEpisodesForAdmin(num);	//num은 상위페이지에서 정의되어있음, num = mw_num
+	
 		  
 %>
 	<style>
@@ -108,11 +110,8 @@
                     <tr>
                       <th>NUM</th>
                       <th>TITLE</th>
-                      <th>GEN</th>
-                      <th>WEEK</th>
-                      <th>WRITER</th>
-                      <th>MAG</th>
-                      <th>ETC</th>
+					  <th>REG</th>
+					  <th>ETC</th>
                     </tr>
                   </thead>
                   <!-- 상단 제목 바 -->
@@ -120,28 +119,33 @@
                     <tr>
                       <th>NUM</th>
                       <th>TITLE</th>
-                      <th>GEN</th>
-                      <th>WEEK</th>
-                      <th>WRITER</th>
-                      <th>MAG</th>
-                      <th>ETC</th>
+					  <th>REG</th>
+					  <th>ETC</th>
                     </tr>
                   </tfoot>
                   <!-- 하단 제목바 -->
                   <tbody>
                   <%
+                  	if(list.size()==0){%>
+                  		<tr>
+                  			<td>목록이 없습니다.</td>
+                  			<td>-</td>
+                  			<td>-</td>
+                  			<td>-</td>
+                  		
+                  		
+                  		</tr>
+                  <%}else{
+                  
                   	for(int i=0; i<list.size(); i++){
-                  		WebtoonListForAdminVO vo = list.get(i);
+                  		contentVO vo = list.get(i);
                   		//웹툰 리스트 출력 시작
                   	
                   %>
 	                    <tr>
-	                      <td><%=vo.getNum() %></td>
-	                      <td><%=vo.getTitle() %></td>
-	                      <td><a href="#open-gerModa<%=i%>" ><%=vo.getGen() %></a></td>
-	                      <td><a href="#open-weekModa<%=i%>"><%=vo.getWeek() %></td>
-	                      <td><%=vo.getWriter() %></a></td>
-	                      <td><a href="#open-magModa<%=i%>"><%=vo.getMag() %></a></td>
+	                      <td><%=vo.getCl_num() %></td>
+	                      <td><%=vo.getCl_title() %></td>
+	                      <td><%=vo.getCl_reg() %></td>
 	                      <td>
 		                      <a href="#open-delmoda<%=i %>" class="btn btn-danger btn-circle" style="margin:auto 0;">
 			                 	   <i class="fas fa-trash"></i>
@@ -149,85 +153,18 @@
 		                  </td>
 	                    </tr>
 	                    
-	                    <div id="open-gerModa<%=i %>" class="modal-window">
+	                    <div id="open-delmoda<%=i %>" class="modal-window">
 		                    	<div>
 		                    		<a href="#modal-close" title="Close" class="modal-close">Close</a>            		
-									<form action="gerChPro.jsp" style="margin:0 auto;">
-										<p>현재장르는 <%=vo.getGen() %>입니다.</p>
-										<p>변경할 항목을 선택해 주세요</p>
-										<select name="ger" style="width:50%;">
-											<% 
-											for(int a = 0; a<gen.size();a++){
-												String ge = gen.get(a);
-												%>
-												<option value=<%=a %>><%=ge %></option>
-												<!-- 장르 사이즈를 받아 현재 있는 장르를 출력 -->
-											<%}%>
-										</select>
-										<input type="hidden" value="<%=vo.getNum() %>" name="num" />
-										<input type="submit" value="변경" />
-										
-									</form>
+									<p> 정말 삭제하시겠습니까? </p>
+									<a href="/team4_webtoon/content/deleteContent.jsp?num=<%=vo.getCl_num() %>" title="yes" style="margin-right:10px;">예</a>
+									<a href="#modal-close" title="no" style="margin-left:10px;">아니요</a>
 								</div> <!-- 폼을 둘러싸고 있는 div -->
 							</div>  <!-- 장르 변경 팝업창 div -->
-							
-							<div id="open-weekModa<%=i %>" class="modal-window">
-		                    	<div>
-		                    		<a href="#modal-close" title="Close" class="modal-close">Close</a>            		
-									<form action="weekChPro.jsp" style="margin:0 auto;">
-										<p>현재장르는 <%=vo.getWeek() %>입니다.</p>
-										<p>변경할 항목을 선택해 주세요</p>
-										<select name="week" style="width:50%;">
-												<option value=0>도전만화</option>
-												<option value=1>월요일</option>
-												<option value=2>화요일</option>
-												<option value=3>수요일</option>
-												<option value=4>목요일</option>
-												<option value=5>금요일</option>
-												<option value=6>토요일</option>
-												<option value=7>일요일</option>											
-										</select>
-										<input type="hidden" value="<%=vo.getNum() %>" name="num" />
-										<input type="submit" value="변경" />
-										
-									</form>
-								</div> <!-- 폼을 둘러싸고 있는 div -->
-							</div>  <!--  요일 변경 팝업창 div -->
-							
-							
-							<div id="open-magModa<%=i %>" class="modal-window">
-		                    	<div>
-		                    		<a href="#modal-close" title="Close" class="modal-close">Close</a>            		
-									<form action="magChPro.jsp" style="margin:0 auto;">
-										<p>현재MAG항목은 <%=vo.getMag() %>입니다.</p>
-										<p>변경할 항목을 선택해 주세요</p>
-										<select name="mag" style="width:50%;">
-											<% 
-											for(int a = 0; a<mag.size();a++){
-												String ma = mag.get(a);
-												%>
-												<option value=<%=a %>><%=ma %></option>
-												<!-- 현재 존재하는 MAG 항목을 받아 출력-->
-											<%}%>						
-										</select>
-										<input type="hidden" value="<%=vo.getNum() %>" name="num" />
-										<input type="submit" value="변경" />
-										
-									</form>
-								</div> <!-- 폼을 둘러싸고 있는 div -->
-							</div>  <!--  요일 변경 팝업창 div -->
-							
-							<div id="open-delmoda<%=i %>" class="modal-window">
-		                    <!-- 팝업창 생성 각 항목마다 전용 팝업창이 생성이 되어야 하므로 i값을 뒤에 붙여서 생성 -->		
-		                    	<div>
-		                    		<a href="#modal-close" title="Close" class="modal-close">Close</a>
-		                    		<!-- 창 닫기 -->            		
-									<p> 정말 삭제하시겠습니까? </p>
-									<a href="/team4_webtoon/comment/deleteCmt.jsp?num=<%=vo.getNum() %>" title="yes" style="margin-right:10px;">예</a>
-									<a href="#modal-close" title="no" style="margin-left:10px;">아니요</a>
-						 		</div> <!-- 폼을 둘러싸고 있는 div -->
-						</div>  <!-- 팝업창 div -->
+	                    
+	                    
                     <% }%>
+                    <%} %>
                   </tbody>
                 </table>
               </div>

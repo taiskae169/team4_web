@@ -112,6 +112,7 @@
                       <th>REG</th>
                       <th>MW_NUM</th>
                       <th>CL_NUM</th>
+                      <th>ETC</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -123,6 +124,7 @@
                       <th>REG</th>
                       <th>MW_NUM</th>
                       <th>CL_NUM</th>
+                      <th>ETC</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -146,6 +148,11 @@
 	                      <!-- 누르면 웹툰 리스트 페이지로 가도록 -->
 	                      <td><%=vo.getCl_num()%></td>
 	                      <!-- 누르면 해당 화로 가도록 링크 -->
+	                      <td>
+	                      <a href="#open-delmoda<%=i %>" class="btn btn-danger btn-circle" style="margin:auto 0;">
+		                 	   <i class="fas fa-trash"></i>
+		                  </a>
+	                      </td>
 	                    </tr>
 	                    
 	                    
@@ -167,7 +174,19 @@
 										
 									</form>
 								</div> <!-- 폼을 둘러싸고 있는 div -->
-							</div>  <!--  요일 변경 팝업창 div -->
+						 </div>  <!--  요일 변경 팝업창 div -->
+						 <div id="open-delmoda<%=i %>" class="modal-window">
+		                    <!-- 팝업창 생성 각 항목마다 전용 팝업창이 생성이 되어야 하므로 i값을 뒤에 붙여서 생성 -->		
+		                    	<div>
+		                    		<a href="#modal-close" title="Close" class="modal-close">Close</a>
+		                    		<!-- 창 닫기 -->            		
+									<p> 정말 삭제하시겠습니까? </p>
+									<a href="/team4_webtoon/comment/deleteCmt.jsp?num=<%=vo.getNum() %>" title="yes" style="margin-right:10px;">예</a>
+									<a href="#modal-close" title="no" style="margin-left:10px;">아니요</a>
+						 		</div> <!-- 폼을 둘러싸고 있는 div -->
+						</div>  <!-- 팝업창 div -->
+							
+					
 	                    
                     <% }%>
                   </tbody>

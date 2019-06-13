@@ -125,5 +125,36 @@ public class WTepDAO {
 		return webtoonEP;
 	} //웹툰별 에피소드 리스트를 리턴하는 메소드
 	
+	public ArrayList<contentVO> getEpisodesForAdmin(int mw_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<contentVO> webtoonEP=new ArrayList<contentVO>();
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"select * from content where cl_title_id=?"); 
+					pstmt.setInt(1, mw_num);
+					rs = pstmt.executeQuery();
+					if (rs.next()) {
+						
+						do{ 
+							contentVO  episode=new contentVO();
+							episode.setCl_num(rs.getInt("cl_num"));
+							episode.setCl_title(rs.getString("cl_title"));
+							episode.setCl_reg(rs.getTimestamp("cl_reg"));
+							webtoonEP.add(episode); 
+						}while(rs.next());
+					}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return webtoonEP;
+	} //웹툰별 에피소드 리스트를 리턴하는 메소드
+	
 	
 }
