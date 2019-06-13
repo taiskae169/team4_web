@@ -112,6 +112,7 @@
                       <th>WEEK</th>
                       <th>WRITER</th>
                       <th>MAG</th>
+                      <th>ETC</th>
                     </tr>
                   </thead>
                   <!-- 상단 제목 바 -->
@@ -123,6 +124,7 @@
                       <th>WEEK</th>
                       <th>WRITER</th>
                       <th>MAG</th>
+                      <th>ETC</th>
                     </tr>
                   </tfoot>
                   <!-- 하단 제목바 -->
@@ -140,6 +142,11 @@
 	                      <td><a href="#open-weekModa<%=i%>"><%=vo.getWeek() %></td>
 	                      <td><%=vo.getWriter() %></a></td>
 	                      <td><a href="#open-magModa<%=i%>"><%=vo.getMag() %></a></td>
+	                      <td>
+		                      <a href="#open-delmoda<%=i %>" class="btn btn-danger btn-circle" style="margin:auto 0;">
+			                 	   <i class="fas fa-trash"></i>
+			                  </a>
+		                  </td>
 	                    </tr>
 	                    
 	                    <div id="open-gerModa<%=i %>" class="modal-window">
@@ -209,6 +216,17 @@
 									</form>
 								</div> <!-- 폼을 둘러싸고 있는 div -->
 							</div>  <!--  요일 변경 팝업창 div -->
+							
+							<div id="open-delmoda<%=i %>" class="modal-window">
+		                    <!-- 팝업창 생성 각 항목마다 전용 팝업창이 생성이 되어야 하므로 i값을 뒤에 붙여서 생성 -->		
+		                    	<div>
+		                    		<a href="#modal-close" title="Close" class="modal-close">Close</a>
+		                    		<!-- 창 닫기 -->            		
+									<p> 정말 삭제하시겠습니까? </p>
+									<a href="/team4_webtoon/comment/deleteCmt.jsp?num=<%=vo.getNum() %>" title="yes" style="margin-right:10px;">예</a>
+									<a href="#modal-close" title="no" style="margin-left:10px;">아니요</a>
+						 		</div> <!-- 폼을 둘러싸고 있는 div -->
+						</div>  <!-- 팝업창 div -->
                     <% }%>
                   </tbody>
                 </table>

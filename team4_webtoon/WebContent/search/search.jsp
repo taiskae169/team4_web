@@ -52,6 +52,7 @@
 		<option value = "0">제목 </option>
 		<option value = "1">작가 </option>
 		<option value = "2">태그 </option>
+		<option value = "3">장르 </option>
 	</select>
 	<input type='text' name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색">
        </ASIDE>
@@ -68,6 +69,7 @@
 		<option value = "0">제목 </option>
 		<option value = "1">작가 </option>
 		<option value = "2">태그 </option>
+		<option value = "3">장르 </option>
 	</select>
        <input type='text' name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색">
        </ASIDE>
@@ -119,6 +121,7 @@
 		<option value = "0">제목 </option>
 		<option value = "1">작가 </option>
 		<option value = "2">태그 </option>
+		<option value = "3">장르 </option>
 	</select>
 	<input type='text' name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색">
        </ASIDE>
@@ -134,21 +137,21 @@
 
 				<tbody>
 					<tr>
-						<td>#결혼생활</td>
-						<td>#대학생활</td>
-						<td>#반려동물</td>
-						<td>#배틀</td>
+						<td><a href="search.jsp?select=2&addr=결혼생활">#결혼생활</a></td>
+						<td><a href="search.jsp?select=2&addr=대학생활">#대학생활</a></td>
+						<td><a href="search.jsp?select=2&addr=반려동물">#반려동물</a></td>
+						<td><a href="search.jsp?select=2&addr=배틀">#배틀</a></td>
 					<tr>
-						<td>#복수</td>
-						<td>#일진</td>
-						<td>#솔로</td>
-						<td>#연예인 </td>
+						<td><a href="search.jsp?select=2&addr=복수">#복수</a></td>
+						<td><a href="search.jsp?select=2&addr=일진">#일진</a></td>
+						<td><a href="search.jsp?select=2&addr=솔로">#솔로</a></td>
+						<td><a href="search.jsp?select=2&addr=결혼생활">#연예인 </a></td>
 
 					<tr>
-						<td>#음식</td>
-						<td>#외계인</td>
-						<td>#격투</td>
-						<td>#직장생활</td>
+						<td><a href="search.jsp?select=2&addr=음식">#음식</a></td>
+						<td><a href="search.jsp?select=2&addr=외계인">#외계인</a></td>
+						<td><a href="search.jsp?select=2&addr=결투">#격투</a></td>
+						<td><a href="search.jsp?select=2&addr=직장생활">#직장생활</a></td>
 				</tbody>
 			</table>
 		</div>
