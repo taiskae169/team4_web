@@ -2,10 +2,37 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "webtoon.notice.*" %>
 <%@ page import = "java.util.*" %>
+<%@ page import = "java.text.SimpleDateFormat" %>
+	<%!
+		int pageSize = 10;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+	
+	%>
     <%
-    	noticeDAO notice = noticeDAO.getInstance();
-    	ArrayList<noticeVO> list = notice.getNotice();
     
+    	String pageNum = request.getParameter("pageNum");
+    	if(pageNum == null){
+    		pageNum = "1";
+    	}
+    	
+    	int currentPage = Integer.parseInt(pageNum);
+    	int startRow = (currentPage - 1) * pageSize + 1;
+    	int endRow = currentPage * pageSize;
+    	int count = 0;
+    	int number = 0;
+    	
+    	
+    	List noticeList = null;
+    	noticeDAO notice = noticeDAO.getInstance();
+    	count = notice.count();
+    	if(count > 0){
+    		noticeList = notice.getNotice(startRow, endRow);
+
+    	}
+    	number = count - (currentPage - 1)*pageSize;
+    	String id1 = (String)session.getAttribute("sessionID");
+    	registerDAO manager1 = registerDAO.getInstance();
+    	int check1 = manager1.level_check(id1);
     %>
 <!DOCTYPE html>
 <html>
@@ -33,28 +60,97 @@
    .bg-primary{background-color: #fff!important;}
    .info_wt .publish, .info_wt .genre, .info_wt .tag{margin-left:13px;}
    .info wt{padding:9px 0 17px; font-size:14px; color:#888; }
+   
+   
+   			.modal-window {
+		  position: fixed;
+		  background-color: rgba(1, 1, 1, 0.15);
+		  top: 0;
+		  right: 0;
+		  bottom: 0;
+		  left: 0;
+		  z-index: 999;
+		  opacity: 0;
+		  pointer-events: none;
+		  -webkit-transition: all 0.3s;
+		  -moz-transition: all 0.3s;
+		  transition: all 0.3s;
+		}
+		
+		.modal-window:target {
+		  opacity: 1;
+		  pointer-events: auto;
+		}
+		
+		.modal-window>div {
+		  width: 400px;
+		  position: relative;
+		  margin: 10% auto;
+		  padding: 2rem;
+		  background: #f3f3f3;
+		  color: #444;
+		}
+		
+		.modal-window header {
+		  font-weight: bold;
+		}
+		
+		.modal-close {
+		  color: #aaa;
+		  line-height: 50px;
+		  font-size: 80%;
+		  position: absolute;
+		  right: 0;
+		  text-align: center;
+		  top: 0;
+		  width: 70px;
+		  text-decoration: none;
+		}
+		
+		.modal-close:hover {
+		  color: #000;
+		}
+		
+		.modal-window h1 {
+		  font-size: 150%;
+		  margin: 0 0 15px;
+		}
+
+	
+   
+   
 </style>
    <%--
    .info_wt .publish, .info_wt .genre, .info_wt .tag{display:inline-float:left;marign}
    .info_wt .publish, .info_wt .genre, .info_wt .tag{margin-left:13px;}
    .info wt{padding:9px 0 17px; font-size:14px; color:#888; }--%>
 
+
+
 </head>
 <body id="page-top">
   <!-- Navigation -->
      <%@include file="/bar/menu.jsp" %>
    <%@include file="/bar/navigationBar.jsp" %>   
-   
+   <%
+   	if (count == 0 ){
+   		
+   	} else {
+   %>
         <div class="container">
 
             <div class="detail">
-            <br><br>
                  <h1 class="my-4" style="text-align: center">공지사항</h1><br><br><br>
          </div>   
 
    </div>
    
    <div class="container">
+	<%if (check1 == 4){%>
+	<form name = "register" method = "post" action ="nt_register.jsp">
+	<input type = "submit" value = "등록">
+	</form>
+	<%} %>
    <table class="table table-stripped">
       <thead>
       <tr>
@@ -63,39 +159,99 @@
          <th>제목</th>
          <th>글쓴이</th>
          <th>등록일</th>
+         <%if (check1 == 4){ %>
+         <th>관리</th>
+         <%} %>
       </tr>
       </thead>
-      
+    
       <tbody>
-      <% for (int j = 0; j < list.size(); j++){ %>
+          <% for (int j = 0; j < noticeList.size(); j++){ 
+      	noticeVO notice1 = (noticeVO)noticeList.get(j);
+      %> 
       <tr>
          <td>
-            <%= list.get(j).getNt_category() %>
+         <%switch(notice1.getNt_category()){
+         case 0 : %>서비스 공지<%break;
+         case 1 : %>컨텐츠 공지<%break; 
+         case 2 : %>결제 관련<%break;
+         case 3 : %>안내<%break;
+         case 4 : %>문의<%break;
+         }%>
             </td>
          <td>
-           	<%= list.get(j).getNt_num() %>
+           	<%= notice1.getNt_num() %>
          </td>
 
          <td>
-         	<%= list.get(j).getNt_title() %>
-
+         <a href = "<%=request.getContextPath()%>/notice/noticeView.jsp?nt_num=<%=notice1.getNt_num()%>">
+         	<%= notice1.getNt_title() %>
+		</a>
          </td>
 
          <td>
-         	<%= list.get(j).getNt_writer() %>
+         	<%= notice1.getNt_writer() %>
          </td>
          <td>
-			<%= list.get(j).getNt_reg() %>
+			<%= sdf.format(notice1.getNt_reg()) %>
 		</td>
+		<%
+
+		%>
+		<%if (check1 == 4){ %>
+		<td>	
+			<a href = "<%=request.getContextPath()%>/notice/nt_adjust.jsp?nt_num=<%=notice1.getNt_num()%>">
+			<input type = "submit" value = "수정">
+			</a>
+			<a href = "<%=request.getContextPath()%>/notice/nt_delete.jsp?nt_num=<%=notice1.getNt_num()%>">
+			<input type = "button" value = "삭제">
+			</a>
+		</td>
+	<%} %>
       </tr>
+
+     
       <%} %>
       </tbody>
+
    
    
    
    </table>
-   </div>
+      </div>
+
+   <center>
    
+      <%} %>
+      <hr>
+    <%
+   
+   	if(count > 0){
+   		int pageCount = count/pageSize + (count % pageSize == 0 ? 0 : 1);
+   		
+   		int startPage = (int)(currentPage/10)*10+1;
+   		int pageBlock = 10;
+   		int endPage = startPage + pageBlock - 1;
+   		if(endPage > pageCount) endPage = pageCount;
+   		if(startPage > 10){ %>
+   		<a href = "notice.jsp?pageNum=<%= startPage-10 %>">[이전]</a>
+   		<%}
+   		for (int i = startPage; i <= endPage; i++){
+   		%>
+   		<a href="notice.jsp?pageNum=<%= i %>">[<%= i %>]</a>
+   		<%}
+   		if(endPage < pageCount){
+   		%>
+   		<a href = "notice.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
+   		<%
+   		}
+   	}
+   		%>     
+     </center> 
+
+   
+
+   			
      <!-- Bootstrap core JavaScript -->
   <script src="/team4_webtoon/resources/main_webtoon/scrolling/vendor/jquery/jquery.min.js"></script>
   <script src="/team4_webtoon/resources/main_webtoon/scrolling/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

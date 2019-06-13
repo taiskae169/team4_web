@@ -34,7 +34,7 @@ public class WTepDAO {
 		int x=0;
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("select count(*) from main_webtoon where mw_num=?");
+			pstmt = conn.prepareStatement("select count(*)from (select cl_num,cl_title,cl_title_id,mw_num,cl_reg,cl_star, wt_ep_img from content,main_webtoon where cl_title_id=mw_num and mw_num=?)");
 			pstmt.setInt(1, mw_num);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -89,7 +89,7 @@ public class WTepDAO {
 	
 	
 	
-	public List getEpisodes(int mw_num) throws Exception {
+	public List getEpisodes(int mw_num,int start, int end) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -97,16 +97,18 @@ public class WTepDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"select mw.mw_num, mw.mw_title, mw.mw_sum, mw.mw_tag,mw.mw_star,mw.mw_star_p, ww.value, wg.value , c.cl_title, c.cl_num, c.cl_reg, c.cl_view, c.cl_like, c.cl_writer, c.wt_ep_img"
-					+ "from main_webtoon mw, web_week ww, web_ger wg, content c where mw.mw_num=c.cl_title_id and mw.mw_week=ww.num and wg.web_st=mw.mw_gen and mw_num=?");
+					"select * "+ 
+					"from (select cl_num,cl_title,cl_title_id,mw_num,cl_reg,cl_star, wt_ep_img, rowNum r "+
+					"from (select cl_num,cl_title,cl_title_id,mw_num,cl_reg,cl_star, wt_ep_img from content,main_webtoon where cl_title_id=mw_num and mw_num=? order by cl_reg desc) order by cl_reg desc) where r >=? and r<=? ");
 					pstmt.setInt(1, mw_num);
-
+					pstmt.setInt(2, start);
+					pstmt.setInt(3, end);
 					rs = pstmt.executeQuery();
 					if (rs.next()) {
 						webtoonEP = new ArrayList(); 
 						do{ 
 							contentVO  episode=new contentVO();
-							episode.setWt_ep_img(rs.getString("mw_ep_img"));
+							episode.setWt_ep_img(rs.getString("wt_ep_img"));
 							episode.setCl_title(rs.getString("cl_title"));
 							episode.setMw_star(rs.getInt("cl_star"));
 							episode.setCl_reg(rs.getTimestamp("cl_reg"));
