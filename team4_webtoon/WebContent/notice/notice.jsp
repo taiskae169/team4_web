@@ -155,7 +155,9 @@
    <div class="container">
 	<%if (check1 == 4){%>
 	<form name = "register" method = "post" action ="nt_register.jsp">
-	<input type = "submit" value = "등록">
+	<div style = "float : right; margin-bottom:10px; margin-right: 40px;">
+	<input type = "submit" value = "공지사항 등록">
+	</div>
 	</form>
 	<%} %>
    <table class="table table-stripped">
@@ -191,7 +193,7 @@
          </td>
 
          <td>
-         <a style="color:black"href = "<%=request.getContextPath()%>/notice/noticeView.jsp?nt_num=<%=notice1.getNt_num()%>">
+         <a style="color:black"href = "<%=request.getContextPath()%>/notice/noticeView.jsp?nt_num=<%=notice1.getNt_num()%>">	
          	<%= notice1.getNt_title() %>
 		</a>
          </td>

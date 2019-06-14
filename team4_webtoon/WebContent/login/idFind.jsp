@@ -40,16 +40,10 @@
            			<a href="../main_page/MainPage.jsp">돌아가기</a></p>
                	</div>
               <hr class="my-4">
-
-
           </div>
-
         </div>
-
       </div>
-      
     </div>
-
   </div>
   <%@include file="../bar/footer.jsp" %>  
 </body>

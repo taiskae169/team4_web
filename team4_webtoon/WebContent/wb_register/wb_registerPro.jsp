@@ -57,6 +57,18 @@
 		width : 100%;
 		height : 150px;
 	}
+	.label1{
+		width:150px;
+		margin-bottom:60px;
+	}
+	.input1{
+		margin-right:20px;
+	}
+	
+	.input2{
+		margin-right:20px;
+		margin-left:20px;
+	}	
 </style>
 </head>
 <body>
@@ -65,7 +77,7 @@
 <%@include file="../bar/navigationBar.jsp" %>
 
 	<!-- Page Content -->
-<div class="container">
+<div class="container" style = "margin-top: 100px; margin-bottom : 50px;">
 
   <!-- Page Heading -->
 
@@ -75,12 +87,12 @@
 
   	<form action = "fileCheck.jsp" method="post">
 		<div>
-	<b>작품제목</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<%= title %><br><br><br>
-	<b>소제목</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<label class = "label1">작품 제목</label>
+				<%= title %><br>
+	<label class = "label1">소제목</label>
 				<%= sub_title %>
-				<br><br><br>
-	<b>장르</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<br>
+	<label class = "label1">장르</label>
 	<%switch (gen){
 		case 0 : %>일상<%break;
 		case 1 : %>개그<%break;
@@ -94,11 +106,11 @@
 		case 9 : %>스포츠<%break;
 		
 	} %>
-				<br><br><br>
-	<b>태그</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			
+				<br>
+	<label class = "label1">태그</label>			
 				<%= tag %>
-				<br><br><br>
-	<b>연재요일</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
+				<br>
+	<label class = "label1">연재요일</label>
 	<%switch (week){ 
 		case 7 : %>일요일<%break;
 		case 1 : %>월요일<%break;
@@ -111,14 +123,14 @@
 		
 	}%>
 		
-				<br><br><br>
-	<b>줄거리</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<br>
+	<label class = "label1">줄거리</label>
 				<%= sum %>
-				<br><br><br>
+				<br>
 	
-	<b>작가</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			
+	<label class = "label1">작가</label>	
 				<%= writer %>
-				<br><br><br>
+				<br>
 	  <input type = "hidden" name = "title" value="<%=title %>">
       <input type = "hidden" name = "sub_title" value="<%=sub_title %>">
       <input type = "hidden" name = "gen" value="<%=gen %>">
@@ -133,7 +145,6 @@
 
 <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">작품 등록</button>
 </form>
-<br><br><br>
 </div>
 
 

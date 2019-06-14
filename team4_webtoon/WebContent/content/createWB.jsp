@@ -7,12 +7,12 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-	int cl_title_id = Integer.parseInt(request.getParameter("mw_num"));
+	int cl_title_id = Integer.parseInt(request.getParameter("mw_num"));		
 	contentDAO dao = contentDAO.getInstance();
 	contentVO vo = new contentVO();
 
 	String title = request.getParameter("title");
-	int a = dao.getAuto(cl_title_id);
+	int a = dao.getAuto(cl_title_id);			//자동회차를 생성하는 메서드
 	
 %>
 
@@ -73,7 +73,7 @@
 <br><br><br>
 </div>
 <% 
-session.setAttribute("sessionTitle",title);
+session.setAttribute("sessionTitle",title);		//생성된 웹툰 폴더에 웹툰을 집어넣기 위해 title 값을 넘김 
 %>
 <%@ include file="../bar/footer.jsp"%>
 <!-- /.container -->

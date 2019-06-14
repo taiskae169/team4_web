@@ -9,6 +9,9 @@
 String id1 = (String)session.getAttribute("sessionID");
 int nt_num = 0;
 nt_num = Integer.parseInt(request.getParameter("nt_num"));
+
+noticeDAO adjust = noticeDAO.getInstance();
+noticeVO b = adjust.content(nt_num);
 %>
 <!DOCTYPE html>
 <html>
@@ -26,23 +29,42 @@ nt_num = Integer.parseInt(request.getParameter("nt_num"));
 
   <!-- Custom styles for this template -->
   <link href="/team4_webtoon/resources/main_webtoon/scrolling/css/scrolling-nav.css" rel="stylesheet">
+  
+  <style>
+  	.label1{
+		width:80px;
+		margin-bottom:40px;
+	}
+	.input1{
+		margin-right:20px;
+	}
+	
+	.input2{
+		margin-right:20px;
+		margin-left:20px;
+	}	
+	.bottom{
+		margin-bottom : 50px;
+	}
+  </style>
 </head>
 <body id="page-top">
   <!-- Navigation -->
      <%@include file="/bar/menu.jsp" %>
    <%@include file="/bar/navigationBar.jsp" %>   
 
-        <div class="container">
+        <div class="container" style = "margin-top : 100px;">
 
             <div class="detail">
-                 <h1 class="my-4" style="text-align: center">공지 수정</h1><br><br><br>
+                 <h1 class="my-4" style="text-align: center">공지 수정</h1>
+                 
          </div>   
 
    </div>
    
-   <div class="container">
+   <div class="container" style = "margin-top : 60px; margin-bottom:50px;">
    <form method = "post" action = "nt_changeCategory.jsp">
-	카테고리 : 
+	<label class = "label1">카테고리</label>
 	<select name = "nt_category">
 		<option value = "0">서비스공지</option>
 		<option value = "1">컨텐츠공지</option>
@@ -54,24 +76,25 @@ nt_num = Integer.parseInt(request.getParameter("nt_num"));
 	<input type = "hidden" name = "nt_num" value = "<%=nt_num %>">
 	<input type="submit"value = "변경">
 	</form><br>
+	
 	<form method = "post" action = "nt_changeTitle.jsp">
-	제목 : 
+	<label>제목    (현재 제목 : <%=b.getNt_title() %>)</label><br>
 	<input type = "text" name = "nt_title" placeholder = "제목을 입력해주세요" required>
 			<input type = "hidden" name = "nt_writer" value = "<%=id1 %>">
 	<input type = "hidden" name = "nt_num" value = "<%=nt_num %>">
 	<input type="submit"value = "변경">
 	</form><br>
 	<form method = "post" action = "nt_changeContent.jsp">
-	내용 :<br>
-	<textarea name = "nt_content" rows="13" cols="40" required></textarea>
+	<label>내용을 변경하세요</label><br>
+<textarea name = "nt_content" rows="13" cols="40" required>
+<%=b.getNt_content() %>
+</textarea>
 	<input type = "hidden" name = "nt_writer" value = "<%=id1 %>">
 	<input type = "hidden" name = "nt_num" value = "<%=nt_num %>"><br>
 	<input type="submit"value = "변경">
 	<input type = "button" onclick = "location.href='notice.jsp'" value = "돌아가기">
 	</form>
       </div>
-      <br>
-      
 	
 
    

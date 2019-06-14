@@ -41,7 +41,7 @@
 <%@include file="../bar/navigationBar.jsp" %>
 
 	<!-- Page Content -->
-<div class="container" style="margin-top:100px;">
+<div class="container" style="margin-top:100px; margin-bottom : 50px;">
 
   <!-- Page Heading -->
   <%if (search == "null"){%>
@@ -183,7 +183,6 @@ genreDAO a = genreDAO.getInstance();
 			</table>
 		</div>
 	</div>
-	<br><br><br>
   
 </DIV>
 

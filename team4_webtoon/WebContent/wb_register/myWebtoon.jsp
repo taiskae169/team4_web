@@ -27,6 +27,10 @@
 		width : 100%;
 		height : 150px;
 	}
+	
+	.input{
+		margin-right: 10px;
+	}
 </style>
 </head>
 <body>
@@ -92,14 +96,14 @@
           <form name = "createWB" method = "post" action = "../content/createWB.jsp?mw_num=<%=list.get(i).getNum()%>">
           <input type = "hidden" name = "title" value = "<%=list.get(i).getTitle() %>">
           <input type = "hidden" name = "writer" value = "<%=list.get(i).getWriter() %>">
-          <input type = "submit" value = "회차등록">&nbsp;&nbsp;
+          <input type = "submit" class = "input" value = "회차등록">
           </form>
 
 
           <form name = "adjust" method = "post" action = "wb_adjust.jsp">
           <input type = "hidden" name = "title" value = "<%=list.get(i).getTitle() %>">
           <input type = "hidden" name = "writer" value = "<%=list.get(i).getWriter() %>">
-          <input type = "submit" value = "수정">&nbsp;&nbsp;
+          <input type = "submit" class = "input" value = "수정">
           </form>
           
           <form name = "delete" method = "post" action = "wb_delete.jsp">

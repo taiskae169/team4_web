@@ -20,7 +20,7 @@
 <%
 	String id1 = (String)session.getAttribute("sessionID");
 	member.setId(id1);
-	member.setState(0);
+	member.setState(0);			//DB에서 삭제하는 것이 아니라 상태를 0으로 만들어준다.
 	
 	registerDAO a = registerDAO.getInstance();
 	a.deleteMember(member);
