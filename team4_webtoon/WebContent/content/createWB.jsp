@@ -11,7 +11,9 @@
 	contentDAO dao = contentDAO.getInstance();
 	contentVO vo = new contentVO();
 
+	String title = request.getParameter("title");
 	int a = dao.getAuto(cl_title_id);
+	
 %>
 
 <html>
@@ -21,7 +23,18 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <style>
-
+	.label1{
+		width:150px;
+		margin-bottom:60px;
+	}
+	.input1{
+		margin-right:20px;
+	}
+	
+	.input2{
+		margin-right:20px;
+		margin-left:20px;
+	}
 </style>
 </head>
 <body>
@@ -37,24 +50,20 @@
   	<br>
   	<h1 class="my-4" style="text-align: center">작품 회차를 등록하세요</h1>
   	<br><br><br>
-
   	<form action = "createWBPro.jsp" method="post" enctype = "multipart/form-data">
 		<div>
-	<b>자동회차</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<%= a %>화
-				<br><br><br>
-	<b>소제목</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<label class = "label1">자동회차</label><%= a %>화 <br><br>
+	<label class = "label1">소제목</label>
 				<input type="text" size="100" maxlength="30" name="cl_title" placeholder="  소제목을 입력해주세요"> 
-				<br><br><br>
-	<b>내용</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			
+	<label class = "label1">내옹</label>
 				<input type = "text" size = "100" name = "cl_content" placeholder = "   줄거리를 입력해주세요">
-<br><br><br>
 	<input type = "file" name = "contentwb"><br><br><br>
 
 
-	<b>내용을 확인하셨습니까?</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<input type = "radio" name = "cl_writer" value = "<%=session.getAttribute("sessionID") %>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;확인
+	<b>내용을 확인하셨습니까?</b>
+	<input type = "radio" name = "cl_writer" value = "<%=session.getAttribute("sessionID") %>" class = "input2" style = "margin-bottom:50px;">확인
 	<br><br><br>
+	<input type = "hidden" name = "title" value = "<%=title %>">
 	<input type = "hidden" name = "cl_title_id" value = "<%=cl_title_id %>">
 </div>
 
@@ -63,7 +72,9 @@
 </form>
 <br><br><br>
 </div>
-
+<% 
+session.setAttribute("sessionTitle",title);
+%>
 <%@ include file="../bar/footer.jsp"%>
 <!-- /.container -->
 </body>

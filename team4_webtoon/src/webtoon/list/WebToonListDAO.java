@@ -431,7 +431,6 @@ public class WebToonListDAO {
 	}//main_webtoon의 mw_mag 항목을 변경해주는 메소드
 	
 	
-	
 }
 
 	

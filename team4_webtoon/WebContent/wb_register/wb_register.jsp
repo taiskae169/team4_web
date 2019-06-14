@@ -34,12 +34,7 @@
 	.input2{
 		margin-right:20px;
 		margin-left:20px;
-	}
-	
-	
-	
-	
-	
+	}	
 </style>
 </head>
 <body>
@@ -48,16 +43,14 @@
 <%@include file="../bar/navigationBar.jsp" %>
 
 	<!-- Page Content -->
-<div class="container">
+<div class="container" style = "margin-top : 150px; margin-bottom : 100px;">
 
   <!-- Page Heading -->
 
-  	<br>
   	<h1 class="my-4" style="text-align: center">작품을 등록하세요</h1>
-  	<br><br><br>
 
   	<form action = "wb_registerPro.jsp" method="post" enctype = "multipart/form-data">
-		<div>
+		<div style = "margin-top : 100px;">
 				<label class = "label1">작품 제목 </label>
 				<input type="text" size="100" maxlength="30" name="title" placeholder="  제목을 입력해주세요" class = "1"> 
 				
@@ -76,10 +69,11 @@
 				<input type = "radio" name = "gen" value = "7" class = "input2">스릴러
 				<input type = "radio" name = "gen" value = "8" class = "input2">시대극
 				<input type = "radio" name = "gen" value = "9" class = "input2">스포츠<br><br><br>
-					<label class = "label1">태그</label>			
+				
+				<label class = "label1">태그</label>			
 				<input type="text" size="100" maxlength="30" name="tag" placeholder="  태그를 입력해주세요" style = "margin-bottom: 60px;"> 
-					<label class = "label1">연재요일 </label>
-
+				
+				<label class = "label1">연재요일 </label>
 				<input type = "radio" name = "week" value = "1" checked class = "input1">월요일
 				<input type = "radio" name = "week" value = "2" class = "input2">화요일
 				<input type = "radio" name = "week" value = "3" class = "input2">수요일
@@ -91,11 +85,12 @@
 
 				<label class = "label1">줄거리 </label>
 				<input type="text" size="100" maxlength="30" name="sum" placeholder="줄거리를 입력하세요" style = "margin-bottom: 60px">
+				
 				<label class = "label1">썸네일 이미지 </label>크기 (700 x 400)에 맞게 올려주세요 (jpg 파일) 또한 작품 제목_som.jpg 형식을 지켜주세요<br>
-	<input type = "file" name = "file" style = "margin-bottom: 60px;"> <br>
-	<b>내용을 확인하셨습니까?</b>
-	<input type = "radio" name = "writer" value = "<%=session.getAttribute("sessionID") %>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;확인
-	<br><br><br>
+				<input type = "file" name = "file" style = "margin-bottom: 60px;"> <br>
+				
+				<b>내용을 확인하셨습니까?</b>
+				<input type = "radio" name = "writer" value = "<%=session.getAttribute("sessionID") %>" class = "input2" style = "margin-bottom:50px;">확인
 	
 </div>
 

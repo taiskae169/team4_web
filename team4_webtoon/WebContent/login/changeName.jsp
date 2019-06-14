@@ -24,11 +24,11 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container" style = "margin-top : 100px;">
   	<br>
   	<h1 class="my-4" style="text-align: center">이름이 변경되었습니다.</h1>
   	<h5 style = "text-align : center">메인페이지로 돌아갑니다.</h5>
-  	<meta http-equiv="Refresh" content="1;url=../main_page/MainPage.jsp" >
+  	<meta http-equiv="Refresh" content="1;adjustForm.jsp" >
 </div>
 <!-- /.container -->
 </body>
