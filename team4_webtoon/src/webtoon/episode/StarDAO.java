@@ -83,7 +83,7 @@ public class StarDAO {
 	
 	
 	
-	
+	//별점 매기기
 	public void insertStar(StarVO sVO ) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -128,13 +128,23 @@ public class StarDAO {
 		}		
 	}
 	
-	
-	
-	
-	
-	
-	
-	
+	public void updateContentStar(int cl_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql="";
+		try {
+			conn=getConnection();
+			pstmt=conn.prepareStatement("update content c set c.cl_star=(select s.sstar from star s where c.cl_num=s.scl_num),c.cl_star_p=(select s.sstar_p from star s where c.cl_num=s.scl_num), \r\n" + 
+					"c.cl_star_sum=(select s.sstar_sum from star s where c.cl_num=s.scl_num) where c.cl_num=? ");
+			pstmt.setInt(1, cl_num);
+			pstmt.executeUpdate();			
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}finally {
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}	
+	}
 	
 	
 	

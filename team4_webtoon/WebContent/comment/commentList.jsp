@@ -7,10 +7,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <%
-	String seID = "user1";//session.getAttribute("");
 	
 	String num = request.getParameter("num");	  		//코멘트 번호
-	String id = request.getParameter("id");				//아이디
+	String cmtid = request.getParameter("id");				//아이디
 	String content = request.getParameter("content");	//코멘트 내용
 	String like = request.getParameter("like");			//좋아요 숫자
 	String hate = request.getParameter("hate");			//싫어요 숫자
@@ -20,6 +19,7 @@
 	int state = Integer.parseInt(request.getParameter("state"));	//코멘트 숨기기 여부
 	
 	int cmtNum = Integer.parseInt(request.getParameter("cmtNum"));	//코멘트번호
+	String id = request.getParameter("seID");
 	//현재 코멘트페이지번호를 입력받음
 	cmtDAO dao = cmtDAO.getinstance();
 
@@ -125,11 +125,11 @@
 <body>
 	<div class="row">
 		<div class="card h-100" style="width:98%; margin:auto; margin-bottom:10px;">
-          <h4 class="card-header"><%=id %></h4>
+          <h4 class="card-header"><%=cmtid %></h4>
           <!-- id를 출력 -->
           <div class="card-body">
             <p class="card-text"><%=content %>
-            <%if(id.equals(seID)){ %>
+            <%if(cmtid.equals(id)){ %>
            		  
            		 <a href="#open-moda<%=num %>" class="btn btn-danger btn-circle" style="float:right; margin-left:10px;">
                     <i class="fas fa-trash"></i>
@@ -145,7 +145,7 @@
           <div class="card-footer">
           	<div style="float:right;">
             <% 
-            		int likeCh = dao.likeCh(seID, Integer.parseInt(num));
+            		int likeCh = dao.likeCh(cmtid, Integer.parseInt(num));
             		// 지금 로그인한 사람이 좋아요/싫어요에 참여했는지 확인, 0일시 미참여/ 1일시 좋아요/ 2일 시 싫어요 참여를 뜻함
             		
             		if(likeCh==0){%>
@@ -205,7 +205,7 @@
 				<div style="float:right;">
 					<%
 					registerDAO userdao = registerDAO.getInstance();
-					int level = userdao.level_check(seID);
+					int level = userdao.level_check(id);
 					//로그인된 아이디의 레벨을 체크
 					
 					if(level ==4){%>

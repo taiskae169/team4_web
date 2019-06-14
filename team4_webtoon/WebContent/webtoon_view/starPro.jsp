@@ -8,14 +8,7 @@
    <jsp:setProperty name="sVO" property="*"/>
 </jsp:useBean>
  
- 
 
- 
- 
- 
- 
- 
- 
  
  <%
  	StarDAO sDAO=StarDAO.getInstance();
@@ -29,8 +22,13 @@
  	sVO.setsMw_num(sMN);	
  	sVO.setsCl_num(sCN);	
  	sDAO.insertStar(sVO);
+ 	//System.out.println("별점 매기기 완료");
+ 	
+ 	sDAO.updateContentStar(sCN);
+ 	//System.out.println("별점 content에 업데이트 완료");
  	
  	sDAO.addSrecord(sId,sMN,sCN);
+ 	//System.out.println("별점 like_check에 업데이트 완료");
  	
  	//response.sendRedirect("wt_view.jsp");
  
