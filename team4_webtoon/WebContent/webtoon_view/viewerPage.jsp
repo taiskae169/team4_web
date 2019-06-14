@@ -46,7 +46,7 @@
 <%
 	int mNum=Integer.parseInt(request.getParameter("mw_num"));
 	int clNum=Integer.parseInt(request.getParameter("cl_num"));
-	//String id=(String)session.getAttribute("sessionID");
+	String id=(String)session.getAttribute("sessionID");
 	WTepVO wtEP=null;
 	WTepDAO wtDAO=WTepDAO.getInstance();
 	wtEP=wtDAO.getWTContent(clNum,mNum);
@@ -66,6 +66,7 @@
         <i class="fas fa-bars"></i>
       </button>
       
+      
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ml-center">
           <li class="nav-item">
@@ -79,12 +80,27 @@
           </li>
         </ul>
       </div>
+      
+      
       <div class="collapse navbar-collapse" id="navbarResponsive">
        <ul class="navbar-nav text-uppercase ml-auto">
-        <li class="nav-item"><b>별점주기</b></li>&nbsp;
-         <li class="nav-item">
+         <% if(id==null){%>
+         <script language="JavaScript">
+    		 function goLoginfirst() {
+           		 alert("로그인 후 참여가능합니다.");
+           	  	url = "/team4_webtoon/login/login.jsp";
+           		open(url, "login",  "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300, height=200");
+             	return;
+         	 }
+    		 </script>
+        <li class="nav-item"><a href="#"  Onclick="goLoginFirst();"><b>별점주기</b></a></li>&nbsp;        
+         <li class="nav-item"></li>
+        <%}else{ %>
+         <li class="nav-item"><b>별점주기</b></li>&nbsp;   
+        <li class="nav-item">
         <%@include file="/webtoon_view/starForm.jsp" %>
         </li>
+        <%} %>
         </ul>
        </div>
     </div>
@@ -106,7 +122,7 @@
     </div>
   </section>
 
-  <%--@include file="/comment/comment.jsp" --%>	
+  <%@include file="/comment/comment.jsp" %>	
   
   
  <!-- Bootstrap core JavaScript -->

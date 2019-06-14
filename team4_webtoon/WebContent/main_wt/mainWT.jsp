@@ -41,6 +41,7 @@
 	.link_wt:hover{text-decoration: underline; color: #212529;}
 	.link_page{text-decoration: none; color: #212529;}
 	.link_page:hover{text-decoration: underline; color: #212529;}
+	#wtDT {margin-top:100px;}
 </style>
 	<%--
 	.info_wt .publish, .info_wt .genre, .info_wt .tag{display:inline-float:left;marign}
@@ -82,8 +83,6 @@
 	    /*
 	   numberEP = countEP-(currentPage-1)*pageSize;
 		*/
-
-
 %>
 
 
@@ -93,7 +92,7 @@
   	<%@include file="/bar/menu.jsp" %>
 	<%@include file="/bar/navigationBar.jsp" %>	
 	
-		  <div class="container">
+		  <div class="container" id="wtDT">
  			<div class="wtInfo" >
 				<div class="thumb">
 				<a>

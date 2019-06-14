@@ -30,26 +30,27 @@
 </script>
 
 <% 
-	int sMN=109;//Integer.parseInt(request.getParameter(""));
-	int sCN=100;//Integer.parseInt(request.getParameter(""));
+	int sMN=Integer.parseInt(request.getParameter("mw_num"));
+	int sCN=Integer.parseInt(request.getParameter("cl_num"));
 	String sId=(String)session.getAttribute("sessionID");
-	sId="test33";//"user01"; //"admin";
+	//sId="test33";//"user01"; //"admin";
 	StarDAO starDAO= StarDAO.getInstance();
 
 %>
 
 <body>
 
-	<form name="starForm"  method="post" action="/team4_webtoon/webtoon_view/starPro.jsp">
-	<input type="hidden" name="sId" value="<%=sId %>" />
-	<input type="hidden" name="mw_num" value="<%= sMN%>" />
-	<input type="hidden" name="cl_num" value="<%=sCN %>" />
+
 	<% 
 	if(sId!=null){
 		boolean yn = starDAO.checkStar(sId,sMN,sCN);
 			if(yn){%>
 			<span name="yesS" id="yesS" >참여하셨습니다</span>
 		<%}else{ %>
+		<form name="starForm"  method="post" action="/team4_webtoon/webtoon_view/starPro.jsp">
+		<input type="hidden" name="sId" value="<%=sId %>" />
+		<input type="hidden" name="mw_num" value="<%= sMN%>" />
+		<input type="hidden" name="cl_num" value="<%=sCN %>" />
 		<select id="starSelect"  name="starSelect">
 			<option value=5 selected>
 				<%for(int j=5;j >0;j--){%>
@@ -96,7 +97,8 @@
 	</form>
 	<% }
 	} else {
-		response.sendRedirect("/team4_webtoon/login/login.jsp");
+		//response.sendRedirect("/team4_webtoon/webtoon_view/viewerPage.jsp");
+		//response.sendRedirect("/team4_webtoon/login/login.jsp");
 	}%>
 	  <!-- Bootstrap core JavaScript -->
   <script src="/team4_webtoon/resources/Main_page/vendor/jquery/jquery.min.js"></script>
