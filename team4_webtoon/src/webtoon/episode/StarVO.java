@@ -4,7 +4,6 @@ public class StarVO {
 	private int sMw_num;
 	private int sCl_num;
 	private int sStar;
-	private int sStar_ini;
 	private int sStar_p;
 	private int sStar_sum;
 	
@@ -28,12 +27,6 @@ public class StarVO {
 		this.sStar = sStar;
 	}
 	
-	public int getsStar_ini() {
-		return sStar_ini;
-	}
-	public void setsStar_ini(int sStar_ini) {
-		this.sStar_ini = sStar_ini;
-	}
 	public int getsStar_p() {
 		return sStar_p;
 	}

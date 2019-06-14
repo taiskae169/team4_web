@@ -83,12 +83,6 @@ public class WTepDAO {
 	} //웹툰별 에피소드 리스트를 리턴하는 메소드
 	
 	
-	
-	
-	
-	
-	
-	
 	public List getEpisodes(int mw_num,int start, int end) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -112,6 +106,7 @@ public class WTepDAO {
 							episode.setCl_title(rs.getString("cl_title"));
 							episode.setMw_star(rs.getInt("cl_star"));
 							episode.setCl_reg(rs.getTimestamp("cl_reg"));
+							episode.setCl_num(rs.getInt("cl_num"));
 							webtoonEP.add(episode); 
 						}while(rs.next());
 					}
@@ -124,6 +119,52 @@ public class WTepDAO {
 		}
 		return webtoonEP;
 	} //웹툰별 에피소드 리스트를 리턴하는 메소드
+	
+	
+	public WTepVO getWTContent(int cl_num, int mw_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		WTepVO wtEP=new WTepVO();
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"select mw.mw_num,mw.mw_title,c.cl_title,c.cl_num,c.cl_content from content c,main_webtoon mw where mw.mw_num=c.cl_title_id and cl_num=? and mw_num=?");
+					pstmt.setInt(1, cl_num);
+					pstmt.setInt(2, mw_num);
+					rs = pstmt.executeQuery();				
+					if (rs.next()) {
+						wtEP.setMw_title_id(rs.getInt("mw.mw_num"));
+						wtEP.setMwTitle(rs.getString("mw.mw_title"));
+						wtEP.setClTitle(rs.getString("c.cl_title"));
+						wtEP.setClNO(rs.getInt("c.cl_num"));
+						wtEP.setClContent(rs.getString("c.cl_content"));
+					}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}		
+		return wtEP;
+	} //웹툰 에피소드 내용을 리턴하는 메소드
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public ArrayList<contentVO> getEpisodesForAdmin(int mw_num) throws Exception {
 		Connection conn = null;

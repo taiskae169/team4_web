@@ -51,20 +51,20 @@
 
 
 <%
-		int mNum=0;//Integer.parseInt(request.getParameter("mw_num"));
+		int mNum=109;//Integer.parseInt(request.getParameter("mw_num"));
 	    
-		int pageSize = 2; 
-	    String pageNum = request.getParameter("pageNum");
+		int pageSize = 10; // 한 화면에 출력할 게시물 개수
+	    String pageNum = request.getParameter("pageNum"); 
 	    if (pageNum == null) {  
 	        pageNum = "1";       
 	    }
-	    int currentPage = Integer.parseInt(pageNum);     
+	    int currentPage = Integer.parseInt(pageNum); //현재 페이지     
 	    int startRow = (currentPage - 1) * pageSize + 1;   
 	    int endRow = currentPage * pageSize;  
 	    System.out.println(currentPage + " " + startRow + " " + endRow);
 	    
 	    
-	    int countEP = 0;   
+	    int countEP = 0;   //웹툰 에피소드 갯수
 	   // int numberEP = 0; 
 	
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -226,7 +226,7 @@
    				</a>
    			</th>
 			<th>
-				<a href=""  class="link_wt"><%=episode.getCl_title() %></a>
+				<a href="/team4_webtoon/webtoon_view/viewrBar.jsp?mw_num=<%=wtDetail.getmNum() %>&cl_num=<%=episode.getCl_num()%>"><%=episode.getCl_title() %></a>
 				<%
 				java.util.Date date = episode.getCl_reg();
 				long now = System.currentTimeMillis();
@@ -248,16 +248,26 @@
 	
 		<%
     if (countEP > 0) {
-    	int pageBlock=8;
-        int pageCount = countEP / pageSize + ( countEP % pageSize == 0 ? 0 : 1);
-		 
-        int startPage = (int)(currentPage/pageBlock)*pageBlock+1;
+    	int pageBlock=5; //하단 페이지바에 표시할 페이지 수
+        int pageCount = countEP / pageSize + ( countEP % pageSize == 0 ? 0 : 1); //총 페이지 개수
+
+        int startPage = (int)(currentPage/pageBlock == 0? 1:((currentPage%pageBlock)==0?(((currentPage/pageBlock)-1)*pageBlock+1):((currentPage/pageBlock)*pageBlock+1)));		
+        /*sP=startPage(하단 페이지바에서 첫 페이지 번호) cP=currentPage(현재 페이지) pB=pageBlock
+       (1) cP/pB == 0 sP=1
+       (2) cp/pB != 0 
+       	(2-1) cP%pB ==0     sP=((cP/pb)-1)*pB+1
+       	(2-2) cP%pB !=0       sP=(cp/pB)*pB+1
+        		   		   
+       예제 a) pB=5  cP=2, (1) 2/5=0 ==0  sP=1
+       예제 b) pB=5  cp=5, (2) 5/5=1 !=0  (2-1) 5%5=0 ==0    sP= ((5/5)-1)*5+1 =1 
+       예제 c) pB=5  cp=12, (2)12/5=2 !=0  (2-2) 12%5=2 !=0    sP= (12/5)*5+1 =11 
 		
+        */
+        
         int endPage = startPage + pageBlock-1;
         if (endPage > pageCount) endPage = pageCount;
-        
-        
-        if (startPage > 1) {%>
+             
+        if (currentPage > 1) {%>
         	<a  class="link_page" href="wtTable.jsp?pageNum=1">[처음]</a>
  <%  }
 
@@ -266,9 +276,6 @@
  <%  }
 
         for (int i = startPage; i <= endPage; i++) {
-        	if(startPage !=1){
-        		
-        	}
            	 if (i == currentPage) {%>
                 <b><a  class="link_page"  href="wtTable.jsp?pageNum=<%=currentPage %>">[<%=currentPage%>]</a></b>
  <%           } else {%>
@@ -277,8 +284,8 @@
         }
 
         if (currentPage < pageCount) { %> 
-            <a  class="link_page"  href="wtTable.jsp?pageNum=<%= currentPage %>">[다음]</a>
- <%  }
+           	<a  class="link_page"  href="wtTable.jsp?pageNum=<%= currentPage+1 %>">[다음]</a>
+ <%  } 
         
         if (endPage <pageCount) {%>
             <a  class="link_page"  href="wtTable.jsp?pageNum=<%= pageCount %>">[끝]</a>
@@ -286,13 +293,6 @@
 
     }
 %>
-	
-	
-	
-	
-	
-	
-	
 	
 	</div>
 
