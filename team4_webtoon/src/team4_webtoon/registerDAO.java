@@ -94,7 +94,7 @@ public class registerDAO {
 			}
 	
 	//아이디 찾기 메서드 - 이름과 이메일을 입력하면 아이디를 보여준다.
-	public registerBean idCheck(String name, String email) throws Exception
+	public registerBean idCheck(String email, String name) throws Exception
 	{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -109,17 +109,17 @@ public class registerDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"select * from user_info where name = ?");
-			pstmt.setString(1,name);
+					"select * from user_info where email = ?");
+			pstmt.setString(1,email);
 			rs = pstmt.executeQuery();
 
 			
 			if(rs.next())
 			{
 				member = new registerBean();
-				dbpasswd = rs.getString("email");
+				dbpasswd = rs.getString("name");
 				member.setId(rs.getString("id"));
-				if(dbpasswd.equals(email)) {
+				if(dbpasswd.equals(name)) {
 					x = 1;
 				}
 				else
@@ -188,7 +188,7 @@ public class registerDAO {
 			}
 	
 	//아이디 찾기 메서드  (번호로 반환)
-	public int idCheck1(String name, String email) throws Exception
+	public int idCheck1(String email, String name) throws Exception
 	{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -200,14 +200,14 @@ public class registerDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"select * from user_info where name = ?");
-			pstmt.setString(1,name);
+					"select * from user_info where email = ?");
+			pstmt.setString(1,email);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next())
 			{
-				dbpasswd = rs.getString("email");
-				if(dbpasswd.equals(email))
+				dbpasswd = rs.getString("name");
+				if(dbpasswd.equals(name))
 					x = 1;
 				else
 					x = 0;

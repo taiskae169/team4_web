@@ -16,7 +16,7 @@
 <%@include file="../bar/navigationBar.jsp" %>
 </head>
 <body>
-  <div class="container">
+<div class="container"style = "margin-top: 150px; margin-bottom : 110px;">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5"><br>
@@ -46,7 +46,6 @@
       </div>
     </div>
   </div>
-    <br><br>
   <%@include file="../bar/footer.jsp" %>  
 </body>
 </html>

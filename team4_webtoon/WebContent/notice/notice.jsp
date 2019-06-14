@@ -134,17 +134,24 @@
    <%@include file="/bar/navigationBar.jsp" %>   
    <%
    	if (count == 0 ){
+   		if(check == 4){%>
+   		<h1 class="my-4" style="text-align: center; margin-top:50px;">공지사항</h1>
+   				<form name = "register" method = "post" action ="nt_register.jsp">
+	<input type = "submit" value = "등록">
+	</form>
+<%   		}
    		
    	} else {
    %>
+   
         <div class="container">
 
-            <div class="detail">
-                 <h1 class="my-4" style="text-align: center">공지사항</h1><br><br><br>
+            <div class="detail" style="margin-top:150px; margin-bottom : 100px;">
+                 <h1 class="my-4" style="text-align: center">공지사항</h1>
          </div>   
 
    </div>
-   
+
    <div class="container">
 	<%if (check1 == 4){%>
 	<form name = "register" method = "post" action ="nt_register.jsp">
@@ -184,7 +191,7 @@
          </td>
 
          <td>
-         <a href = "<%=request.getContextPath()%>/notice/noticeView.jsp?nt_num=<%=notice1.getNt_num()%>">
+         <a style="color:black"href = "<%=request.getContextPath()%>/notice/noticeView.jsp?nt_num=<%=notice1.getNt_num()%>">
          	<%= notice1.getNt_title() %>
 		</a>
          </td>
@@ -203,23 +210,36 @@
 			<a href = "<%=request.getContextPath()%>/notice/nt_adjust.jsp?nt_num=<%=notice1.getNt_num()%>">
 			<input type = "submit" value = "수정">
 			</a>
-			<a href = "<%=request.getContextPath()%>/notice/nt_delete.jsp?nt_num=<%=notice1.getNt_num()%>">
+			<a href = "#open-stateModa">
 			<input type = "button" value = "삭제">
 			</a>
 		</td>
 	<%} %>
       </tr>
-
+      <div id = "open-stateModa" class="modal-window">
+      	<div>
+      		<a href="#modal-close" title = "Close" class = "modal-close">Close</a>
+      		<form action = "nt_deletePro.jsp" style = "margin:0 auto;">
+      		<p>댓글을 삭제하시겠습니까?</p>
+	<input type = "hidden" name = "nt_writer" value = "<%=id1 %>">
+	<input type = "hidden" name = "nt_num" value = "<%=notice1.getNt_num() %>">
+	<input type = "submit" value = "삭제"/>
+	</form>
+      	</div>
+      </div>
      
       <%} %>
+      
+
       </tbody>
 
    
    
    
    </table>
-      </div>
 
+      </div>
+<div style="margin-bottom:50px;">
    <center>
    
       <%} %>
@@ -238,7 +258,7 @@
    		<%}
    		for (int i = startPage; i <= endPage; i++){
    		%>
-   		<a href="notice.jsp?pageNum=<%= i %>">[<%= i %>]</a>
+   		<a style="color:black"href="notice.jsp?pageNum=<%= i %>">[<%= i %>]</a>
    		<%}
    		if(endPage < pageCount){
    		%>
@@ -248,8 +268,8 @@
    	}
    		%>     
      </center> 
-
-   
+</div>
+ <%@include file="/bar/footer.jsp" %>     
 
    			
      <!-- Bootstrap core JavaScript -->
@@ -265,4 +285,3 @@
 </body>
 
 </html>
-<%@include file="/bar/footer.jsp" %>

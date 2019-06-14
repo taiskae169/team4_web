@@ -129,7 +129,7 @@
         </div>
 
         <div class="col-md-4 col-sm-6 portfolio-item">
-          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
+          <a class="portfolio-link" href="../notice/notice.jsp">
             <div class="portfolio-hover">
               <div class="portfolio-hover-content">
                 <i class="fas fa-plus fa-3x"></i>
@@ -138,7 +138,7 @@
             <img class="img-fluid" src="/team4_webtoon/resources/mypage/img/portfolio/06-thumbnail.jpg" alt="">
           </a>
           <div class="portfolio-caption">
-            <h4>고객센터</h4>
+            <h4>공지사항</h4>
             <p class="text-muted">Photography</p>
           </div>
         </div>

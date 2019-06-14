@@ -35,6 +35,7 @@
    .bg-primary{background-color: #fff!important;}
    .info_wt .publish, .info_wt .genre, .info_wt .tag{margin-left:13px;}
    .info wt{padding:9px 0 17px; font-size:14px; color:#888; }
+
 </style>
    <%--
    .info_wt .publish, .info_wt .genre, .info_wt .tag{display:inline-float:left;marign}
@@ -47,7 +48,7 @@
      <%@include file="/bar/menu.jsp" %>
    <%@include file="/bar/navigationBar.jsp" %>   
    
-        <div class="container">
+        <div class="container" style = "margin-top: 150px">
 
             <div class="detail">
                  <h1 class="my-4" style="text-align: center">공지사항</h1><br><br><br>
@@ -75,8 +76,10 @@
    
    
    </table>
+   <input type = "button" onclick = "location.href='notice.jsp'" value = "돌아가기">
+
    </div>
-   
+    <%@include file="/bar/footer.jsp" %> 
      <!-- Bootstrap core JavaScript -->
   <script src="/team4_webtoon/resources/main_webtoon/scrolling/vendor/jquery/jquery.min.js"></script>
   <script src="/team4_webtoon/resources/main_webtoon/scrolling/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -90,4 +93,3 @@
 </body>
 
 </html>
-<%@include file="/bar/footer.jsp" %>

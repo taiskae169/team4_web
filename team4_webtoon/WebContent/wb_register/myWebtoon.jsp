@@ -16,7 +16,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SEARCH</title>
+<title>나의 웹툰</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <style>
@@ -35,7 +35,7 @@
 <%@include file="../bar/navigationBar.jsp" %>
 
 	<!-- Page Content -->
-<div class="container">
+<div class="container" style="margin-top:150px; margin-bottom : 50px;">
   <h1 class="my-4" style="text-align: center"><%=mywebtoon %> 님의 웹툰입니다.</h1><br><br><br>
 
  
@@ -48,7 +48,7 @@
           <div class = "container">
           	<div class = "row">
           	
-          
+
           </div>
           </div>
         </div>
@@ -119,7 +119,13 @@
     </div>
   
 </DIV>
+<div class = "container" style = "margin-bottom : 50px;">
+<center>
 
+          	<button onclick = "location='../main_page/MainPage.jsp'">돌아가기</button>
+
+          	</center>
+          	</div>
 <%@ include file="../bar/footer.jsp"%>
 <!-- /.container -->
 </body>

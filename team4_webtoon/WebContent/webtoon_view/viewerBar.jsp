@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="webtoon.episode.WTepDAO"%>
+<%@page import="webtoon.episode.WTepVO"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,15 +38,32 @@
 
 </head>
 
+
+
+
+
+<%
+	int mNum=Integer.parseInt(request.getParameter("mw_num"));
+	int clNum=Integer.parseInt(request.getParameter("cl_num"));
+	WTepVO wtEP=null;
+	WTepDAO wtDAO=WTepDAO.getInstance();
+	wtEP=wtDAO.getWTContent(clNum,mNum);
+
+%>
+
+
 <body id="page-top">
 
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-shrink" id="mainNav">
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="#page-top">WebToon</a>
+      <a href="/team4_webtoon/main_wt/wtTable.jsp?mw_num=<%=mNum %>" ><%=wtEP.getMwTitle() %></a>
+      <%=wtEP.getClTitle() %>    
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
       </button>
+      
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ml-center">
           <li class="nav-item">
@@ -62,7 +81,7 @@
        <ul class="navbar-nav text-uppercase ml-auto">
         <li class="nav-item"><b>별점주기</b></li>&nbsp;
          <li class="nav-item">
-        <%@include file="/webtoon_view/wt_view.jsp" %>
+        <%@include file="/webtoon_view/starForm.jsp" %>
         </li>
         </ul>
        </div>

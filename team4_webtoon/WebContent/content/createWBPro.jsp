@@ -12,18 +12,16 @@
 
 
 	int size = 10*1024*1024;
-	String title = "";
+	String title = (String)session.getAttribute("sessionTitle");// title 안에 이미지 저장 위해 세션으로 받아옴
 	String cl_title = "";
 	String cl_content = "";
 	int cl_title_id = 0;
 	String cl_writer = "";
 	
 	
-	
-	String path = request.getRealPath("resources/image/webtoon/");
-	String path2 = request.getRealPath("resources/image/webtoon/thumbnail");
-	System.out.println(cl_title_id);
-	System.out.println(path);
+
+	String path = request.getRealPath("resources/image/webtoon/" + title);
+
 	try{
 
 		MultipartRequest multi1=new MultipartRequest(request,path,size,"UTF-8",new DefaultFileRenamePolicy());
@@ -32,8 +30,6 @@
 		cl_content = multi1.getParameter("cl_content");
 		cl_writer = multi1.getParameter("cl_writer");
 		cl_title_id = Integer.parseInt(multi1.getParameter("cl_title_id"));
-		System.out.println(cl_title_id);	
-		System.out.println(cl_title);
 
 	}catch (Exception e){
 		e.printStackTrace();

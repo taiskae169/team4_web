@@ -2,6 +2,7 @@
 <%@ page import = "search.SearchVO" %>
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "webtoon.list.*" %>
+<%@ page import = "webtoon.genre.*" %>
 <%request.setCharacterEncoding("UTF-8"); %>    
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -14,6 +15,7 @@
 	ArrayList<SearchVO> list = dao.getAddrs(search,select);	
 	//이미지 가져오기
 	String title = request.getParameter("title");
+	
 	//select box 가져오기
 
 %>
@@ -39,7 +41,7 @@
 <%@include file="../bar/navigationBar.jsp" %>
 
 	<!-- Page Content -->
-<div class="container">
+<div class="container" style="margin-top:100px;">
 
   <!-- Page Heading -->
   <%if (search == "null"){%>
@@ -87,19 +89,13 @@
 			 <a href="#"><%=list.get(i).getTitle() %></a>
           </h4>
           <p class="card-text"><a href = "#"><%=list.get(i).getWriter() %></a></p>
+          <%
+genreDAO a = genreDAO.getInstance();
+	genreVO c = a.genreCheck(Integer.parseInt(list.get(i).getGen()));
+%>
           <p class="card-text">
-          <%switch (list.get(i).getGen()){ 
-        	  case "0" : %>일상<%break;
-        	  case "1" : %>개그<%break;
-        	  case "2" : %>판타지<%break;
-        	  case "3" : %>액션<%break;
-        	  case "4" : %>드라마<%break;	
-        	  case "5" : %>순정<%break;
-        	  case "6" : %>감성<%break;
-        	  case "7" : %>스릴러<%break;
-        	  case "8" : %>시대극<%break;
-        	  case "9" : %>스포츠<%break;
-        	  }%>
+
+        	<%=c.getValue() %>
           </p>
           <p class="card-text"><%=list.get(i).getTag() %></p>
         </div>

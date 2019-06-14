@@ -26,12 +26,12 @@
 	int check1 = manager.pwCheck1(id1, email);
 	%>
 	<% if (check1 == 1){ %>
-  <div class="container">
+  <div class="container"style = "margin-top: 150px; margin-bottom : 110px;">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5"><br>
           <div class="card-body">
-            <h5 class="card-title text-center">아이디 찾기</h5>
+            <h5 class="card-title text-center">비밀번호 찾기</h5>
             <form class="form-signin">
               <div class="form-label-group">
    				회원님의 비밀번호는 <%= c.getPassword() %> 입니다.

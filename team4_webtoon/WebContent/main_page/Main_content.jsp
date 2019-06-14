@@ -96,7 +96,6 @@
 			}
 			//별점 계산하는 공식, 이후 수정 필요
 		%>
-        
           
           <jsp:include page="Main_webtoon_list.jsp">
           		<jsp:param value="<%=vo.getNum() %>" name="num" />
@@ -105,6 +104,7 @@
           		<jsp:param value="<%=vo.getWriter() %>" name="writer"/>
           		<jsp:param value="<%=star_point %>" name="star_point"/>
           </jsp:include>
+
          <!-- 웹툰 카드를 위한 리스트 파일을 include -->
          <!-- 제목, 부제목, 작가, 별점만 출력하기 위해 항목을 보냄 -->
          
