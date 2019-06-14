@@ -226,7 +226,7 @@
    				</a>
    			</th>
 			<th>
-				<a href="/team4_webtoon/webtoon_view/viewrBar.jsp?mw_num=<%=wtDetail.getmNum() %>&cl_num=<%=episode.getCl_num()%>"><%=episode.getCl_title() %></a>
+				<a href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=wtDetail.getmNum() %>&cl_num=<%=episode.getCl_num()%>"><%=episode.getCl_title() %></a>
 				<%
 				java.util.Date date = episode.getCl_reg();
 				long now = System.currentTimeMillis();
@@ -236,7 +236,70 @@
 			<img src="/team4_webtoon/resources/image/webtoon/wt_ep/up.png" width="27" height="15" alt="UP">
 			<%}%>
 			</th>
-			<th><%=episode.getMw_star() %></th>
+			<th>			
+			<%int star=episode.getMw_star();
+				switch(star){
+				case 5:
+					for(int j=5;j >0;j--){%>
+					<small class="text-muted">&#9733;</small>
+				<%}
+					break;
+				case 4:
+					for(int j=4;j >0;j--){%>
+					<small class="text-muted">&#9733;</small>
+				<%}
+					for(int k=0;k<1;k++){ %>
+					<small class="text-muted">&#9734;</small>
+				<%}
+					break;
+				case 3:
+					for(int j=3;j >0;j--){%>
+					<small class="text-muted">&#9733;</small>
+				<%}
+					for(int k=0;k<2;k++){ %>
+					<small class="text-muted">&#9734;</small>
+				<%}
+					break;
+				case 2:
+					for(int j=2;j >0;j--){%>
+					<small class="text-muted">&#9733;</small>
+				<%}
+					for(int k=0;k<3;k++){ %>
+					<small class="text-muted">&#9734;</small>
+				<%} 
+					break;
+				case 1:
+					for(int j=1;j >0;j--){%>
+					<small class="text-muted">&#9733;</small>
+				<%}
+					for(int k=0;i<4;k++){ %>
+					<small class="text-muted">&#9734;</small>
+				<%}
+					break;
+				}
+				
+				int sP=episode.getMw_star_p();	
+				int sSum=episode.getMw_star_sum();
+				double avgS=(double)sSum/sP;				
+			%>
+				<b><%=avgS %></b>
+			
+			</th>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			<th><%=sdf.format(episode.getCl_reg())%></th>
 		</tr>
 		<%}%>

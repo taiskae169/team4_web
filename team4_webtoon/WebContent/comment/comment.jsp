@@ -51,9 +51,9 @@
 	
 	
 	//시험용
-		id = "user1";
-		mw_num = "100";
-		cl_num = "1";
+		id = "test33";
+		mw_num = "109";
+		cl_num = "100";
 	//시험용
 	
 	

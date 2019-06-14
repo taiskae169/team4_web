@@ -8,14 +8,7 @@
    <jsp:setProperty name="sVO" property="*"/>
 </jsp:useBean>
  
- 
 
- 
- 
- 
- 
- 
- 
  
  <%
  	StarDAO sDAO=StarDAO.getInstance();

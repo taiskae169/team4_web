@@ -92,8 +92,8 @@ public class WTepDAO {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
 					"select * "+ 
-					"from (select cl_num,cl_title,cl_title_id,mw_num,cl_reg,cl_star, wt_ep_img, rowNum r "+
-					"from (select cl_num,cl_title,cl_title_id,mw_num,cl_reg,cl_star, wt_ep_img from content,main_webtoon where cl_title_id=mw_num and mw_num=? order by cl_reg desc) order by cl_reg desc) where r >=? and r<=? ");
+					"from (select cl_num,cl_title,cl_title_id,mw_num,cl_reg,cl_star, cl_star_p,cl_star_sum,wt_ep_img, rowNum r "+
+					"from (select cl_num,cl_title,cl_title_id,mw_num,cl_reg,cl_star,cl_star_p,cl_star_sum,wt_ep_img from content,main_webtoon where cl_title_id=mw_num and mw_num=? order by cl_reg desc) order by cl_reg desc) where r >=? and r<=? ");
 					pstmt.setInt(1, mw_num);
 					pstmt.setInt(2, start);
 					pstmt.setInt(3, end);
@@ -107,6 +107,8 @@ public class WTepDAO {
 							episode.setMw_star(rs.getInt("cl_star"));
 							episode.setCl_reg(rs.getTimestamp("cl_reg"));
 							episode.setCl_num(rs.getInt("cl_num"));
+							episode.setMw_star_p(rs.getInt("cl_star_p"));
+							episode.setMw_star_sum(rs.getInt("cl_star_sum"));
 							webtoonEP.add(episode); 
 						}while(rs.next());
 					}
@@ -134,11 +136,11 @@ public class WTepDAO {
 					pstmt.setInt(2, mw_num);
 					rs = pstmt.executeQuery();				
 					if (rs.next()) {
-						wtEP.setMw_title_id(rs.getInt("mw.mw_num"));
-						wtEP.setMwTitle(rs.getString("mw.mw_title"));
-						wtEP.setClTitle(rs.getString("c.cl_title"));
-						wtEP.setClNO(rs.getInt("c.cl_num"));
-						wtEP.setClContent(rs.getString("c.cl_content"));
+						wtEP.setMw_title_id(rs.getInt("mw_num"));
+						wtEP.setMwTitle(rs.getString("mw_title"));
+						wtEP.setClTitle(rs.getString("cl_title"));
+						wtEP.setClNO(rs.getInt("cl_num"));
+						wtEP.setClContent(rs.getString("cl_content"));
 					}
 		} catch(Exception ex) {
 			ex.printStackTrace();

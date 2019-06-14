@@ -33,7 +33,7 @@
 	int sMN=109;//Integer.parseInt(request.getParameter(""));
 	int sCN=100;//Integer.parseInt(request.getParameter(""));
 	String sId=(String)session.getAttribute("sessionID");
-	sId="aaaa";//"user01"; //"admin";
+	sId="test33";//"user01"; //"admin";
 	StarDAO starDAO= StarDAO.getInstance();
 
 %>
