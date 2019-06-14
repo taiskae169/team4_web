@@ -8,8 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <%
-	String id = request.getParameter("id");
-	//ID, 이후 id를 삭제
+
 	String mw_num = request.getParameter("mw_num");
 	//만화 번호
 	String cl_num = request.getParameter("cl_num"); 
@@ -48,13 +47,6 @@
 	*/
 	
 	
-	
-	
-	//시험용
-		id = "user1";
-		mw_num = "100";
-		cl_num = "1";
-	//시험용
 	
 	
 	cmtVO vo = new cmtVO();
@@ -153,6 +145,7 @@
 				<jsp:param value="<%=vo.getState() %>" name="state"/>
 				<jsp:param value="<%=mw_num %>" name="mw_num"/>
 				<jsp:param value="<%=cl_num %>" name="cl_num"/>
+				<jsp:param value="<%=id %>" name="seID" />
 			</jsp:include>
 		<%} %>
 			<!-- 댓글 출력하는 페이지를 include -->
