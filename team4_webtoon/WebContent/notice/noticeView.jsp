@@ -60,6 +60,7 @@
    <table class="table table-stripped">
       <thead>
       <tr>
+
          <th>내용</th>
 
       </tr>
@@ -67,13 +68,14 @@
       
       <tbody>
       <tr>
+
          <td>
          <pre>
 
 <%= b.getNt_content() %>
             </pre>
             </td>
-        
+
       </tbody>
    
    
