@@ -99,5 +99,34 @@ public class contentDAO {
 		}
 	}
 	
+	public contentVO adjust(int cl_num) throws Exception{
+		contentVO member = null;
+		int dbpasswd = 0;
+		int x = -1;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select  * from content where cl_num = ?");
+			pstmt.setInt(1, cl_num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				member = new contentVO();
+				member.setCl_title(rs.getString("cl_title"));
+				member.setCl_content(rs.getString("cl_content"));
+				
+			}
+			
+
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if( rs != null) try {rs.close();} catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try {conn.close();} catch(SQLException ex) {}
+		}
+		return member;
+	}
+	
+	
 	
 }

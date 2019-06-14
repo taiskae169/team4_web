@@ -97,9 +97,11 @@
 
 <!-- 비밀번호가 틀렸을 시  -->
 <%} else if (check1 == 0) {
-%>	<br><br><br>
-  	<h1 style = "text-align : center">비밀번호가 틀렸습니다. 이전 페이지로 돌아갑니다.</h1><br><br>
-	<meta http-equiv="Refresh" content="2;url=adjustForm.jsp" >
+%>	<div class = "container" style = "margin-top:130px;">
+  	<h1 style = "text-align : center">비밀번호가 틀립니다.</h1>
+  	<h3 style = "text-align : center">이전 페이지로 돌아갑니다.</h3>
+	<meta http-equiv="Refresh" content="1;url=adjustForm.jsp" >
+	</div>
 <%} %>
 
 <!-- /.container -->
