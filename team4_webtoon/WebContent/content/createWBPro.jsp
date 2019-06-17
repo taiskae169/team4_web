@@ -18,7 +18,7 @@
 	int cl_title_id = 0;
 	String cl_writer = "";
 	
-	
+	ArrayList<String> contentwb = new ArrayList<String>();
 
 	String path = request.getRealPath("resources/image/webtoon/" + title);		//받아온 sessionTitle 값으로 경로 설정
 

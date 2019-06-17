@@ -33,11 +33,11 @@
               </div>
               <hr class="my-4">
 
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type = "submit" >비밀번호 찾기</button>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type = "submit"">비밀번호 찾기</button>
               </form>
               <div class="form-label-group">
-         	     <br><p class="text-center"><a href="idFind.jsp">아이디 찾기</a></p>          
-         	     <p class="text-center"><a href="../main_page/MainPage.jsp">돌아가기</a></p>     
+         	     <br><p class="text-center"><a href="idFind.jsp" style = "color : black;">아이디 찾기</a></p>          
+         	     <p class="text-center"><a href="../main_page/MainPage.jsp" style = "color :black;">돌아가기</a></p>     
               </div>            
               <hr class="my-4">
 
