@@ -83,7 +83,7 @@
 		<input type = "hidden" name = "cl_content" value="<%=cl_content %>">
 		<input type = "hidden" name = "cl_title_id" value="<%=cl_title_id %>">
 		<input type = "hidden" name = "cl_writer" value="<%=cl_writer %>">
-		<input type = "submit">
+		<button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">회차 등록</button>
 	</form>
 	</div>
 	<%@ include file ="../bar/footer.jsp" %>
