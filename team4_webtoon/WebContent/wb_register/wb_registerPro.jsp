@@ -6,8 +6,11 @@
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
     <%@ page import = "webtoon.list.*" %>
-
+<%@ page import = "webtoon.genre.*" %>
+<%@ page import = "webtoon.week.*" %>
 <%
+
+
 
 	int size = 10*1024*1024;
 	String title = "";
@@ -93,35 +96,20 @@
 				<%= sub_title %>
 				<br>
 	<label class = "label1">장르</label>
-	<%switch (gen){
-		case 0 : %>일상<%break;
-		case 1 : %>개그<%break;
-		case 2 : %>판타지<%break;
-		case 3 : %>액션<%break;
-		case 4 : %>드라마<%break;
-		case 5 : %>순정<%break;
-		case 6 : %>감성<%break;
-		case 7 : %>스릴러<%break;
-		case 8 : %>시대극<%break;
-		case 9 : %>스포츠<%break;
-		
-	} %>
+	<%
+	genreDAO a = genreDAO.getInstance();
+	genreVO c = a.genreCheck(gen);
+	
+	weekDAO week1 = weekDAO.getInstance();
+	weekVO week2 = week1.weekCheck(week);
+	%>
+	<%= c.getValue() %>
 				<br>
 	<label class = "label1">태그</label>			
 				<%= tag %>
 				<br>
 	<label class = "label1">연재요일</label>
-	<%switch (week){ 
-		case 7 : %>일요일<%break;
-		case 1 : %>월요일<%break;
-		case 2 : %>화요일<%break;
-		case 3 : %>수요일<%break;
-		case 4 : %>목요일<%break;
-		case 5 : %>금요일<%break;
-		case 6 : %>토요일<%break;
-		case 0 : %>도전만화<%break;
-		
-	}%>
+	<%= week2.getValue() %>
 		
 				<br>
 	<label class = "label1">줄거리</label>

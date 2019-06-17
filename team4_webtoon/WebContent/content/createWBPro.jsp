@@ -36,8 +36,48 @@
 	}
 
 %>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회차등록</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<style>
+	.label1{
+		width:150px;
+		margin-bottom:60px;
+	}
+	.input1{
+		margin-right:20px;
+	}
 	
+	.input2{
+		margin-right:20px;
+		margin-left:20px;
+	}	
+</style>
+</head>
+<body>
+<%@include file = "../bar/menu.jsp" %>
+<%@include file = "../bar/navigationBar.jsp" %>
+
+<div class = "container" style = "margin-top:100px; margin-bottom : 50px;">
+<br>
+
+<h1 class = "my-4" style = "text-align : center">작품확인</h1>
+
+
 	<form action = "createWBPPro.jsp" method = "post">
+	<div>
+		<label class = "label1">작품 제목</label>
+		<%=title %><br>
+		<label class = "label1">내용</label>
+		<%=cl_content %><br>
+		<label class = "label1">소제목</label>
+		<%=cl_title_id %><br>
+		<label class = "label1">작가</label>
+		<%=cl_writer %><br>
+	</div>
 		<input type = "hidden" name = "title" value="<%=title %>">
 		<input type = "hidden" name = "cl_title" value="<%=cl_title %>">
 		<input type = "hidden" name = "cl_content" value="<%=cl_content %>">
@@ -45,3 +85,8 @@
 		<input type = "hidden" name = "cl_writer" value="<%=cl_writer %>">
 		<input type = "submit">
 	</form>
+	</div>
+	<%@ include file ="../bar/footer.jsp" %>
+	</body>
+</html>
+	

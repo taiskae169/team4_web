@@ -69,7 +69,7 @@ public class contentDAO {
 			pstmt.setInt(7, content.getMw_star());
 			pstmt.setInt(8, content.getMw_star_p());
 			pstmt.setString(9, content.getWt_ep_img());
-			pstmt.setInt(10, content.getCl_star_sum());
+			pstmt.setInt(10, content.getMw_star_sum());
 			
 			pstmt.executeUpdate();
 		}catch (Exception ex) {

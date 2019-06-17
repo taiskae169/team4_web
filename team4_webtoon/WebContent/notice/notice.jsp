@@ -222,7 +222,7 @@
       	<div>
       		<a href="#modal-close" title = "Close" class = "modal-close">Close</a>
       		<form action = "nt_deletePro.jsp" style = "margin:0 auto;">
-      		<p>댓글을 삭제하시겠습니까?</p>
+      		<p>공지를 삭제하시겠습니까?</p>
 	<input type = "hidden" name = "nt_writer" value = "<%=id1 %>">
 	<input type = "hidden" name = "nt_num" value = "<%=notice1.getNt_num() %>">
 	<input type = "submit" value = "삭제"/>
