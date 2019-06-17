@@ -101,6 +101,10 @@ genreDAO a = genreDAO.getInstance();
         	<%=c.getValue() %>
           </p>
           <p class="card-text"><%=list.get(i).getTag() %></p>
+          <form method = "post" action = "../like/like.jsp">
+          	<input type = "hidden">
+          	<input type = "submit" value = "찜하기">
+          </form>
         </div>
       </div>
     </div>

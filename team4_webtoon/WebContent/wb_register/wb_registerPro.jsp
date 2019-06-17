@@ -125,7 +125,7 @@
       <input type = "hidden" name = "tag" value="<%=tag %>">
       <input type = "hidden" name = "week" value="<%=week %>">
       <input type = "hidden" name = "sum" value ="<%=sum %>">
-            <input type = "hidden" name = "writer" value="<%=writer %>">
+      <input type = "hidden" name = "writer" value="<%=writer %>">
 
 				
 	

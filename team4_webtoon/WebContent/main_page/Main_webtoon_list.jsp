@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 
 <%
+		String id1 = (String)session.getAttribute("sessionID");
 		String title = request.getParameter("title");
 		String sub_title = request.getParameter("subtitle");
 		String writer = request.getParameter("writer");
@@ -27,6 +28,13 @@
                 </h4>
                 <h5><%=sub_title %></h5>
                 <p class="card-text"><%=writer %></p>
+                
+                <form method = "post" action = "../like/like.jsp">
+                	<input type = "hidden" name = "lwb_wb_num" value = "<%=num %>">
+                	<input type = "hidden" name = "lwb_id" value = "<%= id1%>">
+                	<input type = "submit" value = "찜">
+                </form>
+                
               </div>
               <div class="card-footer">
               	<%for(; i<star_point/20; i++){ %>
@@ -37,6 +45,8 @@
                 	<small class="text-muted">&#9734;</small>
                 	<!-- n개 이후 빈별을 출력 -->
                 <%} %>
+                
+
               </div>
             </div>
           </div>
