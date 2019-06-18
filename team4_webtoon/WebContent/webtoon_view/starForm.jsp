@@ -51,6 +51,7 @@
 		<input type="hidden" name="sId" value="<%=sId %>" />
 		<input type="hidden" name="mw_num" value="<%= sMN%>" />
 		<input type="hidden" name="cl_num" value="<%=sCN %>" />
+		<input type="hidden" name="cl_title_id" value="<%= sMN%>" />
 		<select id="starSelect"  name="starSelect">
 			<option value=5 selected>
 				<%for(int j=5;j >0;j--){%>

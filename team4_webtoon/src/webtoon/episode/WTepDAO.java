@@ -70,7 +70,7 @@ public class WTepDAO {
 						detail.setWtGenre(rs.getString("ger"));
 						detail.setWtTag(rs.getString("mw_tag"));
 						detail.setWtSumm(rs.getString("mw_sum"));
-						detail.setWtStar(rs.getString("mw_star"));	
+						detail.setWtStar(rs.getInt("mw_star"));	
 					}
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -152,22 +152,11 @@ public class WTepDAO {
 		return wtEP;
 	} //웹툰 에피소드 내용을 리턴하는 메소드
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	private MWdetailVO setWtStar(int int1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	public ArrayList<contentVO> getEpisodesForAdmin(int mw_num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;

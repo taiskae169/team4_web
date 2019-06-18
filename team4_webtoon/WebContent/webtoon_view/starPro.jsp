@@ -15,7 +15,9 @@
  	int star=Integer.parseInt(request.getParameter("starSelect"));
  	int sMN=Integer.parseInt(request.getParameter("mw_num"));
  	int sCN=Integer.parseInt(request.getParameter("cl_num"));
+ 	int cltid=Integer.parseInt(request.getParameter("cl_title_id"));
  	String sId=request.getParameter("sId");
+ 	
  	
 
  	sVO.setsStar_sum(star);	
@@ -26,6 +28,9 @@
  	
  	sDAO.updateContentStar(sCN);
  	//System.out.println("별점 content에 업데이트 완료");
+ 	
+ 	sDAO.updateMWStar(cltid,sMN);
+ 	System.out.println("main_webtoon에 mw_star 웹툰 평균 별점 업데이트 완료");
  	
  	sDAO.addSrecord(sId,sMN,sCN);
  	//System.out.println("별점 like_check에 업데이트 완료");

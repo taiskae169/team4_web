@@ -99,7 +99,7 @@
              	return;
          	 }
     		 </script>
-        <li class="nav-item"><a href="#"  Onclick="goLoginFirst();"><b>별점주기</b></a></li>&nbsp;        
+        <li class="nav-item"><a href="/team4_webtoon/login/login.jsp"  Onclick="goLoginFirst();"><b>별점주기</b></a></li>&nbsp;        
          <li class="nav-item"></li>
         <%}else{ %>
          <li class="nav-item"><b>별점주기</b></li>&nbsp;   

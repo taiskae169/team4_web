@@ -8,7 +8,7 @@ public class MWdetailVO {
 	private String wtGenre; //웹툰 장르
 	private String wtTag; //웹툰 태그
 	private String wtSumm; //웹툰 줄거리
-	private String wtStar; //웹툰 평균 별점(에피소드별 별점의 평균값)
+	private int wtStar; //웹툰 평균 별점(에피소드별 별점의 평균값)
 	
 	public int getmNum() {
 		return mNum;
@@ -52,10 +52,10 @@ public class MWdetailVO {
 	public void setWtSumm(String wtSumm) {
 		this.wtSumm = wtSumm;
 	}
-	public String getWtStar() {
+	public int getWtStar() {
 		return wtStar;
 	}
-	public void setWtStar(String wtStar) {
+	public void setWtStar(int wtStar) {
 		this.wtStar = wtStar;
 	}
 }
