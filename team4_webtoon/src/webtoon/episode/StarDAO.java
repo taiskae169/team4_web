@@ -152,7 +152,6 @@ public class StarDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql="";
-		MWdetailVO wtS=new MWdetailVO();
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement("update main_webtoon set mw_star=(select sum(cl_star)/count(cl_star) from content where cl_title_id=?) where mw_num=?");
@@ -160,7 +159,7 @@ public class StarDAO {
 			pstmt.setInt(2, mw_num);
 			pstmt.executeUpdate();				
 		}catch(Exception ex) {
-			
+			ex.printStackTrace();
 		} finally {
 			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
