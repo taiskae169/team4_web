@@ -99,6 +99,30 @@ public class contentDAO {
 		}
 	}
 	
+	
+	public void deleteall(int num) throws SQLException{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = getConnection();
+			String sql = "delete from content where cl_title_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+			
+		}catch (Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(pstmt != null) try { pstmt.close();} catch(SQLException ex) {}
+			if(conn != null) try {conn.close();} catch(SQLException ex) {}
+		}
+	}
+	
+	
+	
+	
+	
 	public contentVO adjust(int cl_num) throws Exception{
 		contentVO member = null;
 		int dbpasswd = 0;

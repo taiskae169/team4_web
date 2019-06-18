@@ -60,15 +60,16 @@ public class likeDAO {
 	
 	
 	
-	public ArrayList<likeVO> getAddrs(int num) throws SQLException{
+	public ArrayList<likeVO> getAddrs(int num, String id) throws SQLException{
 		ArrayList<likeVO> list = new ArrayList<likeVO>();
 		Connection conn = null;
 		conn = getConnection();
 		
 		StringBuffer sql = new StringBuffer();
-		sql.append("select * from like_wb where lwb_wb_num= ?");
+		sql.append("select * from like_wb where lwb_wb_num= ? and lwb_id = ?");
 		PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 		pstmt.setInt(1, num);
+		pstmt.setString(2,  id);
 		ResultSet rs = pstmt.executeQuery();
 		
 		while(rs.next()) {
@@ -83,23 +84,53 @@ public class likeDAO {
 		
 	}
 	
-	public likeVO like(String id, int num) throws Exception{
-		likeVO member = null;
+	
+	public ArrayList<likeVO> getNum(String id) throws SQLException{
+		ArrayList<likeVO> list = new ArrayList<likeVO>();
+		Connection conn = null;
+		conn = getConnection();
 		
+		StringBuffer sql = new StringBuffer();
+		sql.append("select * from like_wb where lwb_id = ?");
+		PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+		pstmt.setString(1,  id);
+		ResultSet rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			likeVO vo = new likeVO();
+			vo.setLwb_num(rs.getInt("lwb_num"));
+			vo.setLwb_wb_num(rs.getInt("lwb_wb_num"));
+			vo.setLwb_id(rs.getString("lwb_id"));
+			list.add(vo);
+		}
+		return list;
+		
+		
+	}
+	
+	
+	
+	
+	
+	public likeVO like(int num, String id) throws Exception{
+		likeVO member = null;
+
 		try {
 			Connection conn = null;
 			conn = getConnection();
-			pstmt = conn.prepareStatement("select * from like_wb where lwb_id = ? and lwb_wb_num = ?");
-			pstmt.setString(1, id);
-			pstmt.setInt(2, num);
-			
+			pstmt = conn.prepareStatement("select * from like_wb where lwb_wb_num = ? and lwb_id = ?");
+			pstmt.setInt(1, num);
+			pstmt.setString(2, id);
 			rs = pstmt.executeQuery();
+			
 			if(rs.next()) {
 				member = new likeVO();
 				member.setLwb_id(rs.getString("lwb_id"));
 				member.setLwb_num(rs.getInt("lwb_num"));
 				member.setLwb_wb_num(rs.getInt("lwb_wb_num"));
 			}
+			
+
 		}catch (Exception ex) {
 			ex.printStackTrace();
 		}finally {
@@ -109,4 +140,25 @@ public class likeDAO {
 		}
 		return member;
 	}
+	
+	public void deleteLike(int num, String id) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = getConnection();
+			String sql = "delete from like_wb where lwb_wb_num = ? and lwb_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.setString(2, id);
+			pstmt.executeUpdate();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if(pstmt != null) try { pstmt.close();} catch(SQLException ex) {}
+			if(conn != null) try {conn.close();} catch(SQLException ex) {}
+		}
+	}
+
+	
+	
 }

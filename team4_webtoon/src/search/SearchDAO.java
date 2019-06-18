@@ -11,6 +11,7 @@ import javax.sql.*;
 
 import oracle.net.aso.r;
 import team4_webtoon.registerBean;
+import webtoon.like.likeDAO;
 
 public class SearchDAO {
 	Connection conn = null;
@@ -125,6 +126,36 @@ public class SearchDAO {
 		}
 		return list;
 	}
+	
+	
+	
+	public ArrayList<SearchVO> getlike(String id) throws SQLException{
+		ArrayList<SearchVO> list = new ArrayList<SearchVO>();
+		conn = ConnectionUtil.getConnection();
+		
+		StringBuffer sql = new StringBuffer();
+		sql.append("select mw_num, mw_title, mw_writer, mw_gen, mw_tag from main_webtoon where mw_num in(select lwb_wb_num from like_wb where lwb_id = ?)");
+		PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+		pstmt.setString(1, id);
+		ResultSet rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			SearchVO vo = new SearchVO();
+			vo.setNum(rs.getInt("mw_num"));
+			vo.setTitle(rs.getString("mw_title"));
+			vo.setWriter(rs.getString("mw_writer"));
+			vo.setGen(rs.getString("mw_gen"));
+			vo.setTag(rs.getString("mw_tag"));
+			list.add(vo);
+		}
+		return list;
+	}
+	
+	
+	
+	
+	
+	
 	
 	public int deleteWB(String title, String writer) throws Exception{
 

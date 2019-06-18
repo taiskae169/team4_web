@@ -103,6 +103,7 @@
           <form name = "delete" method = "post" action = "wb_delete.jsp">
           <input type = "hidden" name = "title" value = "<%=list.get(i).getTitle() %>">
           <input type = "hidden" name = "writer" value = "<%=list.get(i).getWriter() %>">
+          <input type = "hidden" name = "num" value = "<%=list.get(i).getNum() %>">
           <input type ="submit" value = "삭제">
           
           </form>
