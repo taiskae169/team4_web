@@ -52,7 +52,14 @@
 
 
 <%
-		int mNum=109;//Integer.parseInt(request.getParameter("mw_num"));
+
+		String cmtNumch = request.getParameter("cmtNum");
+		int cmtNum=1;
+		if(cmtNumch!=null){
+			cmtNum=Integer.parseInt(cmtNumch);
+		}
+		
+		int mNum=Integer.parseInt(request.getParameter("mw_num"));
 	    
 		int pageSize = 10; // 한 화면에 출력할 게시물 개수
 	    String pageNum = request.getParameter("pageNum"); 

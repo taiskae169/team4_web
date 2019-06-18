@@ -53,11 +53,11 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-lg-10 col-xl-9 mx-auto">
-        <div class="card card-signin flex-row my-5">
+      <div class="col-lg-10 col-xl-9 mx-auto" style="margin-top:50px;">
+        <div class="card card-signin flex-row my-5" >
           <div class="card-body">
             <h5 class="card-title text-center">1대1문의</h5>
-            <form class="form-signin" method="post" enctype = "multipart/form-data">
+            <form class="form-signin" action="/team4_webtoon/helpdesk/requestPro.jsp" method="post" enctype = "multipart/form-data">
               <div class="form-label-group" >
                 <legend style="margin:auto;">제목</legend>
                 <input type="text" id = "title" class="form-control"name = "title" required autofocus>                
@@ -77,27 +77,19 @@
               <div class="forcategory1" id="forcate1">
                 <div class="form-label-group">
                 	<legend>회사</legend>
-	                <input type="text" id="company" class="form-control" name = "company" required autofocus>
-					<legend>이름</legend>
-	                <input type="text" id="name" class="form-control" name = "name"  required autofocus>
-	               	<legend>전화번호</legned>
-	                <input type="tel" class="form-control" name="tel" required />
-	                <legend>메일 </legned>
-	                <input type="email" class="form-control" name="email" required />
-	                <legend>첨부파일</legned>
-	                <input type="file" class="form-control" name="file"/>
+	                <input type="text" id="company" class="form-control" name = "company" >
                 </div>
 			  </div>
 			  
 			  
-			  <div class="forcategory2" id="forcate2">
+			  <div>
                 <div class="form-label-group">
 	                <legend>이름</legend>
-	                <input type="text" id="name" class="form-control" name = "name"  required autofocus>
+	                <input type="text" id="name" class="form-control" name = "name" />
 	               	<legend>전화번호</legned>
-	                <input type="tel" class="form-control" name="tel" required />
+	                <input type="tel" class="form-control" name="tel"  />
 	                <legend>메일 </legned>
-	                <input type="email" class="form-control" name="email" required />
+	                <input type="email" class="form-control" name="email"  />
 	                <legend>첨부파일</legned>
 	                <input type="file" class="form-control" name="file"/>
                 </div>

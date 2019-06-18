@@ -44,6 +44,12 @@
 
 
 <%
+
+	String cmtNumch = request.getParameter("cmtNum");
+	int cmtNum=1;
+	if(cmtNumch!=null){
+		cmtNum=Integer.parseInt(cmtNumch);
+	}
 	int mNum=Integer.parseInt(request.getParameter("mw_num"));
 	int clNum=Integer.parseInt(request.getParameter("cl_num"));
 	String id=(String)session.getAttribute("sessionID");
