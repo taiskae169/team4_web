@@ -16,6 +16,7 @@
 	DefaultFileRenamePolicy dp = new DefaultFileRenamePolicy();
 	MultipartRequest mr = new MultipartRequest(request, saveDir, size, enc, dp);
 	
+	System.out.println(saveDir);
 	
 	String company = "";
 	String name = "";
@@ -47,6 +48,11 @@
 		//카테고리가가 사업관련일 경우에만 회사 입력이 들어간다.
 	}catch(Exception e){
 		e.printStackTrace();
-	}
-	response.sendRedirect("/team4_webtoon/helpdesk/helpdesk.jsp");
+	}%>
+	<script type="text/javascript">
+		alert("제출되었습니다.");
+		location.href="/team4_webtoon/main_page/MainPage.jsp";
+	</script>
+	<%
+	//response.sendRedirect("/team4_webtoon/helpdesk/helpdesk.jsp");
 %>

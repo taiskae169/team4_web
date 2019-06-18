@@ -30,8 +30,6 @@
 
 
 
-<%@include file="../bar/menu.jsp" %>
-<%@include file="../bar/navigationBar.jsp" %>
 <style>
 	.forcategory1{
 		display:none;
@@ -104,6 +102,5 @@
       </div>
     </div>
   </div>
-<%@include file="../bar/footer.jsp" %>
 </body>
 </html>
