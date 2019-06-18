@@ -148,16 +148,19 @@ public class StarDAO {
 	}
 	
 	
-	public void updateMWStar(int cl_title_id,int mw_num) throws Exception{
+	public void updateMWStar(int mw_num) throws Exception{
+		//System.out.println("test1");
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql="";
 		try {
+			//System.out.println("test2");
 			conn = getConnection();
 			pstmt = conn.prepareStatement("update main_webtoon set mw_star=(select sum(cl_star)/count(cl_star) from content where cl_title_id=?) where mw_num=?");
-			pstmt.setInt(1, cl_title_id);
+			pstmt.setInt(1,mw_num);
 			pstmt.setInt(2, mw_num);
 			pstmt.executeUpdate();				
+			//System.out.println("test3");
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@page import="webtoon.episode.WTepDAO"%>
 <%@page import="webtoon.episode.WTepVO"%>
+<%@page import="webtoon.episode.PrevNextEpVO"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +13,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Agency - Start Bootstrap Theme</title>
+  <title>웹툰 뷰어 페이지</title>
 
   <!-- Bootstrap core CSS -->
   <link href="/team4_webtoon/resources/main_webtoon/agency/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,7 +29,7 @@
   <link href="/team4_webtoon/resources/main_webtoon/agency/css/agency.min.css" rel="stylesheet">
 
 <style>
-	.ml-center {margin-left:350px; }
+	.ml-center {margin-left:180px; }
 	#box {float:left; padding:30px;margin-left:550px;margin-top:200px; margin-bottom:500px;}
 	#box {float:left; }
 	#mainNav{top:0px;}
@@ -73,16 +74,30 @@
       </button>
       
       
+      <%
+      int clTid=mNum;
+      PrevNextEpVO pEPn=null;
+      pEPn=wtDAO.getprevnextEP(clTid,clNum);
+      System.out.println(pEPn.getPrevClT());
+     %>
+        
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ml-center">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#services"><b>랭킹</b></a>
+          <%int prvCN=pEPn.getPrevClN();
+          System.out.println(prvCN);
+          if(prvCN != 0){ %>
+            <a class="nav-link js-scroll-trigger" href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=pEPn.getClTid()%>&cl_num=<%=prvCN%>"><img src="/team4_webtoon/resources/image/webtoon/wt_ep/prev.png" width="32px" height="32px"></a>
+         <%} else{} %>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#portfolio"><b>웹툰리그</b></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about"><b>My</b></a>
+          <% int nxtCN=pEPn.getNextClN();
+          if(nxtCN !=0){ %>
+           <a class="nav-link js-scroll-trigger" href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=pEPn.getClTid()%>&cl_num=<%=nxtCN%>"><img src="/team4_webtoon/resources/image/webtoon/wt_ep/next.png" width="32px" height="32px"></a>
+         <%} else{} %>
           </li>
         </ul>
       </div>

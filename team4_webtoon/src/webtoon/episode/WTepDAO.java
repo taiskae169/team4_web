@@ -54,7 +54,7 @@ public class WTepDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		MWdetailVO detail=new MWdetailVO();
+		MWdetailVO wtDetail=new MWdetailVO();
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
@@ -63,14 +63,14 @@ public class WTepDAO {
 					pstmt.setInt(1, mw_num);
 					rs = pstmt.executeQuery();				
 					if (rs.next()) {
-						detail.setmNum(rs.getInt("mw_num"));
-						detail.setWtTitle(rs.getString("mw_title"));
-						detail.setWtAuthor(rs.getString("mw_writer"));
-						detail.setDay(rs.getString("week"));
-						detail.setWtGenre(rs.getString("ger"));
-						detail.setWtTag(rs.getString("mw_tag"));
-						detail.setWtSumm(rs.getString("mw_sum"));
-						detail.setWtStar(rs.getInt("mw_star"));	
+						wtDetail.setmNum(rs.getInt("mw_num"));
+						wtDetail.setWtTitle(rs.getString("mw_title"));
+						wtDetail.setWtAuthor(rs.getString("mw_writer"));
+						wtDetail.setDay(rs.getString("week"));
+						wtDetail.setWtGenre(rs.getString("ger"));
+						wtDetail.setWtTag(rs.getString("mw_tag"));
+						wtDetail.setWtSumm(rs.getString("mw_sum"));
+						wtDetail.setWtStar(rs.getInt("mw_star"));	
 					}
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -79,7 +79,7 @@ public class WTepDAO {
 			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}		
-		return detail;
+		return wtDetail;
 	} //웹툰별 에피소드 리스트를 리턴하는 메소드
 	
 	
@@ -168,8 +168,7 @@ public class WTepDAO {
 					"select * from content where cl_title_id=?"); 
 					pstmt.setInt(1, mw_num);
 					rs = pstmt.executeQuery();
-					if (rs.next()) {
-						
+					if (rs.next()) {						
 						do{ 
 							contentVO  episode=new contentVO();
 							episode.setCl_num(rs.getInt("cl_num"));
@@ -187,6 +186,59 @@ public class WTepDAO {
 		}
 		return webtoonEP;
 	} //웹툰별 에피소드 리스트를 리턴하는 메소드
+	
+	
+	public PrevNextEpVO getprevnextEP(int mw_num, int cl_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		PrevNextEpVO pEPn=new PrevNextEpVO();
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select * "+
+				"from (select cl_num,cl_title,cl_title_id, lag(cl_num,1,0) over(order by cl_num) as prev_cl_num,lag(cl_title,1,'없음') over(order by cl_num) as prev_cl_title,lead(cl_num,1,0) over(order by cl_num) as next_cl_num,lead(cl_title,1,'없음') over(order by cl_num) as next_cl_title from content where cl_title_id=?) where cl_num=?");
+			pstmt.setInt(1, mw_num);
+			pstmt.setInt(2, cl_num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				System.out.println(rs.getInt("cl_num"));
+				System.out.println(rs.getString("cl_title"));
+				System.out.println(rs.getInt("cl_title_id"));
+				System.out.println(rs.getInt("prev_cl_num"));
+				System.out.println(rs.getString("prev_cl_title"));
+				System.out.println(rs.getInt("next_cl_num"));
+				System.out.println(rs.getString("next_cl_title"));
+				
+				pEPn.setClN(rs.getInt("cl_num"));
+				pEPn.setClT(rs.getString("cl_title"));
+				pEPn.setClTid(rs.getInt("cl_title_id"));
+				pEPn.setPrevClN(rs.getInt("prev_cl_num"));
+				pEPn.setPrevClT(rs.getString("prev_cl_title"));
+				pEPn.setNextClN(rs.getInt("next_cl_num"));
+				pEPn.setNextClT(rs.getString("next_cl_title"));
+	
+	
+			}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return pEPn;	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }
