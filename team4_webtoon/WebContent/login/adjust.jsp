@@ -69,14 +69,14 @@
 		<hr>
 	</form>
 	
-	<form action = "changeEmail.jsp" method="post" name = "changeEmail" class = "bottom">
+	<!--  <form action = "changeEmail.jsp" method="post" name = "changeEmail" class = "bottom">
 		<label class = "label1"><b>이메일 변경</b></label>
 		<%=b.getEmail() %><br><br>
 		<input type = "email" name = "email" required class = "input3">
 		<input type="submit" name="changeEmail" value = "이메일 변경" class = "btn btn-info btn-sm">
 		 <hr>
 	</form>
-	
+	-->
 	<form action = "changeName.jsp" method="post" name = "changeName" class = "bottom">
 		<label class = "label1"><b>이름 변경</b></label><%=b.getName() %><br><br>
 		<input type = "text" name = "name" class = "input3" required>
