@@ -13,7 +13,14 @@
 
 	SearchDAO dao = new SearchDAO();
 	ArrayList<SearchVO> list = dao.getlike(id1);
-
+	
+	/*
+	전체적인 로직
+	
+	찜한 작품을 보여주는 메서드
+	getlike 메서드를 통해 찜을 누른 작품들을 보여준다.
+	
+	*/
 
 
 %>

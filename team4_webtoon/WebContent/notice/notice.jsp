@@ -33,6 +33,15 @@
     	String id1 = (String)session.getAttribute("sessionID");
     	registerDAO manager1 = registerDAO.getInstance();
     	int check1 = manager1.level_check(id1);
+    	
+    	/*
+    	전체적인 로직
+    	
+    	공지를 보여주는 페이지
+    	페이지당 10개의 게시물을 보여준다.
+    	관리자만 수정 가능하다.
+    	
+    	*/
     %>
 <!DOCTYPE html>
 <html>
@@ -156,7 +165,7 @@
 	<%if (check1 == 4){%>
 	<form name = "register" method = "post" action ="nt_register.jsp">
 	<div style = "float : right; margin-bottom:10px; margin-right: 40px;">
-	<input type = "submit" value = "공지사항 등록">
+	<input type = "submit" value = "공지사항 등록" class="btn btn-info">
 	</div>
 	</form>
 	<%} %>
@@ -210,10 +219,10 @@
 		<%if (check1 == 4){ %>
 		<td>	
 			<a href = "<%=request.getContextPath()%>/notice/nt_adjust.jsp?nt_num=<%=notice1.getNt_num()%>">
-			<input type = "submit" value = "수정">
+			<input type = "submit" value = "수정" class="btn btn-success">
 			</a>
 			<a href = "#open-stateModa">
-			<input type = "button" value = "삭제">
+			<input type = "button" value = "삭제" class="btn btn-danger">
 			</a>
 		</td>
 	<%} %>
@@ -225,7 +234,7 @@
       		<p>공지를 삭제하시겠습니까?</p>
 	<input type = "hidden" name = "nt_writer" value = "<%=id1 %>">
 	<input type = "hidden" name = "nt_num" value = "<%=notice1.getNt_num() %>">
-	<input type = "submit" value = "삭제"/>
+	<input type = "submit" value = "삭제" />
 	</form>
       	</div>
       </div>

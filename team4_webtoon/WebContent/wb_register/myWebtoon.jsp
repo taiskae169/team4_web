@@ -90,21 +90,21 @@
           <form name = "createWB" method = "post" action = "../content/createWB.jsp?mw_num=<%=list.get(i).getNum()%>">
           <input type = "hidden" name = "title" value = "<%=list.get(i).getTitle() %>">
           <input type = "hidden" name = "writer" value = "<%=list.get(i).getWriter() %>">
-          <input type = "submit" class = "input" value = "회차등록">
+          <input type = "submit" class = "btn btn-info btn-sm input" value = "회차등록">
           </form>
 
 
           <form name = "adjust" method = "post" action = "wb_adjust.jsp">
           <input type = "hidden" name = "title" value = "<%=list.get(i).getTitle() %>">
           <input type = "hidden" name = "writer" value = "<%=list.get(i).getWriter() %>">
-          <input type = "submit" class = "input" value = "수정">
+          <input type = "submit" class = "btn btn-success btn-sm input" value = "수정">
           </form>
           
           <form name = "delete" method = "post" action = "wb_delete.jsp">
           <input type = "hidden" name = "title" value = "<%=list.get(i).getTitle() %>">
           <input type = "hidden" name = "writer" value = "<%=list.get(i).getWriter() %>">
           <input type = "hidden" name = "num" value = "<%=list.get(i).getNum() %>">
-          <input type ="submit" value = "삭제">
+          <input type ="submit" value = "삭제" class = "btn btn-danger btn-sm input">
           
           </form>
           </div>
@@ -121,7 +121,7 @@
 <div class = "container" style = "margin-bottom : 50px;">
 <center>
 
-          	<button onclick = "location='../main_page/MainPage.jsp'">돌아가기</button>
+          	<button onclick = "location='../main_page/MainPage.jsp'" class="btn btn-primary">돌아가기</button>
 
           	</center>
           	</div>

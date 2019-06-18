@@ -14,8 +14,21 @@
     	ArrayList<likeVO> list = like.getAddrs(num, id1);
     	
     	likeDAO dao = likeDAO.getInstance();
-    	likeVO b = dao.like(num, id1);
     	
+    	
+    	/*
+    	전체적인 로직
+    	
+    	아이디와 웹툰 번호를 받아온다
+    	
+    	getaddrs 메서드를 통해 리스트를 조건에 맞는 리스트를 받아온다.
+    	
+    	리스트가 없을 경우에는 insertlikeWebtoon 메서드를 통해 DB에 넣은다
+    	
+    	만약 리스트가 이미 있을 경우 (이름과 웹툰 번호를 둘 다 받기 때문에 중복이 불가능함.)
+    	
+    	deleteLike 메서드를 통해 DB에서 삭제한다.
+    	*/
 	%>
 	
 	<%

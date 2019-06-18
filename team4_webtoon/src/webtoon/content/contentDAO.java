@@ -122,7 +122,7 @@ public class contentDAO {
 	
 	
 	
-	
+	//수정 메서드
 	public contentVO adjust(int cl_num) throws Exception{
 		contentVO member = null;
 		int dbpasswd = 0;

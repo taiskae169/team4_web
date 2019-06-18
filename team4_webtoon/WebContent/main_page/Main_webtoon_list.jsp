@@ -31,7 +31,9 @@
                 </h4>
                 <h5><%=sub_title %></h5>
                 <p class="card-text"><%=writer %></p>
-                <%if (check1 == 2 || check1 == 3 || check1 == 4) {%>
+                <%if (check1 == 2 || check1 == 3 || check1 == 4) {
+                //로그인 했을 시에만 보여줌
+                %>
                 <form method = "post" action = "../like/like.jsp">
                 	<input type = "hidden" name = "lwb_wb_num" value = "<%=num %>">
                 	<input type = "hidden" name = "lwb_id" value = "<%= id1%>">

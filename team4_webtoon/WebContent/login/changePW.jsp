@@ -12,6 +12,11 @@
 		
 		registerDAO manager1 = registerDAO.getInstance();
 		manager1.changePW(member);
+    	/*
+    	전체적인 로직
+    	
+    	비밀번호 변경 메서드
+    	*/
 %>
 	
 <!DOCTYPE html>
