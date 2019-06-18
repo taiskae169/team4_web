@@ -14,16 +14,14 @@
 	String cl_num = request.getParameter("cl_num"); 
 	//만화 회차 번호
 	
-	
-	int cmtNum;
 	//코멘트 페이지 번호
-	if(request.getParameter("cmtNum")==null){
-		cmtNum=1;
-		//코멘트 페이지번호를 받을게 없을 시 1을 대입
-	}else{
-		cmtNum = Integer.parseInt(request.getParameter("cmtNum"));
-		//코멘트 페이지번호를 받을 시 그 번호를 대입한다.
-	}
+	//if(request.getParameter("cmtNum")==null){
+	//	cmtNum=1;
+	//	//코멘트 페이지번호를 받을게 없을 시 1을 대입
+	//}else{
+	//	cmtNum = Integer.parseInt(request.getParameter("cmtNum"));
+	//	//코멘트 페이지번호를 받을 시 그 번호를 대입한다.
+	//}
 	
 	// 코멘트 페이지 정보 초기값을 1로 설정
 	
@@ -47,13 +45,7 @@
 	*/
 	
 	
-	
 
-	//시험용
-		id = "test33";
-		mw_num = "109";
-		cl_num = "100";
-	//시험용
 	
 
 	cmtVO vo = new cmtVO();
@@ -92,13 +84,23 @@
 
 <script type="text/javascript">
 	function r_che(){
+
+		console.log("로그인 확인 완료")
 		if(document.r_form.comment.value==""){
 			
 			alert("댓글을 입력해주세요");
 			document.r_form.comment.focus();
+			console.log("댓글 입력창 체크")
 			return false;
-			
 		}
+		
+		if(<%=id%>==null){
+			alert("로그인 해주세요");
+			console.log("로그인 체크");
+			return false;
+		} 
+		console.log("댓글 입력")
+
 	}
 </script>
 <!-- 댓글이 없을 경우 댓글을 입력해달라는 메세지 출력하기 위한 스크립트 -->
@@ -118,7 +120,7 @@
         <div class="card my-4" >
           <h5 class="card-header">댓글 리스트 (<%= count%>)</h5>
           <div class="card-body">
-            <form action="commentPro.jsp" name="r_form" onsubmit="return r_che();">
+            <form action="/team4_webtoon/comment/commentPro.jsp" name="r_form" onsubmit="return r_che();">
               <div class="form-group">
                 <textarea name="comment" class="form-control" rows="3"></textarea>
                 <!--  -->
@@ -141,7 +143,7 @@
 			//댓글 리스트가 저장되어 있는 list의 갯수만큼 반복하여 출력
 
 		%>
-			<jsp:include page="commentList.jsp">
+			<jsp:include page="/comment/commentList.jsp">
 				<jsp:param value="<%=vo.getNum() %>" name="num"/>
 				<jsp:param value="<%=vo.getId() %>" name="id"/>
 				<jsp:param value="<%=vo.getContent() %>" name="content"/>
@@ -158,6 +160,10 @@
 			<!-- 댓글 출력하는 페이지를 include -->
 		<div style="text-align:center;">
 		<%
+			String url = request.getRequestURI().toString();
+		
+			url += "?mw_num="+mw_num+"&cl_num="+cl_num;
+		
 			if(count>0){
 				int pageCount = count /cmtSize + (count%cmtSize ==0 ? 0: 1);
 				//전체 댓글/출력 댓글 갯수 + (나머지가 있는 경우에 +1)
@@ -171,13 +177,13 @@
 				
 				if(startPage>pageBlock){
 		%>
-				<a href="comment.jsp?cmtNum=<%= startPage - 10 %>">[이전]</a>
+				<a href="<%=url %>&cmtNum=<%= startPage - 10 %>">[이전]</a>
 		<%		} 
 				for(int i = startPage; i <= endPage; i++){%>
-					<a href="comment.jsp?cmtNum=<%=i%>">[<%=i %>] </a>
+					<a href="<%=url %>&cmtNum=<%=i%>">[<%=i %>] </a>
 				<%}
 				if(endPage<pageCount){ %>
-					<a href="comment.jsp?cmtNum=<%= startPage + 10 %>">[다음]</a>
+					<a href="<%=url %>&cmtNum=<%= startPage + 10 %>">[다음]</a>
 		<%}
 		
 		}%>

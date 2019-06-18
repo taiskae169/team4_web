@@ -52,7 +52,14 @@
 
 
 <%
-		int mNum=109;//Integer.parseInt(request.getParameter("mw_num"));
+
+		String cmtNumch = request.getParameter("cmtNum");
+		int cmtNum=1;
+		if(cmtNumch!=null){
+			cmtNum=Integer.parseInt(cmtNumch);
+		}
+		
+		int mNum=Integer.parseInt(request.getParameter("mw_num"));
 	    
 		int pageSize = 10; // 한 화면에 출력할 게시물 개수
 	    String pageNum = request.getParameter("pageNum"); 
@@ -128,62 +135,55 @@
 				<p>
 				<%=wtDetail.getWtSumm() %>
 				<br />
-				"거리"
-				
-				
-				
-				
-				<%--   총 별점
-				<%for(int j=5;j >0;j--){%>
+				"거리"	<%= wtDetail.getWtStar()%>		
+		<%int wtstar=wtDetail.getWtStar();
+				switch(wtstar){
+				case 5:
+					for(int j=5;j >0;j--){%>
 					<small class="text-muted">&#9733;</small>
-				<%}%>
-
-				<%for(int j=4;j >0;j--){%>
+				<%}
+					break;
+				case 4:
+					for(int j=4;j >0;j--){%>
 					<small class="text-muted">&#9733;</small>
-				<%}%>
-				<%for(int i=0;i<1;i++){ %>
+				<%}
+					for(int k=0;k<1;k++){ %>
 					<small class="text-muted">&#9734;</small>
-				<%} %>
-				
-				<%for(int j=3;j >0;j--){%>
+				<%}
+					break;
+				case 3:
+					for(int j=3;j >0;j--){%>
 					<small class="text-muted">&#9733;</small>
-				<%}%>
-				<%for(int i=0;i<2;i++){ %>
+				<%}
+					for(int k=0;k<2;k++){ %>
 					<small class="text-muted">&#9734;</small>
-				<%} %>
-				
-				<%for(int j=2;j >0;j--){%>
+				<%}
+					break;
+				case 2:
+					for(int j=2;j >0;j--){%>
 					<small class="text-muted">&#9733;</small>
-				<%}%>
-				<%for(int i=0;i<3;i++){ %>
+				<%}
+					for(int k=0;k<3;k++){ %>
 					<small class="text-muted">&#9734;</small>
-				<%} %>
-				
-				<%for(int j=1;j >0;j--){%>
+				<%} 
+					break;
+				case 1:
+					for(int j=1;j >0;j--){%>
 					<small class="text-muted">&#9733;</small>
-				<%}%>
-				<%for(int i=0;i<4;i++){ %>
+				<%}
+					for(int k=0;k<4;k++){ %>
 					<small class="text-muted">&#9734;</small>
-				<%}%>
+				<%}
+					break;
+				}
 				
-				<%for(int j=5;j >0;j--){%>
-					<small class="text-muted">&#9734;</small>
-				<%}%>
-				
-				--%>
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				</p>
+				//int sP=countEP;
+				//int sSum=episode.getMw_star_sum();
+				//double avgS=(double)sSum/sP;				
+			%>
+				<b><%= wtDetail.getWtStar()%>	</b>
+			
+		</p>
 				<div>
   				<button type="button" class="btn btn-outline-dark btn-sm">관심웹툰</button>
 				<button type="button" class="btn btn-outline-dark btn-sm">첫회보기</button>
@@ -203,7 +203,7 @@
     게시판에 저장된 글이 없습니다.
     </td>
 </table>
-<%  } else { }   %>
+<%  } else {    %>
 	<table class="table table-stripped">
 		<thead>
 		<tr>
@@ -271,7 +271,7 @@
 					for(int j=1;j >0;j--){%>
 					<small class="text-muted">&#9733;</small>
 				<%}
-					for(int k=0;i<4;k++){ %>
+					for(int k=0;k<4;k++){ %>
 					<small class="text-muted">&#9734;</small>
 				<%}
 					break;
@@ -284,30 +284,12 @@
 				<b><%=avgS %></b>
 			
 			</th>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			<th><%=sdf.format(episode.getCl_reg())%></th>
 		</tr>
 		<%}%>
-		</tbody>
-	
-	
-	
+		</tbody>	
 	</table>
-	
+
 		<%
     if (countEP > 0) {
     	int pageBlock=5; //하단 페이지바에 표시할 페이지 수
@@ -354,6 +336,7 @@
 <%  }            
 
     }
+}
 %>
 	
 	</div>

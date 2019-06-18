@@ -44,6 +44,12 @@
 
 
 <%
+
+	String cmtNumch = request.getParameter("cmtNum");
+	int cmtNum=1;
+	if(cmtNumch!=null){
+		cmtNum=Integer.parseInt(cmtNumch);
+	}
 	int mNum=Integer.parseInt(request.getParameter("mw_num"));
 	int clNum=Integer.parseInt(request.getParameter("cl_num"));
 	String id=(String)session.getAttribute("sessionID");
@@ -93,7 +99,7 @@
              	return;
          	 }
     		 </script>
-        <li class="nav-item"><a href="#"  Onclick="goLoginFirst();"><b>별점주기</b></a></li>&nbsp;        
+        <li class="nav-item"><a href="/team4_webtoon/login/login.jsp"  Onclick="goLoginFirst();"><b>별점주기</b></a></li>&nbsp;        
          <li class="nav-item"></li>
         <%}else{ %>
          <li class="nav-item"><b>별점주기</b></li>&nbsp;   

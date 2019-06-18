@@ -1,5 +1,7 @@
 package webtoon.helpdesk;
 
+import java.sql.Timestamp;
+
 public class helpVO {
 	private int num;			//제안 테이블 고유번호
 	private String title;		//문의 제목
@@ -10,8 +12,15 @@ public class helpVO {
 	private String tel;			//문의자 연락처
 	private String mail;		//문의자 메일
 	private String file;		//첨부파일 이름
+	private Timestamp reg;		//시간
 	
 	
+	public Timestamp getReg() {
+		return reg;
+	}
+	public void setReg(Timestamp reg) {
+		this.reg = reg;
+	}
 	public int getNum() {
 		return num;
 	}

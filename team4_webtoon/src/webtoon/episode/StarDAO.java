@@ -9,6 +9,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import webtoon.content.contentVO;
+import webtoon.list.MWdetailVO;
 
 public class StarDAO {
 	private static StarDAO instance=new StarDAO();
@@ -147,8 +148,35 @@ public class StarDAO {
 	}
 	
 	
+	public void updateMWStar(int cl_title_id,int mw_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql="";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("update main_webtoon set mw_star=(select sum(cl_star)/count(cl_star) from content where cl_title_id=?) where mw_num=?");
+			pstmt.setInt(1, cl_title_id);
+			pstmt.setInt(2, mw_num);
+			pstmt.executeUpdate();				
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}		
+	} 
 	
 	
+	
+	
+	
+	
+	
+	
+	private MWdetailVO setWtStar(int int1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	public int getStar(int cl_title_id,int cl_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
