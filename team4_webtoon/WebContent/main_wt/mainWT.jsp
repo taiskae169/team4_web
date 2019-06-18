@@ -84,6 +84,7 @@
 	    wtDetail=epdao.getDetail(mNum); //웹툰 정보(장르,태그 등)
 	  
 	    countEP = epdao.getEPCount(mNum);   //웹툰의 에피소드 갯수
+	    
 	    if (countEP > 0) {
 	        webtoonEP = epdao.getEpisodes(mNum,startRow, endRow);
 	    }
