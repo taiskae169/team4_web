@@ -11,24 +11,34 @@
     	String id1 = (String)session.getAttribute("sessionID");
     	int num = Integer.parseInt(request.getParameter("lwb_wb_num"));
     	likeDAO like = new likeDAO();
-    	ArrayList<likeVO> list = like.getAddrs(num);
+    	ArrayList<likeVO> list = like.getAddrs(num, id1);
     	
     	likeDAO dao = likeDAO.getInstance();
-    	likeVO b = dao.like(id1, num);
+    	likeVO b = dao.like(num, id1);
     	
 	%>
 	
 	<%
 
-	if (b.getLwb_id().equals(id1)){
-		dao.insertlikeWebtoon(member);
-	}
-	else{%>
-	<script>
-	alert("ddd");
-	history.go(-1);
-	</script>
-		
-	<%}
+
+		if(list.size() == 0){
+			dao.insertlikeWebtoon(member);
+			%>
+			<script>
+			alert("작품을 찜하셨습니다.");
+			history.go(-1);
+			</script>
+			<%
+		}
+		else if (list.size() != 0){
+			dao.deleteLike(num, id1);
+			%>
+			<script>
+			alert("찜한 작품을 삭제하였습니다.");
+			history.go(-1);
+			
+			</script>
+			<%
+		}
 
 	%>

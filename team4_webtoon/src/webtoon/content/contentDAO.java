@@ -79,7 +79,7 @@ public class contentDAO {
 			if(conn != null) try {conn.close();} catch(SQLException ex) {}
 		}
 	}
-	
+	//회차 삭제 메서드
 	public void deleteContent(int mw_num) throws SQLException{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -98,6 +98,30 @@ public class contentDAO {
 			if(conn != null) try {conn.close();} catch(SQLException ex) {}
 		}
 	}
+	
+	//웹툰 삭제시 모든 회차가 삭제되게 하기 위한 메서드
+	public void deleteall(int num) throws SQLException{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = getConnection();
+			String sql = "delete from content where cl_title_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+			
+		}catch (Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(pstmt != null) try { pstmt.close();} catch(SQLException ex) {}
+			if(conn != null) try {conn.close();} catch(SQLException ex) {}
+		}
+	}
+	
+	
+	
+	
 	
 	public contentVO adjust(int cl_num) throws Exception{
 		contentVO member = null;

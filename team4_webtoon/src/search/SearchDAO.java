@@ -11,6 +11,7 @@ import javax.sql.*;
 
 import oracle.net.aso.r;
 import team4_webtoon.registerBean;
+import webtoon.like.likeDAO;
 
 public class SearchDAO {
 	Connection conn = null;
@@ -104,6 +105,8 @@ public class SearchDAO {
 		return list;
 	}
 	
+	//내 웹툰 보여주는 메서드
+	//작가 이름을 받아서 출력
 	public ArrayList<SearchVO> getAdd(String mywebtoon) throws SQLException{
 		ArrayList<SearchVO> list = new ArrayList<SearchVO>();
 		conn = ConnectionUtil.getConnection();
@@ -126,6 +129,37 @@ public class SearchDAO {
 		return list;
 	}
 	
+	
+	//찜한 작품 출력
+	//like_wb에서 아이디의 lwb_wb_num (작품번호)를 출력한다. 이 출력한 것을 main_webtoon에 넣어 (mw_num = lwb_wb_num임) 나온 것들을 출력한다.
+	public ArrayList<SearchVO> getlike(String id) throws SQLException{
+		ArrayList<SearchVO> list = new ArrayList<SearchVO>();
+		conn = ConnectionUtil.getConnection();
+		
+		StringBuffer sql = new StringBuffer();
+		sql.append("select mw_num, mw_title, mw_writer, mw_gen, mw_tag from main_webtoon where mw_num in(select lwb_wb_num from like_wb where lwb_id = ?)");
+		PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+		pstmt.setString(1, id);
+		ResultSet rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			SearchVO vo = new SearchVO();
+			vo.setNum(rs.getInt("mw_num"));
+			vo.setTitle(rs.getString("mw_title"));
+			vo.setWriter(rs.getString("mw_writer"));
+			vo.setGen(rs.getString("mw_gen"));
+			vo.setTag(rs.getString("mw_tag"));
+			list.add(vo);
+		}
+		return list;
+	}
+	
+	
+	
+	
+	
+	
+	//웹툰 삭제 메서드
 	public int deleteWB(String title, String writer) throws Exception{
 
 		String dbpasswd = "";
@@ -158,6 +192,7 @@ public class SearchDAO {
 		
 	}
 	
+	//웹툰 수정 메서드
 	public SearchVO adjust(String title, String writer) throws Exception{
 		SearchVO member = null;
 		
@@ -200,7 +235,7 @@ public class SearchDAO {
 	return member;
 }
 	
-	
+	//태그 변경 메서드
 	public void changeTag(SearchVO member) throws Exception{
 		try {
 			conn = ConnectionUtil.getConnection();
@@ -218,6 +253,7 @@ public class SearchDAO {
 		}
 	}
 	
+	//요일 변경 메서드
 	public void changeWeek(SearchVO member) throws Exception{
 		try {
 			conn = ConnectionUtil.getConnection();
@@ -235,6 +271,7 @@ public class SearchDAO {
 		}
 	}
 	
+	//소제목 변경 메서드
 	public void changeSub(SearchVO member) throws Exception{
 		try {
 			conn = ConnectionUtil.getConnection();
@@ -252,7 +289,7 @@ public class SearchDAO {
 		}
 	}
 	
-	
+	//장르 변경 메서드
 	public void changeGen(SearchVO member) throws Exception{
 		try {
 			conn = ConnectionUtil.getConnection();
@@ -268,6 +305,7 @@ public class SearchDAO {
 		}
 	}
 	
+	//줄거리 변경 메서드
 	public void changeSum(SearchVO member) throws Exception{
 		try {
 			conn = ConnectionUtil.getConnection();
@@ -283,11 +321,5 @@ public class SearchDAO {
 			if(conn != null) try { conn.close();} catch(SQLException ex) {}		
 		}
 	}
-	
-
-	
-	
-	
-	
 	
 }
