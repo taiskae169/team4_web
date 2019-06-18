@@ -74,7 +74,7 @@ noticeVO b = adjust.content(nt_num);
 	</select>
 		<input type = "hidden" name = "nt_writer" value = "<%=id1 %>">
 	<input type = "hidden" name = "nt_num" value = "<%=nt_num %>">
-	<input type="submit"value = "변경">
+	<input type="submit"value = "변경" class="btn btn-success">
 	</form><br>
 	
 	<form method = "post" action = "nt_changeTitle.jsp">
@@ -82,17 +82,17 @@ noticeVO b = adjust.content(nt_num);
 	<input type = "text" name = "nt_title" placeholder = "제목을 입력해주세요" required>
 			<input type = "hidden" name = "nt_writer" value = "<%=id1 %>">
 	<input type = "hidden" name = "nt_num" value = "<%=nt_num %>">
-	<input type="submit"value = "변경">
+	<input type="submit"value = "변경" class="btn btn-success">
 	</form><br>
 	<form method = "post" action = "nt_changeContent.jsp">
 	<label>내용을 변경하세요</label><br>
 <textarea name = "nt_content" rows="13" cols="40" required>
 <%=b.getNt_content() %>
-</textarea>
+</textarea><br>
 	<input type = "hidden" name = "nt_writer" value = "<%=id1 %>">
 	<input type = "hidden" name = "nt_num" value = "<%=nt_num %>"><br>
-	<input type="submit"value = "변경">
-	<input type = "button" onclick = "location.href='notice.jsp'" value = "돌아가기">
+	<input type="submit"value = "변경" class="btn btn-success btn-lg">
+	<input type = "button" onclick = "location.href='notice.jsp'" value = "돌아가기" class="btn btn-warning btn-lg">
 	</form>
       </div>
 	

@@ -34,6 +34,16 @@
 	}catch (Exception e){
 		e.printStackTrace();
 	}
+	
+	/*
+	전체적인 로직
+	
+	넘어온 파라미터는 multi1으로 처리
+	../../title 경로에 이미지 저장
+	
+	자료 확인 후 
+	=>createWBPPro로 넘김
+	*/
 
 %>
 <html>
@@ -74,7 +84,7 @@
 		<label class = "label1">내용</label>
 		<%=cl_content %><br>
 		<label class = "label1">소제목</label>
-		<%=cl_title_id %><br>
+		<%=cl_title %><br>
 		<label class = "label1">작가</label>
 		<%=cl_writer %><br>
 	</div>

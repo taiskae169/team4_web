@@ -36,7 +36,7 @@
 	ToadminDAO dao = ToadminDAO.getInstance();
 	ArrayList<helpVO> list = dao.getDetail();
 	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		  
+
 %>
 	<style>
 			.modal-window {
@@ -104,7 +104,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary"></h6>
+              <h6 class="m-0 font-weight-bold text-primary">문의 목록</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -122,7 +122,6 @@
                   <!-- 상단 제목 바 -->
                   <tfoot>
                     <tr>
-                      <th>NUM</th>
                       <th>TITLE</th>
 					  <th>CATEGORY</th>
 					  <th>COMPANY</th>
@@ -149,10 +148,9 @@
                   	for(int i=0; i<list.size(); i++){
                   		helpVO vo = list.get(i);
                   		//웹툰 리스트 출력 시작
-                  	
                   %>
 	                    <tr>
-	                      <td><%=vo.getNum()%></td>
+	                      <td><%=i%></td>
 	                      <td><a href="#open-delmoda<%= i%>"><%=vo.getTitle() %></a></td>
 	                      <%
 	                      	int cate = vo.getCat();	
@@ -171,7 +169,19 @@
 	                    <div id="open-delmoda<%=i %>" class="modal-window">
 		                    	<div>
 		                    		<a href="#modal-close" title="Close" class="modal-close">Close</a>            		
-									<p> 정말 삭제하시겠습니까? </p>
+									<p> 제목 : <%=vo.getTitle() %> </p>
+									<p>
+										<%=vo.getContent() %>
+									</p>
+									<%if(vo.getFile()!=null){ %>
+									<p>
+										<img src="/team4_webtoon/resources/proposal/<%=vo.getFile() %>" style="width:350px"/>
+									</p>
+									<%} %>
+									<a href="mailto:<%=vo.getMail() %>" class="btn btn-warning btn-icon-split btn-sm" style="float:right;">
+					                    	답변하기
+		               				</a>
+							
 									
 								</div> <!-- 폼을 둘러싸고 있는 div -->
 							</div>  <!-- 장르 변경 팝업창 div -->

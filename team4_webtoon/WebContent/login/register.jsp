@@ -50,7 +50,7 @@
                 <input type="text" id = "id" class="form-control" placeholder="ID" name = "id" size = "10" maxlength="12" required autofocus>                
 
 				<label for="id">ID</label>
-                <input type = "button" value = "중복확인" onclick="openConfirmid(this.form)">
+                <input type = "button" value = "중복확인" onclick="openConfirmid(this.form)" class = "btn btn-info btn-sm input2">
               </div>
 
               <div class="form-label-group">
@@ -61,7 +61,7 @@
                 <div class="form-label-group">
                 <input type="email" id="email" class="form-control" name = "email" placeholder="Email address" required autofocus>
                 <label for="email">Email address</label>
-                <input type = "button" value = "중복확인" onclick="openConfirmemail(this.form)">
+                <input type = "button" value = "중복확인" onclick="openConfirmemail(this.form)" class = "btn btn-info btn-sm input2">
               </div>
 
                 <div class="form-label-group">
@@ -73,9 +73,9 @@
                 <label for="name">NAME</label>
               </div>
                 <div class="form-label-group">
-                <input type="radio" value = "2" id="state" name = "state" placeholder="state" autofocus style = "margin-right : 10px;"> 독자
+                <input type="radio" value = "2" name = "state" placeholder="state" autofocus style = "margin-right : 10px;" required> 독자
                 <br>
-                <input type="radio" value = "3" id="state" name = "state" placeholder="state" autofocus style = "margin-right : 10px;"> 작가
+                <input type="radio" value = "3" name = "state" placeholder="state" autofocus style = "margin-right : 10px;" required> 작가
 
    				</div>
 

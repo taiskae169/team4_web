@@ -13,6 +13,13 @@
 		registerDAO dao = registerDAO.getInstance();
 
 		dao.updateMember(member);
+		
+    	/*
+    	전체적인 로직
+    	
+    	휴면 계정 변경 페이지
+    	
+    	*/
 	%>
 <!DOCTYPE html>
 <html>

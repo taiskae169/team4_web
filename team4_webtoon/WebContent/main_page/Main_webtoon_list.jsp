@@ -3,9 +3,11 @@
 <%@page import="webtoon.notice.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        <%@ page import ="team4_webtoon.*" %>
 <!DOCTYPE html>
 
-<%
+<%		
+		registerDAO dao = registerDAO.getInstance();
 		String id1 = (String)session.getAttribute("sessionID");
 		String title = request.getParameter("title");
 		String sub_title = request.getParameter("subtitle");
@@ -13,6 +15,7 @@
 		int star_point = Integer.parseInt(request.getParameter("star_point"));
 		String num = request.getParameter("num");
 		// 전송받은 항목을 각 변수에 대입
+		int check1 = dao.level_check(id1);
 		int i=0;
 		// 별점 출력을 위한 i 변수 생성
 
@@ -28,13 +31,15 @@
                 </h4>
                 <h5><%=sub_title %></h5>
                 <p class="card-text"><%=writer %></p>
-                
+                <%if (check1 == 2 || check1 == 3 || check1 == 4) {
+                //로그인 했을 시에만 보여줌
+                %>
                 <form method = "post" action = "../like/like.jsp">
                 	<input type = "hidden" name = "lwb_wb_num" value = "<%=num %>">
                 	<input type = "hidden" name = "lwb_id" value = "<%= id1%>">
-                	<input type = "submit" value = "찜">
+                	<input type = "submit" value = "찜" class="btn btn-info">
                 </form>
-                
+                <%} %>
               </div>
               <div class="card-footer">
               	<%for(; i<star_point/20; i++){ %>

@@ -8,7 +8,12 @@
 	registerDAO a = registerDAO.getInstance();
 	
 	int check1 = a.level_check(id1);
-
+	
+	/*
+	전체적인 로직
+	
+	마이페이지
+	*/
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +75,7 @@
           </div>
         </div>
         <div class="col-md-4 col-sm-6 portfolio-item">
-          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+          <a class="portfolio-link" href="../like/likeForm.jsp">
             <div class="portfolio-hover">
               <div class="portfolio-hover-content">
                 <i class="fas fa-plus fa-3x"></i>

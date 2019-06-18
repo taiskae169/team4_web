@@ -8,6 +8,12 @@
 	noticeDAO noticeView = noticeDAO.getInstance();
 	noticeVO b = noticeView.content(nt_num);
     
+	/*
+	전체적인 로직
+	
+	공지를 보여주는 페이지
+	nt_num을 받아와서 사용한다.
+	*/
     %>
 <!DOCTYPE html>
 <html>
@@ -74,6 +80,9 @@
 
 <%= b.getNt_content() %>
             </pre>
+            <!-- 
+            	pre 태그를 사용해서 줄바꿈을 표시한다.
+             -->
             </td>
 
       </tbody>
@@ -85,7 +94,7 @@
 
    </div>
       <center>
-   <input type = "button" onclick = "location.href='notice.jsp'" value = "목록" style = "margin-bottom: 30px;">
+   <input type = "button" onclick = "location.href='notice.jsp'" value = "목록" style = "margin-bottom: 30px; "class="btn btn-info btn-lg">
 	</center>
     <%@include file="/bar/footer.jsp" %> 
      <!-- Bootstrap core JavaScript -->

@@ -2,6 +2,13 @@
     pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("UTF-8"); %>
 <%@ page import ="team4_webtoon.*" %>
+<%
+/*
+전체적인 로직
+
+아이디 찾기 페이지
+*/
+%>
 <!DOCTYPE html>
 <html>
 <head>

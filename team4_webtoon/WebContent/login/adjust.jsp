@@ -11,6 +11,13 @@
 	registerDAO a = registerDAO.getInstance();			
 	registerBean b = a.adjust(id1, pw);						//adjust 메서드 사용(id, pw 사용해 이메일, 이름, 나이 반환)
 	int check1 = a.loginCheck(id1, pw);						//id1과 pw가 같으면 1, 다르면 0
+	
+	/*
+	전체적인 로직
+	
+	각 값을 입력 받아  change...jsp 페이지로 넘긴다.
+	로그인 체크 메서드를 사용해서 비밀번호가 틀린다면 수정 페이지로 접근할 수 없다.
+	*/
 %>
 <!DOCTYPE html>
 
@@ -55,43 +62,47 @@
   	
   	<form action = "changePW.jsp" method="post" class = "bottom" name = "changePW" style = "margin-top:100px;">
 		<div>
-			<label class = "label1">비밀번호 변경</label>
+			<label class = "label1"><b>비밀번호 변경</b></label><br><br>
 				<input type = "password" name = "password" required class = "input1">
-				<input type="submit" name="changePw" value = "비밀번호 변경"> 
+				<input type="submit" name="changePw" value = "비밀번호 변경" class = "btn btn-info btn-sm"> 
 		</div>
+		<hr>
 	</form>
 	
-	<form action = "changeEmail.jsp" method="post" name = "changeEmail" class = "bottom">
-		<label class = "label1">이메일 변경</label>
+	<!--  <form action = "changeEmail.jsp" method="post" name = "changeEmail" class = "bottom">
+		<label class = "label1"><b>이메일 변경</b></label>
 		<%=b.getEmail() %><br><br>
 		<input type = "email" name = "email" required class = "input3">
-		<input type="submit" name="changeEmail" value = "이메일 변경"> 
+		<input type="submit" name="changeEmail" value = "이메일 변경" class = "btn btn-info btn-sm">
+		 <hr>
 	</form>
-	
+	-->
 	<form action = "changeName.jsp" method="post" name = "changeName" class = "bottom">
-		<label class = "label1">이름 변경</label><%=b.getName() %><br><br>
+		<label class = "label1"><b>이름 변경</b></label><%=b.getName() %><br><br>
 		<input type = "text" name = "name" class = "input3" required>
-		<input type="submit" name="changeName" value = "이름 변경"> 
+		<input type="submit" name="changeName" value = "이름 변경" class = "btn btn-info btn-sm"> 
+		<hr>
 	</form>
 
 	<form action = "changeAge.jsp" method="post" name = "changeAge" class = "bottom">
-		<label class = "label1">나이 변경</label><%= b.getAge() %><br><br>
+		<label class = "label1"><b>나이 변경</b></label><%= b.getAge() %><br><br>
 		<input type = "text" name = "age" required class = "input3">
 		<input type = "hidden" name = "pw" value = "<%=pw %>">
-		<input type="submit" name="changeAge" value = "나이 변경"> 
+		<input type="submit" name="changeAge" value = "나이 변경" class = "btn btn-info btn-sm"> 
+		<hr>
 	</form>	
 
 	<form action = "delete.jsp" method ="post" name = "delete" class = "bottom">
-	<label class = "label1">회원 탈퇴</label>
+	<label class = "label1"><b>회원 탈퇴</b></label>
 	<br><br>
 	<input type = "password" name = "pw" placeholder = "비밀번호를 입력하세요." class = "input3" required>
-	<input type = "submit" name = "delete" value = "회원탈퇴">
+	<input type = "submit" name = "delete" value = "회원탈퇴" class = "btn btn-info btn-sm">
+	
 	</form>
 </div>
 
-<div class = "container">
+<div class = "container" style = "margin-bottom : 100px;">
 	<button class="btn btn-lg btn-warning btn-block text-uppercase" onclick="location='../main_page/MainPage.jsp'">돌아가기</button>
-	<br><br><br><br><br><br>
 </div>
 <%@ include file="../bar/footer.jsp"%>
 

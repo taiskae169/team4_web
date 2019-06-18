@@ -10,6 +10,11 @@
 		
 		registerDAO manager1 = registerDAO.getInstance();
 		manager1.changeEmail(member);
+    	/*
+    	전체적인 로직
+    	
+    	이메일 변경 메서드
+    	*/
 	%>
 <!DOCTYPE html>
 <html>

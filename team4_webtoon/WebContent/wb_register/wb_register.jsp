@@ -90,7 +90,7 @@
 				<input type = "file" name = "file" style = "margin-bottom: 60px;"> <br>
 				
 				<b>내용을 확인하셨습니까?</b>
-				<input type = "radio" name = "writer" value = "<%=session.getAttribute("sessionID") %>" class = "input2" style = "margin-bottom:50px;">확인
+				<input type = "radio" name = "writer" value = "<%=session.getAttribute("sessionID") %>" class = "input2" style = "margin-bottom:50px;" required>확인
 	
 </div>
 

@@ -36,6 +36,7 @@ public class likeDAO {
 		return conn;
 	}//connection 풀을 제공하는 메소드
 	
+	//like_wb 테이블에 데이터 등록
 	public void insertlikeWebtoon(likeVO like_wb) throws SQLException{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -59,16 +60,17 @@ public class likeDAO {
 	
 	
 	
-	
-	public ArrayList<likeVO> getAddrs(int num) throws SQLException{
+	//번호와 이름을 받아 리스트를 받아온다
+	public ArrayList<likeVO> getAddrs(int num, String id) throws SQLException{
 		ArrayList<likeVO> list = new ArrayList<likeVO>();
 		Connection conn = null;
 		conn = getConnection();
 		
 		StringBuffer sql = new StringBuffer();
-		sql.append("select * from like_wb where lwb_wb_num= ?");
+		sql.append("select * from like_wb where lwb_wb_num= ? and lwb_id = ?");
 		PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 		pstmt.setInt(1, num);
+		pstmt.setString(2,  id);
 		ResultSet rs = pstmt.executeQuery();
 		
 		while(rs.next()) {
@@ -83,23 +85,53 @@ public class likeDAO {
 		
 	}
 	
-	public likeVO like(String id, int num) throws Exception{
-		likeVO member = null;
+	
+	public ArrayList<likeVO> getNum(String id) throws SQLException{
+		ArrayList<likeVO> list = new ArrayList<likeVO>();
+		Connection conn = null;
+		conn = getConnection();
 		
+		StringBuffer sql = new StringBuffer();
+		sql.append("select * from like_wb where lwb_id = ?");
+		PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+		pstmt.setString(1,  id);
+		ResultSet rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			likeVO vo = new likeVO();
+			vo.setLwb_num(rs.getInt("lwb_num"));
+			vo.setLwb_wb_num(rs.getInt("lwb_wb_num"));
+			vo.setLwb_id(rs.getString("lwb_id"));
+			list.add(vo);
+		}
+		return list;
+		
+		
+	}
+	
+	
+	
+	
+	//번호와 이름을 받아 리스트 반환
+	public likeVO like(int num, String id) throws Exception{
+		likeVO member = null;
+
 		try {
 			Connection conn = null;
 			conn = getConnection();
-			pstmt = conn.prepareStatement("select * from like_wb where lwb_id = ? and lwb_wb_num = ?");
-			pstmt.setString(1, id);
-			pstmt.setInt(2, num);
-			
+			pstmt = conn.prepareStatement("select * from like_wb where lwb_wb_num = ? and lwb_id = ?");
+			pstmt.setInt(1, num);
+			pstmt.setString(2, id);
 			rs = pstmt.executeQuery();
+			
 			if(rs.next()) {
 				member = new likeVO();
 				member.setLwb_id(rs.getString("lwb_id"));
 				member.setLwb_num(rs.getInt("lwb_num"));
 				member.setLwb_wb_num(rs.getInt("lwb_wb_num"));
 			}
+			
+
 		}catch (Exception ex) {
 			ex.printStackTrace();
 		}finally {
@@ -109,4 +141,44 @@ public class likeDAO {
 		}
 		return member;
 	}
+	
+	//찜한 작품을 삭제하는 메서드
+	public void deleteLike(int num, String id) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = getConnection();
+			String sql = "delete from like_wb where lwb_wb_num = ? and lwb_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.setString(2, id);
+			pstmt.executeUpdate();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if(pstmt != null) try { pstmt.close();} catch(SQLException ex) {}
+			if(conn != null) try {conn.close();} catch(SQLException ex) {}
+		}
+	}
+	
+	//웹툰을 삭제하면 찜한 리스트도 삭제
+	public void deleteLikeall(int num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = getConnection();
+			String sql = "delete from like_wb where lwb_wb_num = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if(pstmt != null) try { pstmt.close();} catch(SQLException ex) {}
+			if(conn != null) try {conn.close();} catch(SQLException ex) {}
+		}
+	}
+
+	
+	
 }

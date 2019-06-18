@@ -59,7 +59,7 @@
 		<option value = "2">태그 </option>
 		<option value = "3">장르 </option>
 	</select>
-	<input type='text' name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색">
+	<input type='text' style = "margin-right:5px;"name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색" class="btn btn-info btn-sm">
        </ASIDE>
 
 	</form>
@@ -76,7 +76,7 @@
 		<option value = "2">태그 </option>
 		<option value = "3">장르 </option>
 	</select>
-       <input type='text' name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색">
+       <input type='text' style = "margin-right:5px;" name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색" class="btn btn-info btn-sm">
        </ASIDE>
        <br>
        <br>
@@ -101,10 +101,6 @@ genreDAO a = genreDAO.getInstance();
         	<%=c.getValue() %>
           </p>
           <p class="card-text"><%=list.get(i).getTag() %></p>
-          <form method = "post" action = "../like/like.jsp">
-          	<input type = "hidden">
-          	<input type = "submit" value = "찜하기">
-          </form>
         </div>
       </div>
     </div>
@@ -126,7 +122,7 @@ genreDAO a = genreDAO.getInstance();
 		<option value = "2">태그 </option>
 		<option value = "3">장르 </option>
 	</select>
-	<input type='text' name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색">
+	<input type='text' name="addr" style = "margin-right:5px;" placeholder="내용을 입력하세요"/><input type='submit' value = "검색" class="btn btn-info btn-sm">
        </ASIDE>
 	</form>
 

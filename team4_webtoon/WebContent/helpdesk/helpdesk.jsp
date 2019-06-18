@@ -36,6 +36,14 @@
   <link href="/team4_webtoon/resources/mypage/css/agency.min.css" rel="stylesheet">
 <%@include file="../bar/menu.jsp" %>
 <%@include file="../bar/navigationBar.jsp" %>
+
+	<style type="text/css">
+	.portfolio-modal::-webkit-scrollbar {
+    	display: none;
+	}
+	
+	
+	</style>
 </head>
 
 <body id="page-top">
@@ -77,7 +85,7 @@
             <img class="img-fluid" src="/team4_webtoon/resources/mypage/img/portfolio/02-thumbnail.jpg" alt="">
           </a>
           <div class="portfolio-caption">
-            <h4>작품 신고</h4>
+            <h4>운영원칙</h4>
           </div>
         </div>
         <div class="col-md-4 col-sm-6 portfolio-item">
@@ -113,31 +121,24 @@
   <!-- Portfolio Modals -->
 
   <!-- Modal 1 -->
-  <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
+  <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true"  style="width:1000px;hight:1000px; position:absolute; left:20%;">
+    <div class="modal-dialog"> 
       <div class="modal-content">
-        <div class="close-modal" data-dismiss="modal">
+        <div class="close-modal" data-dismiss="modal" style="margin-bottom:50px;">
           <div class="lr">
             <div class="rl"></div>
           </div>
         </div>
-        <div class="container">
+        <jsp:include page="/helpdesk/requestToAdmin.jsp"></jsp:include>
+        
+        <div class="container" >
           <div class="row">
             <div class="col-lg-8 mx-auto">
               <div class="modal-body">
                 <!-- Project Details Go Here -->
-                <h2 class="text-uppercase">Project Name</h2>
-                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                <img class="img-fluid d-block mx-auto" src="/team4_webtoon/resources/mypage/img/portfolio/01-full.jpg" alt="">
-                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                <ul class="list-inline">
-                  <li>Date: January 2017</li>
-                  <li>Client: Threads</li>
-                  <li>Category: Illustration</li>
-                </ul>
                 <button class="btn btn-primary" data-dismiss="modal" type="button">
                   <i class="fas fa-times"></i>
-                  Close Project</button>
+                  Close</button>
               </div>
             </div>
           </div>

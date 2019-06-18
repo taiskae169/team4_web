@@ -24,6 +24,12 @@
 	registerBean c = manager.pwCheck(id1, email);
 	
 	int check1 = manager.pwCheck1(id1, email);
+	
+	/*
+	전체적인 로직
+	
+	비밀번호 찾는 페이지
+	*/
 	%>
 	<% if (check1 == 1){ %>
   <div class="container"style = "margin-top: 150px; margin-bottom : 110px;">

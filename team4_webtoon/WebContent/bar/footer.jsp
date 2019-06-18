@@ -22,6 +22,8 @@
     <a href = "#" class = "whitea">개인정보 처리방침</a>
     l
     <a href = "#" class = "whitea">사이트 이용 방법</a>
+    l
+    <a href = "/team4_webtoon/helpdesk/helpdesk.jsp" class = "whitea">고객센터</a>
     </p>
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
     </div>

@@ -3,6 +3,14 @@
 <%@ page import = "team4_webtoon.registerBean" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%request.setCharacterEncoding("UTF-8"); %>
+
+<%
+/*
+전체적인 로직
+
+정보 수정을 위해 비밀번호를 입력받는 메서드
+*/
+%>
 <!DOCTYPE html>
 <html>
 <head>

@@ -11,6 +11,12 @@
 	
 	registerDAO manager1 = registerDAO.getInstance();
 	manager1.changeAge(member);	
+	
+	/*
+	전체적인 로직
+	
+	나이 변경 메서드
+	*/
 %>
 <!DOCTYPE html>
 <html>
