@@ -60,6 +60,7 @@
    <table class="table table-stripped">
       <thead>
       <tr>
+
          <th>내용</th>
 
       </tr>
@@ -67,18 +68,25 @@
       
       <tbody>
       <tr>
+
          <td>
-            <%= b.getNt_content() %>
+         <pre>
+
+<%= b.getNt_content() %>
+            </pre>
             </td>
-        
+
       </tbody>
    
    
    
    </table>
-   <input type = "button" onclick = "location.href='notice.jsp'" value = "돌아가기">
+	<hr>
 
    </div>
+      <center>
+   <input type = "button" onclick = "location.href='notice.jsp'" value = "목록" style = "margin-bottom: 30px;">
+	</center>
     <%@include file="/bar/footer.jsp" %> 
      <!-- Bootstrap core JavaScript -->
   <script src="/team4_webtoon/resources/main_webtoon/scrolling/vendor/jquery/jquery.min.js"></script>

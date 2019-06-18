@@ -7,12 +7,12 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-	int cl_title_id = Integer.parseInt(request.getParameter("mw_num"));
+	int cl_title_id = Integer.parseInt(request.getParameter("mw_num"));		
 	contentDAO dao = contentDAO.getInstance();
 	contentVO vo = new contentVO();
 
 	String title = request.getParameter("title");
-	int a = dao.getAuto(cl_title_id);
+	int a = dao.getAuto(cl_title_id);			//자동회차를 생성하는 메서드
 	
 %>
 
@@ -54,9 +54,9 @@
 		<div>
 	<label class = "label1">자동회차</label><%= a %>화 <br><br>
 	<label class = "label1">소제목</label>
-				<input type="text" size="100" maxlength="30" name="cl_title" placeholder="  소제목을 입력해주세요"> 
+	<input type="text" size="100" maxlength="30" name="cl_title" placeholder="  소제목을 입력해주세요"> 
 	<label class = "label1">내옹</label>
-				<input type = "text" size = "100" name = "cl_content" placeholder = "   줄거리를 입력해주세요">
+	<input type = "text" size = "100" name = "cl_content" placeholder = "   줄거리를 입력해주세요">
 	<input type = "file" name = "contentwb"><br><br><br>
 
 
@@ -73,7 +73,7 @@
 <br><br><br>
 </div>
 <% 
-session.setAttribute("sessionTitle",title);
+session.setAttribute("sessionTitle",title);		//생성된 웹툰 폴더에 웹툰을 집어넣기 위해 title 값을 넘김 
 %>
 <%@ include file="../bar/footer.jsp"%>
 <!-- /.container -->

@@ -45,7 +45,6 @@
 <body>
 <%@include file="../bar/menu.jsp" %>
 <%@include file="../bar/navigationBar.jsp" %>
-
 <%if (check1 == 1){ 
 //세션 아이디와 비밀번호가 일치할 때 실행되는 문
 %>
@@ -78,6 +77,7 @@
 	<form action = "changeAge.jsp" method="post" name = "changeAge" class = "bottom">
 		<label class = "label1">나이 변경</label><%= b.getAge() %><br><br>
 		<input type = "text" name = "age" required class = "input3">
+		<input type = "hidden" name = "pw" value = "<%=pw %>">
 		<input type="submit" name="changeAge" value = "나이 변경"> 
 	</form>	
 

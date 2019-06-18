@@ -73,16 +73,16 @@
                 <label for="name">NAME</label>
               </div>
                 <div class="form-label-group">
-                <input type="radio" value = "2" id="state" name = "state" placeholder="state" autofocus> 독자
+                <input type="radio" value = "2" id="state" name = "state" placeholder="state" autofocus style = "margin-right : 10px;"> 독자
                 <br>
-                <input type="radio" value = "3" id="state" name = "state" placeholder="state" autofocus> 작가
+                <input type="radio" value = "3" id="state" name = "state" placeholder="state" autofocus style = "margin-right : 10px;"> 작가
 
    				</div>
 
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
               <button class="btn btn-default btn-warning btn-block text-uppercase" type="button" onclick = "location.href = '../main_page/MainPage.jsp'">돌아가기</button>
               
-              <a class="d-block text-center mt-2 small" href="login.jsp">Sign In</a>
+              <a class="d-block text-center mt-2 small" href="login.jsp" style = "color : black">Sign In</a>
               <hr class="my-4">
               <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
               <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign up with Facebook</button>

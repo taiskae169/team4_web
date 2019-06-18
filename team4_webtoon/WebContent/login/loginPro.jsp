@@ -35,7 +35,7 @@
 		</script>
 		<%session.setAttribute("sessionID",id); %>
 		<%} else{
-		session.setAttribute("sessionID",id);
+		session.setAttribute("sessionID",id);		//로그인 성공하면 아이디와 회원 등급을 세션으로 넘긴다.
 		session.setAttribute("sessionSTATE",level);
 		
 		response.sendRedirect("../main_page/MainPage.jsp");

@@ -146,6 +146,7 @@ public class noticeDAO {
 				member = new noticeVO();
 				dbpasswd = rs.getInt("nt_num");
 				member.setNt_content(rs.getString("nt_content"));
+				member.setNt_title(rs.getString("nt_title"));
 			
 			}else
 				x = -1;

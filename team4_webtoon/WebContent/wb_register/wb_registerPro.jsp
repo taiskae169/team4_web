@@ -6,8 +6,11 @@
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
     <%@ page import = "webtoon.list.*" %>
-
+<%@ page import = "webtoon.genre.*" %>
+<%@ page import = "webtoon.week.*" %>
 <%
+
+
 
 	int size = 10*1024*1024;
 	String title = "";
@@ -57,6 +60,18 @@
 		width : 100%;
 		height : 150px;
 	}
+	.label1{
+		width:150px;
+		margin-bottom:60px;
+	}
+	.input1{
+		margin-right:20px;
+	}
+	
+	.input2{
+		margin-right:20px;
+		margin-left:20px;
+	}	
 </style>
 </head>
 <body>
@@ -65,7 +80,7 @@
 <%@include file="../bar/navigationBar.jsp" %>
 
 	<!-- Page Content -->
-<div class="container">
+<div class="container" style = "margin-top: 100px; margin-bottom : 50px;">
 
   <!-- Page Heading -->
 
@@ -75,57 +90,42 @@
 
   	<form action = "fileCheck.jsp" method="post">
 		<div>
-	<b>작품제목</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<%= title %><br><br><br>
-	<b>소제목</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<label class = "label1">작품 제목</label>
+				<%= title %><br>
+	<label class = "label1">소제목</label>
 				<%= sub_title %>
-				<br><br><br>
-	<b>장르</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<%switch (gen){
-		case 0 : %>일상<%break;
-		case 1 : %>개그<%break;
-		case 2 : %>판타지<%break;
-		case 3 : %>액션<%break;
-		case 4 : %>드라마<%break;
-		case 5 : %>순정<%break;
-		case 6 : %>감성<%break;
-		case 7 : %>스릴러<%break;
-		case 8 : %>시대극<%break;
-		case 9 : %>스포츠<%break;
-		
-	} %>
-				<br><br><br>
-	<b>태그</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			
-				<%= tag %>
-				<br><br><br>
-	<b>연재요일</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
-	<%switch (week){ 
-		case 7 : %>일요일<%break;
-		case 1 : %>월요일<%break;
-		case 2 : %>화요일<%break;
-		case 3 : %>수요일<%break;
-		case 4 : %>목요일<%break;
-		case 5 : %>금요일<%break;
-		case 6 : %>토요일<%break;
-		case 0 : %>도전만화<%break;
-		
-	}%>
-		
-				<br><br><br>
-	<b>줄거리</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<%= sum %>
-				<br><br><br>
+				<br>
+	<label class = "label1">장르</label>
+	<%
+	genreDAO a = genreDAO.getInstance();
+	genreVO c = a.genreCheck(gen);
 	
-	<b>작가</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			
+	weekDAO week1 = weekDAO.getInstance();
+	weekVO week2 = week1.weekCheck(week);
+	%>
+	<%= c.getValue() %>
+				<br>
+	<label class = "label1">태그</label>			
+				<%= tag %>
+				<br>
+	<label class = "label1">연재요일</label>
+	<%= week2.getValue() %>
+		
+				<br>
+	<label class = "label1">줄거리</label>
+				<%= sum %>
+				<br>
+	
+	<label class = "label1">작가</label>	
 				<%= writer %>
-				<br><br><br>
+				<br>
 	  <input type = "hidden" name = "title" value="<%=title %>">
       <input type = "hidden" name = "sub_title" value="<%=sub_title %>">
       <input type = "hidden" name = "gen" value="<%=gen %>">
       <input type = "hidden" name = "tag" value="<%=tag %>">
       <input type = "hidden" name = "week" value="<%=week %>">
       <input type = "hidden" name = "sum" value ="<%=sum %>">
-            <input type = "hidden" name = "writer" value="<%=writer %>">
+      <input type = "hidden" name = "writer" value="<%=writer %>">
 
 				
 	
@@ -133,7 +133,6 @@
 
 <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">작품 등록</button>
 </form>
-<br><br><br>
 </div>
 
 

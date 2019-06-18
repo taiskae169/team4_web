@@ -33,6 +33,9 @@
 		width : 100%;
 		height : 150px;
 	}
+	.blacka{
+		color : black;
+	}
 </style>
 </head>
 <body>
@@ -41,7 +44,7 @@
 <%@include file="../bar/navigationBar.jsp" %>
 
 	<!-- Page Content -->
-<div class="container" style="margin-top:100px;">
+<div class="container" style="margin-top:100px; margin-bottom : 50px;">
 
   <!-- Page Heading -->
   <%if (search == "null"){%>
@@ -98,6 +101,10 @@ genreDAO a = genreDAO.getInstance();
         	<%=c.getValue() %>
           </p>
           <p class="card-text"><%=list.get(i).getTag() %></p>
+          <form method = "post" action = "../like/like.jsp">
+          	<input type = "hidden">
+          	<input type = "submit" value = "찜하기">
+          </form>
         </div>
       </div>
     </div>
@@ -133,21 +140,21 @@ genreDAO a = genreDAO.getInstance();
 
 				<tbody>
 					<tr>
-						<td><a href="search.jsp?select=2&addr=결혼생활">#결혼생활</a></td>
-						<td><a href="search.jsp?select=2&addr=대학생활">#대학생활</a></td>
-						<td><a href="search.jsp?select=2&addr=반려동물">#반려동물</a></td>
-						<td><a href="search.jsp?select=2&addr=배틀">#배틀</a></td>
+						<td><a href="search.jsp?select=2&addr=결혼생활" class = "blacka">#결혼생활</a></td>
+						<td><a href="search.jsp?select=2&addr=대학생활" class = "blacka">#대학생활</a></td>
+						<td><a href="search.jsp?select=2&addr=반려동물" class = "blacka">#반려동물</a></td>
+						<td><a href="search.jsp?select=2&addr=배틀" class = "blacka">#배틀</a></td>
 					<tr>
-						<td><a href="search.jsp?select=2&addr=복수">#복수</a></td>
-						<td><a href="search.jsp?select=2&addr=일진">#일진</a></td>
-						<td><a href="search.jsp?select=2&addr=솔로">#솔로</a></td>
-						<td><a href="search.jsp?select=2&addr=결혼생활">#연예인 </a></td>
+						<td><a href="search.jsp?select=2&addr=복수" class = "blacka">#복수</a></td>
+						<td><a href="search.jsp?select=2&addr=일진" class = "blacka">#일진</a></td>
+						<td><a href="search.jsp?select=2&addr=솔로" class = "blacka">#솔로</a></td>
+						<td><a href="search.jsp?select=2&addr=결혼생활" class = "blacka">#연예인 </a></td>
 
 					<tr>
-						<td><a href="search.jsp?select=2&addr=음식">#음식</a></td>
-						<td><a href="search.jsp?select=2&addr=외계인">#외계인</a></td>
-						<td><a href="search.jsp?select=2&addr=결투">#격투</a></td>
-						<td><a href="search.jsp?select=2&addr=직장생활">#직장생활</a></td>
+						<td><a href="search.jsp?select=2&addr=음식" class = "blacka">#음식</a></td>
+						<td><a href="search.jsp?select=2&addr=외계인" class = "blacka">#외계인</a></td>
+						<td><a href="search.jsp?select=2&addr=결투" class = "blacka">#격투</a></td>
+						<td><a href="search.jsp?select=2&addr=직장생활" class = "blacka">#직장생활</a></td>
 				</tbody>
 			</table>
 		</div>
@@ -183,7 +190,6 @@ genreDAO a = genreDAO.getInstance();
 			</table>
 		</div>
 	</div>
-	<br><br><br>
   
 </DIV>
 

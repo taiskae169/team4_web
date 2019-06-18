@@ -7,6 +7,7 @@
 <%
 	String id1 = (String)session.getAttribute("sessionID");
 	member.setId(id1);
+	String pw1 = request.getParameter("pw");
 	
 	registerDAO manager1 = registerDAO.getInstance();
 	manager1.changeAge(member);	

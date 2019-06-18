@@ -155,7 +155,9 @@
    <div class="container">
 	<%if (check1 == 4){%>
 	<form name = "register" method = "post" action ="nt_register.jsp">
-	<input type = "submit" value = "등록">
+	<div style = "float : right; margin-bottom:10px; margin-right: 40px;">
+	<input type = "submit" value = "공지사항 등록">
+	</div>
 	</form>
 	<%} %>
    <table class="table table-stripped">
@@ -191,7 +193,7 @@
          </td>
 
          <td>
-         <a style="color:black"href = "<%=request.getContextPath()%>/notice/noticeView.jsp?nt_num=<%=notice1.getNt_num()%>">
+         <a style="color:black"href = "<%=request.getContextPath()%>/notice/noticeView.jsp?nt_num=<%=notice1.getNt_num()%>">	
          	<%= notice1.getNt_title() %>
 		</a>
          </td>
@@ -220,7 +222,7 @@
       	<div>
       		<a href="#modal-close" title = "Close" class = "modal-close">Close</a>
       		<form action = "nt_deletePro.jsp" style = "margin:0 auto;">
-      		<p>댓글을 삭제하시겠습니까?</p>
+      		<p>공지를 삭제하시겠습니까?</p>
 	<input type = "hidden" name = "nt_writer" value = "<%=id1 %>">
 	<input type = "hidden" name = "nt_num" value = "<%=notice1.getNt_num() %>">
 	<input type = "submit" value = "삭제"/>

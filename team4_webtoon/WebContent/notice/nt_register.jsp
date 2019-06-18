@@ -23,6 +23,23 @@
   <!-- Custom styles for this template -->
   <link href="/team4_webtoon/resources/main_webtoon/scrolling/css/scrolling-nav.css" rel="stylesheet">
 
+<style>
+	.label1{
+		width:80px;
+		margin-bottom:40px;
+	}
+	.input1{
+		margin-right:20px;
+	}
+	
+	.input2{
+		margin-right:20px;
+		margin-left:20px;
+	}	
+	.bottom{
+		margin-bottom : 50px;
+	}
+</style>
 
 </head>
 <body id="page-top">
@@ -30,27 +47,27 @@
      <%@include file="/bar/menu.jsp" %>
    <%@include file="/bar/navigationBar.jsp" %>   
 
-        <div class="container">
+        <div class="container" style = "margin-top : 100px;">
 
             <div class="detail">
-                 <h1 class="my-4" style="text-align: center">공지 등록</h1><br><br><br>
+                 <h1 class="my-4" style="text-align: center;">공지 등록</h1>
          </div>   
 
    </div>
    
-   <div class="container">
+   <div class="container" style = "margin-top : 80px;">
    <form method = "post" action = "nt_registerPro.jsp">
-	카테고리 : 
+	<label class = "label1">카테고리</label>
 	<select name = "nt_category">
 		<option value = "0">서비스공지</option>
 		<option value = "1">컨텐츠공지</option>
 		<option value = "2">결제 관련</option>
 		<option value = "3">안내</option>
 		<option value = "4">문의</option>
-	</select><br><br>
-	제목 : 
-	<input type = "text" name = "nt_title" placeholder = "제목을 입력해주세요"><br><br>
-	내용 :<br>
+	</select><br>
+	<label class="label1">제목</label>
+	<input type = "text" name = "nt_title" placeholder = "제목을 입력해주세요"><br>
+	<label>내용을 입력해주세요</label><br>
 	<textarea name = "nt_content" rows="13" cols="40"></textarea><br><br>
 	<input type = "hidden" name = "nt_writer" value = "<%=id1 %>">
 	<input type="submit" value = "공지 등록">

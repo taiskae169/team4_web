@@ -3,6 +3,7 @@
 <%@ page import = "java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "webtoon.genre.*" %>
 <!DOCTYPE html>
 <%
 	String mywebtoon = (String)session.getAttribute("sessionID");
@@ -26,6 +27,10 @@
 	table{
 		width : 100%;
 		height : 150px;
+	}
+	
+	.input{
+		margin-right: 10px;
 	}
 </style>
 </head>
@@ -68,22 +73,15 @@
         <a href="#"><img class="card-img-top" src="/team4_webtoon/resources/image/webtoon/thumbnail/<%=list.get(i).getTitle() %>_som.jpg" alt=""></a>
         <div class="card-body">
           <h4 class="card-title">
-			 <a href="#"><%=list.get(i).getTitle() %></a>
+			 <a href="#" style = "color : black;"><%=list.get(i).getTitle() %></a>
           </h4>
-          <p class="card-text"><a href = "#"><%=list.get(i).getWriter() %></a></p>
+          <p class="card-text"><a href = "#" style = "color : black;"><%=list.get(i).getWriter() %></a></p>
           <p class="card-text">
-          <%switch (list.get(i).getGen()){ 
-        	  case "0" : %>일상<%break;
-        	  case "1" : %>개그<%break;
-        	  case "2" : %>판타지<%break;
-        	  case "3" : %>액션<%break;
-        	  case "4" : %>드라마<%break;	
-        	  case "5" : %>순정<%break;
-        	  case "6" : %>감성<%break;
-        	  case "7" : %>스릴러<%break;
-        	  case "8" : %>시대극<%break;
-        	  case "9" : %>스포츠<%break;
-        	  }%>
+			<%
+			genreDAO a = genreDAO.getInstance();
+			genreVO c = a.genreCheck(Integer.parseInt(list.get(i).getGen()));
+			%>
+			<%=c.getValue() %>
           </p>
           <p class="card-text"><%=list.get(i).getTag() %></p>
           <div class = "container">
@@ -92,14 +90,14 @@
           <form name = "createWB" method = "post" action = "../content/createWB.jsp?mw_num=<%=list.get(i).getNum()%>">
           <input type = "hidden" name = "title" value = "<%=list.get(i).getTitle() %>">
           <input type = "hidden" name = "writer" value = "<%=list.get(i).getWriter() %>">
-          <input type = "submit" value = "회차등록">&nbsp;&nbsp;
+          <input type = "submit" class = "input" value = "회차등록">
           </form>
 
 
           <form name = "adjust" method = "post" action = "wb_adjust.jsp">
           <input type = "hidden" name = "title" value = "<%=list.get(i).getTitle() %>">
           <input type = "hidden" name = "writer" value = "<%=list.get(i).getWriter() %>">
-          <input type = "submit" value = "수정">&nbsp;&nbsp;
+          <input type = "submit" class = "input" value = "수정">
           </form>
           
           <form name = "delete" method = "post" action = "wb_delete.jsp">

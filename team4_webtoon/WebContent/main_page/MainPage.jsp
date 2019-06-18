@@ -19,11 +19,11 @@
 		//선택한 요일이 없었을 때 오늘 날자를 받아온다. 0 = 일요일, 1=월요일~
 		
 				
-		int end = 3;
+		int end = 3;		//공지사항 3개를 받아오기 위해
 		List noticeList = null;
 		noticeDAO notice = noticeDAO.getInstance();
 		noticeList = notice.getNotice1(end);
-		int count = 0;
+		int count = 0;	
 		count = notice.count();
 		
 	%>
