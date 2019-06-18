@@ -158,6 +158,23 @@ public class likeDAO {
 			if(conn != null) try {conn.close();} catch(SQLException ex) {}
 		}
 	}
+	
+	public void deleteLikeall(int num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = getConnection();
+			String sql = "delete from like_wb where lwb_wb_num = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if(pstmt != null) try { pstmt.close();} catch(SQLException ex) {}
+			if(conn != null) try {conn.close();} catch(SQLException ex) {}
+		}
+	}
 
 	
 	

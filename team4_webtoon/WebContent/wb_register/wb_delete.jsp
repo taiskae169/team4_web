@@ -22,7 +22,7 @@
 	File Folder = new File(path);
 	
 	if(check1 == 1){
-		dao.deleteLike(num, id1);
+		dao.deleteLikeall(num);
 		cdao.deleteall(num);
 	%>
 		

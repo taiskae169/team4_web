@@ -615,7 +615,7 @@ public class registerDAO {
 					
 				}
 		
-		//회원 탈퇴 메서드
+		//회원 탈퇴 메서드, 탈퇴 회원인지 판별 위해 데이터를 삭제하지 않고 상태를 0으로 바꿔준다.
 		public void deleteMember(registerBean member) throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;

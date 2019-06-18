@@ -79,7 +79,7 @@ public class contentDAO {
 			if(conn != null) try {conn.close();} catch(SQLException ex) {}
 		}
 	}
-	
+	//회차 삭제 메서드
 	public void deleteContent(int mw_num) throws SQLException{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -99,7 +99,7 @@ public class contentDAO {
 		}
 	}
 	
-	
+	//웹툰 삭제시 모든 회차가 삭제되게 하기 위한 메서드
 	public void deleteall(int num) throws SQLException{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
