@@ -140,7 +140,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-        <img src="/team4_webtoon/resources/image/webtoon/wt_ep/wtContent.jpg" >
+        <img src="/team4_webtoon/resources/image/webtoon/wt_ep/content.jpg" >
         </div>
       </div>
       </div>
