@@ -87,8 +87,10 @@
           <%int prvCN=pEPn.getPrevClN();
           System.out.println(prvCN);
           if(prvCN != 0){ %>
-            <a class="nav-link js-scroll-trigger" href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=pEPn.getClTid()%>&cl_num=<%=prvCN%>"><img src="/team4_webtoon/resources/image/webtoon/wt_ep/prev.png" width="32px" height="32px"></a>
-         <%} else{} %>
+            <a class="nav-link js-scroll-trigger" href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=pEPn.getClTid()%>&cl_num=<%=prvCN%>"><img src="/team4_webtoon/resources/image/webtoon/wt_ep/prev3.png" width="32px" height="32px"></a>
+         <%} else{%>
+         <a class="nav-link js-scroll-trigger" href=""><img src="/team4_webtoon/resources/image/webtoon/wt_ep/prev1.png" width="32px" height="32px"></a>
+         <% } %>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#portfolio"><b>웹툰리그</b></a>
@@ -96,8 +98,10 @@
           <li class="nav-item">
           <% int nxtCN=pEPn.getNextClN();
           if(nxtCN !=0){ %>
-           <a class="nav-link js-scroll-trigger" href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=pEPn.getClTid()%>&cl_num=<%=nxtCN%>"><img src="/team4_webtoon/resources/image/webtoon/wt_ep/next.png" width="32px" height="32px"></a>
-         <%} else{} %>
+           <a class="nav-link js-scroll-trigger" href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=pEPn.getClTid()%>&cl_num=<%=nxtCN%>"><img src="/team4_webtoon/resources/image/webtoon/wt_ep/next3.png" width="32px" height="32px"></a>
+         <%} else{%>
+        	 <a class="nav-link js-scroll-trigger" href=""><img src="/team4_webtoon/resources/image/webtoon/wt_ep/next1.png" width="32px" height="32px"></a>
+        <% } %>
           </li>
         </ul>
       </div>
