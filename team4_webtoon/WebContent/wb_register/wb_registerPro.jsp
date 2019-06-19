@@ -20,10 +20,12 @@
 	int week = 0;
 	String writer = "";
 	String sum = "";
+	String thum_file="";
+	String recom_file="";
 	
 	String path = request.getRealPath("resources/image/webtoon/");
 	String path2 = request.getRealPath("resources/image/webtoon/thumbnail");
-
+	System.out.println(path2);
 	
 	try{
 
@@ -35,6 +37,9 @@
 		week = Integer.parseInt(multi.getParameter("week"));
 		sum = multi.getParameter("sum");
 		writer = multi.getParameter("writer");
+		thum_file = multi.getFilesystemName("thum_file");
+		recom_file = multi.getFilesystemName("recom_file");
+		
 		
 		path += title;
 		File Folder = new File(path);
@@ -127,6 +132,8 @@
       <input type = "hidden" name = "sum" value ="<%=sum %>">
       <input type = "hidden" name = "writer" value="<%=writer %>">
 
+      
+
 				
 	
 </div>
@@ -135,7 +142,7 @@
 </form>
 </div>
 
-
+	
 <%@ include file="../bar/footer.jsp"%>
 <!-- /.container -->
 </body>

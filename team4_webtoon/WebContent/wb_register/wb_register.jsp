@@ -80,14 +80,17 @@
 				<input type = "radio" name = "week" value = "4" class = "input2">목요일
 				<input type = "radio" name = "week" value = "5" class = "input2">금요일
 				<input type = "radio" name = "week" value = "6" class = "input2">토요일
-				<input type = "radio" name = "week" value = "7" class = "input2">일요일
-				<input type = "radio" name = "week" value = "0" class = "input2">도전만화
+				<input type = "radio" name = "week" value = "0" class = "input2">일요일
+				<input type = "radio" name = "week" value = "7" class = "input2">도전만화
 
 				<label class = "label1">줄거리 </label>
 				<input type="text" size="100" maxlength="30" name="sum" placeholder="줄거리를 입력하세요" style = "margin-bottom: 60px">
 				
-				<label class = "label1">썸네일 이미지 </label>크기 (700 x 400)에 맞게 올려주세요 (jpg 파일) 또한 작품 제목_som.jpg 형식을 지켜주세요<br>
-				<input type = "file" name = "file" style = "margin-bottom: 60px;"> <br>
+				<label class = "label1">썸네일 이미지 </label>크기 (500 x 325)에 맞게 올려주세요 (jpg 파일) 또한 작품 제목_som.jpg 형식을 지켜주세요<br>
+				<input type = "file" name = "thum_file" style = "margin-bottom: 60px;"> <br>
+				
+				<label class = "label1">추천 페이지용 썸네일 이미지 </label>크기 (750 x 300)에 맞게 올려주세요 (jpg 파일) 또한 작품 제목_recom.jpg 형식을 지켜주세요<br>
+				<input type = "file" name = "recom_file" style = "margin-bottom: 60px;"> <br>
 				
 				<b>내용을 확인하셨습니까?</b>
 				<input type = "radio" name = "writer" value = "<%=session.getAttribute("sessionID") %>" class = "input2" style = "margin-bottom:50px;" required>확인

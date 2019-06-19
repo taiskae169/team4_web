@@ -64,8 +64,11 @@
 	<label class = "label1">자동회차</label><%= a %>화 <br><br>
 	<label class = "label1">소제목</label>
 	<input type="text" size="100" maxlength="30" name="cl_title" placeholder="  소제목을 입력해주세요"> 
-	<label class = "label1">내옹</label>
-	<input type = "text" size = "100" name = "cl_content" placeholder = "   줄거리를 입력해주세요">
+	
+	<label class = "label1">회차 썸네일</label>
+	<input type = "file" name = "thum"><br><br><br>
+	
+	<label class = "label1">웹툰 등록</label>
 	<input type = "file" name = "contentwb"><br><br><br>
 
 

@@ -145,7 +145,7 @@
           <div class="card-footer">
           	<div style="float:right;">
             <% 
-            		int likeCh = dao.likeCh(cmtid, Integer.parseInt(num));
+            		int likeCh = dao.likeCh(id , Integer.parseInt(num));
             		// 지금 로그인한 사람이 좋아요/싫어요에 참여했는지 확인, 0일시 미참여/ 1일시 좋아요/ 2일 시 싫어요 참여를 뜻함
             		
             		if(likeCh==0){%>

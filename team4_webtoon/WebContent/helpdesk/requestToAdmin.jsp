@@ -16,10 +16,9 @@
 		var cate2 = document.getElementById("forcate2");
 		if(value==1){
 			cate1.style.display ="block";
-			cate2.style.display ="none";
+
 		}else{
 			cate1.style.display ="none";
-			cate2.style.display ="block";
 		}
 	}
 

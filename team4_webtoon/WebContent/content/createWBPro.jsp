@@ -17,6 +17,7 @@
 	String cl_content = "";
 	int cl_title_id = 0;
 	String cl_writer = "";
+	String cl_thum = "";
 	
 	ArrayList<String> contentwb = new ArrayList<String>();
 
@@ -27,9 +28,11 @@
 		MultipartRequest multi1=new MultipartRequest(request,path,size,"UTF-8",new DefaultFileRenamePolicy());	//경로에 이미지 저장
 		title = multi1.getParameter("title");	
 		cl_title = multi1.getParameter("cl_title");
-		cl_content = multi1.getParameter("cl_content");
+		cl_content = multi1.getFilesystemName("contentwb");
 		cl_writer = multi1.getParameter("cl_writer");
 		cl_title_id = Integer.parseInt(multi1.getParameter("cl_title_id"));
+		cl_thum = multi1.getFilesystemName("thum");
+		
 
 	}catch (Exception e){
 		e.printStackTrace();
@@ -93,6 +96,7 @@
 		<input type = "hidden" name = "cl_content" value="<%=cl_content %>">
 		<input type = "hidden" name = "cl_title_id" value="<%=cl_title_id %>">
 		<input type = "hidden" name = "cl_writer" value="<%=cl_writer %>">
+		<input type = "hidden" name = "wt_ep_img" value="<%=cl_thum %>">
 		<button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">회차 등록</button>
 	</form>
 	</div>
