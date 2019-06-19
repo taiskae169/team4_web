@@ -195,25 +195,53 @@ public class StarDAO {
 		//System.out.println("test1");
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql="";
 		try {
 			//System.out.println("test2");
 			conn = getConnection();
 			pstmt = conn.prepareStatement("update main_webtoon set mw_star=(select sum(cl_star)/count(cl_star) from content where cl_title_id=?) where mw_num=?");
 			pstmt.setInt(1,mw_num);
 			pstmt.setInt(2, mw_num);
-			pstmt.executeUpdate();				
-			//System.out.println("test3");
+			pstmt.executeUpdate();
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {
 			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
-		}		
+		}
 	} 
 	
-	
-	
+	/*
+	public int updateMWStar(int mw_num) throws Exception{
+		//System.out.println("test1");
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		ResultSet rs = null;
+		int mwStar=0;
+		try {
+			//System.out.println("test2");
+			conn = getConnection();
+			pstmt = conn.prepareStatement("update main_webtoon set mw_star=(select sum(cl_star)/count(cl_star) from content where cl_title_id=?) where mw_num=?");
+			pstmt.setInt(1,mw_num);
+			pstmt.setInt(2, mw_num);
+			pstmt.executeUpdate();
+			//System.out.println("test3");
+			pstmt2=conn.prepareStatement("select mw_num,mw_title,mw_star from main_webtoon where mw_num=?");
+			pstmt2.setInt(1, mw_num);
+			rs=pstmt2.executeQuery();
+			if(rs.next()) {
+				mwStar=rs.getInt("mw_star");
+			}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return mwStar;
+	} 
+	*/
 	
 	
 	

@@ -80,7 +80,7 @@ public class WTepDAO {
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}		
 		return wtDetail;
-	} //웹툰별 에피소드 리스트를 리턴하는 메소드
+	} //웹툰 상세정보(태그,장르,줄거리 등)를 리턴하는 메소드
 	
 	
 	public List getEpisodes(int mw_num,int start, int end) throws Exception {
@@ -188,6 +188,8 @@ public class WTepDAO {
 	} //웹툰별 에피소드 리스트를 리턴하는 메소드
 	
 	
+	
+	//뷰어에서 이전편 다음편 기능을 위한 메소드
 	public PrevNextEpVO getprevnextEP(int mw_num, int cl_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;

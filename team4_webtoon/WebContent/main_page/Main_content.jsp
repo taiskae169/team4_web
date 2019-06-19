@@ -62,7 +62,7 @@
         </div>
         <!-- 메인 페이지 이벤트 화면 끝 -->
         <div>
-	        <%if(week.equals("0")) {%>
+	        <%if(week.equals("7")) {%>
 	        	<h1 class="my-4">도전만화</h1>
 	        <%}else if(week.equals("1")){ %>
 	        	<h1>월요일</h1>
@@ -76,7 +76,7 @@
 	        	<h1 class="my-4">금요일</h1>
 	        <%}else if(week.equals("6")){ %>
 	        	<h1 class="my-4">토요일</h1>
-	        <%}else if(week.equals("7")){ %>
+	        <%}else if(week.equals("0")){ %>
 	        	<h1 class="my-4">일요일</h1>
 			<%} %>
 		</div>
@@ -99,6 +99,7 @@
           		<jsp:param value="<%=vo.getSub_title() %>" name="subtitle"/>
           		<jsp:param value="<%=vo.getWriter() %>" name="writer"/>
           		<jsp:param value="<%=vo.getStar() %>" name="star_point"/>
+          		<jsp:param value="<%=vo.getSum() %>" name="sum"/>
           </jsp:include>
 
          <!-- 웹툰 카드를 위한 리스트 파일을 include -->

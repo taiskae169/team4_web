@@ -65,7 +65,7 @@
 	      <div class="row">
 	        <div class="col-md-7">
 	          <a href="#">
-	            <img  class="img-fluid rounded mb-3 mb-md-0" src="/team4_webtoon/resources/image/webtoon/<%=vo.getTitle()%>/<%=vo.getTitle()%>_recom.jpg" alt="">
+	            <img  class="img-fluid rounded mb-3 mb-md-0" src="/team4_webtoon/resources/image/webtoon/thumbnail/<%=vo.getTitle()%>_recom.jpg" alt="">
 	            <%//700X300 %>
 	          </a>
 	        </div>

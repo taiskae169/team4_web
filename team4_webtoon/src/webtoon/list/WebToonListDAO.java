@@ -93,8 +93,8 @@ public class WebToonListDAO {
 		conn = getConnection();
 		ArrayList<WebToonListVO> list = new ArrayList<WebToonListVO>();
 		try {
-			String sql = "select rownum r, mw_num, mw_title, mw_sub_title, mw_reg, mw_writer, value gen, mw_week, mw_like, "
-					+ "mw_mag,mw_tag, mw_star, mw_star_p from (select rownum r, mw_num, mw_title, mw_sub_title, mw_reg, mw_writer, mw_gen, mw_week, mw_like, "
+			String sql = "select rownum r, mw_num, mw_title, mw_sub_title, mw_sum, mw_reg, mw_writer, value gen, mw_week, mw_like, "
+					+ "mw_mag,mw_tag, mw_star, mw_star_p from (select rownum r, mw_num, mw_title, mw_sub_title, mw_sum, mw_reg, mw_writer, mw_gen, mw_week, mw_like, "
 					+ "mw_mag,mw_tag, mw_star, mw_star_p from (select * from main_webtoon where MW_WEEK=? order by MW_LIKE asc)), WEB_GER where web_st = mw_gen";
 			// 별점을 기준으로 내림차순, 요일별 웹툰을 찾는 sql문
 			pstmt = conn.prepareStatement(sql);
@@ -105,6 +105,7 @@ public class WebToonListDAO {
 				vo.setNum(rs.getInt("mw_num"));
 				vo.setTitle(rs.getString("mw_title"));
 				vo.setSub_title(rs.getString("mw_sub_title"));
+				vo.setSum(rs.getString("mw_sum"));
 				vo.setReg(rs.getTimestamp("mw_reg"));
 				vo.setWriter(rs.getString("mw_writer"));
 				vo.setGen(rs.getString("gen"));
