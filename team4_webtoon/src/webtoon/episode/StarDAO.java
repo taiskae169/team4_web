@@ -37,7 +37,7 @@ public class StarDAO {
 			pstmt.setInt(1, cl_num);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				System.out.println(rs.getString("cl_writer"));
+				//System.out.println(rs.getString("cl_writer"));
 				AorR=rs.getString("cl_writer");
 			}
 		} catch(Exception ex) {

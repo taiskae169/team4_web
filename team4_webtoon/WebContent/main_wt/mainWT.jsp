@@ -280,7 +280,7 @@
 		<tbody>
 		<tr>
 			<th>
-				<a href="" class="link_wt" data-id="66053">
+				<a href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=wtDetail.getmNum() %>&cl_num=<%=episode.getCl_num()%>" class="link_wt" data-id="66053">
    				<img src="/team4_webtoon/resources/image/webtoon/wt_ep/<%=episode.getWt_ep_img()%>" alt="<%=episode.getCl_title() %>" width="71" height="41" onerror="this.src='/team4_webtoon/resources/image/webtoon/thumbnail/imgErr2.gif'">
    				</a>
    			</th>
