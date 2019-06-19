@@ -10,6 +10,12 @@
 		
 		registerDAO manager1 = registerDAO.getInstance();
 		manager1.changeName(member);
+		
+    	/*
+    	전체적인 로직
+    	
+    	이름 변경 멧더ㅡ
+    	*/
 %>
 	
 <!DOCTYPE html>

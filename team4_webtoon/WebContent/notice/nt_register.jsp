@@ -70,9 +70,9 @@
 	<label>내용을 입력해주세요</label><br>
 	<textarea name = "nt_content" rows="13" cols="40"></textarea><br><br>
 	<input type = "hidden" name = "nt_writer" value = "<%=id1 %>">
-	<input type="submit" value = "공지 등록">
-	<input type = "reset" value ="수정하기">
-	<input type = "button" onclick = "location.href='notice.jsp'" value = "돌아가기">
+	<input type="submit" value = "공지 등록" class="btn btn-info btn-lg">
+	<input type = "reset" value ="수정하기" class="btn btn-success btn-lg">
+	<input type = "button" onclick = "location.href='notice.jsp'" value = "돌아가기" class="btn btn-warning btn-lg">
 	</form>
       </div><br><br>
 	

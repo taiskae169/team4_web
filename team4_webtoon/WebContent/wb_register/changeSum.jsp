@@ -26,7 +26,7 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container" style = "margin-top : 100px;">
   	<br>
   	<h1 class="my-4" style="text-align: center">줄거리가 변경되었습니다.</h1>
   	<h5 style = "text-align : center">수정페이지로 돌아갑니다.</h5>

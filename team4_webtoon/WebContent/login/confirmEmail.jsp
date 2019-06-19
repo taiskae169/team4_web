@@ -12,6 +12,14 @@
 	
 	registerDAO manager = registerDAO.getInstance();
 	int check = manager.confirmEmail(email);			//이메일 중복 확인 메서드
+	
+	/*
+	전체적인 로직
+	
+	이메일 중복 확인 메서드
+	confirmEmail 메서드를 통해 입력받은 이메일이 중복되는지 확인한다.
+	
+	*/
 %>
 </head>
 <body>

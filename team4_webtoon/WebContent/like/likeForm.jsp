@@ -13,7 +13,14 @@
 
 	SearchDAO dao = new SearchDAO();
 	ArrayList<SearchVO> list = dao.getlike(id1);
-
+	
+	/*
+	전체적인 로직
+	
+	찜한 작품을 보여주는 메서드
+	getlike 메서드를 통해 찜을 누른 작품들을 보여준다.
+	
+	*/
 
 
 %>
@@ -37,7 +44,11 @@
 <div class = "container" style = "margin-top : 100px; margin-bottom : 50px;">
 <h1 class = "my-4" style = "text-align : center">찜한 작품</h1>
 <div class = "row" style = "margin-top : 50px;">
-
+<%if (list.size() == 0) {%>
+<div class = "container" style = "margin-bottm : 1000px;">
+<h2 class = "my-4" style = "text-align : center">찜한 작품이 없습니다.</h2>
+</div>
+<%} else { %>
     	<%for(int i = 0; i < list.size(); i++){%>
 
     <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
@@ -72,14 +83,17 @@
       </div>
     </div>
 
-    <%}%>   
+    <%}
+    
+    }%>   
+    
     </div>
     </div>
 	<br><br><br>
 <div class = "container" style = "margin-bottom : 50px;">
 <center>
 
-          	<button onclick = "location='../main_page/MainPage.jsp'">돌아가기</button>
+          	<button onclick = "location='../main_page/MainPage.jsp'" class = "btn btn-info btn-lg">돌아가기</button>
 
           	</center>
           	</div>

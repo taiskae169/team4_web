@@ -24,16 +24,16 @@
  	sVO.setsMw_num(sMN);	
  	sVO.setsCl_num(sCN);	
  	sDAO.insertStar(sVO);
- 	//System.out.println("별점 매기기 완료");
+ 	System.out.println("별점 매기기 완료");
  	
  	sDAO.updateContentStar(sCN);
- 	//System.out.println("별점 content에 업데이트 완료");
+ 	System.out.println("별점 content에 업데이트 완료");
  	
- 	sDAO.updateMWStar(cltid,sMN);
+ 	sDAO.updateMWStar(sMN);
  	System.out.println("main_webtoon에 mw_star 웹툰 평균 별점 업데이트 완료");
  	
  	sDAO.addSrecord(sId,sMN,sCN);
- 	//System.out.println("별점 like_check에 업데이트 완료");
+ 	System.out.println("별점 like_check에 업데이트 완료");
  	
  	//response.sendRedirect("wt_view.jsp");
  

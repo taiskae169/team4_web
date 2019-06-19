@@ -8,7 +8,12 @@
 	registerDAO a = registerDAO.getInstance();
 	
 	int check1 = a.level_check(id1);
-
+	
+	/*
+	전체적인 로직
+	
+	마이페이지
+	*/
 %>
 <!DOCTYPE html>
 <html lang="en">

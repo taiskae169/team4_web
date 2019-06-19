@@ -3,6 +3,7 @@
     <%@page import="webtoon.list.MWdetailVO"%>
   <%@ page import = "webtoon.content.contentVO" %> 
    <%@ page import = "webtoon.episode.WTepDAO" %>
+      <%@ page import = "webtoon.content.contentDAO" %>
     <%@ page import = "java.util.List" %>    
     <%@ page import = "java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
@@ -91,6 +92,8 @@
 	    /*
 	   numberEP = countEP-(currentPage-1)*pageSize;
 		*/
+		
+
 %>
 
 
@@ -123,7 +126,7 @@
 					String[] arrTag= wtTag.split(",");
 					
 					for(int i=0;i<arrTag.length;i++) {
-						System.out.println(arrTag[i]);
+						//System.out.println(arrTag[i]);
 						String tag = arrTag[i].trim();
 						%>
 						<a class="link_tag"  href="/team4_webtoon/search/search.jsp?select=2&addr=<%=tag%>">#<%=tag%></a>
@@ -135,8 +138,7 @@
 				<br />
 				<p>
 				<%=wtDetail.getWtSumm() %>
-				<br />
-				"거리"	<%= wtDetail.getWtStar()%>		
+				<br />	
 		<%int wtstar=wtDetail.getWtStar();
 				switch(wtstar){
 				case 5:
@@ -285,7 +287,21 @@
 				<b><%=avgS %></b>
 			
 			</th>
-			<th><%=sdf.format(episode.getCl_reg())%></th>
+			<th>
+			<%=sdf.format(episode.getCl_reg())%>
+			<%
+			String uid=(String)session.getAttribute("sessionID");
+			String wtwriter=wtDetail.getWtAuthor();
+			if(uid.equals(wtwriter)){ %>
+			<script language="JavaScript">
+   				 // 별정 등록 여부를 판단
+    			function openDeleteEP() {
+				}
+    		</script>
+			<img src="/team4_webtoon/resources/main_webtoon/sbadmin/vendor/fontawesome-free/svgs/solid/trash.svg"  width="22px" height="22px"  alt="에피소드 삭제하기" OnClick="openDeleteEP()"/>
+			<a href=""><img src="/team4_webtoon/resources/main_webtoon/sbadmin/vendor/fontawesome-free/svgs/solid/trash.svg"  width="22px" height="22px" /></a>
+			<%}else{} %>
+			</th>
 		</tr>
 		<%}%>
 		</tbody>	
@@ -313,27 +329,27 @@
         if (endPage > pageCount) endPage = pageCount;
              
         if (currentPage > 1) {%>
-        	<a  class="link_page" href="wtTable.jsp?pageNum=1">[처음]</a>
+        	<a  class="link_page" href="mainWT.jsp?pageNum=1">[처음]</a>
  <%  }
 
         if (currentPage > 1) {%>
-        	<a  class="link_page" href="wtTable.jsp?pageNum=<%= currentPage - 1 %>">[이전]</a>
+        	<a  class="link_page" href="mainWT.jsp?pageNum=<%= currentPage - 1 %>">[이전]</a>
  <%  }
 
         for (int i = startPage; i <= endPage; i++) {
            	 if (i == currentPage) {%>
-                <b><a  class="link_page"  href="wtTable.jsp?pageNum=<%=currentPage %>">[<%=currentPage%>]</a></b>
+                <b><a  class="link_page"  href="mainWT.jsp?pageNum=<%=currentPage %>">[<%=currentPage%>]</a></b>
  <%           } else {%>
-                <a  class="link_page"  href="wtTable.jsp?pageNum=<%= i %>">[<%= i %>]</a>
+                <a  class="link_page"  href="mainWT.jsp?pageNum=<%= i %>">[<%= i %>]</a>
  <% 		      }
         }
 
         if (currentPage < pageCount) { %> 
-           	<a  class="link_page"  href="wtTable.jsp?pageNum=<%= currentPage+1 %>">[다음]</a>
+           	<a  class="link_page"  href="mainWT.jsp?pageNum=<%= currentPage+1 %>">[다음]</a>
  <%  } 
         
         if (endPage <pageCount) {%>
-            <a  class="link_page"  href="wtTable.jsp?pageNum=<%= pageCount %>">[끝]</a>
+            <a  class="link_page"  href="mainWT.jsp?pageNum=<%= pageCount %>">[끝]</a>
 <%  }            
 
     }

@@ -9,6 +9,12 @@
 <%
 	contentDAO dao = contentDAO.getInstance();
 	dao.insertwb(member);
-	response.sendRedirect("../main_page/MainPage.jsp");
-
+	response.sendRedirect("final.jsp");
+	
+	/*
+	전체적인 로직
+	
+	받은 파라미터를 DB에 저장
+	저장 후 final 페이지로 이동
+	*/
 %>

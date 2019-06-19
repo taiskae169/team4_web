@@ -7,6 +7,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
+	
 	int cl_title_id = Integer.parseInt(request.getParameter("mw_num"));		
 	contentDAO dao = contentDAO.getInstance();
 	contentVO vo = new contentVO();
@@ -14,6 +15,14 @@
 	String title = request.getParameter("title");
 	int a = dao.getAuto(cl_title_id);			//자동회차를 생성하는 메서드
 	
+	/*
+	전체적인 로직
+	
+	자동 회차를 위해 mw_num을 받아와서 cl_title_id에 넣는다.
+	웹툰 폴더에 이미지를 넣기 위해 제목을 받아온다. 제목을 받아서 세션으로 넘긴다. (경로상 ../../title 이 되게 하기 위해)
+	
+	=>createWBPro 로 넘어감
+	*/
 %>
 
 <html>
@@ -61,7 +70,7 @@
 
 
 	<b>내용을 확인하셨습니까?</b>
-	<input type = "radio" name = "cl_writer" value = "<%=session.getAttribute("sessionID") %>" class = "input2" style = "margin-bottom:50px;">확인
+	<input type = "radio" name = "cl_writer" value = "<%=session.getAttribute("sessionID") %>" class = "input2" style = "margin-bottom:50px;" required>확인
 	<br><br><br>
 	<input type = "hidden" name = "title" value = "<%=title %>">
 	<input type = "hidden" name = "cl_title_id" value = "<%=cl_title_id %>">

@@ -82,8 +82,7 @@ public class contentDAO {
 	//회차 삭제 메서드
 	public void deleteContent(int mw_num) throws SQLException{
 		Connection conn = null;
-		PreparedStatement pstmt = null;
-		
+		PreparedStatement pstmt = null;		
 		try {
 			conn = getConnection();
 			String sql = "delete from content where cl_num=?";
@@ -122,7 +121,7 @@ public class contentDAO {
 	
 	
 	
-	
+	//수정 메서드
 	public contentVO adjust(int cl_num) throws Exception{
 		contentVO member = null;
 		int dbpasswd = 0;

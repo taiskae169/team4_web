@@ -12,6 +12,11 @@
 	
 	registerDAO manager = registerDAO.getInstance();
 	int check = manager.confirmId(id);					//id 중복 확인 메서드
+	/*
+	전체적인 로직
+	
+	아이디 중복 확인 메서드
+	*/
 %>
 </head>
 <body>

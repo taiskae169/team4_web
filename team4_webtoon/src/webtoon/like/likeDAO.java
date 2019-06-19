@@ -36,6 +36,7 @@ public class likeDAO {
 		return conn;
 	}//connection 풀을 제공하는 메소드
 	
+	//like_wb 테이블에 데이터 등록
 	public void insertlikeWebtoon(likeVO like_wb) throws SQLException{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -59,7 +60,7 @@ public class likeDAO {
 	
 	
 	
-	
+	//번호와 이름을 받아 리스트를 받아온다
 	public ArrayList<likeVO> getAddrs(int num, String id) throws SQLException{
 		ArrayList<likeVO> list = new ArrayList<likeVO>();
 		Connection conn = null;
@@ -111,7 +112,7 @@ public class likeDAO {
 	
 	
 	
-	
+	//번호와 이름을 받아 리스트 반환
 	public likeVO like(int num, String id) throws Exception{
 		likeVO member = null;
 
@@ -141,6 +142,7 @@ public class likeDAO {
 		return member;
 	}
 	
+	//찜한 작품을 삭제하는 메서드
 	public void deleteLike(int num, String id) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -159,6 +161,7 @@ public class likeDAO {
 		}
 	}
 	
+	//웹툰을 삭제하면 찜한 리스트도 삭제
 	public void deleteLikeall(int num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;

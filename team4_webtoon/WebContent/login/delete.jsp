@@ -25,6 +25,12 @@
 	registerDAO a = registerDAO.getInstance();
 	a.deleteMember(member);
 	session.invalidate();
+	/*
+	전체적인 로직
+	
+	회원 탈퇴 페이지
+	테이블에 0 회원 탈퇴 항목이 있기 때문에 DB에서 데이터를 삭제하는 것이 아니라 state 값을 0으로 변경시켜준다
+	*/
 %>
 
 <h1>회원탈퇴에 성공하였습니다.</h1>
