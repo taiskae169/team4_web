@@ -335,6 +335,11 @@
 					<small class="text-muted">&#9734;</small>
 				<%}
 					break;
+				case 0:
+					for(int k=0;k<5;k++){ %>
+					<small class="text-muted">&#9734;</small>
+				<%}
+					break;
 				}
 				
 				int sP=episode.getMw_star_p();	
@@ -351,7 +356,7 @@
 			String wtwriter=wtDetail.getWtAuthor();
 			if(uid!=null){
 				if(uid.equals(wtwriter)){ %>
-			<a href="#open-Moda<%=i%>"><img src="/team4_webtoon/resources/main_webtoon/sbadmin/vendor/fontawesome-free/svgs/solid/trash.svg"  width="22px" height="22px"/></a>
+			<a href="#open-Moda<%=i%>"><img src="/team4_webtoon/resources/main_webtoon/sbadmin/vendor/fontawesome-free/svgs/regular/trash-alt.svg"  width="22px" height="22px"/></a>
 			<%}else{} }%>
 			</th>
 		</tr>

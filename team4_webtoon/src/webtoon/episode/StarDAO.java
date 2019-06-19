@@ -25,12 +25,44 @@ public class StarDAO {
 		return ds.getConnection();
 	}
 	
+	//로그인 한 아이디가 
+	public String checkIDstate(int cl_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String AorR=null;
+		try {
+			conn=getConnection();
+			pstmt=conn.prepareStatement("select cl_num,cl_title,cl_title_id,cl_writer from content where cl_num=?");
+			pstmt.setInt(1, cl_num);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				System.out.println(rs.getString("cl_writer"));
+				AorR=rs.getString("cl_writer");
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return AorR;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public boolean checkStar(String id, int mw_num, int cl_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		boolean yn=false;
-		String sql="";
 		try {
 			conn=getConnection();
 			pstmt=conn.prepareStatement("select * from like_check where id=? and mw_num=? and cl_num=?");
@@ -50,6 +82,17 @@ public class StarDAO {
 		}
 		return yn;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public void addSrecord (String id, int mw_num, int cl_num ) throws Exception{
 		Connection conn = null;

@@ -43,60 +43,62 @@
 
 	<% 
 	if(sId!=null){
-		boolean yn = starDAO.checkStar(sId,sMN,sCN);
-			if(yn){%>
-			<span name="yesS" id="yesS" >참여하셨습니다</span>
-		<%}else{ %>
-		<form name="starForm"  method="post" action="/team4_webtoon/webtoon_view/starPro.jsp">
-		<input type="hidden" name="sId" value="<%=sId %>" />
-		<input type="hidden" name="mw_num" value="<%= sMN%>" />
-		<input type="hidden" name="cl_num" value="<%=sCN %>" />
-		<input type="hidden" name="cl_title_id" value="<%= sMN%>" />
-		<select id="starSelect"  name="starSelect">
-			<option value=5 selected>
-				<%for(int j=5;j >0;j--){%>
-					<small class="text-muted">&#9733;</small>
-				<%}%>
-			</option>
-			<option value=4 >			
-				<%for(int j=4;j >0;j--){%>
-					<small class="text-muted">&#9733;</small>
-				<%}%>
-				<%for(int i=0;i<1;i++){ %>
-					<small class="text-muted">&#9734;</small>
-				<%} %>
-			</option>
-			<option value=3 >
-				<%for(int j=3;j >0;j--){%>
-					<small class="text-muted">&#9733;</small>
-				<%}%>
-				<%for(int i=0;i<2;i++){ %>
-					<small class="text-muted">&#9734;</small>
-				<%} %>
-			</option>	
-			<option value=2 >
-				<%for(int j=2;j >0;j--){%>
-					<small class="text-muted">&#9733;</small>
-				<%}%>
-				<%for(int i=0;i<3;i++){ %>
-					<small class="text-muted">&#9734;</small>
-				<%} %>
-			</option>	
-			<option value=1 >
-				<%for(int j=1;j >0;j--){%>
-					<small class="text-muted">&#9733;</small>
-				<%}%>
-				<%for(int i=0;i<4;i++){ %>
-					<small class="text-muted">&#9734;</small>
-				<%}%>
-			
-			</option>		
-		</select>
-		<%-- <input type="submit" name="confirm_star" value="확인" >--%> 
-		<input type="button" name="confirm_star" value="확인" 
+		String AorR=starDAO.checkIDstate(sCN);
+		if(sId.equals(AorR)){}else{
+			boolean yn = starDAO.checkStar(sId,sMN,sCN);
+				if(yn){%>
+				<span name="yesS" id="yesS" >참여하셨습니다</span>
+				<%}else{ %>
+				<form name="starForm"  method="post" action="/team4_webtoon/webtoon_view/starPro.jsp">
+				<input type="hidden" name="sId" value="<%=sId %>" />
+				<input type="hidden" name="mw_num" value="<%= sMN%>" />
+				<input type="hidden" name="cl_num" value="<%=sCN %>" />
+				<input type="hidden" name="cl_title_id" value="<%= sMN%>" />
+				<select id="starSelect"  name="starSelect">
+				<option value=5 selected>
+					<%for(int j=5;j >0;j--){%>
+						<small class="text-muted">&#9733;</small>
+					<%}%>
+				</option>
+				<option value=4 >			
+					<%for(int j=4;j >0;j--){%>
+						<small class="text-muted">&#9733;</small>
+					<%}%>
+					<%for(int i=0;i<1;i++){ %>
+						<small class="text-muted">&#9734;</small>
+					<%} %>
+				</option>
+				<option value=3 >
+					<%for(int j=3;j >0;j--){%>
+						<small class="text-muted">&#9733;</small>
+					<%}%>
+					<%for(int i=0;i<2;i++){ %>
+						<small class="text-muted">&#9734;</small>
+					<%} %>
+				</option>	
+				<option value=2 >
+					<%for(int j=2;j >0;j--){%>
+						<small class="text-muted">&#9733;</small>
+					<%}%>
+					<%for(int i=0;i<3;i++){ %>
+						<small class="text-muted">&#9734;</small>
+					<%} %>
+				</option>	
+				<option value=1 >
+					<%for(int j=1;j >0;j--){%>
+						<small class="text-muted">&#9733;</small>
+					<%}%>
+					<%for(int i=0;i<4;i++){ %>
+						<small class="text-muted">&#9734;</small>
+					<%}%>		
+				</option>		
+			</select>
+			<%-- <input type="submit" name="confirm_star" value="확인" >--%> 
+			<input type="button" name="confirm_star" value="확인" 
         							OnClick="openConfirmstar(this.form)">
-	</form>
-	<% }
+		</form>
+		<% }
+		}
 	} else {
 		//response.sendRedirect("/team4_webtoon/webtoon_view/viewerPage.jsp");
 		//response.sendRedirect("/team4_webtoon/login/login.jsp");
