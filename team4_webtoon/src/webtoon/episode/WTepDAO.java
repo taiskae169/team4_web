@@ -201,6 +201,8 @@ public class WTepDAO {
 			pstmt.setInt(2, cl_num);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
+				
+				/*
 				System.out.println(rs.getInt("cl_num"));
 				System.out.println(rs.getString("cl_title"));
 				System.out.println(rs.getInt("cl_title_id"));
@@ -208,6 +210,7 @@ public class WTepDAO {
 				System.out.println(rs.getString("prev_cl_title"));
 				System.out.println(rs.getInt("next_cl_num"));
 				System.out.println(rs.getString("next_cl_title"));
+				*/
 				
 				pEPn.setClN(rs.getInt("cl_num"));
 				pEPn.setClT(rs.getString("cl_title"));

@@ -78,14 +78,14 @@
       int clTid=mNum;
       PrevNextEpVO pEPn=null;
       pEPn=wtDAO.getprevnextEP(clTid,clNum);
-      System.out.println(pEPn.getPrevClT());
+     // System.out.println(pEPn.getPrevClT());
      %>
         
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ml-center">
           <li class="nav-item">
           <%int prvCN=pEPn.getPrevClN();
-          System.out.println(prvCN);
+          //System.out.println(prvCN);
           if(prvCN != 0){ %>
             <a class="nav-link js-scroll-trigger" href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=pEPn.getClTid()%>&cl_num=<%=prvCN%>"><img src="/team4_webtoon/resources/image/webtoon/wt_ep/prev3.png" width="32px" height="32px"></a>
          <%} else{%>
@@ -140,7 +140,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-        <img src="/team4_webtoon/resources/image/webtoon/wt_ep/content.jpg" >
+        <img src="/team4_webtoon/resources/image/webtoon/wt_ep/webtoon.gif" >
         </div>
       </div>
       </div>
