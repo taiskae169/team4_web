@@ -50,7 +50,7 @@
 	<%@include file="/bar/navigationBar.jsp" %>
 
   <!-- Page Content -->
-   <div class="container">
+   <div class="container" style="margin-top:100px; margin-bottom:50px;">
 
       <!-- Page Heading -->
       <h1 class="my-4">오늘의 추천 웹툰

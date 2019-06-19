@@ -15,7 +15,12 @@
 	
 	dao.chState(num, state);
 	
-	response.sendRedirect("comment.jsp?cmtNum=" + pageNum + "&mw_num="+mw_num+"&cl_num="+cl_num);
 	//작업 완료 후 다시 돌아가기 위한 항목
 	//이후 컨텐츠/웹툰 상세 페이지 완성 시 해당페이지로 변경 필요
 %>
+
+
+<script type="text/javascript">
+	alert("변경완료");
+	location.href = document.referrer;
+</script>

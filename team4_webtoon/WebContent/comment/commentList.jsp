@@ -149,11 +149,11 @@
             		// 지금 로그인한 사람이 좋아요/싫어요에 참여했는지 확인, 0일시 미참여/ 1일시 좋아요/ 2일 시 싫어요 참여를 뜻함
             		
             		if(likeCh==0){%>
-            		<a href="cmt_lk_ch.jsp?num=<%=num %>&pageNum=<%=cmtNum%>&mw_num=<%=mw_num %>&cl_num=<%=cl_num %>&like=1&ch=1">
+            		<a href="/team4_webtoon/comment/cmt_lk_ch.jsp?num=<%=num %>&pageNum=<%=cmtNum%>&mw_num=<%=mw_num %>&cl_num=<%=cl_num %>&like=1&ch=1">
 						<i class=" fas fa-thumbs-up" style="color:gray"></i>   
 					</a>
 					<%=like %>
-					<a href="cmt_lk_ch.jsp?num=<%=num %>&pageNum=<%=cmtNum%>&mw_num=<%=mw_num %>&cl_num=<%=cl_num %>&like=2&ch=1">
+					<a href="/team4_webtoon/comment/cmt_lk_ch.jsp?num=<%=num %>&pageNum=<%=cmtNum%>&mw_num=<%=mw_num %>&cl_num=<%=cl_num %>&like=2&ch=1">
 					<i class=" fas fa-thumbs-up" style="color:gray"></i>
 					</a> <%=hate %>  
 					<!-- 
@@ -169,7 +169,7 @@
 					 -->
 					<!-- 미참여 일 시 출력, 좋아요, 싫어요 모두 클릭 가능-->
 				<%}else if(likeCh==1){ %>
-				<a href="cmt_lk_ch.jsp?num=<%=num %>&pageNum=<%=cmtNum%>&mw_num=<%=mw_num %>&cl_num=<%=cl_num %>&like=1&ch=0">
+				<a href="/team4_webtoon/comment/cmt_lk_ch.jsp?num=<%=num %>&pageNum=<%=cmtNum%>&mw_num=<%=mw_num %>&cl_num=<%=cl_num %>&like=1&ch=0">
 					<i class=" fas fa-thumbs-up" style="color:blue"></i>   
 					</a>
 					<%=like %>
@@ -187,7 +187,7 @@
 					<i class=" fas fa-thumbs-up" style="color:gray"></i>   
 					</a>
 					<%=like %>
-					<a href="cmt_lk_ch.jsp?num=<%=num %>&pageNum=<%=cmtNum%>&mw_num=<%=mw_num %>&cl_num=<%=cl_num %>&like=2&ch=0">
+					<a href="/team4_webtoon/comment/cmt_lk_ch.jsp?num=<%=num %>&pageNum=<%=cmtNum%>&mw_num=<%=mw_num %>&cl_num=<%=cl_num %>&like=2&ch=0">
 					<i class=" fas fa-thumbs-up" style="color:red"></i>
 					</a> <%=hate %>  
 					
@@ -211,14 +211,14 @@
 					if(level ==4){%>
 						<%if(state==1){%>
 							
-							<a href="commentHide.jsp?num=<%=num %>&state=0&pageNum=<%=Integer.toString(cmtNum) %>&mw_num=<%=mw_num %>&cl_num=<%=cl_num %>" class="btn btn-primary btn-icon-split btn-sm" style="margin-left:10px;">
+							<a href="/team4_webtoon/comment/commentHide.jsp?num=<%=num %>&state=0&pageNum=<%=Integer.toString(cmtNum) %>&mw_num=<%=mw_num %>&cl_num=<%=cl_num %>" class="btn btn-primary btn-icon-split btn-sm" style="margin-left:10px;">
 			                    <span class="icon text-white-50">
 			                    	  <i class="fas fa-flag"></i>
 			                    </span>
 			                    <span class="text">댓글 보이기</span>
               		   		</a>
 						<%}else{ %>
-							<a href="commentHide.jsp?num=<%=num %>&state=1&pageNum=<%=Integer.toString(cmtNum) %>&mw_num=<%=mw_num %>&cl_num=<%=cl_num %>" class="btn btn-danger btn-icon-split btn-sm" style="margin-left:10px;">
+							<a href="/team4_webtoon/comment/commentHide.jsp?num=<%=num %>&state=1&pageNum=<%=Integer.toString(cmtNum) %>&mw_num=<%=mw_num %>&cl_num=<%=cl_num %>" class="btn btn-danger btn-icon-split btn-sm" style="margin-left:10px;">
 			                    <span class="icon text-white-50">
 			                    	  <i class="fas fa-flag"></i>
 			                    </span>
@@ -244,7 +244,7 @@
 		                    		<a href="#modal-close" title="Close" class="modal-close">Close</a>
 		                    		<!-- 창 닫기 -->            		
 									<p> 정말 삭제하시겠습니까? </p>
-									<a href="deleteCmt.jsp?num=<%=num %>" title="yes" style="margin-right:10px;">예</a>
+									<a href="/team4_webtoon/comment/deleteCmt.jsp?num=<%=num %>" title="yes" style="margin-right:10px;">예</a>
 									<a href="#modal-close" title="no" style="margin-left:10px;">아니요</a>
 								</div> <!-- 폼을 둘러싸고 있는 div -->
 			</div>  <!-- 팝업창 div -->
@@ -254,7 +254,7 @@
 		                    		<a href="#modal-close" title="Close" class="modal-close">Close</a>
 		                    		<!-- 창 닫기 -->            		
 									<p>수정할 내용을 써주세요 </p>
-									<form action="commentMod.jsp" name="mo_cmt" onsubmit="return r_che();">
+									<form action="/team4_webtoon/comment/commentMod.jsp" name="mo_cmt" onsubmit="return r_che();">
 										<input type="hidden" name="num" value="<%=num  %>" />
 										<textarea name="content" class="form-control" rows="3"></textarea>
 										<button type="submit"  Style="float:right">댓글 수정</button>

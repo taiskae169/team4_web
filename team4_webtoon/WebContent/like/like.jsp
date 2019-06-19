@@ -26,7 +26,7 @@
 			%>
 			<script>
 			alert("작품을 찜하셨습니다.");
-			history.go(-1);
+			location.href = document.referrer;
 			</script>
 			<%
 		}
@@ -35,7 +35,7 @@
 			%>
 			<script>
 			alert("찜한 작품을 삭제하였습니다.");
-			history.go(-1);
+			location.href = document.referrer;
 			
 			</script>
 			<%
