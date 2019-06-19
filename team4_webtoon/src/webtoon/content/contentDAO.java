@@ -80,14 +80,14 @@ public class contentDAO {
 		}
 	}
 	//회차 삭제 메서드
-	public void deleteContent(int mw_num) throws SQLException{
+	public void deleteContent(int cl_num) throws SQLException{
 		Connection conn = null;
 		PreparedStatement pstmt = null;		
 		try {
 			conn = getConnection();
 			String sql = "delete from content where cl_num=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, mw_num);
+			pstmt.setInt(1, cl_num);
 			pstmt.executeUpdate();
 			
 		}catch (Exception ex) {

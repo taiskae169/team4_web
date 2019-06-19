@@ -43,6 +43,63 @@
 	.link_page{text-decoration: none; color: #212529;}
 	.link_page:hover{text-decoration: underline; color: #212529;}
 	#wtDT {margin-top:100px;}
+	
+	
+				.modal-window {
+		  position: fixed;
+		  background-color: rgba(1, 1, 1, 0.15);
+		  top: 0;
+		  right: 0;
+		  bottom: 0;
+		  left: 0;
+		  z-index: 999;
+		  opacity: 0;
+		  pointer-events: none;
+		  -webkit-transition: all 0.3s;
+		  -moz-transition: all 0.3s;
+		  transition: all 0.3s;
+		}
+		
+		.modal-window:target {
+		  opacity: 1;
+		  pointer-events: auto;
+		}
+		
+		.modal-window>div {
+		  width: 400px;
+		  position: relative;
+		  margin: 10% auto;
+		  padding: 2rem;
+		  background: #f3f3f3;
+		  color: #444;
+		}
+		
+		.modal-window header {
+		  font-weight: bold;
+		}
+		
+		.modal-close {
+		  color: #aaa;
+		  line-height: 50px;
+		  font-size: 80%;
+		  position: absolute;
+		  right: 0;
+		  text-align: center;
+		  top: 0;
+		  width: 70px;
+		  text-decoration: none;
+		}
+		
+		.modal-close:hover {
+		  color: #000;
+		}
+		
+		.modal-window h1 {
+		  font-size: 150%;
+		  margin: 0 0 15px;
+		}
+	
+	
 </style>
 	<%--
 	.info_wt .publish, .info_wt .genre, .info_wt .tag{display:inline-float:left;marign}
@@ -294,11 +351,27 @@
 			String wtwriter=wtDetail.getWtAuthor();
 			if(uid!=null){
 				if(uid.equals(wtwriter)){ %>
-			<img src="/team4_webtoon/resources/main_webtoon/sbadmin/vendor/fontawesome-free/svgs/solid/trash.svg"  width="22px" height="22px"  alt="에피소드 삭제하기" OnClick="openDeleteEP()"/>
-			<a href=""><img src="/team4_webtoon/resources/main_webtoon/sbadmin/vendor/fontawesome-free/svgs/solid/trash.svg"  width="22px" height="22px" /></a>
+			<a href="#open-Moda<%=i%>"><img src="/team4_webtoon/resources/main_webtoon/sbadmin/vendor/fontawesome-free/svgs/solid/trash.svg"  width="22px" height="22px"/></a>
 			<%}else{} }%>
 			</th>
 		</tr>
+		
+		<div id="open-Moda<%=i %>" class="modal-window">
+		                    	<div>
+		                    		<a href="#modal-close" title="Close" class="modal-close">Close</a>            		
+									<div>
+			                    		<a href="#modal-close" title="Close" class="modal-close">Close</a>
+			                    		<!-- 창 닫기 -->            		
+										<p> 정말 삭제하시겠습니까? </p>
+										<a href="deleteContentPro.jsp?cl_num=<%=episode.getCl_num() %>" title="yes" style="margin-right:10px;">예</a>
+										<a href="#modal-close" title="no" style="margin-left:10px;">아니요</a>
+						 			</div> <!-- 폼을 둘러싸고 있는 div -->
+										
+									</form>
+								</div> <!-- 폼을 둘러싸고 있는 div -->
+						 </div>  <!--  요일 변경 팝업창 div -->
+						 
+						 
 		<%}%>
 		</tbody>	
 	</table>
