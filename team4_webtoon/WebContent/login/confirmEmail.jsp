@@ -12,7 +12,7 @@
 	
 	registerDAO manager = registerDAO.getInstance();
 	int check = manager.confirmEmail(email);			//이메일 중복 확인 메서드
-	
+	String y1 = "y1";
 	/*
 	전체적인 로직
 	
@@ -49,6 +49,7 @@
   function setemail()
     {		
     	opener.document.userinput.email.value="<%=email%>";
+    	opener.document.userinput.email1.value="<%=y1%>";
 		self.close();
 		}
 

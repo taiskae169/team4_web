@@ -12,6 +12,9 @@
 	
 	registerDAO manager = registerDAO.getInstance();
 	int check = manager.confirmId(id);					//id 중복 확인 메서드
+	
+	String y = "y";
+
 	/*
 	전체적인 로직
 	
@@ -51,7 +54,9 @@
   function setid()
     {		
     	opener.document.userinput.id.value="<%=id%>";
+    	opener.document.userinput.id1.value="<%=y%>";
+
 		self.close();
 		}
-  
+
 </script>

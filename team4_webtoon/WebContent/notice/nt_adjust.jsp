@@ -91,8 +91,8 @@ noticeVO b = adjust.content(nt_num);
 </textarea><br>
 	<input type = "hidden" name = "nt_writer" value = "<%=id1 %>">
 	<input type = "hidden" name = "nt_num" value = "<%=nt_num %>"><br>
-	<input type="submit"value = "변경" class="btn btn-success btn-lg">
-	<input type = "button" onclick = "location.href='notice.jsp'" value = "돌아가기" class="btn btn-warning btn-lg">
+	<input type="submit"value = "변경" class="btn btn-outline-dark btn-sm">
+	<input type = "button" onclick = "location.href='notice.jsp'" value = "돌아가기" class="btn btn-outline-dark btn-sm">
 	</form>
       </div>
 	

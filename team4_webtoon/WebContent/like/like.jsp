@@ -37,7 +37,7 @@
 		if(list.size() == 0){
 			dao.insertlikeWebtoon(member);
 			%>
-			<script>
+			<script type="text/javascript">
 			alert("작품을 찜하셨습니다.");
 			location.href = document.referrer;
 			</script>
@@ -46,7 +46,7 @@
 		else if (list.size() != 0){
 			dao.deleteLike(num, id1);
 			%>
-			<script>
+			<script type="text/javascript">
 			alert("찜한 작품을 삭제하였습니다.");
 			location.href = document.referrer;
 			

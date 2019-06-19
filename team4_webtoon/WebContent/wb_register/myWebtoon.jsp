@@ -73,9 +73,9 @@
         <a href="#"><img class="card-img-top" src="/team4_webtoon/resources/image/webtoon/thumbnail/<%=list.get(i).getTitle() %>_som.jpg" alt=""></a>
         <div class="card-body">
           <h4 class="card-title">
-			 <a href="#" style = "color : black;"><%=list.get(i).getTitle() %></a>
+			 <a href="/team4_webtoon/main_wt/mainWT.jsp?mw_num=<%=list.get(i).getNum()%>" style = "color : black;"><%=list.get(i).getTitle() %></a>
           </h4>
-          <p class="card-text"><a href = "#" style = "color : black;"><%=list.get(i).getWriter() %></a></p>
+          <p class="card-text"><a href="/team4_webtoon/search/search.jsp?select=1&addr=<%=list.get(i).getWriter()%>" style = "color : black;"><%=list.get(i).getWriter() %></a></p>
           <p class="card-text">
 			<%
 			genreDAO a = genreDAO.getInstance();
