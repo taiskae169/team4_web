@@ -281,7 +281,7 @@
 		<tr>
 			<th>
 				<a href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=wtDetail.getmNum() %>&cl_num=<%=episode.getCl_num()%>" class="link_wt" data-id="66053">
-   				<img src="/team4_webtoon/resources/image/webtoon/wt_ep/<%=episode.getWt_ep_img()%>" alt="<%=episode.getCl_title() %>" width="71" height="41" onerror="this.src='/team4_webtoon/resources/image/webtoon/thumbnail/imgErr2.gif'">
+   				<img src="/team4_webtoon/resources/image/webtoon/<%=wtDetail.getWtTitle() %>/<%=episode.getWt_ep_img()%>" alt="<%=episode.getCl_title() %>" width="71" height="41" onerror="this.src='/team4_webtoon/resources/image/webtoon/thumbnail/imgErr2.gif'">
    				</a>
    			</th>
 			<th>
@@ -344,7 +344,10 @@
 				
 				int sP=episode.getMw_star_p();	
 				int sSum=episode.getMw_star_sum();
-				double avgS=(double)sSum/sP;				
+				double avgS=(double)sSum/sP;
+				if(sP==0 || sSum==0){
+					avgS=0;
+				}	
 			%>
 				<b><%=avgS %></b>
 			
