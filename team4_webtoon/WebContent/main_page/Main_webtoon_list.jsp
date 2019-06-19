@@ -42,7 +42,7 @@
                 <%} %>
               </div>
               <div class="card-footer">
-              	<%for(; i<star_point/20; i++){ %>
+              	<%for(; i<star_point; i++){ %>
               	<!-- 별점을 받아 출력된 n개 만큼 출력 -->
                	 	<small class="text-muted">&#9733;</small>
                 <%}

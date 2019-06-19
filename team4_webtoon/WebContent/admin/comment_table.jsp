@@ -129,6 +129,19 @@
                   </tfoot>
                   <tbody>
                   <%
+                  	if(list.size()==0){%>
+                   <tr>
+                      <td>항목이 없습니다.</td>
+                  	  <td>-</td>
+                  	  <td>-</td>
+                  	  <td>-</td>
+                  	  <td>-</td>
+                  	  <td>-</td>
+                  	  <td>-</td>
+                  	  <td>-</td>
+                  	
+                   </tr>
+                  	<%}
                   	for(int i=0; i<list.size(); i++){
                   		cmtVO vo = list.get(i);
                   		String state;
