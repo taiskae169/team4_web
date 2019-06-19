@@ -67,7 +67,7 @@
 				<input type = "text" name = "tag" required >
 				<input type = "hidden" name = "title" value = "<%=title %>">
 				<input type = "hidden" name = "writer" value = "<%=writer %>">
-				<input type="submit" name="tag" value = "태그 변경" class = "btn btn-info btn-sm"> 
+				<input type="submit" name="tag" value = "태그 변경" class = "btn btn-outline-dark btn-sm"> 
 				<hr>
 		</div>
 	</form>
@@ -88,7 +88,7 @@
 		<input type = "radio" name = "week" value = "7" class = "input2">일요일
 		<input type = "hidden" name = "title" value = "<%=title %>">
 		<input type = "hidden" name = "writer" value = "<%=writer %>">
-		<input type="submit" name="genre" value = "요일 변경" class = "btn btn-info btn-sm input2">
+		<input type="submit" name="genre" value = "요일 변경" class = "btn btn-outline-dark btn-sm input2">
 		<hr>
 	</form>
 	
@@ -98,7 +98,7 @@
 		<input type = "text" name = "sub_title" required>
 		<input type = "hidden" name = "title" value = "<%=title %>">
 		<input type = "hidden" name = "writer" value = "<%=writer %>">
-		<input type="submit" name="sub_title" value = "소제목 변경" class = "btn btn-info btn-sm"> 
+		<input type="submit" name="sub_title" value = "소제목 변경" class = "btn btn-outline-dark btn-sm"> 
 		<hr>
 	</form>
 
@@ -123,7 +123,7 @@
 		<input type = "hidden" name = "title" value = "<%=title %>">
 		<input type = "hidden" name = "num" value = "<%=b.getNum() %>">
         <input type = "hidden" name = "writer" value = "<%=writer %>">
-		<input type="submit" name="genre" value = "장르 변경" class = "btn btn-info btn-sm input2"> 
+		<input type="submit" name="genre" value = "장르 변경" class = "btn btn-outline-dark btn-sm input2"> 
 		<hr>
 	</form>	
 
@@ -133,7 +133,7 @@
 	<input type = "text" name = "sum" required>
 	<input type = "hidden" name = "title" value = "<%=title %>">
 	<input type = "hidden" name = "writer" value = "<%=writer %>">
-	<input type = "submit" name = "sum" value = "줄거리 변경" class = "btn btn-info btn-sm">
+	<input type = "submit" name = "sum" value = "줄거리 변경" class = "btn btn-outline-dark btn-sm">
 	<hr>
 	</form>
 </div>

@@ -59,7 +59,7 @@
 		<option value = "2">태그 </option>
 		<option value = "3">장르 </option>
 	</select>
-	<input type='text' style = "margin-right:5px;"name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색" class="btn btn-info btn-sm">
+	<input type='text' style = "margin-right:5px;"name="addr" placeholder="내용을 입력하세요"/><input type='submit' value = "검색" class="btn btn-outline-dark btn-sm">
        </ASIDE>
 
 	</form>

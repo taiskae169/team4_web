@@ -64,7 +64,7 @@
 		<div>
 			<label class = "label1"><b>비밀번호 변경</b></label><br><br>
 				<input type = "password" name = "password" required class = "input1">
-				<input type="submit" name="changePw" value = "비밀번호 변경" class = "btn btn-info btn-sm"> 
+				<input type="submit" name="changePw" value = "비밀번호 변경" class = "btn btn-outline-dark btn-sm"> 
 		</div>
 		<hr>
 	</form>
@@ -80,7 +80,7 @@
 	<form action = "changeName.jsp" method="post" name = "changeName" class = "bottom">
 		<label class = "label1"><b>이름 변경</b></label><%=b.getName() %><br><br>
 		<input type = "text" name = "name" class = "input3" required>
-		<input type="submit" name="changeName" value = "이름 변경" class = "btn btn-info btn-sm"> 
+		<input type="submit" name="changeName" value = "이름 변경" class = "btn btn-outline-dark btn-sm"> 
 		<hr>
 	</form>
 
@@ -88,7 +88,7 @@
 		<label class = "label1"><b>나이 변경</b></label><%= b.getAge() %><br><br>
 		<input type = "text" name = "age" required class = "input3">
 		<input type = "hidden" name = "pw" value = "<%=pw %>">
-		<input type="submit" name="changeAge" value = "나이 변경" class = "btn btn-info btn-sm"> 
+		<input type="submit" name="changeAge" value = "나이 변경" class = "btn btn-outline-dark btn-sm"> 
 		<hr>
 	</form>	
 
@@ -96,7 +96,7 @@
 	<label class = "label1"><b>회원 탈퇴</b></label>
 	<br><br>
 	<input type = "password" name = "pw" placeholder = "비밀번호를 입력하세요." class = "input3" required>
-	<input type = "submit" name = "delete" value = "회원탈퇴" class = "btn btn-info btn-sm">
+	<input type = "submit" name = "delete" value = "회원탈퇴" class = "btn btn-outline-dark btn-sm">
 	
 	</form>
 </div>

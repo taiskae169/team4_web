@@ -94,7 +94,7 @@
 
    </div>
       <center>
-   <input type = "button" onclick = "location.href='notice.jsp'" value = "목록" style = "margin-bottom: 30px; "class="btn btn-info btn-lg">
+   <input type = "button" onclick = "location.href='notice.jsp'" value = "목록" style = "margin-bottom: 30px; "class="btn btn-outline-dark btn-lg">
 	</center>
     <%@include file="/bar/footer.jsp" %> 
      <!-- Bootstrap core JavaScript -->
