@@ -3,6 +3,8 @@
 <%@page import="webtoon.episode.WTepDAO"%>
 <%@page import="webtoon.episode.WTepVO"%>
 <%@page import="webtoon.episode.PrevNextEpVO"%>
+<%@page import="webtoon.bookmark.BookmarkDAO"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,27 +72,78 @@
 
 <style type="text/css">
 #STATICMENU { margin: 0pt; padding-top: 300px;  position: absolute; right: 0px; top: 0px;}
+
+		.modal-window {
+		  position: fixed;
+		  background-color: rgba(1, 1, 1, 0.15);
+		  top: 0;
+		  right: 0;
+		  bottom: 0;
+		  left: 0;
+		  z-index: 999;
+		  opacity: 0;
+		  pointer-events: none;
+		  -webkit-transition: all 0.3s;
+		  -moz-transition: all 0.3s;
+		  transition: all 0.3s;
+		}
+		
+		.modal-window:target {
+		  opacity: 1;
+		  pointer-events: auto;
+		}
+		
+		.modal-window>div {
+		  width: 400px;
+		  position: relative;
+		  margin: 10% auto;
+		  padding: 2rem;
+		  background: #f3f3f3;
+		  color: #444;
+		}
+		
+		.modal-window header {
+		  font-weight: bold;
+		}
+		
+		.modal-close {
+		  color: #aaa;
+		  line-height: 50px;
+		  font-size: 80%;
+		  position: absolute;
+		  right: 0;
+		  text-align: center;
+		  top: 0;
+		  width: 70px;
+		  text-decoration: none;
+		}
+		
+		.modal-close:hover {
+		  color: #000;
+		}
+		
+		.modal-window h1 {
+		  font-size: 150%;
+		  margin: 0 0 15px;
+		}
+
+
 </style>
 
 
 
 
-
-
-
-
-
-
-
-
-
+ <script language="JavaScript">
+     function goLoginfirst() {
+     alert("로그인 후 참여가능합니다.");
+     url = "/team4_webtoon/login/login.jsp";
+     open(url, "login",  "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300, height=200");
+     return;
+     }
+</script>
 
 
 </head>
-
-
-
-
 
 <%
 
@@ -107,6 +160,7 @@
 	wtEP=wtDAO.getWTContent(clNum,mNum);
 
 %>
+
 
 
 <body id="page-top" onload="InitializeStaticMenu();">
@@ -176,15 +230,26 @@
         <%} %>
         </ul>
      	<ul class="nav navbar-nav navbar-right">
-     	<%-- if() --%>
+     	<% 
+     	BookmarkDAO bmDAO=BookmarkDAO.getInstance();
+     	if(id!=null){   	  
+           boolean BMyn=bmDAO.checkBM(id,clNum);
+           if(BMyn){%>
       		<li>
-      		<a class="nav-link js-scroll-trigger" href=""><img src="/team4_webtoon/resources/image/webtoon/wt_ep/bmn.png" width="22px" height="22px"></a>
-			</li>
+      		<a class="nav-link js-scroll-trigger" ><img src="/team4_webtoon/resources/image/webtoon/wt_ep/bmy.png" width="22px" height="22px"></a>
+      		</li>
+	<%}else{%>
+            <li>
+      		<a class="nav-link js-scroll-trigger" href="/team4_webtoon/mypage/bmPro.jsp?mw_num=<%=mNum %>&cl_num=<%=clNum%>"><img src="/team4_webtoon/resources/image/webtoon/wt_ep/bmn.png" width="22px" height="22px"></a>			
+			</li>	
+	<%}
+       }else{%>
+            <li>
+      		<a class="nav-link js-scroll-trigger"  href="/team4_webtoon/login/login.jsp" Onclick="goLoginFirst();"><img src="/team4_webtoon/resources/image/webtoon/wt_ep/bmn.png" width="22px" height="22px"></a>
+      		</li>
+  <%}%>
 			<li>
-      		<a class="nav-link js-scroll-trigger" href=""><img src="/team4_webtoon/resources/image/webtoon/wt_ep/bmy.png" width="22px" height="22px"></a>
-			</li>
-			<li>
-			<a class="nav-link js-scroll-trigger" href="/team4_webtoon/main_wt/mainWT.jsp?mw_num=<%=mNum %>"><img src="/team4_webtoon/resources/image/webtoon/wt_ep/close1.png" width="22px" height="22px"></a>
+			<a class="nav-link js-scroll-trigger" href="/team4_webtoon/main_wt/mainWT.jsp?mw_num=<%=mNum %>" ><img src="/team4_webtoon/resources/image/webtoon/wt_ep/close1.png" width="22px" height="22px"></a>
 			</li>
     	</ul>
        </div>
