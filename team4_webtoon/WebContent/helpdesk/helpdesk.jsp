@@ -59,9 +59,12 @@
       <div class="row">
         <div class="col-lg-12 text-center">
           <h2 class="section-heading text-uppercase">고객센터</h2>
+          <h3 class="section-subheading text-muted">Help Desk</h3>
         </div>
       </div>
       <div class="row">
+      
+      
         <div class="col-md-4 col-sm-6 portfolio-item">
           <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
             <div class="portfolio-hover">
@@ -73,6 +76,7 @@
           </a>
           <div class="portfolio-caption">
             <h4>1대1문의</h4>
+            <p class="text-muted">Inquiry</p>
           </div>
         </div>
         <div class="col-md-4 col-sm-6 portfolio-item">
@@ -86,6 +90,7 @@
           </a>
           <div class="portfolio-caption">
             <h4>운영원칙</h4>
+            <p class="text-muted">Rule</p>
           </div>
         </div>
         <div class="col-md-4 col-sm-6 portfolio-item">
@@ -99,6 +104,7 @@
           </a>
           <div class="portfolio-caption">
             <h4>이용 약관</h4>
+            <p class="text-muted">Clause</p>
           </div>
         </div>  
 

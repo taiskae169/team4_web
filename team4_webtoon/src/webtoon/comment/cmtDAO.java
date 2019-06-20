@@ -136,6 +136,7 @@ public class cmtDAO {
 		return result;
 	}//댓글을 좋아요 참여 여부 확인 0일시 미참여, 1일시 좋아요, 2일시 싫어요 체크
 	
+
 	public void chLike(String id, int like_ch, int cmt_num) {
 		try {
 			conn = getConnection();
@@ -168,6 +169,8 @@ public class cmtDAO {
 			if(conn!=null) {try{conn.close();}catch(SQLException e) {e.printStackTrace();}}
 		}
 	}//댓글 좋아요/싫어요 추가 메소드
+
+	
 	
 	public void deleteLike(String id, int cmt_num, int like_ch) {
 		try {

@@ -11,7 +11,7 @@
 	registerDAO a = registerDAO.getInstance();			
 	registerBean b = a.adjust(id1, pw);						//adjust 메서드 사용(id, pw 사용해 이메일, 이름, 나이 반환)
 	int check1 = a.loginCheck(id1, pw);						//id1과 pw가 같으면 1, 다르면 0
-	
+	System.out.println(pw);
 	/*
 	전체적인 로직
 	

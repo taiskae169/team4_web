@@ -77,6 +77,15 @@
           </ul>
       </div>
       <%} %>
+            <% if (check2 == 4){%>
+      <div>
+		 <ul class="navbar-nav text-uppercase ml-center">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/team4_webtoon/admin/admin.jsp"><b>관리자</b></a>
+          </li>
+          </ul>
+      </div>
+      <%} %>
     </div>
   </nav>
   <%--<br><br><br><br><br>--%>

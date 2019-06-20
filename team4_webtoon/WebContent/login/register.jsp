@@ -8,7 +8,7 @@
 <title>회원가입</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script language = "JavaScript">
-
+	var idck = 0;
 	function openConfirmid(userinput){
 		if(userinput.id.value == ""){
 			alert("아이디를 입력하세요");
@@ -16,7 +16,7 @@
 		}
 		url = "confirmId.jsp?id="+userinput.id.value;
 		
-		open(url, "confirm",  "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300, height=200");
+		open(url, "confirm",  "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=500, height=250");
 	}
 	
 	function openConfirmemail(userinput){
@@ -26,11 +26,15 @@
 		}
 		url = "confirmEmail.jsp?email="+userinput.email.value;
 		
-		open(url, "confirm",  "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300, height=200");
+		open(url, "confirm",  "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=500, height=250");
+	
 	}
 	
+	
 </script>
+<%
 
+%>
 <LINK REL=StyleSheet HREF="../resources/register/css/register.css" TYPE="text/css" 	TITLE="register.css" MEDIA="screen,print">
 <%@include file="../bar/menu.jsp" %>
 <%@include file="../bar/navigationBar.jsp" %>
@@ -78,7 +82,8 @@
                 <input type="radio" value = "3" name = "state" placeholder="state" autofocus style = "margin-right : 10px;" required> 작가
 
    				</div>
-
+   				<input type = "hidden"  name = "id1">
+   				<input type = "hidden" name = "email1">
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
               <button class="btn btn-default btn-warning btn-block text-uppercase" type="button" onclick = "location.href = '../main_page/MainPage.jsp'">돌아가기</button>
               

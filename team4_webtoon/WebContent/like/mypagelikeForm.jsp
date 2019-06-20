@@ -38,14 +38,11 @@
 </head>
 
 <body>
-<%@include file="../bar/menu.jsp" %>
-<%@include file="../bar/navigationBar.jsp" %>
-
-<div class = "container" style = "margin-top : 130px;">
+<div class = "container">
 <h1 class = "my-4" style = "text-align : center">찜한 작품</h1>
 <div class = "row" style = "margin-top : 100px;">
 <%if (list.size() == 0) {%>
-<div class = "container" style = "margin-bottm : 1000px;">
+<div class = "container">
 <h2 class = "my-4" style = "text-align : center">찜한 작품이 없습니다.</h2>
 </div>
 <%} else { %>
@@ -89,16 +86,7 @@
     
     </div>
     </div>
-	<br><br><br>
-<div class = "container" style = "margin-bottom : 50px;">
-<center>
 
-          	<button onclick = "location='../mypage/mypage.jsp'" class = "btn btn-outline-dark btn-lg">돌아가기</button>
-
-          	</center>
-          	</div>
-
-<%@ include file="../bar/footer.jsp"%>
 </body>
 
 </html>

@@ -28,7 +28,7 @@ public class SearchDAO {
 		conn = ConnectionUtil.getConnection();
 		if(select.equals("0")) {	//select 가 0 일 때 = 제목일 때
 		StringBuffer sql = new StringBuffer();
-		sql.append("select mw_title, mw_writer, mw_gen, mw_tag from main_webtoon where mw_title like '%' || :search || '%' ");
+		sql.append("select mw_title, mw_writer, mw_gen, mw_tag, mw_num from main_webtoon where mw_title like '%' || :search || '%' ");
 		PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 		pstmt.setString(1,search);
 		ResultSet rs = pstmt.executeQuery();
@@ -38,6 +38,7 @@ public class SearchDAO {
 			vo.setWriter(rs.getString("mw_writer"));
 			vo.setGen(rs.getString("mw_gen"));
 			vo.setTag(rs.getString("mw_tag"));
+			vo.setNum(rs.getInt("mw_num"));
 			list.add(vo);
 			
 			}
@@ -45,7 +46,7 @@ public class SearchDAO {
 		
 		else if(select.equals("1")) {	//select가 1 일 때 = 작가일 때
 		StringBuffer sql = new StringBuffer();
-		sql.append("select mw_title, mw_writer, mw_gen, mw_tag from main_webtoon where mw_writer like '%' || :search || '%' ");
+		sql.append("select mw_title, mw_writer, mw_gen, mw_tag, mw_num from main_webtoon where mw_writer like '%' || :search || '%' ");
 		PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 		pstmt.setString(1,search);
 		ResultSet rs = pstmt.executeQuery();
@@ -55,13 +56,14 @@ public class SearchDAO {
 			vo.setWriter(rs.getString("mw_writer"));
 			vo.setGen(rs.getString("mw_gen"));
 			vo.setTag(rs.getString("mw_tag"));
+			vo.setNum(rs.getInt("mw_num"));
 			list.add(vo);
 			
 			}
 		}
 		else if(select.equals("2")){		//select 가 나머지일 때(2) = 태그, 더 추가 하고 싶으면 equals("2")로 두고 추가한다. 
 			StringBuffer sql = new StringBuffer();
-			sql.append("select mw_title, mw_writer, mw_gen, mw_tag from main_webtoon where mw_tag like '%' || :search || '%' ");
+			sql.append("select mw_title, mw_writer, mw_gen, mw_tag, mw_num from main_webtoon where mw_tag like '%' || :search || '%' ");
 			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setString(1,search);
 			ResultSet rs = pstmt.executeQuery();
@@ -71,6 +73,7 @@ public class SearchDAO {
 				vo.setWriter(rs.getString("mw_writer"));
 				vo.setGen(rs.getString("mw_gen"));
 				vo.setTag(rs.getString("mw_tag"));
+				vo.setNum(rs.getInt("mw_num"));
 				list.add(vo);
 			}
 		}
@@ -81,7 +84,7 @@ public class SearchDAO {
 			ResultSet rs2 = pstmt2.executeQuery();
 			if(rs2.next()) {											//검색한 장르가 있다면
 				int gerNum = rs2.getInt(1);
-				String sql = "select mw_title, mw_writer, mw_gen, mw_tag from main_webtoon where mw_gen=?";	//장르를 기준으로 main_webtoon 탐색
+				String sql = "select mw_title, mw_writer, mw_gen, mw_tag, mw_num from main_webtoon where mw_gen=?";	//장르를 기준으로 main_webtoon 탐색
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1,gerNum);
 				ResultSet rs = pstmt.executeQuery();
@@ -91,6 +94,7 @@ public class SearchDAO {
 					vo.setWriter(rs.getString("mw_writer"));
 					vo.setGen(rs.getString("mw_gen"));
 					vo.setTag(rs.getString("mw_tag"));
+					vo.setNum(rs.getInt("mw_num"));
 					list.add(vo);
 				}
 			}
@@ -128,6 +132,36 @@ public class SearchDAO {
 		}
 		return list;
 	}
+	
+	
+	public SearchVO getDelete(int num) throws Exception{
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		SearchVO member = null;
+		
+		try {
+			conn = ConnectionUtil.getConnection();
+			String sql = "select * from main_webtoon where mw_num = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+			member = new SearchVO();
+			member.setNum(rs.getInt("mw_num"));
+			member.setTitle(rs.getString("mw_title"));
+			member.setWriter(rs.getString("mw_writer"));
+			
+			}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if( rs != null) try {rs.close();} catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try {conn.close();} catch(SQLException ex) {}
+		}
+		return member;
+	}
+	
 	
 	
 	//찜한 작품 출력

@@ -86,19 +86,19 @@
 
     <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
       <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="/team4_webtoon/resources/image/webtoon/thumbnail/<%=list.get(i).getTitle() %>_som.jpg" alt=""></a>
+        <a href="/team4_webtoon/main_wt/mainWT.jsp?mw_num=<%=list.get(i).getNum()%>"><img class="card-img-top" src="/team4_webtoon/resources/image/webtoon/thumbnail/<%=list.get(i).getTitle() %>_som.jpg" alt=""></a>
         <div class="card-body">
           <h4 class="card-title">
-			 <a href="#"><%=list.get(i).getTitle() %></a>
+			 <a href="/team4_webtoon/main_wt/mainWT.jsp?mw_num=<%=list.get(i).getNum()%>" style = "color : black;"><%=list.get(i).getTitle() %></a>
           </h4>
-          <p class="card-text"><a href = "#"><%=list.get(i).getWriter() %></a></p>
+          <p class="card-text"><a href="/team4_webtoon/search/search.jsp?select=1&addr=<%=list.get(i).getWriter()%>" style = "color : black;"><%=list.get(i).getWriter() %></a></p>
           <%
 genreDAO a = genreDAO.getInstance();
 	genreVO c = a.genreCheck(Integer.parseInt(list.get(i).getGen()));
 %>
           <p class="card-text">
 
-        	<%=c.getValue() %>
+        	<a href="/team4_webtoon/search/search.jsp?select=3&addr=<%=c.getValue()%>" style = "color:black"><%=c.getValue() %></a>
           </p>
           <p class="card-text"><%=list.get(i).getTag() %></p>
         </div>
@@ -112,7 +112,7 @@ genreDAO a = genreDAO.getInstance();
 <%} else if(list.size() == 0) {%>
  
 <br>
-  	<h1 class="my-4" style="text-align: center">검색 결과가 없습니다.</h1>
+  	<h1 class="my-4" style="text-align: center"><%=request.getParameter("addr") %>의 결과가 없습니다.</h1>
   	<br><br><br>
 	<form name = "out" method = "get" action="search.jsp">
 	<ASIDE style="text-align: center">
@@ -163,25 +163,25 @@ genreDAO a = genreDAO.getInstance();
 			<table>
 				<tbody>
 					<tr>
-						<td>에피소드</td>
-						<td>스토리</td>
-						<td>공포</td>
-						<td>드라마</td>
+						<td><a href="search.jsp?select=3&addr=에피소드" class = "blacka">에피소드</a></td>
+						<td><a href="search.jsp?select=3&addr=시대극" class = "blacka">시대극</a></td>
+						<td><a href="search.jsp?select=3&addr=감성" class = "blacka">감성</a></td>
+						<td><a href="search.jsp?select=3&addr=드라마" class = "blacka">드라마</a></td>
 					<tr>
-						<td>무협</td>
-						<td>미스터리</td>
-						<td>순정만화</td>
-						<td>스릴러물</td>
+						<td><a href="search.jsp?select=3&addr=무협" class = "blacka">무협</a></td>
+						<td><a href="search.jsp?select=3&addr=미스터리" class = "blacka">미스터리</a></td>
+						<td><a href="search.jsp?select=3&addr=순정" class = "blacka">순정만화</a></td>
+						<td><a href="search.jsp?select=3&addr=스릴러" class = "blacka">스릴러물</a></td>
 					<tr>
-						<td>스포츠다</td>
-						<td>액션</td>
-						<td>일상</td>
-						<td>지식</td>
+						<td><a href="search.jsp?select=3&addr=스포츠" class = "blacka">스포츠다</a></td>
+						<td><a href="search.jsp?select=3&addr=액션" class = "blacka">액션</a></td>
+						<td><a href="search.jsp?select=3&addr=일상" class = "blacka">일상</a></td>
+						<td><a href="search.jsp?select=3&addr=지식" class = "blacka">지식</a></td>
 					<tr>
-						<td>코믹</td>
-						<td>판타지</td>
-						<td>학원</td>
-						<td>성인</td>
+						<td><a href="search.jsp?select=3&addr=개그" class = "blacka">개그</a></td>
+						<td><a href="search.jsp?select=3&addr=판타지" class = "blacka">판타지</a></td>
+						<td><a href="search.jsp?select=3&addr=학원" class = "blacka">학원</a></td>
+						<td><a href="search.jsp?select=3&addr=성인" class = "blacka">성인</a></td>
 				</tbody>
 			</table>
 		</div>

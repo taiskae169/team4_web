@@ -45,7 +45,7 @@
 	#wtDT {margin-top:100px;}
 	
 	
-				.modal-window {
+		.modal-window {
 		  position: fixed;
 		  background-color: rgba(1, 1, 1, 0.15);
 		  top: 0;
