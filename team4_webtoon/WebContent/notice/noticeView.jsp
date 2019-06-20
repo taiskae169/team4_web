@@ -67,7 +67,7 @@
       <thead>
       <tr>
 
-         <th>내용</th>
+         <th><%= b.getNt_title() %></th>
 
       </tr>
       </thead>
