@@ -134,6 +134,36 @@ public class SearchDAO {
 	}
 	
 	
+	public SearchVO getDelete(int num) throws Exception{
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		SearchVO member = null;
+		
+		try {
+			conn = ConnectionUtil.getConnection();
+			String sql = "select * from main_webtoon where mw_num = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+			member = new SearchVO();
+			member.setNum(rs.getInt("mw_num"));
+			member.setTitle(rs.getString("mw_title"));
+			member.setWriter(rs.getString("mw_writer"));
+			
+			}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if( rs != null) try {rs.close();} catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try {conn.close();} catch(SQLException ex) {}
+		}
+		return member;
+	}
+	
+	
+	
 	//찜한 작품 출력
 	//like_wb에서 아이디의 lwb_wb_num (작품번호)를 출력한다. 이 출력한 것을 main_webtoon에 넣어 (mw_num = lwb_wb_num임) 나온 것들을 출력한다.
 	public ArrayList<SearchVO> getlike(String id) throws SQLException{

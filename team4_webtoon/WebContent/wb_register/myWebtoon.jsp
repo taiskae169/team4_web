@@ -32,6 +32,60 @@
 	.input{
 		margin-right: 10px;
 	}
+	.modal-window {
+		  position: fixed;
+		  background-color: rgba(1, 1, 1, 0.15);
+		  top: 0;
+		  right: 0;
+		  bottom: 0;
+		  left: 0;
+		  z-index: 999;
+		  opacity: 0;
+		  pointer-events: none;
+		  -webkit-transition: all 0.3s;
+		  -moz-transition: all 0.3s;
+		  transition: all 0.3s;
+		}
+		
+		.modal-window:target {
+		  opacity: 1;
+		  pointer-events: auto;
+		}
+		
+		.modal-window>div {
+		  width: 400px;
+		  position: relative;
+		  margin: 10% auto;
+		  padding: 2rem;
+		  background: #f3f3f3;
+		  color: #444;
+		}
+		
+		.modal-window header {
+		  font-weight: bold;
+		}
+		
+		.modal-close {
+		  color: #aaa;
+		  line-height: 50px;
+		  font-size: 80%;
+		  position: absolute;
+		  right: 0;
+		  text-align: center;
+		  top: 0;
+		  width: 70px;
+		  text-decoration: none;
+		}
+		
+		.modal-close:hover {
+		  color: #000;
+		}
+		
+		.modal-window h1 {
+		  font-size: 150%;
+		  margin: 0 0 15px;
+		}
+	
 </style>
 </head>
 <body>
@@ -80,6 +134,8 @@
 			<%
 			genreDAO a = genreDAO.getInstance();
 			genreVO c = a.genreCheck(Integer.parseInt(list.get(i).getGen()));
+			
+
 			%>
 			<%=c.getValue() %>
           </p>
@@ -100,13 +156,13 @@
           <input type = "submit" class = "btn btn-success btn-sm input" value = "수정">
           </form>
           
-          <form name = "delete" method = "post" action = "wb_delete.jsp">
+          <form name = "delete" method = "post" action = "test.jsp">
           <input type = "hidden" name = "title" value = "<%=list.get(i).getTitle() %>">
           <input type = "hidden" name = "writer" value = "<%=list.get(i).getWriter() %>">
           <input type = "hidden" name = "num" value = "<%=list.get(i).getNum() %>">
           <input type ="submit" value = "삭제" class = "btn btn-danger btn-sm input">
-          
           </form>
+          
           </div>
           </div>
         </div>
@@ -118,6 +174,7 @@
     </div>
   
 </DIV>
+
 <div class = "container" style = "margin-bottom : 50px;">
 <center>
 
