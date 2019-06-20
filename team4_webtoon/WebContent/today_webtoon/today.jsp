@@ -64,7 +64,7 @@
       	
 	      <div class="row">
 	        <div class="col-md-7">
-	          <a href="#">
+	          <a href="/team4_webtoon/main_wt/mainWT.jsp?mw_num=<%=vo.getNum()%>">
 	            <img  class="img-fluid rounded mb-3 mb-md-0" src="/team4_webtoon/resources/image/webtoon/thumbnail/<%=vo.getTitle()%>_recom.jpg" alt="">
 	            <%//700X300 %>
 	          </a>
@@ -73,7 +73,7 @@
 	          <h3><%=vo.getTitle()%></h3>
 	          <p><%=vo.getSub_title()%></p>
 	          <p><%=vo.getWriter()%></p>
-	          <a class="btn btn-primary" href="#">보러가기</a>
+	          <a class="btn btn-primary" href="/team4_webtoon/main_wt/mainWT.jsp?mw_num=<%=vo.getNum()%>">보러가기</a>
 	        </div>
 	      </div>
       <!-- /.row -->
