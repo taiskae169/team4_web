@@ -52,39 +52,39 @@
   	<form action = "wb_registerPro.jsp" method="post" enctype = "multipart/form-data">
 		<div style = "margin-top : 100px;">
 				<label class = "label1">작품 제목 </label>
-				<input type="text" size="100" maxlength="30" name="title" placeholder="  제목을 입력해주세요" class = "1"> 
+				<input type="text" size="100" maxlength="30" name="title" placeholder="  제목을 입력해주세요" class = "1" required> 
 				
 				<label class = "label1">소제목 </label>
-				<input type="text" size="100" maxlength="30" name="sub_title" placeholder="  소제목을 입력해주세요" class = "1">
+				<input type="text" size="100" maxlength="30" name="sub_title" placeholder="  소제목을 입력해주세요" class = "1" required>
 				 
 				<label style = "width : 150px;">장르 </label>
-				<input type = "radio" name = "gen" value = "0"checked class = "input1">일상
-				<input type = "radio" name = "gen" value = "1" class = "input2">개그
-				<input type = "radio" name = "gen" value = "2" class = "input2">판타지
-				<input type = "radio" name = "gen" value = "3" class = "input2">액션
-				<input type = "radio" name = "gen" value = "4" class = "input2">드라마<br><br>
+				<input type = "radio" name = "gen" value = "0"checked class = "input1" required>일상
+				<input type = "radio" name = "gen" value = "1" class = "input2" required>개그
+				<input type = "radio" name = "gen" value = "2" class = "input2" required>판타지
+				<input type = "radio" name = "gen" value = "3" class = "input2" required>액션
+				<input type = "radio" name = "gen" value = "4" class = "input2" required>드라마<br><br>
 				<label style = "width: 150px;"> </label>
-				<input type = "radio" name = "gen" value = "5" class = "input1">순정
-				<input type = "radio" name = "gen" value = "6" class = "input2">감성
-				<input type = "radio" name = "gen" value = "7" class = "input2">스릴러
-				<input type = "radio" name = "gen" value = "8" class = "input2">시대극
-				<input type = "radio" name = "gen" value = "9" class = "input2">스포츠<br><br><br>
+				<input type = "radio" name = "gen" value = "5" class = "input1" required>순정
+				<input type = "radio" name = "gen" value = "6" class = "input2" required>감성
+				<input type = "radio" name = "gen" value = "7" class = "input2" required>스릴러
+				<input type = "radio" name = "gen" value = "8" class = "input2" required>시대극
+				<input type = "radio" name = "gen" value = "9" class = "input2" required>스포츠<br><br><br>
 				
 				<label class = "label1">태그</label>			
-				<input type="text" size="100" maxlength="30" name="tag" placeholder="  태그를 입력해주세요" style = "margin-bottom: 60px;"> 
+				<input type="text" size="100" maxlength="30" name="tag" placeholder="  태그를 입력해주세요" style = "margin-bottom: 60px;" required> 
 				
 				<label class = "label1">연재요일 </label>
-				<input type = "radio" name = "week" value = "1" checked class = "input1">월요일
-				<input type = "radio" name = "week" value = "2" class = "input2">화요일
-				<input type = "radio" name = "week" value = "3" class = "input2">수요일
-				<input type = "radio" name = "week" value = "4" class = "input2">목요일
-				<input type = "radio" name = "week" value = "5" class = "input2">금요일
-				<input type = "radio" name = "week" value = "6" class = "input2">토요일
-				<input type = "radio" name = "week" value = "0" class = "input2">일요일
-				<input type = "radio" name = "week" value = "7" class = "input2">도전만화
+				<input type = "radio" name = "week" value = "1" checked class = "input1" required>월요일
+				<input type = "radio" name = "week" value = "2" class = "input2" required>화요일
+				<input type = "radio" name = "week" value = "3" class = "input2" required>수요일
+				<input type = "radio" name = "week" value = "4" class = "input2" required>목요일
+				<input type = "radio" name = "week" value = "5" class = "input2" required>금요일
+				<input type = "radio" name = "week" value = "6" class = "input2" required>토요일
+				<input type = "radio" name = "week" value = "0" class = "input2" required>일요일
+				<input type = "radio" name = "week" value = "7" class = "input2" required>도전만화
 
 				<label class = "label1">줄거리 </label>
-				<input type="text" size="100" maxlength="30" name="sum" placeholder="줄거리를 입력하세요" style = "margin-bottom: 60px">
+				<input type="text" size="100" maxlength="30" name="sum" placeholder="줄거리를 입력하세요" style = "margin-bottom: 60px" required>
 				
 				<label class = "label1">썸네일 이미지 </label>크기 (500 x 325)에 맞게 올려주세요 (jpg 파일) 또한 작품 제목_som.jpg 형식을 지켜주세요<br>
 				<input type = "file" name = "thum_file" style = "margin-bottom: 60px;"> <br>

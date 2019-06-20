@@ -24,13 +24,15 @@ String writer = (String)session.getAttribute("sessionwriter");
 	String path = request.getRealPath("resources/image/webtoon/" + title);
 	
 	File Folder = new File(path);
-	
+	System.out.println(title);
+	System.out.println(num);
+	System.out.println(writer);
 	if(check1 == 1){
 		dao.deleteLikeall(num);
 		cdao.deleteall(num);
 
 	Folder.delete();
-	
+
 }%>
 <!DOCTYPE html>
 <html>
@@ -46,9 +48,7 @@ String writer = (String)session.getAttribute("sessionwriter");
 
 </head>
 <body onload="begin()">
-	<%
 
-	%>
   <div class="container">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto" style="margin-top:300px">

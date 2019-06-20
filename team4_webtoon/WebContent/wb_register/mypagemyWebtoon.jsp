@@ -89,19 +89,15 @@
 </style>
 </head>
 <body>
-
-<%@include file="../bar/menu.jsp" %>
-<%@include file="../bar/navigationBar.jsp" %>
-
 	<!-- Page Content -->
-<div class="container" style="margin-top:150px; margin-bottom : 50px;">
-  <h1 class="my-4" style="text-align: center"><%=mywebtoon %> 님의 웹툰</h1><br><br><br>
+<div class="container">
+  <h1 class="my-4" style="text-align: center"><%=mywebtoon %> 님의 웹툰입니다.</h1><br><br><br>
 
  
            	<div class = "row">
 <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
       <div class="card h-100">
-        <a href="wb_register.jsp"><img class="card-img-top" src="/team4_webtoon/resources/image/webtoon/thumbnail/new1.jpg" alt=""></a>
+        <a href="../wb_register/wb_register.jsp"><img class="card-img-top" src="/team4_webtoon/resources/image/webtoon/thumbnail/new1.jpg" alt=""></a>
         <div class="card-body">
 
           <div class = "container">
@@ -175,14 +171,6 @@
   
 </DIV>
 
-<div class = "container" style = "margin-bottom : 50px;">
-<center>
-
-          	<button onclick = "location='../main_page/MainPage.jsp'" class="btn btn-primary">돌아가기</button>
-
-          	</center>
-          	</div>
-<%@ include file="../bar/footer.jsp"%>
 <!-- /.container -->
 </body>
 </html>

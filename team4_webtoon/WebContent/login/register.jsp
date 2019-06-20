@@ -16,7 +16,7 @@
 		}
 		url = "confirmId.jsp?id="+userinput.id.value;
 		
-		open(url, "confirm",  "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300, height=200");
+		open(url, "confirm",  "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=500, height=250");
 	}
 	
 	function openConfirmemail(userinput){
@@ -26,7 +26,7 @@
 		}
 		url = "confirmEmail.jsp?email="+userinput.email.value;
 		
-		open(url, "confirm",  "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300, height=200");
+		open(url, "confirm",  "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=500, height=250");
 	
 	}
 	

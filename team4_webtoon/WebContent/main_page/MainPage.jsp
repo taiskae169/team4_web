@@ -45,6 +45,15 @@
   <!-- Custom styles for this template -->
   <link href="/team4_webtoon/resources/Main_page/css/shop-homepage.css" rel="stylesheet">
 
+  <style>
+  	.acolor{
+  		color:black;
+  	}
+  	#test a:hover{
+  		text-decoration:none;
+  		background-color: rgba( 108, 192, 255, 0.2 );
+  	}
+  </style>
 </head>
 
 <body>
@@ -67,26 +76,26 @@
 
       <div class="col-lg-3">
 
-        <h1 class="my-4">카테고리</h1>
-        <div class="list-group">
-          <a href="MainPage.jsp?week=1" class="list-group-item">월요일</a>
-          <a href="MainPage.jsp?week=2" class="list-group-item">화요일</a>
-          <a href="MainPage.jsp?week=3" class="list-group-item">수요일</a>
-          <a href="MainPage.jsp?week=4" class="list-group-item">목요일</a>
-          <a href="MainPage.jsp?week=5" class="list-group-item">금요일</a>
-          <a href="MainPage.jsp?week=6" class="list-group-item">토요일</a>
-          <a href="MainPage.jsp?week=7" class="list-group-item">일요일</a>
-          <a href="MainPage.jsp?week=0" class="list-group-item">도전만화</a>
+        <h3 class="my-4" style = "text-align : center;">요일별 웹툰</h3>
+        <div class="list-group" id = "test">
+          <a href="MainPage.jsp?week=1" class="list-group-item" style = "color:black;">월요일</a>
+          <a href="MainPage.jsp?week=2" class="list-group-item" style = "color:black;">화요일</a>
+          <a href="MainPage.jsp?week=3" class="list-group-item" style = "color:black;">수요일</a>
+          <a href="MainPage.jsp?week=4" class="list-group-item" style = "color:black;">목요일</a>
+          <a href="MainPage.jsp?week=5" class="list-group-item" style = "color:black;">금요일</a>
+          <a href="MainPage.jsp?week=6" class="list-group-item" style = "color:black;">토요일</a>
+          <a href="MainPage.jsp?week=7" class="list-group-item" style = "color:black;">일요일</a>
+          <a href="MainPage.jsp?week=0" class="list-group-item" style = "color:black;">도전만화</a>
         </div><!-- 카테고리 DIV 종료 -->
         <!-- 메인페이지에 요일을 보내서 클릭한 요일의 웹툰이 나오게 한다.  -->
 
-		<h1 class="my-4">공지사항</h1>
+		<h3 class="my-4" style = "text-align: center;">공지사항</h3>
 		        <%if (count > 0){ %>
 		<%for (int j = 0; j < noticeList.size(); j++){ 
 			noticeVO notice2 = (noticeVO)noticeList.get(j);
 		%>
-		<div class="list-group">
-          <a href="../notice/noticeView.jsp?nt_num=<%=notice2.getNt_num() %>" class="list-group-item"><%=notice2.getNt_title() %></a>
+		<div class="list-group" id = "test">
+          <a href="../notice/noticeView.jsp?nt_num=<%=notice2.getNt_num() %>" class="list-group-item"  style = "color:black;"><%=notice2.getNt_title() %> </a>
         </div><!-- 공지사항 DIV 종료 -->
               <%} %>
 		       <%
