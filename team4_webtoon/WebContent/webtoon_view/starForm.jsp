@@ -45,7 +45,7 @@
 	if(sId!=null){
 		String AorR=starDAO.checkIDstate(sCN);
 		if(sId.equals(AorR)){}else{
-			boolean yn = starDAO.checkStar(sId,sMN,sCN);
+			boolean yn = starDAO.checkStar(sId,sCN);
 				if(yn){%>
 				<span name="yesS" id="yesS" >참여하셨습니다</span>
 				<%}else{ %>

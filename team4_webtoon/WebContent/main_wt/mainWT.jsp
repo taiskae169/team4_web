@@ -349,7 +349,7 @@
 					avgS=0;
 				}	
 			%>
-				<b><%=avgS %></b>
+				<b><%=String.format("%.2f", avgS) %></b>
 			
 			</th>
 			<th>

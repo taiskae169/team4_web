@@ -20,30 +20,20 @@
 	int Nmw=Integer.parseInt(request.getParameter("mw_num"));	
 	
 	WTepVO info=null;
-	DAObm.getInfo(Nmw);	
+	info=DAObm.getInfo(Nmw);	
 	System.out.println("WTepVO에서 info 가져오기 성공");
 	
 	String wtT=info.getMwTitle();
-	System.out.println(wtT);
-	
 	String clT=info.getClTitle();
-	System.out.println(clT);
-	
 	String wtW=info.getClWriter();
-	System.out.println(wtW);
-	
-	
-	//System.out.println(info);
-	//WTepVO Ninfo=info;
-	//System.out.println(Ninfo);
-	
-	
-	
-	//DAObm.addBMtoDB(info,Nmw,bmid,Ncl);
-	//System.out.println("BookmarkVO에 등록 성공");
 
-	//DAObm.addBMch(bmid,Nmw,Ncl);
-	//System.out.println("like_check 테이블 bm_ch에 등록 성공");
+
+	DAObm.addBMtoDB(bmid,Nmw,Ncl,wtT,clT,wtW);
+	System.out.println("BookmarkVO에 등록 성공");
+	
+	//여기서부터 에러....
+	DAObm.addBMch(bmid,Nmw,Ncl);
+	System.out.println("like_check 테이블 bm_ch에 등록 성공");
 	
 %>
 

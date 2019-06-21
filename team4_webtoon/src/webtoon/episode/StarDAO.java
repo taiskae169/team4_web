@@ -58,17 +58,16 @@ public class StarDAO {
 	
 	
 	
-	public boolean checkStar(String id, int mw_num, int cl_num) throws Exception{
+	public boolean checkStar(String id, int cl_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		boolean yn=false;
 		try {
 			conn=getConnection();
-			pstmt=conn.prepareStatement("select star_ch from like_check where id=? and mw_num=? and cl_num=?");
+			pstmt=conn.prepareStatement("select * from like_check where id=? and cl_num=? and star_ch=1");
 			pstmt.setString(1, id);
-			pstmt.setInt(2, mw_num);
-			pstmt.setInt(3, cl_num);
+			pstmt.setInt(2, cl_num);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				yn=true;
@@ -81,7 +80,7 @@ public class StarDAO {
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
 		return yn;
-	}//별점 참여 여부 확인하는 메서드 0일시 미참여, 1일시 참여 
+	}//별점 참여 여부 확인하는 메서드 null은 미참여, 1은 참여 
 	
 	
 	//like_check 테이블에 star_ch 추가
@@ -93,7 +92,7 @@ public class StarDAO {
 		try {
 			conn=getConnection();
 			conn=getConnection();
-			pstmt=conn.prepareStatement("select star_ch from like_check where id=? and mw_num=? and cl_num=?");
+			pstmt=conn.prepareStatement("select * from like_check where id=? and mw_num=? and cl_num=? and star_ch=1");
 			pstmt.setString(1, id);
 			pstmt.setInt(2, mw_num);
 			pstmt.setInt(3, cl_num);
@@ -102,18 +101,13 @@ public class StarDAO {
 				Syn=true;
 			}	
 			if(Syn) {
-				pstmt=conn.prepareStatement("update like_check set star_ch=1 where id=? and mw_num=? and cl_num=?");
-				pstmt.setString(1, id);
-				pstmt.setInt(2, mw_num);
-				pstmt.setInt(3, cl_num);
-				pstmt.executeUpdate();	
-			}else{
+			}else {
 				pstmt=conn.prepareStatement("insert into like_check(id,mw_num,cl_num,star_ch) values(?,?,?,1)");
 				pstmt.setString(1, id);
 				pstmt.setInt(2, mw_num);
 				pstmt.setInt(3, cl_num);
 				pstmt.executeUpdate();	
-			}	
+			}
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}finally {

@@ -34,7 +34,7 @@ public class BookmarkDAO {
 		boolean BMyn=false;
 		try {
 			conn=getConnection();
-			pstmt=conn.prepareStatement("select bm_ch from like_check where id=? and cl_num=?");
+			pstmt=conn.prepareStatement("select * from like_check where id=? and cl_num=? and bm_ch=1");
 			pstmt.setString(1, id);
 			pstmt.setInt(2, cl_num);
 			rs=pstmt.executeQuery();
@@ -51,20 +51,18 @@ public class BookmarkDAO {
 		return BMyn;
 	}
 	
-	public void addBMtoDB(WTepVO info,int mw_num,String id, int cl_num) throws Exception{
+	public void addBMtoDB(String id,int mw_num,int cl_num,String mw_title,String cl_title, String wt_writer) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn=getConnection();
-			pstmt=conn.prepareStatement("insert into bookmark values(bm_num_seq.nextval,?,?,?,?,?,?,sysdate) where id=? and cl_num=?");
-			pstmt.setString(1,id );
+			pstmt=conn.prepareStatement("insert into bookmark values(bm_num_seq.nextval,?,?,?,?,?,?,sysdate)");			
+			pstmt.setString(1,id);
 			pstmt.setInt(2, mw_num);
-			pstmt.setString(3,info.getMwTitle());
+			pstmt.setString(3,mw_title);
 			pstmt.setInt(4, cl_num);
-			pstmt.setString(5,info.getClTitle());
-			pstmt.setString(6,info.getClWriter());
-			pstmt.setString(7, id);
-			pstmt.setInt(8, cl_num);
+			pstmt.setString(5,cl_title);
+			pstmt.setString(6,wt_writer);
 			pstmt.executeUpdate();
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -103,7 +101,7 @@ public class BookmarkDAO {
 	} //웹툰 상세정보(태그,장르,줄거리 등)를 리턴하는 메소드
 	
 	
-	//like_check 테이블에 star_ch 추가
+	//like_check 테이블에 bm_ch 추가
 	public void addBMch (String id, int mw_num, int cl_num ) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -111,8 +109,7 @@ public class BookmarkDAO {
 		boolean ynbm=false;
 		try {
 			conn=getConnection();
-			conn=getConnection();
-			pstmt=conn.prepareStatement("select bm_ch from like_check where id=? and mw_num=? and cl_num=?");
+			pstmt=conn.prepareStatement("select * from like_check where id=? and mw_num=? and cl_num=? and bm_ch=1");
 			pstmt.setString(1, id);
 			pstmt.setInt(2, mw_num);
 			pstmt.setInt(3, cl_num);
@@ -124,13 +121,15 @@ public class BookmarkDAO {
 					pstmt.setString(1, id);
 					pstmt.setInt(2, mw_num);
 					pstmt.setInt(3, cl_num);
-					pstmt.executeUpdate();	
+					pstmt.executeUpdate();
+					System.out.println("bm_ch=1로 업데이트");
 				}else {
-					pstmt=conn.prepareStatement("insert  into like_check(id,mw_num,cl_num,bm_ch) values (?,?,?,1)");
+					pstmt=conn.prepareStatement("insert into like_check(id,mw_num,cl_num,bm_ch) values(?,?,?,1)");
 					pstmt.setString(1, id);
 					pstmt.setInt(2, mw_num);
 					pstmt.setInt(3, cl_num);
-					pstmt.executeUpdate();	
+					pstmt.executeUpdate();
+					System.out.println("like_check에 신규로 bm_ch=1");
 				}
 			}
 		}catch(Exception ex){
