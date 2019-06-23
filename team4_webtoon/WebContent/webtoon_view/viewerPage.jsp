@@ -31,12 +31,14 @@
   <link href="/team4_webtoon/resources/main_webtoon/agency/css/agency.min.css" rel="stylesheet">
 
 <style>
-	.ml-center {margin-left:180px; }
+	.ml-center {margin-left:150px; }
 	#box {float:left; padding:30px;margin-left:550px;margin-top:200px; margin-bottom:500px;}
 	#box {float:left; }
-	#mainNav{top:0px;}
+	#mainNav{top:0px;padding-right:6px;padding-left:6px;}
 	.navbar-expand-lg .navbar-collapse {color:#808080;}
 	.epTitle{color:#808080;}
+	#mainNav .navbar-brand {font-size:1.25em;}
+	
 </style>
 
 
@@ -209,12 +211,12 @@
       </div>
       
       
-      <div class="collapse navbar-collapse" id="navbarResponsive">
+      <div class="collapse navbar-collapse" id="navbarResponsive"> 
        <ul class="navbar-nav text-uppercase ml-auto">
          <% if(id==null){%>
          <script language="JavaScript">
     		 function goLoginfirst() {
-           		 alert("로그인 후 참여가능합니다.");
+           		alert("로그인 후 참여가능합니다.");
            	  	url = "/team4_webtoon/login/login.jsp";
            		open(url, "login",  "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300, height=200");
              	return;
@@ -238,16 +240,29 @@
       		<li>
       		<a class="nav-link js-scroll-trigger" ><img src="/team4_webtoon/resources/image/webtoon/wt_ep/bmy.png" width="22px" height="22px"></a>
       		</li>
-	<%}else{%>
+		<%}else{%>
+			<script type="text/javascript">
+			function callBMfunction(){
+				location.href="/team4_webtoon/mypage/bmPro.jsp?mw_num=<%=mNum %>&cl_num=<%=clNum%>";
+				return true;
+				if(confirm("책갈피에 등록되었습니다.확인하겠습니까?")){
+					location.href = "/team4_webtoon/mypage/mypage.jsp";
+				    return true;
+				   } else {}
+				   location.href=document.referrer;
+				   return false;
+				}
+			}
+			</script>
             <li>
-      		<a class="nav-link js-scroll-trigger" href="/team4_webtoon/mypage/bmPro.jsp?mw_num=<%=mNum %>&cl_num=<%=clNum%>"><img src="/team4_webtoon/resources/image/webtoon/wt_ep/bmn.png" width="22px" height="22px"></a>			
+      		<a class="nav-link js-scroll-trigger" href="javascript:callBMfunction();"><img src="/team4_webtoon/resources/image/webtoon/wt_ep/bmn.png" width="22px" height="22px"></a>			
 			</li>	
-	<%}
+		<%}
        }else{%>
             <li>
       		<a class="nav-link js-scroll-trigger"  href="/team4_webtoon/login/login.jsp" Onclick="goLoginFirst();"><img src="/team4_webtoon/resources/image/webtoon/wt_ep/bmn.png" width="22px" height="22px"></a>
       		</li>
-  <%}%>
+ 	 <%}%>
 			<li>
 			<a class="nav-link js-scroll-trigger" href="/team4_webtoon/main_wt/mainWT.jsp?mw_num=<%=mNum %>" ><img src="/team4_webtoon/resources/image/webtoon/wt_ep/close1.png" width="22px" height="22px"></a>
 			</li>
@@ -290,7 +305,7 @@
   </section>
 
 
-<div style="width: 80%; height: 100%; position:relative;margin-left:200px;">
+<div style="width: 80%; height: 100%; position:relative;margin-left:180px;">
   <%@include file="/comment/comment.jsp" %>	
 </div> 
   
