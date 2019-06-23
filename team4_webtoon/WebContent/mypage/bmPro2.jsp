@@ -1,16 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="webtoon.bookmark.BookmarkDAO" %> 
-<%@page import="webtoon.episode.WTepVO" %> 
+<%@page import="webtoon.episode.WTepVO" %>
 <%@page import="webtoon.content.contentVO" %> 
-
 
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>책갈피 등록 후 마이페이지로 가기 </title>
+<title>책갈피 등록 후 뷰어페이지로 가기</title>
 
 
 
@@ -27,9 +26,8 @@
 	System.out.println(Nmw);
 			
 	WTepVO info=null;
-	info=DAObm.getInfo(Nmw,Ncl);
+	info=DAObm.getInfo(Nmw,Ncl);	
 	System.out.println("WTepVO에서 info 가져오기 성공");
-	
 	
 	String wtT=info.getMwTitle();
 	System.out.println(wtT);
@@ -39,7 +37,8 @@
 	
 	String wtW=info.getClWriter();
 	System.out.println(wtW);
-	
+
+
 	String img=null;
 	img=DAObm.getThumbIMG(Ncl);
 	System.out.println(img);
@@ -56,7 +55,7 @@
 %>
 	
 	<script>
-	location.href= "/team4_webtoon/mypage/bmPage.jsp";
+	location.href=document.referrer;
 	</script>
 
 

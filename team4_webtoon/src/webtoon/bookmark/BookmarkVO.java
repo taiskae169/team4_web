@@ -11,6 +11,7 @@ public class BookmarkVO {
     private String bmCTitle; //북마크한 웹툰 회차 제목
     private String bmWriter; //북마크한 웹툰 회차 제목
     private Timestamp bmReg; //북마크한 날짜
+    private String bmImg; //북마크된 에피소드 대표 이미지
 	
     public int getBmNum() {
 		return bmNum;
@@ -59,5 +60,12 @@ public class BookmarkVO {
 	}
 	public void setBmReg(Timestamp bmReg) {
 		this.bmReg = bmReg;
+	}
+	public String getBmImg() {
+		return bmImg;
+	}
+	public void setBmImg(String bmImg) {
+		this.bmImg = bmImg;
 	}    
+	
 }

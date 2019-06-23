@@ -169,7 +169,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-shrink" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">WebToon</a>
+      <a class="navbar-brand js-scroll-trigger" href="/team4_webtoon/main_page/MainPage.jsp">WebToon</a>
       <a href="/team4_webtoon/main_wt/mainWT.jsp?mw_num=<%=mNum %>" ><%=wtEP.getMwTitle() %></a>
       <b class="epTitle">> <%=wtEP.getClTitle() %> </b>  
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -243,14 +243,12 @@
 		<%}else{%>
 			<script type="text/javascript">
 			function callBMfunction(){
-				location.href="/team4_webtoon/mypage/bmPro.jsp?mw_num=<%=mNum %>&cl_num=<%=clNum%>";
-				return true;
 				if(confirm("책갈피에 등록되었습니다.확인하겠습니까?")){
-					location.href = "/team4_webtoon/mypage/mypage.jsp";
-				    return true;
-				   } else {}
-				   location.href=document.referrer;
-				   return false;
+					location.href="/team4_webtoon/mypage/bmPro.jsp?mw_num=<%=mNum %>&cl_num=<%=clNum%>";
+					return true;
+				}else{
+					location.href="/team4_webtoon/mypage/bmPro2.jsp?mw_num=<%=mNum %>&cl_num=<%=clNum%>";
+					return false;
 				}
 			}
 			</script>

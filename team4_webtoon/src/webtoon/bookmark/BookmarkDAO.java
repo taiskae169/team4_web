@@ -4,11 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 import webtoon.bookmark.BookmarkVO;
+import webtoon.content.contentVO;
 import webtoon.episode.WTepVO;
 
 public class BookmarkDAO {
@@ -51,18 +54,19 @@ public class BookmarkDAO {
 		return BMyn;
 	}
 	
-	public void addBMtoDB(String id,int mw_num,int cl_num,String mw_title,String cl_title, String wt_writer) throws Exception{
+	public void addBMtoDB(String id,int mw_num,int cl_num,String mw_title,String cl_title, String wt_writer, String ep_img) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn=getConnection();
-			pstmt=conn.prepareStatement("insert into bookmark values(bm_num_seq.nextval,?,?,?,?,?,?,sysdate)");			
+			pstmt=conn.prepareStatement("insert into bookmark values(bm_num_seq.nextval,?,?,?,?,?,?,?,sysdate)");			
 			pstmt.setString(1,id);
 			pstmt.setInt(2, mw_num);
 			pstmt.setString(3,mw_title);
 			pstmt.setInt(4, cl_num);
 			pstmt.setString(5,cl_title);
 			pstmt.setString(6,wt_writer);
+			pstmt.setString(7, ep_img);
 			pstmt.executeUpdate();
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -100,6 +104,41 @@ public class BookmarkDAO {
 		}		
 		return info;
 	} //웹툰 상세정보(태그,장르,줄거리 등)를 리턴하는 메소드
+	
+	
+	public String getThumbIMG(int cl_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String thumb=null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"select cl_title_id,cl_num,cl_title,cl_writer,wt_ep_img from content where cl_num=?");
+					pstmt.setInt(1, cl_num);
+					rs = pstmt.executeQuery();				
+					if (rs.next()) {
+						thumb=rs.getString("wt_ep_img");
+					}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}		
+		return thumb;	
+	} 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	//like_check 테이블에 bm_ch 추가
@@ -145,8 +184,68 @@ public class BookmarkDAO {
 		}	
 	}
 	
+	public List getBMwebtoon(String id,int start, int end) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List webtoonBM=null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"select * "+ 
+					"from (select bm_num,bm_user_id,bm_wt_num,bm_wt_title,bm_cl_num,bm_cl_title,bm_writer,bm_img,bm_reg,rowNum r "+
+					"from (select * from bookmark where bm_user_id=? order by bm_reg desc)order by bm_reg desc) where r >=? and r<=? ");
+					pstmt.setString(1, id);
+					pstmt.setInt(2, start);
+					pstmt.setInt(3, end);
+					rs = pstmt.executeQuery();
+					if (rs.next()) {
+						webtoonBM = new ArrayList(); 
+						do{ 
+							BookmarkVO  bmk=new BookmarkVO();
+							bmk.setBmNum(rs.getInt("bm_num"));
+							bmk.setBmWNum(rs.getInt("bm_wt_num"));
+							bmk.setBmWTitle(rs.getString("bm_wt_title"));
+							bmk.setBmCNum(rs.getInt("bm_cl_num"));
+							bmk.setBmCTitle(rs.getString("bm_cl_title"));
+							bmk.setBmWriter(rs.getString("bm_writer"));
+							bmk.setBmImg(rs.getString("bm_img"));
+							bmk.setBmReg(rs.getTimestamp("bm_reg"));
+							webtoonBM.add(bmk); 
+						}while(rs.next());
+					}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return webtoonBM;
+		
+	}
 	
-	
-	
+	public int getBMCount(String id) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int x=0;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select count(*)from bookmark where bm_user_id=?");
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1);  
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return x; 
+	}
 	
 }

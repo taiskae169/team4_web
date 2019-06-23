@@ -15,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>웹툰 테이블 테스트</title>
+  <title>웹툰 상세 페이지</title>
 
   <!-- Bootstrap core CSS -->
   <link href="/team4_webtoon/resources/main_webtoon/scrolling/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
