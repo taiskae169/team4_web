@@ -58,11 +58,11 @@ public class StarDAO {
 	
 	
 	
-	public boolean checkStar(String id, int cl_num) throws Exception{
+	public int checkStar(String id, int cl_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		boolean yn=false;
+		int yn=0;
 		try {
 			conn=getConnection();
 			pstmt=conn.prepareStatement("select * from like_check where id=? and cl_num=? and star_ch=1");
@@ -70,7 +70,7 @@ public class StarDAO {
 			pstmt.setInt(2, cl_num);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				yn=true;
+				yn=rs.getInt("star_ch");
 			}
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -80,7 +80,7 @@ public class StarDAO {
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
 		return yn;
-	}//별점 참여 여부 확인하는 메서드 null은 미참여, 1은 참여 
+	}//별점 참여 여부 확인하는 메서드 0은 미참여, 1은 참여 
 	
 	/*
 	//like_check 테이블에 like_ch 추가
@@ -124,7 +124,7 @@ public class StarDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		//boolean Syn=false;
+		int Syn=0;
 		try {
 			conn=getConnection();
 			conn=getConnection();
@@ -135,21 +135,24 @@ public class StarDAO {
 			rs=pstmt.executeQuery();
 			System.out.println("[1] like_check에서 조회");
 			if(rs.next()) {
+				Syn=rs.getInt("bm_ch");
+				if(Syn==1) {
 				System.out.println("[2-1] like_check에서 조회 결과값에서 bm_ch=1이 있으면");
-				pstmt=conn.prepareStatement("update like_check set star_ch=1 where id=? and mw_num=? and cl_num=? and bm_ch=1");
-				pstmt.setString(1, id);
-				pstmt.setInt(2, mw_num);
-				pstmt.setInt(3, cl_num);
-				pstmt.executeUpdate();
+					pstmt=conn.prepareStatement("update like_check set star_ch=1 where id=? and mw_num=? and cl_num=? and bm_ch=1");
+					pstmt.setString(1, id);
+					pstmt.setInt(2, mw_num);
+					pstmt.setInt(3, cl_num);
+					pstmt.executeUpdate();
 				System.out.println("[3-1] star_ch=1로 업데이트");
-		}else {
-				System.out.println("[2-2] like_check에 star_ch=1인 결과가 없어서 새롭게 신규로 bm_ch=1로 ");
+				}
+			}else {
+				System.out.println("[2-2] rs.next()가 없어서 like_check에 새롭게 신규로 bm_ch=1로 ");
 				pstmt=conn.prepareStatement("insert into like_check(id,mw_num,cl_num,star_ch) values(?,?,?,1)");
 				pstmt.setString(1, id);
 				pstmt.setInt(2, mw_num);
 				pstmt.setInt(3, cl_num);
 				pstmt.executeUpdate();
-				System.out.println("[3-2] like_check에 신규로 star_ch=1 등록 성공");
+				System.out.println("[3-2]신규로 star_ch=1 등록 성공");
 			}
 		}catch(Exception ex){
 			ex.printStackTrace();

@@ -6,6 +6,7 @@
       <%@ page import = "webtoon.content.contentDAO" %>
     <%@ page import = "java.util.List" %>    
     <%@ page import = "java.text.SimpleDateFormat" %>
+    <%@ page import="webtoon.list.WebToonListVO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -250,9 +251,17 @@
 			
 		</p>
 				<div>
-  				<button type="button" class="btn btn-outline-dark btn-sm">관심웹툰</button>
-				<button type="button" class="btn btn-outline-dark btn-sm">첫회보기</button>
-				<button type="button" class="btn btn-outline-dark btn-sm">작가의 다른 작품</button>	
+				
+				<%
+						int ep1cn=epdao.getFirstEP(mNum);
+						int loveWT=epdao.getLoveWT(mNum);
+						String idl=(String)session.getAttribute("sessionID");
+						int lovechk=epdao.checkLovech(idl, mNum);
+						
+				%>
+  				<button type="button" class="btn btn-outline-dark btn-sm" onclick="location.href='team4_webtoon/like/like.jsp?lwb_wb_num=<%=mNum%>'">♡<%=loveWT %></button>
+				<button type="button" class="btn btn-outline-dark btn-sm"  onclick="location.href='/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=mNum%>&cl_num=<%=ep1cn%>' ">첫회보기</button>
+				<button type="button" class="btn btn-outline-dark btn-sm"  onclick="location.href='/team4_webtoon/search/search.jsp?select=1&addr=<%=wtDetail.getWtAuthor() %>'">작가의 다른 작품</button>	
 				</div>
 			</div>
 			</div>	

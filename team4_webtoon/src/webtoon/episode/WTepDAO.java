@@ -122,6 +122,60 @@ public class WTepDAO {
 		return webtoonEP;
 	} //웹툰별 에피소드 리스트를 리턴하는 메소드
 	
+	public int getFirstEP(int mw_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int fEP=0;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"select *from (select cl_num,cl_title,cl_title_id,cl_reg,rowNum r from (select cl_num,cl_title,cl_title_id,cl_reg from content where cl_title_id=? order by cl_reg asc) order by cl_reg asc) where r=1");
+					pstmt.setInt(1, mw_num);
+					rs = pstmt.executeQuery();
+					if (rs.next()) {
+						fEP=rs.getInt("cl_num");
+					}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return fEP;
+	}
+	
+	public int getLoveWT(int mw_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int love=0;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"select *from main_webtoon where mw_num=?");
+					pstmt.setInt(1, mw_num);
+					rs = pstmt.executeQuery();
+					if (rs.next()) {
+						love=rs.getInt("mw_view");
+					}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return love;
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	public WTepVO getWTContent(int cl_num, int mw_num) throws Exception {
 		Connection conn = null;

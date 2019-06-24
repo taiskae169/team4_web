@@ -235,14 +235,11 @@
      	<% 
      	BookmarkDAO bmDAO=BookmarkDAO.getInstance();
      	if(id!=null){   	  
-           boolean BMyn=bmDAO.checkBM(id,clNum);
-           System.out.println(BMyn);
-           if(BMyn){%>    
-      		<li>
-      		<a class="nav-link js-scroll-trigger" ><img src="/team4_webtoon/resources/image/webtoon/wt_ep/bmy.png" width="22px" height="22px"></a>
-      		</li>
-		<%}else{%>
-			<script type="text/javascript">
+           int BMyn=bmDAO.checkBM(id,clNum);
+           //System.out.println(BMyn);
+           if(BMyn!=1){%> 
+           
+           <script type="text/javascript">
 			function callBMfunction(){
 				if(confirm("책갈피에 등록되었습니다.확인하겠습니까?")){
 					location.href="/team4_webtoon/bookmark/bmPro.jsp?mw_num=<%=mNum %>&cl_num=<%=clNum%>";
@@ -253,15 +250,21 @@
 				}
 			}
 			</script>
+			
             <li>
       		<a class="nav-link js-scroll-trigger" href="javascript:callBMfunction();"><img src="/team4_webtoon/resources/image/webtoon/wt_ep/bmn.png" width="22px" height="22px"></a>			
-			</li>	
-		<%}
-       }else{%>
+			</li>	   
+
+		<%}else{%>
+		    <li>
+      		<a class="nav-link js-scroll-trigger" ><img src="/team4_webtoon/resources/image/webtoon/wt_ep/bmy.png" width="22px" height="22px"></a>
+      		</li>
+		<%}         
+      }else{%>
             <li>
       		<a class="nav-link js-scroll-trigger"  href="/team4_webtoon/login/login.jsp" Onclick="goLoginFirst();"><img src="/team4_webtoon/resources/image/webtoon/wt_ep/bmn.png" width="22px" height="22px"></a>
       		</li>
- 	 <%}%>
+ <%}%>
 			<li>
 			<a class="nav-link js-scroll-trigger" href="/team4_webtoon/main_wt/mainWT.jsp?mw_num=<%=mNum %>" ><img src="/team4_webtoon/resources/image/webtoon/wt_ep/close1.png" width="22px" height="22px"></a>
 			</li>

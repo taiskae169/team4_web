@@ -45,10 +45,10 @@
 	if(sId!=null){
 		String AorR=starDAO.checkIDstate(sCN);
 		if(sId.equals(AorR)){}else{
-			boolean yn = starDAO.checkStar(sId,sCN);
-				if(yn){%>
+			int yn = starDAO.checkStar(sId,sCN);
+			if(yn==1){%>
 				<span name="yesS" id="yesS" >참여하셨습니다</span>
-				<%}else{ %>
+		<%}else if(yn==0){ %>
 				<form name="starForm"  method="post" action="/team4_webtoon/webtoon_view/starPro.jsp">
 				<input type="hidden" name="sId" value="<%=sId %>" />
 				<input type="hidden" name="mw_num" value="<%= sMN%>" />

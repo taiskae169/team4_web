@@ -20,7 +20,7 @@ public class WebToonListVO {
 	private int star;		//총 별점
 	private int start_p;	//별점 참여 인원
 	private String sum; //웹툰 줄거리
-	private int view;	//조회수	
+	private int view;	//웹툰 좋아요 한 횟수
 	private String ep_img; //회차별 썸네일
 
 	public String getEp_img() {

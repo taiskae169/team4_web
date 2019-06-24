@@ -30,11 +30,11 @@ public class BookmarkDAO {
 		return ds.getConnection();
 	}
 	
-	public boolean checkBM(String id, int cl_num) throws Exception{
+	public int checkBM(String id, int cl_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		boolean BMyn=false;
+		int BMyn=0;
 		try {
 			conn=getConnection();
 			pstmt=conn.prepareStatement("select * from like_check where id=? and cl_num=? and bm_ch=1");
@@ -42,7 +42,7 @@ public class BookmarkDAO {
 			pstmt.setInt(2, cl_num);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				BMyn=true;
+				BMyn=rs.getInt("bm_ch");
 			}
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -146,7 +146,7 @@ public class BookmarkDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		//boolean ynbm=false;
+		int ynbm=0;
 		try {
 			conn=getConnection();
 			pstmt=conn.prepareStatement("select * from like_check where id=? and mw_num=? and cl_num=?");
@@ -156,8 +156,8 @@ public class BookmarkDAO {
 			rs=pstmt.executeQuery();
 			System.out.println("[1] like_check에서 조회");
 			if(rs.next()) {
-				//ynbm=true;
-				//if(ynbm) {
+				ynbm=rs.getInt("star_ch");
+				if(ynbm==1) {
 				System.out.println("[2-1] like_check에서 조회 결과값에서 star_ch=1이 있으면");
 					pstmt=conn.prepareStatement("update like_check set bm_ch=1 where id=? and mw_num=? and cl_num=? and star_ch=1");
 					pstmt.setString(1, id);
@@ -165,15 +165,15 @@ public class BookmarkDAO {
 					pstmt.setInt(3, cl_num);
 					pstmt.executeUpdate();
 					System.out.println("[3-1] bm_ch=1로 업데이트");
-			}else {
-				System.out.println("[2-2] like_check에 star_ch=1인 결과가 없어서 새롭게 신규로 bm_ch=1로 ");
+				}
+			}else{
+				System.out.println("[2-2]rs.next()가 없어서 like_check에 새롭게 신규로 bm_ch=1로 ");
 					pstmt=conn.prepareStatement("insert into like_check(id,mw_num,cl_num,bm_ch) values(?,?,?,1)");
 					pstmt.setString(1, id);
 					pstmt.setInt(2, mw_num);
 					pstmt.setInt(3, cl_num);
 					pstmt.executeUpdate();
 					System.out.println("[3-2] like_check에 신규로 bm_ch=1 등록 성공");
-				//}
 			}
 		}catch(Exception ex){
 			ex.printStackTrace();
@@ -316,6 +316,7 @@ public class BookmarkDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		int s=0;
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement("select * from like_check where id=? and mw_num=? and cl_num=?");
@@ -324,27 +325,24 @@ public class BookmarkDAO {
 			pstmt.setInt(3, cl_num);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				String s=Integer.toString(rs.getInt("star_ch"));
-				
-				
-				
-				
-				                                               
+				 s=rs.getInt("star_ch");
+               if(s==1) {                           
 				System.out.println("[2-1] like_check에서 조회 결과값에서 star_ch=1, bm_ch=1이 있을떄");
-				pstmt=conn.prepareStatement("update like_check set bm_ch=null where id=? and mw_num=? and cl_num=? and star_ch=1");
-				pstmt.setString(1, id);
-				pstmt.setInt(2, mw_num);
-				pstmt.setInt(3, cl_num);
-				pstmt.executeUpdate();
+					pstmt=conn.prepareStatement("update like_check set bm_ch=null where id=? and mw_num=? and cl_num=? and star_ch=1");
+					pstmt.setString(1, id);
+					pstmt.setInt(2, mw_num);
+					pstmt.setInt(3, cl_num);
+					pstmt.executeUpdate();
 				System.out.println("[3-1] bm_ch=null로 업데이트");
-		}else {
+               }else if(s==0) {
 				System.out.println("[2-2] like_check에 bm_ch=1만 있을떄 ");
-				pstmt=conn.prepareStatement("delete like_check where bm_ch=1 and id=? and mw_num=? and cl_num=?");
-				pstmt.setString(1, id);
-				pstmt.setInt(2, mw_num);
-				pstmt.setInt(3, cl_num);
-				pstmt.executeUpdate();
+					pstmt=conn.prepareStatement("delete like_check where bm_ch=1 and id=? and mw_num=? and cl_num=? and star_ch=0");
+					pstmt.setString(1, id);
+					pstmt.setInt(2, mw_num);
+					pstmt.setInt(3, cl_num);
+					pstmt.executeUpdate();
 				System.out.println("[3-2] like_check에 bm_ch=1인 결과 삭제");
+               }
 			}
 		} catch(Exception ex) {
 			ex.printStackTrace();
