@@ -56,7 +56,7 @@
 %>
 	
 	<script>
-	location.href= "/team4_webtoon/mypage/bmPage.jsp";
+	location.href= "/team4_webtoon/bookmark/bmPage.jsp";
 	</script>
 
 

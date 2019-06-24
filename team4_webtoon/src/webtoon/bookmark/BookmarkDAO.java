@@ -225,6 +225,7 @@ public class BookmarkDAO {
 		
 	}
 	
+	//북마크된 웹툰 개수
 	public int getBMCount(String id) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -247,5 +248,113 @@ public class BookmarkDAO {
 		}
 		return x; 
 	}
+	
+	
+	//Bookmark(SQL)에서 북마크 기록 삭제하기
+	public void deleteBookmark(String chk, String id) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int bmk=Integer.parseInt(chk);
+		try {
+			conn = getConnection();
+				pstmt = conn.prepareStatement("delete from bookmark where bm_num=? and bm_user_id=?");
+				pstmt.setInt(1,bmk);
+				pstmt.setString(2, id);
+				pstmt.executeUpdate();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {			
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+	}
+	
+	
+	public List<BookmarkVO> getdBmkInfo(String bmk, String id) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<BookmarkVO> dbmk= new ArrayList<BookmarkVO>();
+		int chk=Integer.parseInt(bmk);
+		try {
+			conn = getConnection();
+				pstmt = conn.prepareStatement("select * from bookmark where bm_num=? and bm_user_id=?");
+				pstmt.setInt(1,chk);
+				pstmt.setString(2, id);
+				rs=pstmt.executeQuery();
+				if(rs.next()) {
+					BookmarkVO bmkD=new BookmarkVO();
+					
+					System.out.println(rs.getInt("bm_wt_num"));
+					System.out.println(rs.getInt("bm_cl_num"));
+					
+					bmkD.setBmWNum(rs.getInt("bm_wt_num"));
+					bmkD.setBmCNum(rs.getInt("bm_cl_num"));
+					dbmk.add(bmkD);
+				}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return dbmk;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public void deleteBkch(String id,int mw_num, int cl_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select * from like_check where id=? and mw_num=? and cl_num=?");
+			pstmt.setString(1, id);
+			pstmt.setInt(2, mw_num);
+			pstmt.setInt(3, cl_num);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				String s=Integer.toString(rs.getInt("star_ch"));
+				
+				
+				
+				
+				                                               
+				System.out.println("[2-1] like_check에서 조회 결과값에서 star_ch=1, bm_ch=1이 있을떄");
+				pstmt=conn.prepareStatement("update like_check set bm_ch=null where id=? and mw_num=? and cl_num=? and star_ch=1");
+				pstmt.setString(1, id);
+				pstmt.setInt(2, mw_num);
+				pstmt.setInt(3, cl_num);
+				pstmt.executeUpdate();
+				System.out.println("[3-1] bm_ch=null로 업데이트");
+		}else {
+				System.out.println("[2-2] like_check에 bm_ch=1만 있을떄 ");
+				pstmt=conn.prepareStatement("delete like_check where bm_ch=1 and id=? and mw_num=? and cl_num=?");
+				pstmt.setString(1, id);
+				pstmt.setInt(2, mw_num);
+				pstmt.setInt(3, cl_num);
+				pstmt.executeUpdate();
+				System.out.println("[3-2] like_check에 bm_ch=1인 결과 삭제");
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+	}
+	
+	
 	
 }
