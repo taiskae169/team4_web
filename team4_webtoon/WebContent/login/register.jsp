@@ -67,7 +67,7 @@
                 <input type="text" id = "id" class="form-control" placeholder="ID" name = "id" size = "10" maxlength="12" required autofocus>                
 
 				<label for="id">ID</label>
-                <input type = "button" value = "중복확인" onclick="openConfirmid(this.form)" class = "btn btn-info btn-sm input2">
+                <input type = "button" value = "중복확인" onclick="openConfirmid(this.form)" class = "btn btn-outline-dark btn-sm input2">
               </div>
 
               <div class="form-label-group">
@@ -78,7 +78,7 @@
                 <div class="form-label-group">
                 <input type="email" id="email" class="form-control" name = "email" placeholder="Email address" required autofocus>
                 <label for="email">Email address</label>
-                <input type = "button" value = "중복확인" onclick="openConfirmemail(this.form)" class = "btn btn-info btn-sm input2">
+                <input type = "button" value = "중복확인" onclick="openConfirmemail(this.form)" class = "btn btn-outline-dark btn-sm input2">
               </div>
 
                 <div class="form-label-group">
