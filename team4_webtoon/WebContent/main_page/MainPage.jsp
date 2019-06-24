@@ -84,8 +84,8 @@
           <a href="MainPage.jsp?week=4" class="list-group-item" style = "color:black;">목요일</a>
           <a href="MainPage.jsp?week=5" class="list-group-item" style = "color:black;">금요일</a>
           <a href="MainPage.jsp?week=6" class="list-group-item" style = "color:black;">토요일</a>
-          <a href="MainPage.jsp?week=7" class="list-group-item" style = "color:black;">일요일</a>
-          <a href="MainPage.jsp?week=0" class="list-group-item" style = "color:black;">도전만화</a>
+          <a href="MainPage.jsp?week=0" class="list-group-item" style = "color:black;">일요일</a>
+          <a href="MainPage.jsp?week=7" class="list-group-item" style = "color:black;">도전만화</a>
         </div><!-- 카테고리 DIV 종료 -->
         <!-- 메인페이지에 요일을 보내서 클릭한 요일의 웹툰이 나오게 한다.  -->
 

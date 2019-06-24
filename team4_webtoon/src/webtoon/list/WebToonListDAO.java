@@ -94,8 +94,8 @@ public class WebToonListDAO {
 		ArrayList<WebToonListVO> list = new ArrayList<WebToonListVO>();
 		try {
 			String sql = "select rownum r, mw_num, mw_title, mw_sub_title, mw_sum, mw_reg, mw_writer, value gen, mw_week, mw_like, "
-					+ "mw_mag,mw_tag, mw_star, mw_star_p from (select rownum r, mw_num, mw_title, mw_sub_title, mw_sum, mw_reg, mw_writer, mw_gen, mw_week, mw_like, "
-					+ "mw_mag,mw_tag, mw_star, mw_star_p from (select * from main_webtoon where MW_WEEK=? order by MW_LIKE asc)), WEB_GER where web_st = mw_gen";
+					+ "mw_mag,mw_tag, mw_star from (select rownum r, mw_num, mw_title, mw_sub_title, mw_sum, mw_reg, mw_writer, mw_gen, mw_week, mw_like, "
+					+ "mw_mag,mw_tag, mw_star from (select * from main_webtoon where MW_WEEK=? order by MW_LIKE asc)), WEB_GER where web_st = mw_gen";
 			// 별점을 기준으로 내림차순, 요일별 웹툰을 찾는 sql문
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, week);
@@ -114,7 +114,6 @@ public class WebToonListDAO {
 				vo.setMag(rs.getInt("mw_mag"));
 				vo.setTag(rs.getString("mw_tag"));
 				vo.setStar(rs.getInt("mw_star"));
-				vo.setStart_p(rs.getInt("mw_star_p"));
 				list.add(vo);
 			}
 			
@@ -231,7 +230,7 @@ public class WebToonListDAO {
 		rs = pstmt.executeQuery();
 		if(rs.next()) {
 			for(int i =1; i<6; i++) {
-				sql = "select  mw_num, mw_title, mw_sub_title, mw_reg, mw_writer, value gen, mw_week, mw_like, mw_mag,mw_tag, mw_star, mw_star_p from "
+				sql = "select  mw_num, mw_title, mw_sub_title, mw_reg, mw_writer, value gen, mw_week, mw_like, mw_mag,mw_tag, mw_star from "
 						+ "(select * from main_webtoon where mw_num=?), WEB_GER where web_st = mw_gen";
 				pstmt = conn.prepareStatement(sql);
 				int mw_num = rs.getInt("wb"+i);
@@ -253,7 +252,7 @@ public class WebToonListDAO {
 					vo.setMag(rs2.getInt("mw_mag"));
 					vo.setTag(rs2.getString("mw_tag"));
 					vo.setStar(rs2.getInt("mw_star"));
-					vo.setStart_p(rs2.getInt("mw_star_p"));
+
 					list.add(vo);
 					//추천 웹툰 정보를 list에 저장
 				}//if문 종료

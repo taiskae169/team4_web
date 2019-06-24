@@ -279,8 +279,8 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center" >
-        <img src="/team4_webtoon/resources/image/webtoon/wt_ep/webtoon.gif" >
-        <%--<img src="/team4_webtoon/resources/image/webtoon/<%=wtEP.getMwTitle()%>/<%=wtEP.getClContent()%>" > --%>
+        <!--<img src="/team4_webtoon/resources/image/webtoon/wt_ep/webtoon.gif" > -->
+        <img src="/team4_webtoon/resources/image/webtoon/<%=wtEP.getMwTitle()%>/<%=wtEP.getClContent()%>" >
         <div id="scrollbottom"></div>
         </div>
         <div id="STATICMENU">
