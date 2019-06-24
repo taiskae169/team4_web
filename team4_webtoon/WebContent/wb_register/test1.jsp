@@ -14,8 +14,5 @@
 	String title = (String)session.getAttribute("sessionTitle");
 	int num = (int)session.getAttribute("sessionnum");
 	String writer = (String)session.getAttribute("sessionwriter");
-	System.out.println(id1);
-	System.out.println(num);
-	System.out.println(title);
-	System.out.println(writer);
+
 	%>

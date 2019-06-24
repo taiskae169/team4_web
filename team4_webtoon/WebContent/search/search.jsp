@@ -36,6 +36,11 @@
 	.blacka{
 		color : black;
 	}
+	
+	#test a:hover{
+		text-decoration:none;
+		background-color: rgba(108,192,255,0.2);
+	}
 </style>
 </head>
 <body>
@@ -130,7 +135,7 @@ genreDAO a = genreDAO.getInstance();
   <DIV class='menu_line' style='clear: both;'></DIV>
          <br><br><hr style = "border : outset 1px black;"><br>
 	<h3>추천 키워드</h3><br>
-	<div>
+	<div id = "test">
 		<div>
 			<table>
 
@@ -158,7 +163,7 @@ genreDAO a = genreDAO.getInstance();
 	<br><br>
 	
 	<h3>추천 장르</h3><br>
-	<div>
+	<div id = "test">>
 		<div>
 			<table>
 				<tbody>

@@ -24,9 +24,7 @@ String writer = (String)session.getAttribute("sessionwriter");
 	String path = request.getRealPath("resources/image/webtoon/" + title);
 	
 	File Folder = new File(path);
-	System.out.println(title);
-	System.out.println(num);
-	System.out.println(writer);
+
 	if(check1 == 1){
 		dao.deleteLikeall(num);
 		cdao.deleteall(num);

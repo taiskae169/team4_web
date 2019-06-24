@@ -25,7 +25,6 @@
 	
 	String path = request.getRealPath("resources/image/webtoon/");
 	String path2 = request.getRealPath("resources/image/webtoon/thumbnail");
-	System.out.println(path2);
 	
 	try{
 
