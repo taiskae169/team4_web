@@ -138,7 +138,7 @@ public class WebToonListDAO {
 			conn = getConnection();
 			
 			pstmt = conn.prepareStatement(
-					"insert into main_webtoon values(main_webtoon_seq.nextval,?,?,sysdate,?,?,?,?,?,?,?,?,?,?)");
+					"insert into main_webtoon values(main_webtoon_seq.nextval,?,?,sysdate,?,?,?,?,?,?,?,?,?)");
 			pstmt.setString(1, main_webtoon.getTitle());
 			pstmt.setString(2, main_webtoon.getSub_title());
 			pstmt.setString(3, main_webtoon.getWriter());
@@ -148,9 +148,8 @@ public class WebToonListDAO {
 			pstmt.setInt(7, main_webtoon.getMag());
 			pstmt.setString(8, main_webtoon.getTag());
 			pstmt.setInt(9, main_webtoon.getStar());
-			pstmt.setInt(10, main_webtoon.getStart_p());
-			pstmt.setString(11, main_webtoon.getSum());
-			pstmt.setInt(12, main_webtoon.getView());
+			pstmt.setString(10, main_webtoon.getSum());
+			pstmt.setInt(11, main_webtoon.getView());
 
 			pstmt.executeUpdate();
 			

@@ -21,7 +21,7 @@
 </style>
 </head>
 <body>
-<div class = "container" style = "margin-top:100px; margin-bottom : 100px;">
+<div class = "container">
 <h1 class = "my-4" style = "text-align : center">이용약관</h1><br><br>
 
 <a href = "#welcome" class = "color">여러분을 환영합니다.</a><br>
