@@ -178,7 +178,7 @@
 <div class = "container" style = "margin-bottom : 50px;">
 <center>
 
-          	<button onclick = "location='../main_page/MainPage.jsp'" class="btn btn-primary">돌아가기</button>
+          	<button onclick = "location='../main_page/MainPage.jsp'" class="btn btn-outline-dark btn-sm">돌아가기</button>
 
           	</center>
           	</div>
