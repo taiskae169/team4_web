@@ -79,7 +79,7 @@ noticeVO b = adjust.content(nt_num);
 	
 	<form method = "post" action = "nt_changeTitle.jsp">
 	<label>제목    (현재 제목 : <%=b.getNt_title() %>)</label><br>
-	<input type = "text" name = "nt_title" placeholder = "제목을 입력해주세요" required>
+	<input type = "text" name = "nt_title" placeholder = "<%=b.getNt_title()%>" required>
 			<input type = "hidden" name = "nt_writer" value = "<%=id1 %>">
 	<input type = "hidden" name = "nt_num" value = "<%=nt_num %>">
 	<input type="submit"value = "변경" class="btn btn-outline-dark btn-sm">

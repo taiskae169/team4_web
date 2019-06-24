@@ -10,8 +10,13 @@
 <script language = "JavaScript">
 	var idck = 0;
 	function openConfirmid(userinput){
+		var regx = /^[a-zA-Z0-9]*$/;
 		if(userinput.id.value == ""){
 			alert("아이디를 입력하세요");
+			return;
+		}
+		if(!regx.test(userinput.id.value)){
+			alert("아이디는 숫자와 영어만 가능합니다.");
 			return;
 		}
 		url = "confirmId.jsp?id="+userinput.id.value;
@@ -20,15 +25,22 @@
 	}
 	
 	function openConfirmemail(userinput){
+		var mail = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+$/;
 		if(userinput.email.value == ""){
 			alert("이메일을 입력하세요");
 			return;
 		}
+		if(!mail.test(userinput.email.value)){
+			alert("이메일 형식을 지켜주세요");
+			return;
+		}
+		
 		url = "confirmEmail.jsp?email="+userinput.email.value;
 		
 		open(url, "confirm",  "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=500, height=250");
 	
 	}
+	
 	
 	
 </script>

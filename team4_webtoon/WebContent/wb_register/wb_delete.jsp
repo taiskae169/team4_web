@@ -10,11 +10,9 @@
 <%
 
 	String id1 = (String)session.getAttribute("sessionID");
-String title = (String)session.getAttribute("sessionTitle");
-int num = (int)session.getAttribute("sessionnum");
-String writer = (String)session.getAttribute("sessionwriter");
-	
-	
+String title = request.getParameter("title");
+int num = Integer.parseInt(request.getParameter("num"));
+String writer = request.getParameter("writer");
 	
 	SearchDAO a = SearchDAO.getInstance();
 	int check1 = a.deleteWB(title, writer);

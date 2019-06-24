@@ -6,7 +6,8 @@
 	<jsp:setProperty property="*" name="member"/>
 	</jsp:useBean>
 <%
+	int num = Integer.parseInt(request.getParameter("nt_num"));
 	noticeDAO dao = noticeDAO.getInstance();
 	dao.changeCategory(member);
-	response.sendRedirect("../main_page/MainPage.jsp");
 %>
+<meta http-equiv="Refresh" content="0;url=noticeView.jsp?nt_num=<%=num%>" >

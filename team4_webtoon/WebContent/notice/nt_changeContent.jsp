@@ -7,6 +7,7 @@
 	</jsp:useBean>
 <%
 	noticeDAO dao = noticeDAO.getInstance();
+	int num = Integer.parseInt(request.getParameter("nt_num"));
 	dao.changeContent(member);
-	response.sendRedirect("notice.jsp");
 %>
+<meta http-equiv="Refresh" content="0;url=noticeView.jsp?nt_num=<%=num%>" >

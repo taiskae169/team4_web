@@ -156,13 +156,22 @@
           <input type = "submit" class = "btn btn-success btn-sm input" value = "수정">
           </form>
           
-          <form name = "delete" method = "post" action = "test.jsp">
-          <input type = "hidden" name = "title" value = "<%=list.get(i).getTitle() %>">
-          <input type = "hidden" name = "writer" value = "<%=list.get(i).getWriter() %>">
-          <input type = "hidden" name = "num" value = "<%=list.get(i).getNum() %>">
-          <input type ="submit" value = "삭제" class = "btn btn-danger btn-sm input">
-          </form>
+          <a href = "#open-stateModa<%=i %>">
+          <input type = "button" value = "삭제" class = "btn btn-danger btn-sm">
+          </a>
           
+          <div id = "open-stateModa<%=i %>" class = "modal-window">
+          <div>
+          	<a href = "#modal-close" title = "Close" class = "modal-close">Close</a>
+          	<form action = "wb_delete.jsp" style = "margin:0 auto;">
+          	<p>웹툰을 삭제하시겠습니까?</p>
+          	<input type = "hidden" name = "title" value = "<%=list.get(i).getTitle() %>">
+          	<input type = "hidden" name = "writer" value = "<%=list.get(i).getWriter() %>">
+          	<input type = "hidden" name = "num" value = "<%=list.get(i).getNum() %>">
+          	<input type = "submit" value = "삭제">
+          	</form>
+          </div>
+          </div>
           </div>
           </div>
         </div>

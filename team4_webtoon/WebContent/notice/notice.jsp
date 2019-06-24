@@ -144,10 +144,12 @@
    <%
    	if (count == 0 ){
    		if(check == 4){%>
-   		<h1 class="my-4" style="text-align: center; margin-top:50px;">공지사항</h1>
+   		<div class = "container" style = "margin-top : 100px; margin-bottom : 200px; text-align : center;">
+   		<h1 class="my-4" style="text-align: center;">공지사항을 등록해주세요</h1>
    				<form name = "register" method = "post" action ="nt_register.jsp">
 	<input type = "submit" value = "등록">
 	</form>
+	</div>
 <%   		}
    		
    	} else {
@@ -221,13 +223,13 @@
 			<a href = "<%=request.getContextPath()%>/notice/nt_adjust.jsp?nt_num=<%=notice1.getNt_num()%>">
 			<input type = "submit" value = "수정" class="btn btn-success">
 			</a>
-			<a href = "#open-stateModa">
+			<a href = "#open-stateModa<%=j %>">
 			<input type = "button" value = "삭제" class="btn btn-danger">
 			</a>
 		</td>
 	<%} %>
       </tr>
-      <div id = "open-stateModa" class="modal-window">
+      <div id = "open-stateModa<%=j %>" class="modal-window">
       	<div>
       		<a href="#modal-close" title = "Close" class = "modal-close">Close</a>
       		<form action = "nt_deletePro.jsp" style = "margin:0 auto;">
