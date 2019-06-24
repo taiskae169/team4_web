@@ -81,12 +81,14 @@
 
 
           <%} 
-          if(check==4){
+         // if(check==4){
           %>
+          <!-- 
           <li class="nav-item">
             <a class="nav-link" href="/team4_webtoon/admin/admin.jsp"> 관리자</a>
           </li>
-          <%} %>
+           -->
+          <%//} %>
 		
         </ul>
       </div>
