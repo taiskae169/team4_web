@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
- <%@ page import = "java.util.List" %>    
+    pageEncoding="UTF-8"%> 
  <%@ page import = "java.text.SimpleDateFormat" %>    
  <%@ page import = "java.util.List" %>    
  <%@ page import = "webtoon.bookmark.BookmarkDAO" %>  
@@ -109,7 +107,7 @@
 </table>
 <%  } else {    %>
 <h1 class="my-4" style="text-align: center"><%=IDbm %> 님의 책갈피</h1><br><br><br>
-
+	<form method="post" action="/team4_webtoon/bookmark/deleteBMpro.jsp" >
 	<table class="table table-stripped" >
 		<thead>
 		<tr>
@@ -141,11 +139,12 @@
    			</th>
 			<th><%=bmk.getBmWriter() %></th>
 			<th><%= sdf.format(bmk.getBmReg())%></th>
-			<th><input type="checkbox" name="select" value="<%=bmk.getBmNum()%>" /></th>
+			<th><input type="checkbox" name="chk" value="<%=bmk.getBmNum()%>" /></th>
 		<%}%>
 		</tr>			 
 		</tbody>	
 	</table>
+	
 
 
 
@@ -199,8 +198,8 @@
 		
 }
 %>
-
-<input type="button" id="deleteBM" value="삭제"></button>
+	<input type="submit" id="deleteBM" value="삭제" />
+	</form>
 	</div>
 
 

@@ -236,7 +236,8 @@
      	BookmarkDAO bmDAO=BookmarkDAO.getInstance();
      	if(id!=null){   	  
            boolean BMyn=bmDAO.checkBM(id,clNum);
-           if(BMyn){%>
+           System.out.println(BMyn);
+           if(BMyn){%>    
       		<li>
       		<a class="nav-link js-scroll-trigger" ><img src="/team4_webtoon/resources/image/webtoon/wt_ep/bmy.png" width="22px" height="22px"></a>
       		</li>
@@ -244,10 +245,10 @@
 			<script type="text/javascript">
 			function callBMfunction(){
 				if(confirm("책갈피에 등록되었습니다.확인하겠습니까?")){
-					location.href="/team4_webtoon/mypage/bmPro.jsp?mw_num=<%=mNum %>&cl_num=<%=clNum%>";
+					location.href="/team4_webtoon/bookmark/bmPro.jsp?mw_num=<%=mNum %>&cl_num=<%=clNum%>";
 					return true;
 				}else{
-					location.href="/team4_webtoon/mypage/bmPro2.jsp?mw_num=<%=mNum %>&cl_num=<%=clNum%>";
+					location.href="/team4_webtoon/bookmark/bmPro2.jsp?mw_num=<%=mNum %>&cl_num=<%=clNum%>";
 					return false;
 				}
 			}
