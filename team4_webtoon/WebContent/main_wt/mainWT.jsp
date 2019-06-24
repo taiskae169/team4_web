@@ -235,6 +235,11 @@
 					<small class="text-muted">&#9734;</small>
 				<%}
 					break;
+				case 0:
+					for(int k=0;k<5;k++){ %>
+					<small class="text-muted">&#9734;</small>
+				<%}
+					break;
 				}
 				
 				//int sP=countEP;
