@@ -73,7 +73,6 @@
               <div class="form-label-group">
                 <input type="password" id="password" class="form-control" name = "password" placeholder="Password" required autofocus>
                 <label for="password">Password</label>
-                <a href="#" onclick="fn_pw_check()">확인</a>
               </div>
                 <hr>
                 <div class="form-label-group">
