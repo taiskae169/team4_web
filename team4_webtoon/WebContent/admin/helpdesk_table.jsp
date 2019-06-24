@@ -122,6 +122,7 @@
                   <!-- 상단 제목 바 -->
                   <tfoot>
                     <tr>
+                      <th>NUM</th>
                       <th>TITLE</th>
 					  <th>CATEGORY</th>
 					  <th>COMPANY</th>
