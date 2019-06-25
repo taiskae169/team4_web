@@ -90,7 +90,7 @@
 			//list에 저장된 갯수만큼 반복
 			vo = list.get(i);		//vo에 웹툰 정보를 차례대로 대입
 			
-			//별점 계산하는 공식, 이후 수정 필요
+
 		%>
           
           <jsp:include page="Main_webtoon_list.jsp">

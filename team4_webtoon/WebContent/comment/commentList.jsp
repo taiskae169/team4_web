@@ -154,7 +154,7 @@
 					</a>
 					<%=like %>
 					<a href="/team4_webtoon/comment/cmt_lk_ch.jsp?num=<%=num %>&pageNum=<%=cmtNum%>&mw_num=<%=mw_num %>&cl_num=<%=cl_num %>&like=2&ch=1">
-					<i class=" fas fa-thumbs-up" style="color:gray"></i>
+					<i class=" fas fa-thumbs-down" style="color:gray"></i>
 					</a> <%=hate %>  
 					<!-- 
 						좋아요/싫어요 참여를 위해
@@ -174,7 +174,7 @@
 					</a>
 					<%=like %>
 					<a href="#" onclick="alert('이미 참여하셨습니다'); return false;">
-					<i class=" fas fa-thumbs-up" style="color:gray"></i>
+					<i class=" fas fa-thumbs-down" style="color:gray"></i>
 					</a> <%=hate %>  
 					<!-- 
 						좋아요를 참여햇을 때 출력
@@ -188,7 +188,7 @@
 					</a>
 					<%=like %>
 					<a href="/team4_webtoon/comment/cmt_lk_ch.jsp?num=<%=num %>&pageNum=<%=cmtNum%>&mw_num=<%=mw_num %>&cl_num=<%=cl_num %>&like=2&ch=0">
-					<i class=" fas fa-thumbs-up" style="color:red"></i>
+					<i class=" fas fa-thumbs-down" style="color:red"></i>
 					</a> <%=hate %>  
 					
 					<!-- 
