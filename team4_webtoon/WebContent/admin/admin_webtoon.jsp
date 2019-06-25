@@ -29,6 +29,7 @@
 
 <body id="page-top">
   	<%@include file="/bar/menu.jsp" %>
+  	<%@include file="../bar/session_url.jsp" %>
   	
   	
   	<% 

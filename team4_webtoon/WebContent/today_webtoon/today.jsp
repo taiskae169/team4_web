@@ -48,6 +48,7 @@
   <!-- Navigation -->
   	<%@include file="/bar/menu.jsp" %>
 	<%@include file="/bar/navigationBar.jsp" %>
+	<%@include file="../bar/session_url.jsp" %>
 
   <!-- Page Content -->
    <div class="container" style="margin-top:100px; margin-bottom:50px;">
