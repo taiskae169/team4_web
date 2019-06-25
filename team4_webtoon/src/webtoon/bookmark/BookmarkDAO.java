@@ -30,6 +30,7 @@ public class BookmarkDAO {
 		return ds.getConnection();
 	}
 	
+	//북마크를 했는지 안 했는지 확인
 	public int checkBM(String id, int cl_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -52,8 +53,10 @@ public class BookmarkDAO {
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
 		return BMyn;
-	}
+	}//북마크를 했는지 안 했는지 확인
 	
+	
+	//Bookmark(SQL)에 데이터 등록하기
 	public void addBMtoDB(String id,int mw_num,int cl_num,String mw_title,String cl_title, String wt_writer, String ep_img) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -74,8 +77,9 @@ public class BookmarkDAO {
 			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
-	}
-
+	}//Bookmark(SQL)에 데이터 등록하기
+	
+	//북마크 등록에 필요한 웹툰 정보(작가, 제목 등) 가져오기
 	public WTepVO getInfo(int mw_num, int cl_num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -103,9 +107,9 @@ public class BookmarkDAO {
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}		
 		return info;
-	} //웹툰 상세정보(태그,장르,줄거리 등)를 리턴하는 메소드
+	} //북마크 등록에 필요한 웹툰 정보(작가, 제목 등) 가져오기
 	
-	
+	//북마크 등록에 필요한 웹툰 에피소드 대표 이미지 가져오기
 	public String getThumbIMG(int cl_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -128,19 +132,9 @@ public class BookmarkDAO {
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}		
 		return thumb;	
-	} 
+	} //북마크 등록에 필요한 웹툰 에피소드 대표 이미지 가져오기
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	//like_check 테이블에 bm_ch 추가
 	public void addBMch (String id, int mw_num, int cl_num) throws Exception{
 		Connection conn = null;
@@ -154,26 +148,26 @@ public class BookmarkDAO {
 			pstmt.setInt(2, mw_num);
 			pstmt.setInt(3, cl_num);
 			rs=pstmt.executeQuery();
-			System.out.println("[1] like_check에서 조회");
+			//System.out.println("[1] like_check에서 조회");
 			if(rs.next()) {
 				ynbm=rs.getInt("star_ch");
 				if(ynbm==1) {
-				System.out.println("[2-1] like_check에서 조회 결과값에서 star_ch=1이 있으면");
+				//System.out.println("[2-1] like_check에서 조회 결과값에서 star_ch=1이 있으면");
 					pstmt=conn.prepareStatement("update like_check set bm_ch=1 where id=? and mw_num=? and cl_num=? and star_ch=1");
 					pstmt.setString(1, id);
 					pstmt.setInt(2, mw_num);
 					pstmt.setInt(3, cl_num);
 					pstmt.executeUpdate();
-					System.out.println("[3-1] bm_ch=1로 업데이트");
+					//System.out.println("[3-1] bm_ch=1로 업데이트");
 				}
 			}else{
-				System.out.println("[2-2]rs.next()가 없어서 like_check에 새롭게 신규로 bm_ch=1로 ");
+				//System.out.println("[2-2]rs.next()가 없어서 like_check에 새롭게 신규로 bm_ch=1로 ");
 					pstmt=conn.prepareStatement("insert into like_check(id,mw_num,cl_num,bm_ch) values(?,?,?,1)");
 					pstmt.setString(1, id);
 					pstmt.setInt(2, mw_num);
 					pstmt.setInt(3, cl_num);
 					pstmt.executeUpdate();
-					System.out.println("[3-2] like_check에 신규로 bm_ch=1 등록 성공");
+					//System.out.println("[3-2] like_check에 신규로 bm_ch=1 등록 성공");
 			}
 		}catch(Exception ex){
 			ex.printStackTrace();
@@ -182,8 +176,9 @@ public class BookmarkDAO {
 			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}	
-	}
+	}//like_check 테이블에 bm_ch 추가
 	
+	//북마크DB에 북마크 목록 가져오기
 	public List getBMwebtoon(String id,int start, int end) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -221,11 +216,10 @@ public class BookmarkDAO {
 			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
-		return webtoonBM;
-		
-	}
+		return webtoonBM;		
+	}//북마크DB에 북마크 목록 가져오기
 	
-	//북마크된 웹툰 개수
+	//북마크된 웹툰 개수 가져오기
 	public int getBMCount(String id) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -247,7 +241,7 @@ public class BookmarkDAO {
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
 		return x; 
-	}
+	}//북마크된 웹툰 개수 가져오기
 	
 	
 	//Bookmark(SQL)에서 북마크 기록 삭제하기
@@ -267,9 +261,9 @@ public class BookmarkDAO {
 			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
-	}
+	}//Bookmark(SQL)에서 북마크 기록 삭제하기
 	
-	
+	//Bookmark(SQL)에서 북마크 버튼 기능에 필요한 정보 가져오기
 	public List<BookmarkVO> getdBmkInfo(String bmk, String id) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -285,8 +279,8 @@ public class BookmarkDAO {
 				if(rs.next()) {
 					BookmarkVO bmkD=new BookmarkVO();
 					
-					System.out.println(rs.getInt("bm_wt_num"));
-					System.out.println(rs.getInt("bm_cl_num"));
+					//System.out.println(rs.getInt("bm_wt_num"));
+					//System.out.println(rs.getInt("bm_cl_num"));
 					
 					bmkD.setBmWNum(rs.getInt("bm_wt_num"));
 					bmkD.setBmCNum(rs.getInt("bm_cl_num"));
@@ -300,18 +294,9 @@ public class BookmarkDAO {
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
 		return dbmk;
-	}
+	}//Bookmark(SQL)에서 북마크 버튼 기능에 필요한 정보 가져오기
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	//like_check(SQL)에서 북마크 등록여부 삭제하기
 	public void deleteBkch(String id,int mw_num, int cl_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -327,21 +312,21 @@ public class BookmarkDAO {
 			if(rs.next()) {
 				 s=rs.getInt("star_ch");
                if(s==1) {                           
-				System.out.println("[2-1] like_check에서 조회 결과값에서 star_ch=1, bm_ch=1이 있을떄");
+				//System.out.println("[2-1] like_check에서 조회 결과값에서 star_ch=1, bm_ch=1이 있을떄");
 					pstmt=conn.prepareStatement("update like_check set bm_ch=null where id=? and mw_num=? and cl_num=? and star_ch=1");
 					pstmt.setString(1, id);
 					pstmt.setInt(2, mw_num);
 					pstmt.setInt(3, cl_num);
 					pstmt.executeUpdate();
-				System.out.println("[3-1] bm_ch=null로 업데이트");
+				//System.out.println("[3-1] bm_ch=null로 업데이트");
                }else if(s==0) {
-				System.out.println("[2-2] like_check에 bm_ch=1만 있을떄 ");
+				//System.out.println("[2-2] like_check에 bm_ch=1만 있을떄 ");
 					pstmt=conn.prepareStatement("delete like_check where bm_ch=1 and id=? and mw_num=? and cl_num=? and star_ch=0");
 					pstmt.setString(1, id);
 					pstmt.setInt(2, mw_num);
 					pstmt.setInt(3, cl_num);
 					pstmt.executeUpdate();
-				System.out.println("[3-2] like_check에 bm_ch=1인 결과 삭제");
+				//System.out.println("[3-2] like_check에 bm_ch=1인 결과 삭제");
                }
 			}
 		} catch(Exception ex) {
@@ -351,8 +336,7 @@ public class BookmarkDAO {
 			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
-	}
-	
+	} //like_check(SQL)에서 북마크 등록여부 삭제하기
 	
 	
 }

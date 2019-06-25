@@ -101,7 +101,7 @@
 		}
 	} else {
 		//response.sendRedirect("/team4_webtoon/webtoon_view/viewerPage.jsp");
-		//response.sendRedirect("/team4_webtoon/login/login.jsp");
+		response.sendRedirect("/team4_webtoon/login/login.jsp");
 	}%>
 	  <!-- Bootstrap core JavaScript -->
   <script src="/team4_webtoon/resources/Main_page/vendor/jquery/jquery.min.js"></script>

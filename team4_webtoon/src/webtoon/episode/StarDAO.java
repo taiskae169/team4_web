@@ -25,7 +25,7 @@ public class StarDAO {
 		return ds.getConnection();
 	}
 	
-	//로그인 한 아이디가 
+	//로그인 한 아이디가 작가와 같은지 확인하는 메서드
 	public String checkIDstate(int cl_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -48,16 +48,11 @@ public class StarDAO {
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
 		return AorR;
-	}
+	} //로그인 한 아이디가 작가와 같은지 확인하는 메서드
 	
+
 	
-	
-	
-	
-	
-	
-	
-	
+	//별점 참여 여부 확인하는 메서드 0은 미참여, 1은 참여 
 	public int checkStar(String id, int cl_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -82,42 +77,6 @@ public class StarDAO {
 		return yn;
 	}//별점 참여 여부 확인하는 메서드 0은 미참여, 1은 참여 
 	
-	/*
-	//like_check 테이블에 like_ch 추가
-	public void addSrecord (String id, int mw_num, int cl_num ) throws Exception{
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		boolean Syn=false;
-		try {
-			conn=getConnection();
-			conn=getConnection();
-			pstmt=conn.prepareStatement("select * from like_check where id=? and mw_num=? and cl_num=? and star_ch=1");
-			pstmt.setString(1, id);
-			pstmt.setInt(2, mw_num);
-			pstmt.setInt(3, cl_num);
-			rs=pstmt.executeQuery();
-			if(rs.next()) {
-				Syn=true;
-			}	
-			if(Syn) {
-			}else {
-				pstmt=conn.prepareStatement("insert into like_check(id,mw_num,cl_num,star_ch) values(?,?,?,1)");
-				pstmt.setString(1, id);
-				pstmt.setInt(2, mw_num);
-				pstmt.setInt(3, cl_num);
-				pstmt.executeUpdate();	
-			}
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}finally {
-			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
-			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
-		}	
-	}
-	*/
-
 	
 	//like_check 테이블에 star_ch 추가
 	public void addSrecord (String id, int mw_num, int cl_num ) throws Exception{
@@ -133,26 +92,26 @@ public class StarDAO {
 			pstmt.setInt(2, mw_num);
 			pstmt.setInt(3, cl_num);
 			rs=pstmt.executeQuery();
-			System.out.println("[1] like_check에서 조회");
+			//System.out.println("[1] like_check에서 조회");
 			if(rs.next()) {
 				Syn=rs.getInt("bm_ch");
 				if(Syn==1) {
-				System.out.println("[2-1] like_check에서 조회 결과값에서 bm_ch=1이 있으면");
+				//System.out.println("[2-1] like_check에서 조회 결과값에서 bm_ch=1이 있으면");
 					pstmt=conn.prepareStatement("update like_check set star_ch=1 where id=? and mw_num=? and cl_num=? and bm_ch=1");
 					pstmt.setString(1, id);
 					pstmt.setInt(2, mw_num);
 					pstmt.setInt(3, cl_num);
 					pstmt.executeUpdate();
-				System.out.println("[3-1] star_ch=1로 업데이트");
+				//System.out.println("[3-1] star_ch=1로 업데이트");
 				}
 			}else {
-				System.out.println("[2-2] rs.next()가 없어서 like_check에 새롭게 신규로 bm_ch=1로 ");
+				//System.out.println("[2-2] rs.next()가 없어서 like_check에 새롭게 신규로 bm_ch=1로 ");
 				pstmt=conn.prepareStatement("insert into like_check(id,mw_num,cl_num,star_ch) values(?,?,?,1)");
 				pstmt.setString(1, id);
 				pstmt.setInt(2, mw_num);
 				pstmt.setInt(3, cl_num);
 				pstmt.executeUpdate();
-				System.out.println("[3-2]신규로 star_ch=1 등록 성공");
+				//System.out.println("[3-2]신규로 star_ch=1 등록 성공");
 			}
 		}catch(Exception ex){
 			ex.printStackTrace();
@@ -161,15 +120,10 @@ public class StarDAO {
 			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}	
-	}
+	}//like_check 테이블에 star_ch 추가
 	
 	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	//별점 매기기
@@ -215,8 +169,9 @@ public class StarDAO {
 			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}		
-	}
+	}//별점 매기기
 	
+	//content(SQL)에 별점 업데이트
 	public void updateContentStar(int cl_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -233,9 +188,9 @@ public class StarDAO {
 			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}	
-	}
+	}//content(SQL)에 별점 업데이트
 	
-	
+	//main_webtoon(SQL)에 별점 업데이트
 	public void updateMWStar(int mw_num) throws Exception{
 		//System.out.println("test1");
 		Connection conn = null;
@@ -253,49 +208,17 @@ public class StarDAO {
 			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
-	} 
+	} //main_webtoon(SQL)에 별점 업데이트
 	
+
 	/*
-	public int updateMWStar(int mw_num) throws Exception{
-		//System.out.println("test1");
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		PreparedStatement pstmt2 = null;
-		ResultSet rs = null;
-		int mwStar=0;
-		try {
-			//System.out.println("test2");
-			conn = getConnection();
-			pstmt = conn.prepareStatement("update main_webtoon set mw_star=(select sum(cl_star)/count(cl_star) from content where cl_title_id=?) where mw_num=?");
-			pstmt.setInt(1,mw_num);
-			pstmt.setInt(2, mw_num);
-			pstmt.executeUpdate();
-			//System.out.println("test3");
-			pstmt2=conn.prepareStatement("select mw_num,mw_title,mw_star from main_webtoon where mw_num=?");
-			pstmt2.setInt(1, mw_num);
-			rs=pstmt2.executeQuery();
-			if(rs.next()) {
-				mwStar=rs.getInt("mw_star");
-			}
-		}catch(Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
-			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
-		}
-		return mwStar;
-	} 
-	*/
-	
-	
-	
-	
-	
 	private MWdetailVO setWtStar(int int1) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	*/
+	
+	//mainWT.jsp(웹툰 상세 페이지)에 웹툰 별점 
 	public int getStar(int cl_title_id,int cl_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -318,7 +241,7 @@ public class StarDAO {
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
 		return x; 	 
-	}
+	}//mainWT.jsp(웹툰 상세 페이지)에 웹툰 별점 
 	
 
 }

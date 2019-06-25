@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>북마크 삭제하기</title>
 
 <%
 		String id_dbmk=(String)session.getAttribute("sessionID");
@@ -31,22 +31,7 @@
 			bDAO.deleteBookmark(chkArr[i], id_dbmk);
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		// BookmarkVO bmk=(BookmarkVO)dbmk.get
-		
-		//BookmarkVO bmkD=null;
-		//bmkD= bDAO.getdBmkInfo(chkArr,id_dbmk);
-	
-		
-		
-		//bDAO.deleteBkch(chkArr,id_dbmk);
+
 %>
 
 <script type="text/javascript">
