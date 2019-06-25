@@ -40,6 +40,8 @@
 	.navbar-expand-lg .navbar-collapse {color:#808080;}
 	.epTitle{color:#808080;}
 	#mainNav .navbar-brand {font-size:1.25em;}
+	.dropdown-ep {max-height:150px;  overflow-x:hidden;overflow-y:auto;}
+	.scrollable-menu {height: auto; max-height: 200px;overflow-x: hidden;}
 	
 </style>
 
@@ -180,10 +182,10 @@
 	    %>
 
       <li class="dropdown"  style="list-style-type: none;"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><%=wtEP.getClTitle() %><span class="caret"></span></a>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu scrollable-menu" role="menu">
             <%  for (int i = 0 ; i < EPtitle.size() ; i++) {
          			 contentVO episode = (contentVO)EPtitle.get(i); %>
-          <li>
+          <li class="dropdown-ep">
           <a href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=episode.getCl_title_id()%>&cl_num=<%=episode.getCl_num()%>"><%=episode.getCl_title()%></a>
           </li>
           <%} %>

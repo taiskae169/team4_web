@@ -53,9 +53,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ml-center">
+        <!--  
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#services"><b>랭킹</b></a>
           </li>
+         -->
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/team4_webtoon/today_webtoon/today.jsp"><b>추천 웹툰</b></a>
           </li>
