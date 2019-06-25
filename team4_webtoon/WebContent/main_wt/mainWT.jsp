@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
     <%@page import="webtoon.list.MWdetailVO"%>
   <%@ page import = "webtoon.content.contentVO" %> 
    <%@ page import = "webtoon.episode.WTepDAO" %>
@@ -102,24 +101,11 @@
 	
 	
 </style>
-	<%--
-	.info_wt .publish, .info_wt .genre, .info_wt .tag{display:inline-float:left;marign}
-	.info_wt .publish, .info_wt .genre, .info_wt .tag{margin-left:13px;}
-	.info wt{padding:9px 0 17px; font-size:14px; color:#888; }--%>
+
 
 </head>
 
-
 <%
-
-	/*
-	String URL1=request.getRequestURL().toString();
-	System.out.println("URL1"+" "+URL1);
-
-	String URL2=request.getQueryString();
-	System.out.println("URL2"+" "+URL2);
-	*/
-
 		String cmtNumch = request.getParameter("cmtNum");
 		int cmtNum=1;
 		if(cmtNumch!=null){
@@ -136,10 +122,8 @@
 	    int currentPage = Integer.parseInt(pageNum); //현재 페이지     
 	    int startRow = (currentPage - 1) * pageSize + 1;   
 	    int endRow = currentPage * pageSize;  
-	    
-	    //System.out.println(currentPage + " " + startRow + " " + endRow);
-	    
-	    
+	     //System.out.println(currentPage + " " + startRow + " " + endRow);
+	    	    
 	    int countEP = 0;   //웹툰 에피소드 갯수
 	   // int numberEP = 0; 
 	
@@ -151,19 +135,11 @@
 	    WTepDAO epdao = WTepDAO.getInstance();
 	    wtDetail=epdao.getDetail(mNum); //웹툰 정보(장르,태그 등)
 	  
-	    countEP = epdao.getEPCount(mNum);   //웹툰의 에피소드 갯수
-	    
+	    countEP = epdao.getEPCount(mNum);   //웹툰의 에피소드 갯수	    
 	    if (countEP > 0) {
 	        webtoonEP = epdao.getEpisodes(mNum,startRow, endRow);
-	    }
-	    /*
-	   numberEP = countEP-(currentPage-1)*pageSize;
-		*/
-		
-
+	    }		
 %>
-
-
 
 <body id="page-top">
   <!-- Navigation -->
