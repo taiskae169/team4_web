@@ -170,11 +170,100 @@ public class WTepDAO {
 		return love;
 	}
 	
+	public int checkLovech(String id, int mw_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int yOn=0;
+		try {
+			conn=getConnection();
+			pstmt=conn.prepareStatement("select * from love_check where u_id=? and mw_num=? and love_ch=1");
+			pstmt.setString(1, id);
+			pstmt.setInt(2, mw_num);
+			rs=pstmt.executeQuery();
+			System.out.println("love_ch 상태 여부");
+			if(rs.next()) {
+				yOn=rs.getInt("love_ch");
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return yOn;
+	}
 	
+	public void addLove(String id, int mw_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn=getConnection();
+			pstmt=conn.prepareStatement("insert into love_check values(?,?,1)");
+			pstmt.setString(1, id);
+			pstmt.setInt(2, mw_num);
+			pstmt.executeUpdate();
+			System.out.println("love_ch=1로 추가");
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+	}
 	
+	public void deleteLove(String id, int mw_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn=getConnection();
+			pstmt=conn.prepareStatement("delete love_check where u_id=? and mw_num=? and love_ch=1");
+			pstmt.setString(1, id);
+			pstmt.setInt(2, mw_num);
+			pstmt.executeUpdate();	
+			System.out.println("love_check에서 아예 삭제");
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+	}
 	
+	public void addMWview(int mw_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn=getConnection();
+			pstmt=conn.prepareStatement("update main_webtoon set mw_view=mw_view+1 where mw_num=?");
+			pstmt.setInt(1, mw_num);
+			pstmt.executeUpdate();	
+			System.out.println("main_webtoon에 mw_view+1 증가");
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+	}
 	
-	
+	public void deleteMWview (int mw_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn=getConnection();
+			pstmt=conn.prepareStatement("update main_webtoon set mw_view=mw_view-1 where mw_num=?");
+			pstmt.setInt(1, mw_num);
+			pstmt.executeUpdate();	
+			System.out.println("main_webtoon에 mw_view-1 감소");
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+	}
 	
 	
 	public WTepVO getWTContent(int cl_num, int mw_num) throws Exception {
@@ -185,7 +274,7 @@ public class WTepDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"select mw.mw_num,mw.mw_title,c.cl_title,c.cl_num,c.cl_content from content c,main_webtoon mw where mw.mw_num=c.cl_title_id and cl_num=? and mw_num=?");
+					"select mw.mw_num,mw.mw_title,c.cl_title,c.cl_num,c.cl_content,c.cl_writer from content c,main_webtoon mw where mw.mw_num=c.cl_title_id and cl_num=? and mw_num=?");
 					pstmt.setInt(1, cl_num);
 					pstmt.setInt(2, mw_num);
 					rs = pstmt.executeQuery();				
@@ -195,6 +284,7 @@ public class WTepDAO {
 						wtEP.setClTitle(rs.getString("cl_title"));
 						wtEP.setClNO(rs.getInt("cl_num"));
 						wtEP.setClContent(rs.getString("cl_content"));
+						wtEP.setClWriter(rs.getString("cl_writer"));
 					}
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -288,10 +378,63 @@ public class WTepDAO {
 		return pEPn;	
 	}
 	
+	public List getEPtitles(int mw_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List EPtitle=null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"select cl_num,cl_title,cl_title_id,cl_reg,wt_ep_img from content where cl_title_id=? order by cl_reg desc");
+					pstmt.setInt(1, mw_num);
+					rs = pstmt.executeQuery();
+					if (rs.next()) {
+						EPtitle = new ArrayList(); 
+						do{ 
+							contentVO  episode=new contentVO();
+							episode.setWt_ep_img(rs.getString("wt_ep_img"));
+							episode.setCl_title(rs.getString("cl_title"));
+							episode.setCl_reg(rs.getTimestamp("cl_reg"));
+							episode.setCl_num(rs.getInt("cl_num"));
+							episode.setCl_title_id(rs.getInt("cl_title_id"));
+							EPtitle.add(episode); 
+						}while(rs.next());
+					}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return EPtitle;
+	} //웹툰별 에피소드 리스트를 리턴하는 메소드
 	
 	
-	
-	
+	public String getWriterEmail(String id) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String emailA=null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"select * from user_info i,user_state s where i.state=s.member_st and i.id=?");
+					pstmt.setString(1, id);
+					rs = pstmt.executeQuery();
+					if (rs.next()) {
+						emailA=rs.getString("email");
+					}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return emailA;
+	}
 	
 	
 	

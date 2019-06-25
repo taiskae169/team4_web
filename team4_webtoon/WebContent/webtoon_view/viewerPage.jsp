@@ -4,6 +4,8 @@
 <%@page import="webtoon.episode.WTepVO"%>
 <%@page import="webtoon.episode.PrevNextEpVO"%>
 <%@page import="webtoon.bookmark.BookmarkDAO"%>
+  <%@ page import = "webtoon.content.contentVO" %> 
+  <%@ page import = "java.util.List" %> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +33,7 @@
   <link href="/team4_webtoon/resources/main_webtoon/agency/css/agency.min.css" rel="stylesheet">
 
 <style>
-	.ml-center {margin-left:150px; }
+	.ml-center {margin-left:250px; }
 	#box {float:left; padding:30px;margin-left:550px;margin-top:200px; margin-bottom:500px;}
 	#box {float:left; }
 	#mainNav{top:0px;padding-right:6px;padding-left:6px;}
@@ -170,8 +172,24 @@
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-shrink" id="mainNav">
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="/team4_webtoon/main_page/MainPage.jsp">WebToon</a>
-      <a href="/team4_webtoon/main_wt/mainWT.jsp?mw_num=<%=mNum %>" ><%=wtEP.getMwTitle() %></a>
-      <b class="epTitle">> <%=wtEP.getClTitle() %> </b>  
+      <a href="/team4_webtoon/main_wt/mainWT.jsp?mw_num=<%=mNum %>" ><%=wtEP.getMwTitle() %></a>&nbsp;>&nbsp;
+            <%
+      
+	    List EPtitle = null;
+	    EPtitle = wtDAO.getEPtitles(mNum);
+	    %>
+
+      <li class="dropdown"  style="list-style-type: none;"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><%=wtEP.getClTitle() %><span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <%  for (int i = 0 ; i < EPtitle.size() ; i++) {
+         			 contentVO episode = (contentVO)EPtitle.get(i); %>
+          <li>
+          <a href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=episode.getCl_title_id()%>&cl_num=<%=episode.getCl_num()%>"><%=episode.getCl_title()%></a>
+          </li>
+          <%} %>
+        </ul>
+      </li>
+	 
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -195,9 +213,6 @@
          <%} else{%>
          <a class="nav-link js-scroll-trigger" href=""><img src="/team4_webtoon/resources/image/webtoon/wt_ep/prev1.png" width="32px" height="32px"></a>
          <% } %>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#portfolio"><b>웹툰리그</b></a>
           </li>
           <li class="nav-item">
           <% int nxtCN=pEPn.getNextClN();
@@ -296,9 +311,13 @@
 		</a>
 		</div>
 		</div>
+		
+		<%
+		String writer=wtEP.getClWriter();
+		String email=wtDAO.getWriterEmail(writer);
+		%>
         <div class="col-lg-12 text-center">
-        <a href="" ><img src="/team4_webtoon/resources/main_webtoon/agency/vendor/fontawesome-free/svgs/solid/share-alt-square.svg" width="42px" height="42px" /></a>
-		<a href=""><img src="/team4_webtoon/resources/main_webtoon/agency/vendor/fontawesome-free/svgs/regular/share-square.svg"  width="42px" height="42px" /></a>
+        <a href="mailto:<%=email%>"  alt="작가에서 메일보내기"><img src="/team4_webtoon/resources/main_webtoon/agency/vendor/fontawesome-free/svgs/regular/envelope.svg" width="42px" height="42px" /></a>
         </div>
         
       </div>

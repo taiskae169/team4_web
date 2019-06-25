@@ -128,7 +128,8 @@
 	    int currentPage = Integer.parseInt(pageNum); //현재 페이지     
 	    int startRow = (currentPage - 1) * pageSize + 1;   
 	    int endRow = currentPage * pageSize;  
-	    System.out.println(currentPage + " " + startRow + " " + endRow);
+	    
+	    //System.out.println(currentPage + " " + startRow + " " + endRow);
 	    
 	    
 	    int countEP = 0;   //웹툰 에피소드 갯수
@@ -256,11 +257,28 @@
 						int ep1cn=epdao.getFirstEP(mNum);
 						int loveWT=epdao.getLoveWT(mNum);
 						String idl=(String)session.getAttribute("sessionID");
-						int lovechk=epdao.checkLovech(idl, mNum);
-						
+						String author=wtDetail.getWtAuthor();
+						if(idl==null){%>
+						<button type="button" class="btn btn-outline-dark btn-sm" onclick="location.href='/team4_webtoon/login/login.jsp'"><img src="/team4_webtoon/resources/main_webtoon/agency/vendor/fontawesome-free/svgs/regular/heart.svg"  width="15px" height="20px"/>&nbsp;<%=loveWT %></button>	
+				<% }else{
+							if(idl.equals(author)){%>
+							<button type="button" class="btn btn-outline-dark btn-sm"  disabled><img src="/team4_webtoon/resources/main_webtoon/agency/vendor/fontawesome-free/svgs/regular/heart.svg"  width="15px" height="20px"/>&nbsp;<%=loveWT %></button>	
+					<%}else{					
+							int lovechk=epdao.checkLovech(idl, mNum);
+								if(lovechk==1){
 				%>
-  				<button type="button" class="btn btn-outline-dark btn-sm" onclick="location.href='team4_webtoon/like/like.jsp?lwb_wb_num=<%=mNum%>'">♡<%=loveWT %></button>
+  				<button type="button" class="btn btn-outline-dark btn-sm" onclick="location.href='/team4_webtoon/main_wt/love.jsp?wt_num=<%=mNum%>&ch=<%=lovechk%>'"><img src="/team4_webtoon/resources/main_webtoon/agency/vendor/fontawesome-free/svgs/solid/heart.svg"  width="15px" height="20px"/>&nbsp;<%=loveWT%></button>
+  				<%			}else if(lovechk==0){%>
+  					<button type="button" class="btn btn-outline-dark btn-sm" onclick="location.href='/team4_webtoon/main_wt/love.jsp?wt_num=<%=mNum%>&ch=<%=lovechk%>'"><img src="/team4_webtoon/resources/main_webtoon/agency/vendor/fontawesome-free/svgs/regular/heart.svg"  width="15px" height="20px"/>&nbsp;<%=loveWT%></button>
+  				<%			}
+						}
+					}
+				
+				if (countEP == 0) {%>
+				<button type="button" class="btn btn-outline-dark btn-sm"  disabled>첫회보기</button>
+				<%}else{ %>
 				<button type="button" class="btn btn-outline-dark btn-sm"  onclick="location.href='/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=mNum%>&cl_num=<%=ep1cn%>' ">첫회보기</button>
+				<%} %>
 				<button type="button" class="btn btn-outline-dark btn-sm"  onclick="location.href='/team4_webtoon/search/search.jsp?select=1&addr=<%=wtDetail.getWtAuthor() %>'">작가의 다른 작품</button>	
 				</div>
 			</div>
@@ -294,12 +312,19 @@
 		<tbody>
 		<tr>
 			<th>
+			<%--<a href="/team4_webtoon/webtoon_view/ini.jsp?mw_num=<%=wtDetail.getmNum() %>&cl_num=<%=episode.getCl_num()%>" class="link_wt" data-id="66053">--%>
+				
 				<a href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=wtDetail.getmNum() %>&cl_num=<%=episode.getCl_num()%>" class="link_wt" data-id="66053">
+   				 
    				<img src="/team4_webtoon/resources/image/webtoon/<%=wtDetail.getWtTitle() %>/<%=episode.getWt_ep_img()%>" alt="<%=episode.getCl_title() %>" width="71" height="41" onerror="this.src='/team4_webtoon/resources/image/webtoon/thumbnail/imgErr2.gif'">
    				</a>
    			</th>
 			<th>
-				<a href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=wtDetail.getmNum() %>&cl_num=<%=episode.getCl_num()%>"><%=episode.getCl_title() %></a>
+			<%--<a href="/team4_webtoon/webtoon_view/ini.jsp?mw_num=<%=wtDetail.getmNum() %>&cl_num=<%=episode.getCl_num()%>"><%=episode.getCl_title() %></a>--%>
+			
+			<a href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=wtDetail.getmNum() %>&cl_num=<%=episode.getCl_num()%>"><%=episode.getCl_title() %></a>
+			 
+				
 				<%
 				java.util.Date date = episode.getCl_reg();
 				long now = System.currentTimeMillis();
