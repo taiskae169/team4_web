@@ -171,6 +171,8 @@
 
 <body id="page-top" onload="InitializeStaticMenu();">
 
+<%@include file="/bar/session_url.jsp" %>	
+
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-shrink" id="mainNav">
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="/team4_webtoon/main_page/MainPage.jsp">WebToon</a>

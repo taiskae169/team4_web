@@ -90,6 +90,7 @@
   <!-- Navigation -->
   	<%@include file="/bar/menu.jsp" %>
 	<%@include file="/bar/navigationBar.jsp" %>	
+	<%@include file="/bar/session_url.jsp" %>	
 
 
 	<div class="container">
