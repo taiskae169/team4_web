@@ -301,7 +301,7 @@
 <table cellpadding="0" cellspacing="0" >
 <tr>
     <td align="center">
-    게시판에 저장된 글이 없습니다.
+    등록된 에피소드가 없습니다.
     </td>
 </table>
 <%  } else {    %>
