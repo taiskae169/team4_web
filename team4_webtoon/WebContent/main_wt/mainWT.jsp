@@ -112,6 +112,14 @@
 
 <%
 
+	/*
+	String URL1=request.getRequestURL().toString();
+	System.out.println("URL1"+" "+URL1);
+
+	String URL2=request.getQueryString();
+	System.out.println("URL2"+" "+URL2);
+	*/
+
 		String cmtNumch = request.getParameter("cmtNum");
 		int cmtNum=1;
 		if(cmtNumch!=null){
@@ -161,6 +169,7 @@
   <!-- Navigation -->
   	<%@include file="/bar/menu.jsp" %>
 	<%@include file="/bar/navigationBar.jsp" %>	
+	<%@include file="/bar/session_url.jsp" %>	
 	
 		  <div class="container" id="wtDT">
  			<div class="wtInfo" >
