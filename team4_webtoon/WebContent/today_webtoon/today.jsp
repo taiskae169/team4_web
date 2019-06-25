@@ -15,8 +15,7 @@
 	String today = sdt.format(currentTime);
 	
 	WebToonListDAO dao = WebToonListDAO.getInstance();
-	//테스트용
-	//테스트용
+
 	ArrayList<WebToonListVO> list = dao.getTodayrecom(today);
 	if(list.size()==0){
 		dao.setTodayrecom(today);

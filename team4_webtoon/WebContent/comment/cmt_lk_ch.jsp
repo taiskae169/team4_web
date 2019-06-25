@@ -12,16 +12,22 @@
 	int like = Integer.parseInt(request.getParameter("like"));			//1일시 좋아요, 2일시 싫어요 설정
 	int ch = Integer.parseInt(request.getParameter("ch"));				//0일시 삭제, 1일시 추가
 	
+	if(id==null){%>
+		<script type="text/javascript">
+			alert("로그인해주세요");
+			location.href = document.referrer;
+		</script>
+	<%}else{
 
-	cmtDAO dao = cmtDAO.getinstance();
-	if(ch==1){
-		dao.chLike(id, like, cmt_num);
-		//1일시 추가를 위한 메소드
-	}else{
-		dao.deleteLike(id, cmt_num, like);
-		//삭제를 위한 메소드
+		cmtDAO dao = cmtDAO.getinstance();
+		if(ch==1){
+			dao.chLike(id, like, cmt_num);
+			//1일시 추가를 위한 메소드
+		}else{
+			dao.deleteLike(id, cmt_num, like);
+			//삭제를 위한 메소드
+		}
 	}
-	
 	//response.sendRedirect("/team4_webtoon/comment/comment.jsp");
 %>
 <script type="text/javascript">
