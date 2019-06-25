@@ -9,8 +9,10 @@
 </head>
 <body>
 <%
+	String url = (String)session.getAttribute("se_url");
 	session.invalidate();
-	response.sendRedirect("../main_page/MainPage.jsp");
+	response.sendRedirect(url);
+	//response.sendRedirect("../main_page/MainPage.jsp");
 %>
 </body>
 </html>
