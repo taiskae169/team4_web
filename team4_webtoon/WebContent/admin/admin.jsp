@@ -29,7 +29,7 @@
 
 <body id="page-top">
   	<%@include file="/bar/menu.jsp" %>
-  	
+  	<%@include file="../bar/session_url.jsp" %>
   	
   	<% 
   		ArrayList<Integer> MView = new ArrayList<Integer>();	//장르별 조회수 리스트
@@ -205,7 +205,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown 제목 -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">장르별 조회수</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">장르별 좋아요</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>

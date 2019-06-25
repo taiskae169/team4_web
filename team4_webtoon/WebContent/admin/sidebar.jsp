@@ -49,10 +49,18 @@
          	<i class="fas fa-fw fa-folder"></i>
           	<span>문의사항 목록</span></a>
       </li>
+      <li class="nav-item">
+         <a class="nav-link"  href="/team4_webtoon/main_page/MainPage.jsp">
+          	<span>HOME</span></a>
+      </li>
+
+
 
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
+      
+      
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">

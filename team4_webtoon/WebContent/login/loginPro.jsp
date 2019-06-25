@@ -8,7 +8,7 @@
 	<jsp:setProperty property="*" name="member"/>
 
 	<%
-	
+	String url = (String)session.getAttribute("se_url");
 	String id = request.getParameter("id");
 	String pw = request.getParameter("pw");
 	
@@ -46,7 +46,7 @@
 		session.setAttribute("sessionID",id);		//로그인 성공하면 아이디와 회원 등급을 세션으로 넘긴다.
 		session.setAttribute("sessionSTATE",level);
 		
-		response.sendRedirect("../main_page/MainPage.jsp");
+		response.sendRedirect(url);
 		}
 		
 	}else if(check==0){%>

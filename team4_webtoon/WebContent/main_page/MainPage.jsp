@@ -68,6 +68,7 @@
   	
   	 -->
 	<%@include file="../bar/navigationBar.jsp" %>
+	<%@include file="../bar/session_url.jsp" %>
 
   <!-- Page Content -->
   <div class="container" style="margin-top:100px;">
@@ -97,7 +98,7 @@
 		<div class="list-group" id = "test">
           <a href="../notice/noticeView.jsp?nt_num=<%=notice2.getNt_num() %>" class="list-group-item"  style = "color:black;"><%=notice2.getNt_title() %> </a>
         </div><!-- 공지사항 DIV 종료 -->
-              <%} %>
+              <%} %>	
 		       <%
 		       }%>
       </div>
