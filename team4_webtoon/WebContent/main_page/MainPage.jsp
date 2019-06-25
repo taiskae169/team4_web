@@ -34,7 +34,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>사이트명</title>
+  <title>메인 페이지</title>
 
 
 
