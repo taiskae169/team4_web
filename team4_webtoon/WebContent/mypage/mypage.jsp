@@ -41,6 +41,7 @@
   <link href="/team4_webtoon/resources/mypage/css/agency.min.css" rel="stylesheet">
 <%@include file="../bar/menu.jsp" %>
 <%@include file="../bar/navigationBar.jsp" %>
+<%@include file="/bar/session_url.jsp" %>	
 
 	<style type="text/css">
 	.portfolio-modal::-webkit-scrollbar {
