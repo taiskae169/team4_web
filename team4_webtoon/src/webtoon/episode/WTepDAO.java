@@ -93,7 +93,8 @@ public class WTepDAO {
 			pstmt = conn.prepareStatement(
 					"select * "+ 
 					"from (select cl_num,cl_title,cl_title_id,mw_num,cl_reg,cl_star, cl_star_p,cl_star_sum,wt_ep_img, rowNum r "+
-					"from (select cl_num,cl_title,cl_title_id,mw_num,cl_reg,cl_star,cl_star_p,cl_star_sum,wt_ep_img from content,main_webtoon where cl_title_id=mw_num and mw_num=? order by cl_reg desc) order by cl_reg desc) where r >=? and r<=? ");
+					"from (select cl_num,cl_title,cl_title_id,mw_num,cl_reg,cl_star,cl_star_p,cl_star_sum,wt_ep_img "+
+					"from content,main_webtoon where cl_title_id=mw_num and mw_num=? order by cl_reg desc) order by cl_reg desc) where r >=? and r<=? ");
 					pstmt.setInt(1, mw_num);
 					pstmt.setInt(2, start);
 					pstmt.setInt(3, end);
@@ -130,7 +131,8 @@ public class WTepDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"select *from (select cl_num,cl_title,cl_title_id,cl_reg,rowNum r from (select cl_num,cl_title,cl_title_id,cl_reg from content where cl_title_id=? order by cl_reg asc) order by cl_reg asc) where r=1");
+					"select *from (select cl_num,cl_title,cl_title_id,cl_reg,rowNum r "+
+					"from (select cl_num,cl_title,cl_title_id,cl_reg from content where cl_title_id=? order by cl_reg asc) order by cl_reg asc) where r=1");
 					pstmt.setInt(1, mw_num);
 					rs = pstmt.executeQuery();
 					if (rs.next()) {
@@ -146,6 +148,7 @@ public class WTepDAO {
 		return fEP;
 	}
 	
+	//웹툰 좋아요 개수 가져오기
 	public int getLoveWT(int mw_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -168,8 +171,9 @@ public class WTepDAO {
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
 		return love;
-	}
+	} //웹툰 좋아요 개수 가져오기
 	
+	// love_check(SQL)에서 "웹툰 좋아요" 참여 여부 촥인하기
 	public int checkLovech(String id, int mw_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -181,7 +185,7 @@ public class WTepDAO {
 			pstmt.setString(1, id);
 			pstmt.setInt(2, mw_num);
 			rs=pstmt.executeQuery();
-			System.out.println("love_ch 상태 여부");
+			//System.out.println("love_ch 상태 여부");
 			if(rs.next()) {
 				yOn=rs.getInt("love_ch");
 			}
@@ -193,8 +197,10 @@ public class WTepDAO {
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
 		return yOn;
-	}
+	} // love_check(SQL)에서 "웹툰 좋아요" 참여 여부 촥인하기
 	
+	
+	//  love_check(SQL)에서 "웹툰 좋아요" 참가한 것(1)으로 업데이트
 	public void addLove(String id, int mw_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -204,15 +210,37 @@ public class WTepDAO {
 			pstmt.setString(1, id);
 			pstmt.setInt(2, mw_num);
 			pstmt.executeUpdate();
-			System.out.println("love_ch=1로 추가");
+			//System.out.println("love_ch=1로 추가");
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}finally {
 			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
-	}
+	} //  love_check(SQL)에서 "웹툰 좋아요" 참가한 것(1)으로 업데이트
 	
+	
+	// 웹툰 좋아요 수를 1 증가
+	public void addMWview(int mw_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn=getConnection();
+			pstmt=conn.prepareStatement("update main_webtoon set mw_view=mw_view+1 where mw_num=?");
+			pstmt.setInt(1, mw_num);
+			pstmt.executeUpdate();	
+			//System.out.println("main_webtoon에 mw_view+1 증가");
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+	} // 웹툰 좋아요 수를 1 증가
+	
+	
+	
+	// love_check(SQL)에서 "웹툰 좋아요" 참가한 기록을 삭제
 	public void deleteLove(String id, int mw_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -229,25 +257,9 @@ public class WTepDAO {
 			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
-	}
+	}// love_check(SQL)에서 "웹툰 좋아요" 참가한 기록을 삭제
 	
-	public void addMWview(int mw_num) throws Exception{
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		try {
-			conn=getConnection();
-			pstmt=conn.prepareStatement("update main_webtoon set mw_view=mw_view+1 where mw_num=?");
-			pstmt.setInt(1, mw_num);
-			pstmt.executeUpdate();	
-			System.out.println("main_webtoon에 mw_view+1 증가");
-		}catch(Exception ex) {
-			ex.printStackTrace();
-		}finally {
-			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
-		}
-	}
-	
+	// 웹툰 좋아요 수를 1 감소
 	public void deleteMWview (int mw_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -263,7 +275,7 @@ public class WTepDAO {
 			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
-	}
+	} // 웹툰 좋아요 수를 1 감소
 	
 	
 	public WTepVO getWTContent(int cl_num, int mw_num) throws Exception {

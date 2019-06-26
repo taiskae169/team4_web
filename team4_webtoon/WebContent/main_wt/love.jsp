@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
   <%@ page import = "webtoon.episode.WTepDAO" %>  
     
-    
     <%     
     WTepDAO e = WTepDAO.getInstance();
 	String Lid =(String)session.getAttribute("sessionID");
@@ -22,16 +21,12 @@
    		</script>
    	<%}%>
     	
-    
-    
-    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>웹툰 좋아요 페이지</title>
 </head>
 <body>
-
 </body>
 </html>
