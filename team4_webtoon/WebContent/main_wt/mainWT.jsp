@@ -38,8 +38,8 @@
 	.link_genre:hover{text-decoration: underline; color: #212529;}
 	.link_tag{text-decoration: none; color: #212529;}
 	.link_tag:hover{text-decoration: underline; color: #212529;}
-	.link_wt{text-decoration: none; color: #212529;}
-	.link_wt:hover{text-decoration: underline; color: #212529;}
+	.link_wt {text-decoration: none; color: #212529;  background-color: yellow;}
+	.link_wt:hover{text-decoration: underline; color: #212529;  background-color: yellow;}
 	.link_page{text-decoration: none; color: #212529;}
 	.link_page:hover{text-decoration: underline; color: #212529;}
 	#wtDT {margin-top:100px;}
@@ -262,9 +262,7 @@
 	<br />
 	
 	<div class="container">
-	<%
-    if (countEP == 0) {
-%>
+<% if (countEP == 0) {%>
 <table cellpadding="0" cellspacing="0" >
 <tr>
     <td align="center">
@@ -288,19 +286,13 @@
 		<tbody>
 		<tr>
 			<th>
-			<%--<a href="/team4_webtoon/webtoon_view/ini.jsp?mw_num=<%=wtDetail.getmNum() %>&cl_num=<%=episode.getCl_num()%>" class="link_wt" data-id="66053">--%>
-				
-				<a href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=wtDetail.getmNum() %>&cl_num=<%=episode.getCl_num()%>" class="link_wt" data-id="66053">
-   				 
-   				<img src="/team4_webtoon/resources/image/webtoon/<%=wtDetail.getWtTitle() %>/<%=episode.getWt_ep_img()%>" alt="<%=episode.getCl_title() %>" width="71" height="41" onerror="this.src='/team4_webtoon/resources/image/webtoon/thumbnail/imgErr2.gif'">
+				<a href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=wtDetail.getmNum() %>&cl_num=<%=episode.getCl_num()%>" class="link_wt" >  				 
+   				<img src="/team4_webtoon/resources/image/webtoon/<%=wtDetail.getWtTitle() %>/<%=episode.getWt_ep_img()%>" alt="<%=episode.getCl_title() %>" 
+   				width="71" height="41" onerror="this.src='/team4_webtoon/resources/image/webtoon/thumbnail/imgErr2.gif'">
    				</a>
    			</th>
-			<th>
-			<%--<a href="/team4_webtoon/webtoon_view/ini.jsp?mw_num=<%=wtDetail.getmNum() %>&cl_num=<%=episode.getCl_num()%>"><%=episode.getCl_title() %></a>--%>
-			
-			<a href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=wtDetail.getmNum() %>&cl_num=<%=episode.getCl_num()%>"><%=episode.getCl_title() %></a>
-			 
-				
+			<th>		
+			<a href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=wtDetail.getmNum() %>&cl_num=<%=episode.getCl_num()%>" class="link_wt"><%=episode.getCl_title() %></a>	
 				<%
 				java.util.Date date = episode.getCl_reg();
 				long now = System.currentTimeMillis();
@@ -355,8 +347,7 @@
 					<small class="text-muted">&#9734;</small>
 				<%}
 					break;
-				}
-				
+				}				
 				int sP=episode.getMw_star_p();	
 				int sSum=episode.getMw_star_sum();
 				double avgS=(double)sSum/sP;
@@ -364,8 +355,7 @@
 					avgS=0;
 				}	
 			%>
-				<b><%=String.format("%.2f", avgS) %></b>
-			
+				<b><%=String.format("%.2f", avgS) %></b>			
 			</th>
 			<th>
 			<%=sdf.format(episode.getCl_reg())%>
@@ -374,7 +364,9 @@
 			String wtwriter=wtDetail.getWtAuthor();
 			if(uid!=null){
 				if(uid.equals(wtwriter)){ %>
-			<a href="#open-Moda<%=i%>"><img src="/team4_webtoon/resources/main_webtoon/sbadmin/vendor/fontawesome-free/svgs/regular/trash-alt.svg"  width="22px" height="22px"/></a>
+			<a href="#open-Moda<%=i%>">
+			<img src="/team4_webtoon/resources/main_webtoon/sbadmin/vendor/fontawesome-free/svgs/regular/trash-alt.svg"  width="22px" height="22px"/>
+			</a>
 			<%}else{} }%>
 			</th>
 		</tr>
@@ -393,8 +385,7 @@
 									</form>
 								</div> <!-- 폼을 둘러싸고 있는 div -->
 						 </div>  <!--  요일 변경 팝업창 div -->
-						 
-						 
+						 						 
 		<%}%>
 		</tbody>	
 	</table>
@@ -449,7 +440,13 @@
 %>
 	
 	</div>
-
+	
+	
+	  <!-- Footer -->
+	  <div class="footer" style="padding-top:200px; padding-bottom:0px;">
+	<%@include file="../bar/footer.jsp" %>
+	</div>
+	
 	  <!-- Bootstrap core JavaScript -->
   <script src="/team4_webtoon/resources/main_webtoon/scrolling/vendor/jquery/jquery.min.js"></script>
   <script src="/team4_webtoon/resources/main_webtoon/scrolling/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

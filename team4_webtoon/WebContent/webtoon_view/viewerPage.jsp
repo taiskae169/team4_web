@@ -45,37 +45,6 @@
 	
 </style>
 
-
-
-
-<script type="text/javascript">
- var stmnLEFT = 10; // 오른쪽 여백 
- var stmnGAP1 = 0; // 위쪽 여백 
- var stmnGAP2 = 150; // 스크롤시 브라우저 위쪽과 떨어지는 거리 
- var stmnBASE = 150; // 스크롤 시작위치 
- var stmnActivateSpeed = 5; //스크롤을 인식하는 딜레이 (숫자가 클수록 느리게 인식)
- var stmnScrollSpeed = 5; //스크롤 속도 (클수록 느림)
- var stmnTimer; 
- 
- function RefreshStaticMenu() { 
-  var stmnStartPoint, stmnEndPoint; 
-  stmnStartPoint = parseInt(document.getElementById('STATICMENU').style.top, 10); 
-  stmnEndPoint = Math.max(document.documentElement.scrollTop, document.body.scrollTop) + stmnGAP2; 
-  if (stmnEndPoint < stmnGAP1) stmnEndPoint = stmnGAP1; 
-  if (stmnStartPoint != stmnEndPoint) { 
-   stmnScrollAmount = Math.ceil( Math.abs( stmnEndPoint - stmnStartPoint ) / 15 ); 
-   document.getElementById('STATICMENU').style.top = parseInt(document.getElementById('STATICMENU').style.top, 10) + ( ( stmnEndPoint<stmnStartPoint ) ? -stmnScrollAmount : stmnScrollAmount ) + 'px'; 
-   stmnRefreshTimer = stmnScrollSpeed; 
-   }
-  stmnTimer = setTimeout("RefreshStaticMenu();", stmnActivateSpeed); 
-  } 
- function InitializeStaticMenu() {
-  document.getElementById('STATICMENU').style.right = stmnLEFT + 'px';  //처음에 오른쪽에 위치. left로 바꿔도.
-  document.getElementById('STATICMENU').style.top = document.body.scrollTop + stmnBASE + 'px'; 
-  RefreshStaticMenu();
-  }
-</script>
-
 <style type="text/css">
 #STATICMENU { margin: 0pt; padding-top: 300px;  position: absolute; right: 0px; top: 0px;}
 
@@ -136,10 +105,36 @@
 
 </style>
 
+<script type="text/javascript">
+ var stmnLEFT = 10; // 오른쪽 여백 
+ var stmnGAP1 = 0; // 위쪽 여백 
+ var stmnGAP2 = 150; // 스크롤시 브라우저 위쪽과 떨어지는 거리 
+ var stmnBASE = 150; // 스크롤 시작위치 
+ var stmnActivateSpeed = 5; //스크롤을 인식하는 딜레이 (숫자가 클수록 느리게 인식)
+ var stmnScrollSpeed = 5; //스크롤 속도 (클수록 느림)
+ var stmnTimer; 
+ 
+ function RefreshStaticMenu() { 
+  var stmnStartPoint, stmnEndPoint; 
+  stmnStartPoint = parseInt(document.getElementById('STATICMENU').style.top, 10); 
+  stmnEndPoint = Math.max(document.documentElement.scrollTop, document.body.scrollTop) + stmnGAP2; 
+  if (stmnEndPoint < stmnGAP1) stmnEndPoint = stmnGAP1; 
+  if (stmnStartPoint != stmnEndPoint) { 
+   stmnScrollAmount = Math.ceil( Math.abs( stmnEndPoint - stmnStartPoint ) / 15 ); 
+   document.getElementById('STATICMENU').style.top = 
+	   parseInt(document.getElementById('STATICMENU').style.top, 10) + ( ( stmnEndPoint<stmnStartPoint ) ? -stmnScrollAmount : stmnScrollAmount ) + 'px'; 
+   stmnRefreshTimer = stmnScrollSpeed; 
+   }
+  stmnTimer = setTimeout("RefreshStaticMenu();", stmnActivateSpeed); 
+  } 
+ function InitializeStaticMenu() {
+  document.getElementById('STATICMENU').style.right = stmnLEFT + 'px';  //처음에 오른쪽에 위치. left로 바꿔도.
+  document.getElementById('STATICMENU').style.top = document.body.scrollTop + stmnBASE + 'px'; 
+  RefreshStaticMenu();
+  }
+</script>
 
-
-
- <script language="JavaScript">
+ <script language="text/JavaScript">
      function goLoginfirst() {
      alert("로그인 후 참여가능합니다.");
      url = "/team4_webtoon/login/login.jsp";
@@ -148,11 +143,9 @@
      }
 </script>
 
-
 </head>
 
 <%
-
 	String cmtNumch = request.getParameter("cmtNum");
 	int cmtNum=1;
 	if(cmtNumch!=null){
@@ -164,37 +157,36 @@
 	WTepVO wtEP=null;
 	WTepDAO wtDAO=WTepDAO.getInstance();
 	wtEP=wtDAO.getWTContent(clNum,mNum);
-
 %>
 
-
-
 <body id="page-top" onload="InitializeStaticMenu();">
-
 <%@include file="/bar/session_url.jsp" %>	
 
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-shrink" id="mainNav">
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="/team4_webtoon/main_page/MainPage.jsp">WebToon</a>
       <a href="/team4_webtoon/main_wt/mainWT.jsp?mw_num=<%=mNum %>" ><%=wtEP.getMwTitle() %></a>&nbsp;>&nbsp;
-            <%
-      
+        <%     
 	    List EPtitle = null;
 	    EPtitle = wtDAO.getEPtitles(mNum);
 	    %>
 
-      <li class="dropdown"  style="list-style-type: none;"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><%=wtEP.getClTitle() %><span class="caret"></span></a>
+      <li class="dropdown"  style="list-style-type: none;">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%=wtEP.getClTitle() %><span class="caret"></span></a>
         <ul class="dropdown-menu scrollable-menu" role="menu">
             <%  for (int i = 0 ; i < EPtitle.size() ; i++) {
          			 contentVO episode = (contentVO)EPtitle.get(i); %>
           <li class="dropdown-ep">
-          <a href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=episode.getCl_title_id()%>&cl_num=<%=episode.getCl_num()%>"><%=episode.getCl_title()%></a>
+          <a href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=episode.getCl_title_id()%>&cl_num=<%=episode.getCl_num()%>">
+          <%=episode.getCl_title()%>
+          </a>
           </li>
           <%} %>
         </ul>
       </li>
 	 
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler navbar-toggler-right"  type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" 
+      aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
       </button>
@@ -213,7 +205,9 @@
           <%int prvCN=pEPn.getPrevClN();
           //System.out.println(prvCN);
           if(prvCN != 0){ %>
-            <a class="nav-link js-scroll-trigger" href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=pEPn.getClTid()%>&cl_num=<%=prvCN%>"><img src="/team4_webtoon/resources/image/webtoon/wt_ep/prev3.png" width="32px" height="32px"></a>
+            <a class="nav-link js-scroll-trigger" href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=pEPn.getClTid()%>&cl_num=<%=prvCN%>">
+            <img src="/team4_webtoon/resources/image/webtoon/wt_ep/prev3.png" width="32px" height="32px">
+            </a>
          <%} else{%>
          <a class="nav-link js-scroll-trigger" href=""><img src="/team4_webtoon/resources/image/webtoon/wt_ep/prev1.png" width="32px" height="32px"></a>
          <% } %>
@@ -221,14 +215,15 @@
           <li class="nav-item">
           <% int nxtCN=pEPn.getNextClN();
           if(nxtCN !=0){ %>
-           <a class="nav-link js-scroll-trigger" href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=pEPn.getClTid()%>&cl_num=<%=nxtCN%>"><img src="/team4_webtoon/resources/image/webtoon/wt_ep/next3.png" width="32px" height="32px"></a>
+           <a class="nav-link js-scroll-trigger" href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=pEPn.getClTid()%>&cl_num=<%=nxtCN%>">
+           <img src="/team4_webtoon/resources/image/webtoon/wt_ep/next3.png" width="32px" height="32px">
+           </a>
          <%} else{%>
         	 <a class="nav-link js-scroll-trigger" href=""><img src="/team4_webtoon/resources/image/webtoon/wt_ep/next1.png" width="32px" height="32px"></a>
         <% } %>
           </li>
         </ul>
-      </div>
-      
+      </div>      
       
       <div class="collapse navbar-collapse" id="navbarResponsive"> 
        <ul class="navbar-nav text-uppercase ml-auto">
@@ -250,14 +245,14 @@
         </li>
         <%} %>
         </ul>
+        
      	<ul class="nav navbar-nav navbar-right">
      	<% 
      	BookmarkDAO bmDAO=BookmarkDAO.getInstance();
      	if(id!=null){   	  
            int BMyn=bmDAO.checkBM(id,clNum);
            //System.out.println(BMyn);
-           if(BMyn!=1){%> 
-           
+           if(BMyn!=1){%>          
            <script type="text/javascript">
 			function callBMfunction(){
 				if(confirm("책갈피에 등록되었습니다.확인하겠습니까?")){
@@ -268,12 +263,11 @@
 					return false;
 				}
 			}
-			</script>
-			
+			</script>		
             <li>
-      		<a class="nav-link js-scroll-trigger" href="javascript:callBMfunction();"><img src="/team4_webtoon/resources/image/webtoon/wt_ep/bmn.png" width="22px" height="22px"></a>			
+      		<a class="nav-link js-scroll-trigger" href="javascript:callBMfunction();">
+      		<img src="/team4_webtoon/resources/image/webtoon/wt_ep/bmn.png" width="22px" height="22px"></a>			
 			</li>	   
-
 		<%}else{%>
 		    <li>
       		<a class="nav-link js-scroll-trigger" ><img src="/team4_webtoon/resources/image/webtoon/wt_ep/bmy.png" width="22px" height="22px"></a>
@@ -281,11 +275,13 @@
 		<%}         
       }else{%>
             <li>
-      		<a class="nav-link js-scroll-trigger"  href="/team4_webtoon/login/login.jsp" Onclick="goLoginFirst();"><img src="/team4_webtoon/resources/image/webtoon/wt_ep/bmn.png" width="22px" height="22px"></a>
+      		<a class="nav-link js-scroll-trigger"  href="/team4_webtoon/login/login.jsp" Onclick="goLoginFirst();">
+      		<img src="/team4_webtoon/resources/image/webtoon/wt_ep/bmn.png" width="22px" height="22px"></a>
       		</li>
  <%}%>
 			<li>
-			<a class="nav-link js-scroll-trigger" href="/team4_webtoon/main_wt/mainWT.jsp?mw_num=<%=mNum %>" ><img src="/team4_webtoon/resources/image/webtoon/wt_ep/close1.png" width="22px" height="22px"></a>
+			<a class="nav-link js-scroll-trigger" href="/team4_webtoon/main_wt/mainWT.jsp?mw_num=<%=mNum %>" >
+			<img src="/team4_webtoon/resources/image/webtoon/wt_ep/close1.png" width="22px" height="22px"></a>
 			</li>
     	</ul>
        </div>

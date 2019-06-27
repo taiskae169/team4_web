@@ -28,6 +28,10 @@
 	.link_wt{text-decoration: none; color: #212529;}
 	.link_wt:hover{text-decoration: underline; color: #212529;}
 	#deleteBM{margin-left:1000px}
+	.link_wt {text-decoration: none; color: #212529;  }
+	.link_wt:hover{text-decoration: underline; color: #212529; }
+	.link_page{text-decoration: none; color: #212529;}
+	.link_page:hover{text-decoration: underline; color: #212529;}
 </style>
 
 
@@ -130,13 +134,18 @@
 		<tr>
 			<th><%=numberBM--%></th>
 			<th>
-			<img src="/team4_webtoon/resources/image/webtoon/<%=bmk.getBmWTitle() %>/<%=bmk.getBmImg()%>" alt="<%=bmk.getBmWTitle() %>" width="71" height="41" onerror="this.src='/team4_webtoon/resources/image/webtoon/thumbnail/imgErr2.gif'">
+			<img src="/team4_webtoon/resources/image/webtoon/<%=bmk.getBmWTitle() %>/<%=bmk.getBmImg()%>" alt="<%=bmk.getBmWTitle() %>" 
+			width="71" height="41" onerror="this.src='/team4_webtoon/resources/image/webtoon/thumbnail/imgErr2.gif'">
 			</th>
 			<th>
-				<a href="/team4_webtoon/main_wt/mainWT.jsp?mw_num=<%=bmk.getBmWNum()%>"><%=bmk.getBmWTitle() %></a>
+				<a href="/team4_webtoon/main_wt/mainWT.jsp?mw_num=<%=bmk.getBmWNum()%>" class="link_wt">
+				<%=bmk.getBmWTitle() %>
+				</a>
 			</th>
 			<th>
-			<a href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=bmk.getBmWNum()%>&cl_num=<%=bmk.getBmCNum()%>"><%=bmk.getBmCTitle() %></a>
+			<a href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=bmk.getBmWNum()%>&cl_num=<%=bmk.getBmCNum()%>" class="link_wt">
+			<%=bmk.getBmCTitle() %>
+			</a>
    			</th>
 			<th><%=bmk.getBmWriter() %></th>
 			<th><%= sdf.format(bmk.getBmReg())%></th>

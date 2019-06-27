@@ -286,7 +286,8 @@ public class WTepDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"select mw.mw_num,mw.mw_title,c.cl_title,c.cl_num,c.cl_content,c.cl_writer from content c,main_webtoon mw where mw.mw_num=c.cl_title_id and cl_num=? and mw_num=?");
+					"select mw.mw_num,mw.mw_title,c.cl_title,c.cl_num,c.cl_content,c.cl_writer "+
+					 "from content c,main_webtoon mw where mw.mw_num=c.cl_title_id and cl_num=? and mw_num=?");
 					pstmt.setInt(1, cl_num);
 					pstmt.setInt(2, mw_num);
 					rs = pstmt.executeQuery();				
@@ -354,31 +355,20 @@ public class WTepDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement("select * "+
-				"from (select cl_num,cl_title,cl_title_id, lag(cl_num,1,0) over(order by cl_num) as prev_cl_num,lag(cl_title,1,'없음') over(order by cl_num) as prev_cl_title,lead(cl_num,1,0) over(order by cl_num) as next_cl_num,lead(cl_title,1,'없음') over(order by cl_num) as next_cl_title from content where cl_title_id=?) where cl_num=?");
+				"from (select cl_num,cl_title,cl_title_id, lag(cl_num,1,0) over(order by cl_num) as prev_cl_num,"
+				+ "lag(cl_title,1,'없음') over(order by cl_num) as prev_cl_title,lead(cl_num,1,0) over(order by cl_num) as next_cl_num,"
+				+ "lead(cl_title,1,'없음') over(order by cl_num) as next_cl_title from content where cl_title_id=?) where cl_num=?");
 			pstmt.setInt(1, mw_num);
 			pstmt.setInt(2, cl_num);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				
-				/*
-				System.out.println(rs.getInt("cl_num"));
-				System.out.println(rs.getString("cl_title"));
-				System.out.println(rs.getInt("cl_title_id"));
-				System.out.println(rs.getInt("prev_cl_num"));
-				System.out.println(rs.getString("prev_cl_title"));
-				System.out.println(rs.getInt("next_cl_num"));
-				System.out.println(rs.getString("next_cl_title"));
-				*/
-				
-				pEPn.setClN(rs.getInt("cl_num"));
-				pEPn.setClT(rs.getString("cl_title"));
-				pEPn.setClTid(rs.getInt("cl_title_id"));
-				pEPn.setPrevClN(rs.getInt("prev_cl_num"));
-				pEPn.setPrevClT(rs.getString("prev_cl_title"));
-				pEPn.setNextClN(rs.getInt("next_cl_num"));
-				pEPn.setNextClT(rs.getString("next_cl_title"));
-	
-	
+				pEPn.setClN(rs.getInt("cl_num"));    //현재 보고있는 에피소드 고유번호
+				pEPn.setClT(rs.getString("cl_title")); //현재 보고있는 에피소드 제목
+				pEPn.setClTid(rs.getInt("cl_title_id")); //현재 보고있는 웹툰의 고유번호
+				pEPn.setPrevClN(rs.getInt("prev_cl_num")); // 이전 에피소드의 고유번호
+				pEPn.setPrevClT(rs.getString("prev_cl_title")); //이전 에피소드의 제목
+				pEPn.setNextClN(rs.getInt("next_cl_num")); //다음 에피소드의 고유번호
+				pEPn.setNextClT(rs.getString("next_cl_title")); //다음 에피소드의 제목
 			}
 		}catch(Exception ex) {
 			ex.printStackTrace();

@@ -7,22 +7,19 @@
 <jsp:useBean id="sVO" scope="page" class="webtoon.episode.StarVO">
    <jsp:setProperty name="sVO" property="*"/>
 </jsp:useBean>
- 
-
- 
+  
  <%
  	StarDAO sDAO=StarDAO.getInstance();
- 	int star=Integer.parseInt(request.getParameter("starSelect"));
- 	int sMN=Integer.parseInt(request.getParameter("mw_num"));
- 	int sCN=Integer.parseInt(request.getParameter("cl_num"));
+ 	int star=Integer.parseInt(request.getParameter("starSelect")); //사용자가 매긴 별점
+ 	int sMN=Integer.parseInt(request.getParameter("mw_num")); //웹툰 고유번호
+ 	int sCN=Integer.parseInt(request.getParameter("cl_num"));  //에피소드 고유번호
  	int cltid=Integer.parseInt(request.getParameter("cl_title_id"));
  	String sId=request.getParameter("sId");
- 	
- 	
 
  	sVO.setsStar_sum(star);	
  	sVO.setsMw_num(sMN);	
  	sVO.setsCl_num(sCN);	
+ 	
  	sDAO.insertStar(sVO);
  	//System.out.println("별점 매기기 완료");
  	
@@ -34,9 +31,7 @@
  	
  	sDAO.addSrecord(sId,sMN,sCN);
  	//System.out.println("별점 like_check에 업데이트 완료");
- 	
- 	
- 
+
  %>
   <h2>별점 추가완료...</h2>
   <script>
