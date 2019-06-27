@@ -1,10 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> 
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%> 
  <%@ page import = "java.text.SimpleDateFormat" %>    
  <%@ page import = "java.util.List" %>    
  <%@ page import = "webtoon.bookmark.BookmarkDAO" %>  
  <%@ page import = "webtoon.bookmark.BookmarkVO" %>  
- 
    
 <!DOCTYPE html>
 <html>
@@ -38,14 +36,7 @@
 
 </head>
 
-
-
-
-
 <%
-
-
-		
 		String IDbm = (String)session.getAttribute("sessionID");
 	    
 		int pageSize = 10; // 한 화면에 출력할 게시물 개수
@@ -57,38 +48,22 @@
 	    int startRow = (currentPage - 1) * pageSize + 1;   
 	    int endRow = currentPage * pageSize;  
 	   // System.out.println(currentPage + " " + startRow + " " + endRow);
-	    
-	    
-	    int countBM = 0;   //책갈피 된 웹툰 갯수
-	   	int numberBM = 0; 
-	
+
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	   
-	    List webtoonBM = null;
 	    
 	    BookmarkDAO BMdao = BookmarkDAO.getInstance();
-	   
-	  
-	    countBM = BMdao.getBMCount(IDbm);   //웹툰의 에피소드 갯수
 	    
+	    int countBM = 0;   //책갈피 된 웹툰 에피소드의 개수
+		 List webtoonBM = null;
+	   
+	    countBM = BMdao.getBMCount(IDbm); 
 	    if (countBM > 0) {
 	        webtoonBM = BMdao.getBMwebtoon(IDbm,startRow,endRow);
 	    }
-	   
+	    
+	 	int numberBM = 0; 
 	   numberBM = countBM-(currentPage-1)*pageSize;
-		
-		
-
 %>
-
-		
-
-
-
-
-
-
-
 
 <body id="page-top">
   <!-- Navigation -->
@@ -96,12 +71,10 @@
 	<%@include file="/bar/navigationBar.jsp" %>	
 	<%@include file="/bar/session_url.jsp" %>	
 
-
 	<div class="container">
 	<%
     if (countBM == 0) {
 %>
-
 <h1 class="my-4" style="text-align: center"><%=IDbm %> 님의 책갈피</h1><br><br><br>
 
 <table cellpadding="0" cellspacing="0" >
@@ -230,8 +203,10 @@
 
 
 
-  <!-- Footer -->
+	  <!-- Footer -->
+	  <div class="footer" style="padding-top:200px; padding-bottom:0px;">
 	<%@include file="../bar/footer.jsp" %>
+	</div>
 
 
 </body>

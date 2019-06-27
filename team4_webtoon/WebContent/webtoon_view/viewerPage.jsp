@@ -289,11 +289,9 @@
   </nav>
   <br><br><br><br><br>
   
+  
 
-  
-  
-  	 <!-- Services -->
-  <section class="page-section" id="services">
+  <section class="page-section" id="wtContent">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center" >
@@ -303,23 +301,25 @@
         </div>
         <div id="STATICMENU">
         <div>
-		<a href="#" > <img src="/team4_webtoon/resources/main_webtoon/agency/vendor/fontawesome-free/svgs/solid/chevron-circle-up.svg" width="42px" height="42px" /></a>
+		<a href="#" > 
+		<img src="/team4_webtoon/resources/main_webtoon/agency/vendor/fontawesome-free/svgs/solid/chevron-circle-up.svg" width="42px" height="42px" />
+		</a>
 		</div>
 		<div>
 		<a style="display:scroll;bottom:10px;right:3px;" rel="nofollow" href="#scrollbottom" title="Go to Bottom" >
 		<img src="/team4_webtoon/resources/main_webtoon/agency/vendor/fontawesome-free/svgs/solid/chevron-circle-down.svg"  width="42px" height="42px" />
 		</a>
 		</div>
-		</div>
-		
+		</div>		
 		<%
 		String writer=wtEP.getClWriter();
 		String email=wtDAO.getWriterEmail(writer);
 		%>
         <div class="col-lg-12 text-center">
-        <a href="mailto:<%=email%>"  alt="작가에서 메일보내기"><img src="/team4_webtoon/resources/main_webtoon/agency/vendor/fontawesome-free/svgs/regular/envelope.svg" width="42px" height="42px" /></a>
-        </div>
-        
+        <a href="mailto:<%=email%>"  alt="작가에서 메일보내기">
+        <img src="/team4_webtoon/resources/main_webtoon/agency/vendor/fontawesome-free/svgs/regular/envelope.svg" width="42px" height="42px" />
+        </a>
+        </div>       
       </div>
       </div>
     </div>

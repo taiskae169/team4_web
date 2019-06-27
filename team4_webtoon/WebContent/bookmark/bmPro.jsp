@@ -20,11 +20,11 @@
 	info=DAObm.getInfo(Nmw,Ncl);
 	//System.out.println("WTepVO에서 info 가져오기 성공");
 	
-	String wtT=info.getMwTitle();
-	String clT=info.getClTitle();
-	String wtW=info.getClWriter();
-	String img=null;
-	img=DAObm.getThumbIMG(Ncl);
+	String wtT=info.getMwTitle();  //웹툰 제목
+	String clT=info.getClTitle(); //에피소드 제목
+	String wtW=info.getClWriter(); //웹툰 작가명
+	String img=null; 
+	img=DAObm.getThumbIMG(Ncl); //에피소드 대표 썸네일
 
 	DAObm.addBMtoDB(bmid,Nmw,Ncl,wtT,clT,wtW,img);
 	//System.out.println("BookmarkVO에 등록 성공");

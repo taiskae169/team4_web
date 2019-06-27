@@ -4,9 +4,6 @@
 		response.setStatus(HttpServletResponse.SC_OK);
 %>   
 
-
-
-
 <head>
 
   <meta charset="utf-8">
@@ -30,15 +27,15 @@
 
 <body class="error">
 
-
 <div class="container" >
 <img src=" /team4_webtoon/resources/image/errorIMG/404-error.gif" />
 </div>
 
-
-	<div id="alert" >
-	<button type="button" class="btn btn-outline-primary btn-lg"  onclick="location.href='/team4_webtoon/main_page/MainPage.jsp'"><b>Home</b></button>
-	</div>
+<div id="alert" >
+<button type="button" class="btn btn-outline-primary btn-lg"  onclick="location.href='/team4_webtoon/main_page/MainPage.jsp'">
+<b>Home</b>
+</button>
+</div>
 
   <!-- Bootstrap core JavaScript -->
   <script src="/team4_webtoon/resources/Main_page/vendor/jquery/jquery.min.js"></script>
