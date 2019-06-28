@@ -198,7 +198,9 @@ public class StarDAO {
 		try {
 			//System.out.println("test2");
 			conn = getConnection();
-			pstmt = conn.prepareStatement("update main_webtoon set mw_star=(select sum(cl_star)/count(cl_star) from content where cl_title_id=?) where mw_num=?");
+			pstmt = conn.prepareStatement(
+					"update main_webtoon set mw_star=(select sum(cl_star)/count(cl_star) "+
+					 "from content where cl_title_id=?) where mw_num=?");
 			pstmt.setInt(1,mw_num);
 			pstmt.setInt(2, mw_num);
 			pstmt.executeUpdate();
