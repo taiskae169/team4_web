@@ -16,7 +16,7 @@
 	DefaultFileRenamePolicy dp = new DefaultFileRenamePolicy();
 	MultipartRequest mr = new MultipartRequest(request, saveDir, size, enc, dp);
 	
-	System.out.println(saveDir);
+
 	
 	String company = "";
 	String name = "";

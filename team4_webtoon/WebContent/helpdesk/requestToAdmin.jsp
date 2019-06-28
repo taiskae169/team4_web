@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>1대1문의</title>
 
-<script type="text/javascript">
+<script type="text/javascript">0
 	function chang1(obj){
 		var value = obj.value;
 		var cate1 = document.getElementById("forcate1");

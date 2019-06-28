@@ -18,9 +18,3 @@
 			alert("변경되었습니다.");
 			location.href="admin_webtoon.jsp";
 		</script>
-	<%
-	//response.sendRedirect("admin_user.jsp");
-	
-
-
-%>
