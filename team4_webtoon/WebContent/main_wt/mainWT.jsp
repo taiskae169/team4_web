@@ -38,8 +38,8 @@
 	.link_genre:hover{text-decoration: underline; color: #212529;}
 	.link_tag{text-decoration: none; color: #212529;}
 	.link_tag:hover{text-decoration: underline; color: #212529;}
-	.link_wt{text-decoration: none; color: #212529;}
-	.link_wt:hover{text-decoration: underline; color: #212529;}
+	.link_wt {text-decoration: none; color: #212529;  background-color: yellow;}
+	.link_wt:hover{text-decoration: underline; color: #212529;  background-color: yellow;}
 	.link_page{text-decoration: none; color: #212529;}
 	.link_page:hover{text-decoration: underline; color: #212529;}
 	#wtDT {margin-top:100px;}
@@ -106,12 +106,6 @@
 </head>
 
 <%
-		String cmtNumch = request.getParameter("cmtNum");
-		int cmtNum=1;
-		if(cmtNumch!=null){
-			cmtNum=Integer.parseInt(cmtNumch);
-		}
-		
 		int mNum=Integer.parseInt(request.getParameter("mw_num"));
 	    
 		int pageSize = 10; // 한 화면에 출력할 게시물 개수
@@ -151,12 +145,15 @@
  			<div class="wtInfo" >
 				<div class="thumb">
 				<a>
-				<img src="/team4_webtoon/resources/image/webtoon/thumbnail/<%=wtDetail.getWtTitle() %>_som.jpg" title="<%=wtDetail.getWtTitle() %>" alt="<%=wtDetail.getWtTitle() %>" width="125" height="101" onerror="this.src='/team4_webtoon/resources/image/webtoon/thumbnail/imgErr.gif'">
+				<img src="/team4_webtoon/resources/image/webtoon/thumbnail/<%=wtDetail.getWtTitle() %>_som.jpg" title="<%=wtDetail.getWtTitle() %>" 
+				alt="<%=wtDetail.getWtTitle() %>" width="125" height="101" onerror="this.src='/team4_webtoon/resources/image/webtoon/thumbnail/imgErr.gif'">
 				</a>
 				</div>
 				<div class="detail">
 					<h2><%=wtDetail.getWtTitle() %>
-					<span class="wrt_nm"><a class="link_wtAuthor"  href="/team4_webtoon/search/search.jsp?select=1&addr=<%=wtDetail.getWtAuthor() %>"><%=wtDetail.getWtAuthor() %></a></span>
+					<span class="wrt_nm">
+					<a class="link_wtAuthor"  href="/team4_webtoon/search/search.jsp?select=1&addr=<%=wtDetail.getWtAuthor() %>"><%=wtDetail.getWtAuthor() %></a>
+					</span>
 					</h2>
 				</div>
 				<br />
@@ -165,20 +162,14 @@
 				<a class="link_genre"  href=""><%=wtDetail.getWtGenre() %></a>&nbsp;&nbsp;&nbsp;&nbsp;
 				<%String wtTag=wtDetail.getWtTag();
 					wtTag=wtTag.trim();
-					wtTag=wtTag.replaceAll("#","");
-					
-					String[] arrTag= wtTag.split(",");
-					
+					wtTag=wtTag.replaceAll("#","");					
+					String[] arrTag= wtTag.split(",");					
 					for(int i=0;i<arrTag.length;i++) {
 						//System.out.println(arrTag[i]);
 						String tag = arrTag[i].trim();
 						%>
 						<a class="link_tag"  href="/team4_webtoon/search/search.jsp?select=2&addr=<%=tag%>">#<%=tag%></a>
 						<% }%>	
-				
-				<%--<a class="link_tag"  href="/team4_webtoon/search/search.jsp?select=2&addr=<%=arrTag[i] %>"><%=wtDetail.getWtTag() %></a>--%>
-				
-
 				<br />
 				<p>
 				<%=wtDetail.getWtSumm() %>
@@ -227,38 +218,38 @@
 					<small class="text-muted">&#9734;</small>
 				<%}
 					break;
-				}
-				
-				//int sP=countEP;
-				//int sSum=episode.getMw_star_sum();
-				//double avgS=(double)sSum/sP;				
-			%>
-				<b><%= wtDetail.getWtStar()%>	</b>
-			
+				}%>
+				<b><%= wtDetail.getWtStar()%></b>			
 		</p>
-				<div>
-				
-				<%
-						int ep1cn=epdao.getFirstEP(mNum);
+				<div>			
+				<%						
 						int loveWT=epdao.getLoveWT(mNum);
 						String idl=(String)session.getAttribute("sessionID");
 						String author=wtDetail.getWtAuthor();
 						if(idl==null){%>
-						<button type="button" class="btn btn-outline-dark btn-sm" onclick="location.href='/team4_webtoon/login/login.jsp'"><img src="/team4_webtoon/resources/main_webtoon/agency/vendor/fontawesome-free/svgs/regular/heart.svg"  width="15px" height="20px"/>&nbsp;<%=loveWT %></button>	
+						<button type="button" class="btn btn-outline-dark btn-sm" onclick="location.href='/team4_webtoon/login/login.jsp'">
+						<img src="/team4_webtoon/resources/main_webtoon/agency/vendor/fontawesome-free/svgs/regular/heart.svg"  width="15px" height="20px" />&nbsp;<%=loveWT %>
+						</button>	
 				<% }else{
 							if(idl.equals(author)){%>
-							<button type="button" class="btn btn-outline-dark btn-sm"  disabled><img src="/team4_webtoon/resources/main_webtoon/agency/vendor/fontawesome-free/svgs/regular/heart.svg"  width="15px" height="20px"/>&nbsp;<%=loveWT %></button>	
+							<button type="button" class="btn btn-outline-dark btn-sm"  disabled>
+							<img src="/team4_webtoon/resources/main_webtoon/agency/vendor/fontawesome-free/svgs/regular/heart.svg"  width="15px" height="20px" />
+							&nbsp;<%=loveWT %>
+							</button>	
 					<%}else{					
 							int lovechk=epdao.checkLovech(idl, mNum);
-								if(lovechk==1){
-				%>
-  				<button type="button" class="btn btn-outline-dark btn-sm" onclick="location.href='/team4_webtoon/main_wt/love.jsp?wt_num=<%=mNum%>&ch=<%=lovechk%>'"><img src="/team4_webtoon/resources/main_webtoon/agency/vendor/fontawesome-free/svgs/solid/heart.svg"  width="15px" height="20px"/>&nbsp;<%=loveWT%></button>
+								if(lovechk==1){%>				
+  				<button type="button" class="btn btn-outline-dark btn-sm" onclick="location.href='/team4_webtoon/main_wt/love.jsp?wt_num=<%=mNum%>&ch=<%=lovechk%>'">
+  				<img src="/team4_webtoon/resources/main_webtoon/agency/vendor/fontawesome-free/svgs/solid/heart.svg"  width="15px" height="20px"/>&nbsp;<%=loveWT%>
+  				</button>
   				<%			}else if(lovechk==0){%>
-  					<button type="button" class="btn btn-outline-dark btn-sm" onclick="location.href='/team4_webtoon/main_wt/love.jsp?wt_num=<%=mNum%>&ch=<%=lovechk%>'"><img src="/team4_webtoon/resources/main_webtoon/agency/vendor/fontawesome-free/svgs/regular/heart.svg"  width="15px" height="20px"/>&nbsp;<%=loveWT%></button>
+  					<button type="button" class="btn btn-outline-dark btn-sm" onclick="location.href='/team4_webtoon/main_wt/love.jsp?wt_num=<%=mNum%>&ch=<%=lovechk%>'">
+  					<img src="/team4_webtoon/resources/main_webtoon/agency/vendor/fontawesome-free/svgs/regular/heart.svg"  width="15px" height="20px"/>&nbsp;<%=loveWT%>
+  					</button>
   				<%			}
 						}
 					}
-				
+				int ep1cn=epdao.getFirstEP(mNum);
 				if (countEP == 0) {%>
 				<button type="button" class="btn btn-outline-dark btn-sm"  disabled>첫회보기</button>
 				<%}else{ %>
@@ -271,9 +262,7 @@
 	<br />
 	
 	<div class="container">
-	<%
-    if (countEP == 0) {
-%>
+<% if (countEP == 0) {%>
 <table cellpadding="0" cellspacing="0" >
 <tr>
     <td align="center">
@@ -297,19 +286,13 @@
 		<tbody>
 		<tr>
 			<th>
-			<%--<a href="/team4_webtoon/webtoon_view/ini.jsp?mw_num=<%=wtDetail.getmNum() %>&cl_num=<%=episode.getCl_num()%>" class="link_wt" data-id="66053">--%>
-				
-				<a href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=wtDetail.getmNum() %>&cl_num=<%=episode.getCl_num()%>" class="link_wt" data-id="66053">
-   				 
-   				<img src="/team4_webtoon/resources/image/webtoon/<%=wtDetail.getWtTitle() %>/<%=episode.getWt_ep_img()%>" alt="<%=episode.getCl_title() %>" width="71" height="41" onerror="this.src='/team4_webtoon/resources/image/webtoon/thumbnail/imgErr2.gif'">
+				<a href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=wtDetail.getmNum() %>&cl_num=<%=episode.getCl_num()%>" class="link_wt" >  				 
+   				<img src="/team4_webtoon/resources/image/webtoon/<%=wtDetail.getWtTitle() %>/<%=episode.getWt_ep_img()%>" alt="<%=episode.getCl_title() %>" 
+   				width="71" height="41" onerror="this.src='/team4_webtoon/resources/image/webtoon/thumbnail/imgErr2.gif'">
    				</a>
    			</th>
-			<th>
-			<%--<a href="/team4_webtoon/webtoon_view/ini.jsp?mw_num=<%=wtDetail.getmNum() %>&cl_num=<%=episode.getCl_num()%>"><%=episode.getCl_title() %></a>--%>
-			
-			<a href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=wtDetail.getmNum() %>&cl_num=<%=episode.getCl_num()%>"><%=episode.getCl_title() %></a>
-			 
-				
+			<th>		
+			<a href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=wtDetail.getmNum() %>&cl_num=<%=episode.getCl_num()%>" class="link_wt"><%=episode.getCl_title() %></a>	
 				<%
 				java.util.Date date = episode.getCl_reg();
 				long now = System.currentTimeMillis();
@@ -364,8 +347,7 @@
 					<small class="text-muted">&#9734;</small>
 				<%}
 					break;
-				}
-				
+				}				
 				int sP=episode.getMw_star_p();	
 				int sSum=episode.getMw_star_sum();
 				double avgS=(double)sSum/sP;
@@ -373,8 +355,7 @@
 					avgS=0;
 				}	
 			%>
-				<b><%=String.format("%.2f", avgS) %></b>
-			
+				<b><%=String.format("%.2f", avgS) %></b>			
 			</th>
 			<th>
 			<%=sdf.format(episode.getCl_reg())%>
@@ -383,7 +364,9 @@
 			String wtwriter=wtDetail.getWtAuthor();
 			if(uid!=null){
 				if(uid.equals(wtwriter)){ %>
-			<a href="#open-Moda<%=i%>"><img src="/team4_webtoon/resources/main_webtoon/sbadmin/vendor/fontawesome-free/svgs/regular/trash-alt.svg"  width="22px" height="22px"/></a>
+			<a href="#open-Moda<%=i%>">
+			<img src="/team4_webtoon/resources/main_webtoon/sbadmin/vendor/fontawesome-free/svgs/regular/trash-alt.svg"  width="22px" height="22px"/>
+			</a>
 			<%}else{} }%>
 			</th>
 		</tr>
@@ -402,8 +385,7 @@
 									</form>
 								</div> <!-- 폼을 둘러싸고 있는 div -->
 						 </div>  <!--  요일 변경 팝업창 div -->
-						 
-						 
+						 						 
 		<%}%>
 		</tbody>	
 	</table>
@@ -458,7 +440,13 @@
 %>
 	
 	</div>
-
+	
+	
+	  <!-- Footer -->
+	  <div class="footer" style="padding-top:200px; padding-bottom:0px;">
+	<%@include file="../bar/footer.jsp" %>
+	</div>
+	
 	  <!-- Bootstrap core JavaScript -->
   <script src="/team4_webtoon/resources/main_webtoon/scrolling/vendor/jquery/jquery.min.js"></script>
   <script src="/team4_webtoon/resources/main_webtoon/scrolling/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -3,11 +3,7 @@
 <%@page import="webtoon.bookmark.BookmarkDAO" %>    
  <%@ page import = "webtoon.bookmark.BookmarkVO" %> 
  <%@ page import = "java.util.List" %>       
-    
-    
-    
-    
-    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +14,7 @@
 		String id_dbmk=(String)session.getAttribute("sessionID");
 		String [] chkArr =request.getParameterValues("chk");
 		BookmarkDAO bDAO=BookmarkDAO.getInstance();
-		
-		
+	
 		List<BookmarkVO>dbmk=null;
 		
 		for(int i=0;i<chkArr.length;i++){
@@ -30,7 +25,6 @@
 			bDAO.deleteBkch(id_dbmk,Mn,Cn);
 			bDAO.deleteBookmark(chkArr[i], id_dbmk);
 		}
-		
 
 %>
 

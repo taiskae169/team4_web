@@ -88,7 +88,8 @@ public class BookmarkDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"select mw.mw_num,mw.mw_title,c.cl_num,c.cl_title,c.cl_writer from main_webtoon mw, content c where mw.mw_num=cl_title_id and mw.mw_num=? and c. cl_num=?");
+					"select mw.mw_num,mw.mw_title,c.cl_num,c.cl_title,c.cl_writer " +
+					 "from main_webtoon mw, content c where mw.mw_num=cl_title_id and mw.mw_num=? and c. cl_num=?");
 					pstmt.setInt(1, mw_num);
 					pstmt.setInt(2, cl_num);
 					rs = pstmt.executeQuery();				
@@ -277,11 +278,9 @@ public class BookmarkDAO {
 				pstmt.setString(2, id);
 				rs=pstmt.executeQuery();
 				if(rs.next()) {
-					BookmarkVO bmkD=new BookmarkVO();
-					
+					BookmarkVO bmkD=new BookmarkVO();				
 					//System.out.println(rs.getInt("bm_wt_num"));
-					//System.out.println(rs.getInt("bm_cl_num"));
-					
+					//System.out.println(rs.getInt("bm_cl_num"));				
 					bmkD.setBmWNum(rs.getInt("bm_wt_num"));
 					bmkD.setBmCNum(rs.getInt("bm_cl_num"));
 					dbmk.add(bmkD);

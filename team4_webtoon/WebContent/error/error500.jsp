@@ -30,13 +30,14 @@
 
 <body class="error">
 
-
 <div class="container" >
 <img src=" /team4_webtoon/resources/image/errorIMG/500-error.gif" />
 </div>
 
 <div id="alert" >
-<button type="button" class="btn btn-outline-primary btn-lg"  onclick="location.href='/team4_webtoon/main_page/MainPage.jsp'"><b>Home</b></button>
+<button type="button" class="btn btn-outline-primary btn-lg"  onclick="location.href='/team4_webtoon/main_page/MainPage.jsp'">
+<b>Home</b>
+</button>
 </div>
 
 

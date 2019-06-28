@@ -1,10 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> 
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%> 
  <%@ page import = "java.text.SimpleDateFormat" %>    
  <%@ page import = "java.util.List" %>    
  <%@ page import = "webtoon.bookmark.BookmarkDAO" %>  
  <%@ page import = "webtoon.bookmark.BookmarkVO" %>  
- 
    
 <!DOCTYPE html>
 <html>
@@ -28,20 +26,17 @@
 	.link_wt{text-decoration: none; color: #212529;}
 	.link_wt:hover{text-decoration: underline; color: #212529;}
 	#deleteBM{margin-left:1000px}
+	.link_wt {text-decoration: none; color: #212529;  }
+	.link_wt:hover{text-decoration: underline; color: #212529; }
+	.link_page{text-decoration: none; color: #212529;}
+	.link_page:hover{text-decoration: underline; color: #212529;}
 </style>
 
 
 
 </head>
 
-
-
-
-
 <%
-
-
-		
 		String IDbm = (String)session.getAttribute("sessionID");
 	    
 		int pageSize = 10; // 한 화면에 출력할 게시물 개수
@@ -53,38 +48,22 @@
 	    int startRow = (currentPage - 1) * pageSize + 1;   
 	    int endRow = currentPage * pageSize;  
 	   // System.out.println(currentPage + " " + startRow + " " + endRow);
-	    
-	    
-	    int countBM = 0;   //책갈피 된 웹툰 갯수
-	   	int numberBM = 0; 
-	
+
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	   
-	    List webtoonBM = null;
 	    
 	    BookmarkDAO BMdao = BookmarkDAO.getInstance();
-	   
-	  
-	    countBM = BMdao.getBMCount(IDbm);   //웹툰의 에피소드 갯수
 	    
+	    int countBM = 0;   //책갈피 된 웹툰 에피소드의 개수
+		 List webtoonBM = null;
+	   
+	    countBM = BMdao.getBMCount(IDbm); 
 	    if (countBM > 0) {
 	        webtoonBM = BMdao.getBMwebtoon(IDbm,startRow,endRow);
 	    }
-	   
+	    
+	 	int numberBM = 0; 
 	   numberBM = countBM-(currentPage-1)*pageSize;
-		
-		
-
 %>
-
-		
-
-
-
-
-
-
-
 
 <body id="page-top">
   <!-- Navigation -->
@@ -92,12 +71,10 @@
 	<%@include file="/bar/navigationBar.jsp" %>	
 	<%@include file="/bar/session_url.jsp" %>	
 
-
 	<div class="container">
 	<%
     if (countBM == 0) {
 %>
-
 <h1 class="my-4" style="text-align: center"><%=IDbm %> 님의 책갈피</h1><br><br><br>
 
 <table cellpadding="0" cellspacing="0" >
@@ -130,13 +107,18 @@
 		<tr>
 			<th><%=numberBM--%></th>
 			<th>
-			<img src="/team4_webtoon/resources/image/webtoon/<%=bmk.getBmWTitle() %>/<%=bmk.getBmImg()%>" alt="<%=bmk.getBmWTitle() %>" width="71" height="41" onerror="this.src='/team4_webtoon/resources/image/webtoon/thumbnail/imgErr2.gif'">
+			<img src="/team4_webtoon/resources/image/webtoon/<%=bmk.getBmWTitle() %>/<%=bmk.getBmImg()%>" alt="<%=bmk.getBmWTitle() %>" 
+			width="71" height="41" onerror="this.src='/team4_webtoon/resources/image/webtoon/thumbnail/imgErr2.gif'">
 			</th>
 			<th>
-				<a href="/team4_webtoon/main_wt/mainWT.jsp?mw_num=<%=bmk.getBmWNum()%>"><%=bmk.getBmWTitle() %></a>
+				<a href="/team4_webtoon/main_wt/mainWT.jsp?mw_num=<%=bmk.getBmWNum()%>" class="link_wt">
+				<%=bmk.getBmWTitle() %>
+				</a>
 			</th>
 			<th>
-			<a href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=bmk.getBmWNum()%>&cl_num=<%=bmk.getBmCNum()%>"><%=bmk.getBmCTitle() %></a>
+			<a href="/team4_webtoon/webtoon_view/viewerPage.jsp?mw_num=<%=bmk.getBmWNum()%>&cl_num=<%=bmk.getBmCNum()%>" class="link_wt">
+			<%=bmk.getBmCTitle() %>
+			</a>
    			</th>
 			<th><%=bmk.getBmWriter() %></th>
 			<th><%= sdf.format(bmk.getBmReg())%></th>
@@ -221,8 +203,10 @@
 
 
 
-  <!-- Footer -->
+	  <!-- Footer -->
+	  <div class="footer" style="padding-top:200px; padding-bottom:0px;">
 	<%@include file="../bar/footer.jsp" %>
+	</div>
 
 
 </body>

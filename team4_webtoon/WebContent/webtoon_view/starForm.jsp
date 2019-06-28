@@ -3,7 +3,7 @@
 <%@page import="webtoon.episode.StarDAO" %>
 <!DOCTYPE html>
 <html>
-<title>웹툰 뷰어 navbar</title>
+<title>웹툰 별점</title>
  <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,7 +18,6 @@
 </head>
 
 <script language="JavaScript">
-    // 별정 등록 여부를 판단
     function openConfirmstar(starForm) {
         if (starForm.starSelect.value != "") {
             alert("별점이 등록되었습니다.");
@@ -26,21 +25,16 @@
              return;
           }
 	}
-
 </script>
 
 <% 
 	int sMN=Integer.parseInt(request.getParameter("mw_num"));
 	int sCN=Integer.parseInt(request.getParameter("cl_num"));
 	String sId=(String)session.getAttribute("sessionID");
-	//sId="test33";//"user01"; //"admin";
 	StarDAO starDAO= StarDAO.getInstance();
-
 %>
 
 <body>
-
-
 	<% 
 	if(sId!=null){
 		String AorR=starDAO.checkIDstate(sCN);
@@ -100,7 +94,6 @@
 		<% }
 		}
 	} else {
-		//response.sendRedirect("/team4_webtoon/webtoon_view/viewerPage.jsp");
 		response.sendRedirect("/team4_webtoon/login/login.jsp");
 	}%>
 	  <!-- Bootstrap core JavaScript -->
