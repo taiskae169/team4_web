@@ -368,7 +368,7 @@ public class WebToonListDAO {
 		}
 		
 		return list;
-	}//웹툰 장르 정의 항목을 불러오는 메소드
+	}//웹툰 mag 정의 항목을 불러오는 메소드
 	
 	public void updateGer(int num, int ger) {
 		conn = getConnection();
